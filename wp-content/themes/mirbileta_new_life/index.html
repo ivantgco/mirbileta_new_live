@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>
+    <link href="assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
+
+
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+
+    <link rel="stylesheet" href="assets/plugins/bootstrap-3.3.6-dist/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/plugins/font-awesome-4.5.0/css/font-awesome.min.css" type="text/css"/>
+
+    <link rel="stylesheet" href="assets/css/normalize.css" type="text/css"/>
+
+    <link rel="stylesheet" href="assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.custom.css" type="text/css"/>
+
+    <link rel="stylesheet" href="assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" type="text/css"/>
+
+    <link rel="stylesheet" href="assets/css/core.css" type="text/css"/>
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css"/>
+
+
+</head>
+<body>
+
+<div class="header site-header">
+    <div class="container posRel">
+
+        <a href="/"><div class="logo-wrapper">
+            <img src="assets/img/logo.png" />
+        </div></a>
+        <div class="search-wrapper">
+            <input type="text" class="main-input main-search" placeholder="ПОИСК"/>
+            <div class="main-search-input-clear"></div>
+            <div class="main-search-dd">
+                <div class="main-search-dd-arrow"></div>
+                <div class="ms-actions-wrapper mb-medium-actions"></div>
+                <div class="ms-venues-wrapper-holder">
+                    <div class="ms-subblock-header">Площадки:</div>
+                    <div class="ms-venues-wrapper chromeScroll">
+
+                    </div>
+                </div>
+                <div class="ms-actors-wrapper-holder">
+                    <div class="ms-subblock-header">Актеры:</div>
+                    <div class="ms-actors-wrapper chromeScroll">
+
+                    </div>
+                </div>
+                <div class="ms-settings-wrapper">
+
+                    <div class="mb-tf-header">
+                        <div class="mb-tf-title">Цена билета:</div>
+                    </div>
+                    <div class="mb-tf-body">
+                        <div class="mb-ms-rangeslider"></div>
+                        <div class="mb-tf-rangeslider-inputs">
+                            <input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value="300"/>
+                            &mdash;
+                            <input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value="Дороже"/>
+                        </div>
+                    </div>
+
+                    <div class="mb-tf-header">
+                        <div class="mb-tf-title">Диапазон дат:</div>
+                    </div>
+                    <div class="mb-tf-body">
+                        <div class="taCenter">
+                            <input class="mb-tf-rs-input mb-tf-ms-from-date" type="text" placeholder=""/>
+                            &mdash;
+                            <input class="mb-tf-rs-input mb-tf-ms-to-date" type="text" placeholder=""/>
+                        </div>
+                    </div>
+
+                    <div class="mb-border-btn main-search-clear"><i class="fa fa-refresh"></i>&nbsp;&nbsp;Сбросить</div>
+                    <div class="mb-border-btn main-search-close"><i class="fa fa-times"></i>Закрыть</div>
+
+                </div>
+            </div>
+        </div>
+        <div class="search-datarange-wrapper">
+            <input type="text" class="main-input main-search-daterange" placeholder="ДАТА"/>
+            <div class="main-search-daterange-icon"></div>
+            <div class="main-search-daterange-clear"></div>
+        </div>
+        <div class="top-menu-wrapper">
+            <ul>
+                <li class="white"><a href="/">Площадки</a></li>
+                <li><a href="/">Как купить?</a></li>
+                <li><a href="/">Оплата</a></li>
+                <li><a href="/">Проблемы с заказом?</a></li>
+            </ul>
+        </div>
+        <div class="contacts-wrapper">
+            <div class="contacts-phone">+7 (499) 391-61-97</div>
+            <div class="contacts-email">info@mirbileta.ru</div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="slider-wrapper">
+    <div class="slider-overflower">
+        <div class="slider-train" data-max="300" data-move="0" style="width: 300%">
+
+            <div class="slider-item-vagon" style="width: 33.333%" data-slide="0">
+                <div class="slider-item slider-item-0" style="background-image: url(assets/img/slide-1.jpg)"></div>
+
+                <div class="container slider-item-info" >
+                    <div class="slide-info">
+
+                        <div class="sa-title">Metallica</div>
+                        <div class="sa-venue">СК «Олимпийский»</div>
+                        <div class="sa-date">16 марта</div>
+                        <div class="sa-buy-wrapper">
+                            <div class="mb-buy mb-buy32 yellow">от 12000 руб.</div>
+                        </div>
+
+                        <div class="sa-reviews-wrapper">
+                            <ul>
+                                <li>
+                                    Спектакль просто супер, ходили на него уже давно,
+                                    а впечатлений хоть отбавляй.
+                                    Советую сходить всем!!! :)
+                                    <div class="sa-review-chevron fa fa-chevron-right"></div>
+                                </li>
+                                <li>
+                                    Ходили на спектакль с учениками 6 класса. Всем
+                                    детям понравилось. Кто-то тайком утирал слёзы.
+                                    Кто-то держался...
+                                    <div class="sa-review-chevron fa fa-chevron-right"></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="slide-reviews-expanded">
+                        <div class="slide-reviews-expanded-header">
+
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-prev">
+                                <div class="sl-reviews-exp-nav-title">Ольга</div>
+                                <div class="sl-reviews-exp-nav-sub">13 ноября 2015</div>
+                            </div>
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-current">
+                                <div class="sl-reviews-exp-nav-title">Александра</div>
+                                <div class="sl-reviews-exp-nav-sub">21 декабря 2015</div>
+                            </div>
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-next">
+                                <div class="sl-reviews-exp-nav-title">Сергей</div>
+                                <div class="sl-reviews-exp-nav-sub">2 января 2016</div>
+                            </div>
+
+                            <div class="sl-reviews-exp-close"></div>
+                        </div>
+                        <div class="slide-reviews-expanded-body">
+                            А знаете, Алксандр, мы как раз ходили с детьми 8 и 10 лет, и всем все было понятно! Мне не хотелось бы кого-либо в чем-то разубеждать, т.к., наверное, раз на раз не приходится - актеры не играют дважды абсолютно одинаково, бывает и лучше и хуже, да и люди, которые смотрят спектакль, видят происходящее каждый под своим углом. Но мы во время просмотра "Собак" не препарировали каждую деталь, как то: "очки-пиночеты", "а причем тут Modern Talking?" и проч., однако в глазах детей (и взрослых тоже) стояли искренние слезы, и они верили всему тому, что видели на сцене, забывая, что перед ними люди-актеры, а не это ли высшая похвала актерской игре?!!
+                            Что касается самой пьесы и затронутой в ней темы, то я расценивала бы ее как "инъекцию человечности", которой так не хватает нам всем в нынешнее время, - увы... Дело ведь не только в брошенных собачках, спектакль учит добру, состраданию, участию, дружбе - прописные, кажется, понятия, но многие даже не догадываются об их подлинном значении. Разумеется, сколько людей - столько и мнений, мне лично спектакль "Собаки" понравился очень, равно как и всем моим абсолютно разновозрастным друзьям и родственникам (10 человек от 8 до 67 лет), также с удовольствием посмотревшим этот спектакль.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="slider-item-vagon" style="width: 33.333%" data-slide="1">
+                <div class="slider-item slider-item-1" style="background-image: url(assets/img/slide-2.jpg)"></div>
+
+                <div class="container slider-item-info">
+                    <div class="slide-info">
+
+                        <div class="sa-title">Детские игры</div>
+                        <div class="sa-venue">театр «Современник»</div>
+                        <div class="sa-date">27 апреля</div>
+                        <div class="sa-buy-wrapper">
+                            <div class="mb-buy mb-buy32 yellow">от 3000 руб.</div>
+                        </div>
+
+                        <div class="sa-reviews-wrapper">
+                            <ul>
+                                <li>
+                                    Спектакль просто супер, ходили на него уже давно,
+                                    а впечатлений хоть отбавляй.
+                                    Советую сходить всем!!! :)
+                                    <div class="sa-review-chevron fa fa-chevron-right"></div>
+                                </li>
+                                <li>
+                                    Ходили на спектакль с учениками 6 класса. Всем
+                                    детям понравилось. Кто-то тайком утирал слёзы.
+                                    Кто-то держался...
+                                    <div class="sa-review-chevron fa fa-chevron-right"></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="slide-reviews-expanded">
+                        <div class="slide-reviews-expanded-header">
+
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-prev">
+                                <div class="sl-reviews-exp-nav-title">Ольга</div>
+                                <div class="sl-reviews-exp-nav-sub">13 ноября 2015</div>
+                            </div>
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-current">
+                                <div class="sl-reviews-exp-nav-title">Александра</div>
+                                <div class="sl-reviews-exp-nav-sub">21 декабря 2015</div>
+                            </div>
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-next">
+                                <div class="sl-reviews-exp-nav-title">Сергей</div>
+                                <div class="sl-reviews-exp-nav-sub">2 января 2016</div>
+                            </div>
+
+                            <div class="sl-reviews-exp-close"></div>
+                        </div>
+                        <div class="slide-reviews-expanded-body">
+                            А знаете, Алксандр, мы как раз ходили с детьми 8 и 10 лет, и всем все было понятно! Мне не хотелось бы кого-либо в чем-то разубеждать, т.к., наверное, раз на раз не приходится - актеры не играют дважды абсолютно одинаково, бывает и лучше и хуже, да и люди, которые смотрят спектакль, видят происходящее каждый под своим углом. Но мы во время просмотра "Собак" не препарировали каждую деталь, как то: "очки-пиночеты", "а причем тут Modern Talking?" и проч., однако в глазах детей (и взрослых тоже) стояли искренние слезы, и они верили всему тому, что видели на сцене, забывая, что перед ними люди-актеры, а не это ли высшая похвала актерской игре?!!
+                            Что касается самой пьесы и затронутой в ней темы, то я расценивала бы ее как "инъекцию человечности", которой так не хватает нам всем в нынешнее время, - увы... Дело ведь не только в брошенных собачках, спектакль учит добру, состраданию, участию, дружбе - прописные, кажется, понятия, но многие даже не догадываются об их подлинном значении. Разумеется, сколько людей - столько и мнений, мне лично спектакль "Собаки" понравился очень, равно как и всем моим абсолютно разновозрастным друзьям и родственникам (10 человек от 8 до 67 лет), также с удовольствием посмотревшим этот спектакль.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="slider-item-vagon" style="width: 33.333%" data-slide="2">
+                <div class="slider-item slider-item-2" style="background-image: url(assets/img/slide-3.jpg)"></div>
+
+                <div class="container slider-item-info">
+                    <div class="slide-info">
+
+                        <div class="sa-title">Матч Россия - Австрия</div>
+                        <div class="sa-venue">стадион «Открытие Арена»</div>
+                        <div class="sa-date">14 апреля</div>
+                        <div class="sa-buy-wrapper">
+                            <div class="mb-buy mb-buy32 yellow">от 900 руб.</div>
+                        </div>
+
+                        <div class="sa-reviews-wrapper">
+                            <ul>
+                                <li>
+                                    Спектакль просто супер, ходили на него уже давно,
+                                    а впечатлений хоть отбавляй.
+                                    Советую сходить всем!!! :)
+                                    <div class="sa-review-chevron fa fa-chevron-right"></div>
+                                </li>
+                                <li>
+                                    Ходили на спектакль с учениками 6 класса. Всем
+                                    детям понравилось. Кто-то тайком утирал слёзы.
+                                    Кто-то держался...
+                                    <div class="sa-review-chevron fa fa-chevron-right"></div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="slide-reviews-expanded">
+                        <div class="slide-reviews-expanded-header">
+
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-prev">
+                                <div class="sl-reviews-exp-nav-title">Ольга</div>
+                                <div class="sl-reviews-exp-nav-sub">13 ноября 2015</div>
+                            </div>
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-current">
+                                <div class="sl-reviews-exp-nav-title">Александра</div>
+                                <div class="sl-reviews-exp-nav-sub">21 декабря 2015</div>
+                            </div>
+                            <div class="sl-reviews-exp-nav sl-reviews-exp-next">
+                                <div class="sl-reviews-exp-nav-title">Сергей</div>
+                                <div class="sl-reviews-exp-nav-sub">2 января 2016</div>
+                            </div>
+
+                            <div class="sl-reviews-exp-close"></div>
+                        </div>
+                        <div class="slide-reviews-expanded-body">
+                            А знаете, Алксандр, мы как раз ходили с детьми 8 и 10 лет, и всем все было понятно! Мне не хотелось бы кого-либо в чем-то разубеждать, т.к., наверное, раз на раз не приходится - актеры не играют дважды абсолютно одинаково, бывает и лучше и хуже, да и люди, которые смотрят спектакль, видят происходящее каждый под своим углом. Но мы во время просмотра "Собак" не препарировали каждую деталь, как то: "очки-пиночеты", "а причем тут Modern Talking?" и проч., однако в глазах детей (и взрослых тоже) стояли искренние слезы, и они верили всему тому, что видели на сцене, забывая, что перед ними люди-актеры, а не это ли высшая похвала актерской игре?!!
+                            Что касается самой пьесы и затронутой в ней темы, то я расценивала бы ее как "инъекцию человечности", которой так не хватает нам всем в нынешнее время, - увы... Дело ведь не только в брошенных собачках, спектакль учит добру, состраданию, участию, дружбе - прописные, кажется, понятия, но многие даже не догадываются об их подлинном значении. Разумеется, сколько людей - столько и мнений, мне лично спектакль "Собаки" понравился очень, равно как и всем моим абсолютно разновозрастным друзьям и родственникам (10 человек от 8 до 67 лет), также с удовольствием посмотревшим этот спектакль.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="slider-dots-wrapper">
+            <div class="slider-dot active" data-slide="0"></div>
+            <div class="slider-dot" data-slide="1"></div>
+            <div class="slider-dot" data-slide="2"></div>
+        </div>
+    </div>
+</div>
+
+<div class="main-menu-wrapper">
+    <div class="container">
+        <ul class="main-menu">
+            <li>
+                <a href="">
+                    <div class="mm-icon" data-icon="performance"></div>
+                    <div class="mm-title">СПЕКТАКЛИ</div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="mm-icon" data-icon="concert"></div>
+                    <div class="mm-title">КОНЦЕРТЫ</div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="mm-icon" data-icon="show"></div>
+                    <div class="mm-title">ШОУ</div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="mm-icon" data-icon="sport"></div>
+                    <div class="mm-title">СПОРТ</div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="mm-icon" data-icon="children"></div>
+                    <div class="mm-title">ДЕТЯМ</div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <div class="mm-icon" data-icon="ballet"></div>
+                    <div class="mm-title">БАЛЕТ</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="site-content">
+    <div class="container">
+
+        <div class="content-block most-important">
+
+            <div class="page-headline-wrapper">
+                <div class="p-h-line"></div>
+                <div class="p-h-title"><span>Самое важное:</span></div>
+            </div>
+
+            <div class="actions-wrapper">
+
+                <div class="mb-block mb-action">
+                    <div class="mb-a-image" style="background-image: url(assets/img/act-1.jpg);"></div>
+                    <div class="mb-a-title">Группа «Акапелла Экспресс»<span class="mb-a-age">14+</span></div>
+                    <div class="mb-a-date">16 февраля, <span class="mb-a-time">19:00</span></div>
+                    <div class="mb-a-venue">Государственный Кремлевский Дворец</div>
+                    <div class="mb-a-buy-holder">
+                        <div class="mb-buy mb-buy32 soft">от 1600 руб.</div>
+                    </div>
+                </div>
+
+                <div class="mb-block mb-action">
+                    <div class="mb-a-image" style="background-image: url(assets/img/act-2.jpg);"></div>
+                    <div class="mb-a-title">Пять вечеров<span class="mb-a-age">14+</span></div>
+                    <div class="mb-a-date">20 апреля, <span class="mb-a-time">19:00</span></div>
+                    <div class="mb-a-venue">театр «Современник»</div>
+                    <div class="mb-a-buy-holder">
+                        <div class="mb-buy mb-buy32 soft">от 1600 руб.</div>
+                    </div>
+                </div>
+
+                <div class="mb-block mb-action">
+                    <div class="mb-a-image" style="background-image: url(assets/img/act-3.jpg);"></div>
+                    <div class="mb-a-title">Спектакль «Снегурочка»<span class="mb-a-age">14+</span></div>
+                    <div class="mb-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+                    <div class="mb-a-venue">Государственный Кремлевский Дворец</div>
+                    <div class="mb-a-buy-holder">
+                        <div class="mb-buy mb-buy32 soft">от 1600 руб.</div>
+                    </div>
+                </div>
+
+                <div class="mb-block mb-action">
+                    <div class="mb-a-image" style="background-image: url(assets/img/act-4.jpg);"></div>
+                    <div class="mb-a-title">Концерт «Я нравлюсь женщинам»<span class="mb-a-age">14+</span></div>
+                    <div class="mb-a-date">2 мая, <span class="mb-a-time">19:00</span></div>
+                    <div class="mb-a-venue">Crocus city hall</div>
+                    <div class="mb-a-buy-holder">
+                        <div class="mb-buy mb-buy32 soft">от 1600 руб.</div>
+                    </div>
+                </div>
+
+                <div class="mb-block mb-action">
+                    <div class="mb-a-image" style="background-image: url(assets/img/act-5.jpg);"></div>
+                    <div class="mb-a-title">Big Love Show 2016<span class="mb-a-age">14+</span></div>
+                    <div class="mb-a-date">6 июня, <span class="mb-a-time">19:00</span></div>
+                    <div class="mb-a-venue">СК «Олимпийский»</div>
+                    <div class="mb-a-buy-holder">
+                        <div class="mb-buy mb-buy32 soft">от 1600 руб.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-block extend-search">
+
+            <div class="page-headline-wrapper">
+                <div class="p-h-line"></div>
+                <div class="p-h-title"><span>Подберите что-нибудь на ваш вкус!</span></div>
+            </div>
+
+            <div class="mb-block mb-tag-filter-wrapper posRel">
+
+
+                <div class="mb-tag-filter-col-1">
+
+                    <div class="mb-tf-block with_border" data-filter="venue"></div>
+
+                    <div class="mb-tf-block" data-filter="genre"></div>
+
+
+                </div>
+
+                <div class="mb-tag-filter-col-2">
+
+                    <div class="mb-tf-block with_border left_border" data-filter="venue"></div>
+
+
+                    <div class="pr50">
+                        <div class="mb-tf-block left_border header_left_border" data-filter="genre"></div>
+                    </div>
+
+                    <div class="pr50">
+                        <div class="mb-tf-block" data-filter="price"></div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="extend-search-confirm">Показать <span class="mb-tf-count-results"></span></div>
+
+
+            </div>
+        </div>
+
+        <div class="content-block nearrest-aсtions">
+
+            <div class="page-headline-wrapper">
+                <div class="p-h-line"></div>
+                <div class="p-h-title"><span>Ближайшие мероприятия:</span></div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="mb-block">
+                        <div class="mb-nrs-wrapper">
+                            <div class="mb-nrs-header">Сегодня:</div>
+                            <div class="mb-nrs-body" data-date="today">
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-3.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-4.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-1.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mb-block">
+                        <div class="mb-nrs-wrapper">
+                            <div class="mb-nrs-header">Завтра:</div>
+                            <div class="mb-nrs-body" data-date="tomorrow">
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-4.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-3.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mb-block">
+                        <div class="mb-nrs-wrapper">
+                            <div class="mb-nrs-header">На выходных:</div>
+                            <div class="mb-nrs-body" data-date="weekend">
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-1.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-2.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-5.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="mb-block">
+                        <div class="mb-nrs-wrapper">
+                            <div class="mb-nrs-header">Следующая неделя:</div>
+                            <div class="mb-nrs-body" data-date="nextweek">
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-5.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-2.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                                <a href="">
+                                    <div class="mb-sm-action" data-id="">
+                                        <div class="mb-sm-a-image" style="background-image: url(assets/img/act-3.jpg);"></div>
+                                        <div class="mb-sm-a-title">Спектакль «Снегурочка»</div>
+                                        <div class="mb-sm-a-venue">Государственный Кремлевский Дворец</div>
+                                        <div class="mb-sm-a-price">от 1600 руб.</div>
+                                        <div class="mb-sm-a-age">14+</div>
+                                        <div class="mb-sm-a-date">22 апреля, <span class="mb-a-time">19:00</span></div>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+<div class="site-footer">
+    <div class="footer-line-1">
+        <div class="container">
+
+            <a href="/"><div class="logo-wrapper">
+                <img src="assets/img/logo_footer.png" />
+            </div></a>
+
+            <div class="contacts-wrapper">
+                <div class="contacts-phone">+7 (499) 391-61-97</div>
+                <div class="contacts-email">info@mirbileta.ru</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footer-line-2">
+        <div class="container posRel">
+            <div class="footer-menu-wrapper footer-menu-1">
+                <div class="footer-menu-header">О НАС</div>
+                <ul class="footer-menu-body">
+                    <li><a href="">Контакты</a></li>
+                    <li><a href="">О Компании</a></li>
+                    <li><a href="">Публичаня оферта</a></li>
+                    <li><a href="">Логотипы</a></li>
+                    <li><a href="">Multibooker</a></li>
+                </ul>
+            </div>
+            <div class="footer-menu-wrapper">
+                <div class="footer-menu-header">БИЗНЕС</div>
+                <ul class="footer-menu-body">
+                    <li><a href="">Хотите расширить объем продаж?</a></li>
+                    <li><a href="">Хотите сэкономить на агентских отношениях?</a></li>
+                    <li><a href="">Хотите организовать собственный билетный бизнес?</a></li>
+                    <li><a href="">Вам нужен виджет онлайн продажи на сайт?</a></li>
+                    <li><a href="">Вам нужна современная и гибкая билетная система?</a></li>
+                    <li><a href="">Схемы залов</a></li>
+                </ul>
+            </div>
+            <div class="footer-menu-wrapper">
+                <div class="footer-menu-header">ИНФОРМАЦИЯ</div>
+                <ul class="footer-menu-body">
+                    <li><a href="">Как купить билет?</a></li>
+                    <li><a href="">Перенос. Отмена. Замена.</a></li>
+                    <li><a href="">Возврат билетов</a></li>
+                    <li><a href="">Способы оплаты</a></li>
+                    <li><a href="">Как работает электронный билет?</a></li>
+                    <li><a href="">Билет не пришел на почту? Восстановление.</a></li>
+                </ul>
+            </div>
+
+            <div class="mb-copyright">
+                mirbileta.ru all rights reserved&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by Multibooker
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--SCRIPTS-->
+
+<script type="text/javascript" src="assets/plugins/jquery/jquery-1.12.0.min.js"></script>
+
+
+<script type="text/javascript" src="assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/plugins/blur/blur.js"></script>
+<script type="text/javascript" src="assets/plugins/mb-chekbox/mb-checkbox.js"></script>
+<script type="text/javascript" src="assets/plugins/mustache/mustache.js"></script>
+<script type="text/javascript" src="assets/plugins/ion.rangeSlider-2.1.2/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+
+<script type="text/javascript" src="assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js"></script>
+
+<script type="text/javascript" src="assets/js/core.js"></script>
+
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script type="text/javascript" src="assets/js/slider.js"></script>
+
+</body>
+</html>

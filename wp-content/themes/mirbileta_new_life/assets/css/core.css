@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'OpenSans-light';
+    src: url(../fonts/Open_sans/OpenSans-Light.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-regular';
+    src: url(../fonts/Open_sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-semibold';
+    src: url(../fonts/Open_sans/OpenSans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: 'Helvetica-light';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Light.otf);
+}
+@font-face {
+    font-family: 'Helvetica-Regular';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Roman.otf);
+}
+@font-face {
+    font-family: 'Helvetica-Semibold';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Medium.otf);
+}
+
+@font-face {
+    font-family: 'Rambla-Regular';
+    src: url(../fonts/Rambla/Rambla-Regular.ttf);
+}
+@font-face {
+    font-family: 'Rambla-Bold';
+    src: url(../fonts/Rambla/Rambla-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'PTSans-Regular';
+    src: url(../fonts/PT_sans/PT_Sans-Web-Regular.ttf);
+}
+@font-face {
+    font-family: 'PTSans-Bold';
+    src: url(../fonts/PT_sans/PT_Sans-Web-Bold.ttf);
+}
+
+.posRel{
+    position: relative;
+}
+@media (min-width: 1200px){
+    .container {
+        width: 1180px;
+    }
+}
+.pr30{
+    width: 30%;
+    float: left;
+}
+.pr50{
+    width: 50%;
+    float: left;
+}
+.pr70{
+    width: 70%;
+    float: left;
+}
+
+.taCenter{
+    text-align: center;
+}
+.marTop40{
+    margin-top: 40px;
+}
+.marBot40{
+   margin-bottom: 40px;
+}
+
+.flLeft{
+    float: left;
+}
+.wid100pr{
+    width: 100%;
+}

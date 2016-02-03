@@ -1,0 +1,108 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: goptarev
+ * Date: 09.10.15
+ * Time: 17:24
+ */
+
+define( 'WP_DEBUG', true );
+
+$global_prot = 'http';
+$global_url = '192.168.1.190';
+
+//$global_prot = 'https';
+//$global_url = 'shop.mirbileta.ru';
+
+function addRoutes() {
+    $urlKey = $_SERVER[REQUEST_URI];
+    add_rewrite_rule('(kupit_bilet)?$', 'kupit_bilet/'.$urlKey.'zopa', 'top');
+}
+//index.php?pagename=$matches[1]
+
+addRoutes();
+
+function to_afisha_date($str, $format, $lang)
+{
+    $dd = substr($str, 0, 2);
+    $mm = substr($str, 3, 2);
+    $yy = substr($str, 6, 4);
+    $hh = substr($str, 11, 2);
+    $mi = substr($str, 14, 2);
+    $si = substr($str, 17, 2);
+
+    $mths = array(
+        "rus"=> array(
+            "янв","фев","мар","апр","май","июн","июл","авг","сен","окт","ноя","дек"
+        ),
+        "eng"=>array(
+            "jan","feb","mar","apr","may","jun","jul","aug","sep","okt","nov","dec"
+        )
+    );
+
+    $weekDays = array(
+        "rus"=>array(
+            "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "суббота", "Воскресенье"
+        ),
+        "eng"=>array(
+            "mo", "tu", "we", "th", "fr", "sa", "su"
+        )
+    );
+
+    $res = '';
+
+    switch ($format){
+        case 'short_date':
+            $res = $dd . ' ' . $mths[$lang][intval($mm)-1];
+            break;
+        case 'short_date_with_year':
+            $res = $dd . ' ' . $mths[$lang][intval($mm)-1] . ' ' . $yy;
+            break;
+        case 'full_date':
+            $res = $dd . ' ' . $mths[$lang][intval($mm)-1] . ' ' . $yy;
+            break;
+        case 'weekday':
+            $res = $weekDays[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
+            break;
+        case 'time':
+            $res = $hh . ':' . $mi;
+            break;
+        case 'week_and_time':
+            $res = $weekDays[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.':'.$mi.':00')) -1] .' '. $hh . ':' . $mi;
+            break;
+        default:
+            break;
+    }
+    return $res;
+};
+
+function my_theme_load_resources() {
+
+
+    wp_enqueue_style('bootstrap',       get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-3.3.6-dist/css/bootstrap.min.css');
+    wp_enqueue_style('fontawesome',     get_stylesheet_directory_uri() . '/assets/plugins/font-awesome-4.5.0/css/font-awesome.min.css');
+    wp_enqueue_style('normalize',       get_stylesheet_directory_uri() . '/assets/css/normalize.css');
+    wp_enqueue_style('rangeslider',     get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.css');
+    wp_enqueue_style('rangeslider_cus', get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.custom.css');
+    wp_enqueue_style('datepicker',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css');
+    wp_enqueue_style('core',            get_stylesheet_directory_uri() . '/assets/css/core.css');
+    wp_enqueue_style('style',           get_stylesheet_directory_uri() . '/assets/css/style.css');
+
+    wp_enqueue_script('jquery_my',      get_stylesheet_directory_uri() . '/assets/plugins/jquery/jquery-1.12.0.min.js');
+    wp_enqueue_script('uri',            get_stylesheet_directory_uri() . '/assets/plugins/uri/URI.js');
+    wp_enqueue_script('uri_tpl',        get_stylesheet_directory_uri() . '/assets/plugins/uri/URITemplate.js');
+    wp_enqueue_script('bootstrap',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js');
+    wp_enqueue_script('blur',           get_stylesheet_directory_uri() . '/assets/plugins/blur/blur.js');
+    wp_enqueue_script('mb_checkbox',    get_stylesheet_directory_uri() . '/assets/plugins/mb-chekbox/mb-checkbox.js');
+    wp_enqueue_script('uitabs',         get_stylesheet_directory_uri() . '/assets/plugins/uiTabs/uiTabs.js');
+    wp_enqueue_script('mustache',       get_stylesheet_directory_uri() . '/assets/plugins/mustache/mustache.js');
+    wp_enqueue_script('rangeslider',    get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/js/ion-rangeSlider/ion.rangeSlider.min.js');
+    wp_enqueue_script('datepicker',     get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js');
+    wp_enqueue_script('datepicker_loc', get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js');
+    wp_enqueue_script('core',           get_stylesheet_directory_uri() . '/assets/js/core.js');
+    wp_enqueue_script('script',         get_stylesheet_directory_uri() . '/assets/js/script.js');
+}
+
+add_action('wp_enqueue_scripts', 'my_theme_load_resources');
+
+?>
