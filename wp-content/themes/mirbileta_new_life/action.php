@@ -118,7 +118,7 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8982.005857353408!2d37.6140337!3d55.749790600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1453912939564" width="100%" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
 
-                <div class="flLeft one-action-date"><?php echo $act_date;?>, <span class="one-action-time"><?php echo $act_time; ?></span>&nbsp;&nbsp;<span class="one-action-weekday"><?php echo $day_of_week; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="one-action-length">Продолжительность: <?php echo $duration; ?></span></div>
+                <div class="flLeft one-action-date"><?php echo $act_date;?>, <span class="one-action-time"><?php echo $act_time; ?></span>&nbsp;&nbsp;<span class="one-action-weekday"><?php echo $day_of_week; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="one-action-length">Продолжительность: <?php echo $duration?></span></div>
 
                 <div class="mb-buy mb-buy32 yellow flLeft one-action-buy-link">Купить билет</div>
 
@@ -290,7 +290,15 @@
 
                 <div class="row">
                     <div class="col-md-12 ">
-                        <div class="one-action-widget-header">Купить билет: <span class="one-action-free-places"><?php echo $free_places; ?></span></div>
+
+
+                        <?php
+
+                        $minmaxString = ($minprice == $maxprice)? 'по '. $minprice . ' рублей' : 'от ' . $minprice . ' до ' . $maxprice . ' рублей';
+
+                        ?>
+
+                        <div class="one-action-widget-header">Купить билет: <span class="one-action-free-places">Свободных мест: <?php echo $free_places; ?> <?php echo $minmaxString; ?></div>
                         <div class="one-action-widget-how-to">
 
                             <div class="one-action-widget-how-to-item">1. Выберите сектор <div class="arrow"></div><div class="hint">Кликните по интересующему вас сектору на интеркативной схеме зала.</div></div>

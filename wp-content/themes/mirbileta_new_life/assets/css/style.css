@@ -2452,3 +2452,9 @@ a.nounderline:hover{
 .mb-buy.disabled {
     opacity: 0.5;
 }
+.one-action-free-places{
+    font-size: 14px;
+    margin-left: 20px;
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    color: #B5A58F;
+}
