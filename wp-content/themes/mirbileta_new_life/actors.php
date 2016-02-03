@@ -87,13 +87,14 @@
 
             $id =               $value[array_search("ACTOR_ID", $columns)];
             $name =             $value[array_search("ACTOR_NAME", $columns)];
+            $alias =             $value[array_search("ACTOR_URL_ALIAS", $columns)];
             $image =            $value[array_search("URL_IMAGE_MEDIUM", $columns)];
             $actions_count =    $value[array_search("ACTIONS_COUNT", $columns)];
 
             $actionsHtml .= '<div class="mb-big-tpl-item mb-block mb-inpage-search-entry">'
                             .'<div class="mb-btpl-image" style="background-image: url('.$image.')"></div>'
                             .'<div class="mb-btpl-info">'
-                                .'<div class="mb-btpl-title mb-inpage-search-entry-keyword"><a href="/actor/?actor_id='.$id.'">'.$name.'</a></div>'
+                                .'<div class="mb-btpl-title mb-inpage-search-entry-keyword"><a href="/'.$alias.'">'.$name.'</a></div>'
                                 .'<div class="mb-btpl-desc">'.$desc.'</div>'
                                 .'<div class="mb-btpl-link">'.$site_url.'</div>'
                             .'</div>'

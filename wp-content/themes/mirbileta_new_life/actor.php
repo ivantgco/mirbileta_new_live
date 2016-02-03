@@ -2,30 +2,31 @@
 /*
     Template Name: single_actor
 */
+    $cur_url = $_SERVER["REQUEST_URI"];
 
-$actor_id = $_GET['actor_id'];
+    $actor_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+    $actor_alias = (strpos($actor_alias, '-') > -1)? substr($actor_alias,0, strpos($actor_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-$url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actor</command><url>mirbileta.ru</url><actor_id>'.$actor_id.'</actor_id>";
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actor</command><url>mirbileta.ru</url><actor_url_alias>".$actor_alias."</actor_url_alias>";
 
-$ch = curl_init();
+    $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
-$resp = curl_exec($ch);
+    $resp = curl_exec($ch);
 
-if (curl_errno($ch))
-    print curl_error($ch);
-else
-    curl_close($ch);
+    if (curl_errno($ch))
+        print curl_error($ch);
+    else
+        curl_close($ch);
 
-$jData = json_decode($data);
-
-$columns = json_decode($resp)->results["0"]->data_columns;
-$data = json_decode($resp)->results["0"]->data[0];
+    $columns = json_decode($resp)->results["0"]->data_columns;
+    $data = json_decode($resp)->results["0"]->data[0];
+    $actor_id = $data[array_search("ACTOR_ID", $columns)];
 ?>
 
 
@@ -67,8 +68,9 @@ $data = json_decode($resp)->results["0"]->data[0];
 <?php
 get_header();
 include('main_menu.php');
-
 ?>
+
+
 
 <div class="site-content">
 
@@ -89,8 +91,6 @@ include('main_menu.php');
                 </div>
 
                 <div class="single-a-desc-holder chromeScroll pr70">
-
-                    Фёдор Серге́евич Бондарчу́к — советский и российский киноактёр, кинорежиссёр, продюсер кино и телевидения, телеведущий, клипмейкер, телеакадемик. Создатель фильмов «9 рота», дилогии «Обитаемый остров» и масштабной военной драмы «Сталинград».
                     <?php echo $data[array_search("ACTOR_DESCRIPTION", $columns)]; ?>
                 </div>
                 </div>
@@ -114,8 +114,9 @@ include('main_menu.php');
         <div class="actions-wrapper marTop40">
             <?php
 
-
             $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num><actor_id>" . $actor_id . "</actor_id>";
+
+
 
             $ch = curl_init();
 
@@ -175,7 +176,7 @@ include('main_menu.php');
                     . '<div class="mb-a-date">' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
                     . '<div class="mb-a-venue">' . $venue . '</div>'
                     . '<div class="mb-a-buy-holder">'
-                    . '<div class="mb-buy mb-buy32 soft">Купить билет</div>' //'.$minprice.' руб.
+                    . '<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
                     . '</div>'
                     . '</div>';
             }

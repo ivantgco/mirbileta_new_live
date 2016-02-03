@@ -3,29 +3,33 @@
     Template Name: single_venue
 */
 
-$venue_id = $_GET['venue_id'];
+    $cur_url = $_SERVER["REQUEST_URI"];
 
-$url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_venue</command><url>mirbileta.ru</url><venue_id>'.$venue_id.'</venue_id>";
+    $venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+    $venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-$ch = curl_init();
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_venue</command><url>mirbileta.ru</url><venue_url_alias>".$venue_alias."</venue_url_alias>";
 
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    $ch = curl_init();
 
-$resp = curl_exec($ch);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
-if (curl_errno($ch))
-    print curl_error($ch);
-else
-    curl_close($ch);
+    $resp = curl_exec($ch);
 
-$jData = json_decode($data);
+    if (curl_errno($ch))
+        print curl_error($ch);
+    else
+        curl_close($ch);
 
-$columns = json_decode($resp)->results["0"]->data_columns;
-$data = json_decode($resp)->results["0"]->data[0];
+    $jData = json_decode($data);
+
+    $columns = json_decode($resp)->results["0"]->data_columns;
+    $data = json_decode($resp)->results["0"]->data[0];
+    $venue_id = $data[array_search("VENUE_ID", $columns)];
 ?>
 
 
@@ -81,7 +85,7 @@ include('main_menu.php');
 
             <div class="sinlge-subtitle-holder">
                 <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<?php echo $data[array_search("VENUE_ADDRESS", $columns)]; ?>
-                <a class="single-ext-link" href="<?php echo $data[array_search("SITE_URL", $columns)]; ?>" target="_blank">Сайт площадки</a>
+                <a class="single-ext-link" href="<?php echo $data[array_search("VENUE_SITE_URL", $columns)]; ?>" target="_blank">Сайт площадки</a>
 
             </div>
 
@@ -166,7 +170,7 @@ include('main_menu.php');
                     . '<div class="mb-a-date">' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
                     . '<div class="mb-a-venue">' . $venue . '</div>'
                     . '<div class="mb-a-buy-holder">'
-                    . '<div class="mb-buy mb-buy32 soft">Купить билет</div>' //'.$minprice.' руб.
+                    . '<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
                     . '</div>'
                     . '</div>';
             }
