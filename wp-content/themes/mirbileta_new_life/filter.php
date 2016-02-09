@@ -118,7 +118,7 @@
 
                             <div class="f-buttons-holder">
                                 <div class="mb-buy mb-buy32 yellow-bordered flRight submit-filters">Показать <span class="filter-count-actions"></span></div>
-                                <div class="mb-buy mb-buy32 white flRight clear-filters">Сборсить филтры</div>
+                                <div class="mb-buy mb-buy32 white flRight clear-filters">Сборсить фильтры</div>
                             </div>
 
                         </div>

@@ -365,7 +365,7 @@
                                     $tag_id =             $value3[array_search("ACTION_TAG_ID", $tag_columns)];
                                     $tag_name =           $value3[array_search("ACTION_TAG", $tag_columns)];
 
-                                    $tag_html .= '<div class="action-tag" data-id="'.$tag_id.'">'.$tag_name.'</div>';
+                                    $tag_html .= '<a class="action-tag-link" href="/extend_search?action_tag_id='.$tag_id.'"><div class="action-tag" data-id="'.$tag_id.'">'.$tag_name.'</div></a>';
 
                                     if($indexer == 0){
                                         $tag_ids .= $tag_id;
