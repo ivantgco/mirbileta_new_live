@@ -14,7 +14,7 @@
         }).toUpperCase();
     }
 
-    function generateUrl(){
+    function generateUrl(page){
 
         var url_str = '';
         var indexer = 0;
@@ -34,7 +34,12 @@
             indexer++;
         }
 
-        document.location.search = url_str;
+        if(page){
+            document.location.href = '/' + page +'?'+ url_str;
+        }else{
+            document.location.search = url_str;
+        }
+
 
     }
 
@@ -44,7 +49,10 @@
 
         filters = url.search(true);
 
-        filters.show_type_alias = $('body').attr('data-filter');
+        if($('body').attr('data-filter')){
+            filters.show_type_alias = $('body').attr('data-filter');
+        }
+
     }
 
     var Filter = function(params){
@@ -55,35 +63,35 @@
 
 
         this.filters_data = {
-            venue: {
+            venue_id: {
                 type: 'lov',
                 getData: 'get_venue',
                 name_ru: 'Театры:',
                 ret_id: 'VENUE_ID',
                 ret_name: 'VENUE_NAME'
             },
-            genre: {
+            show_genre_id: {
                 type: 'lov',
                 getData: 'get_genre',
                 name_ru: 'Жанры:',
                 ret_id: 'SHOW_GENRE_ID',
                 ret_name: 'SHOW_GENRE_NAME'
             },
-            actor: {
+            actor_id: {
                 type: 'lov',
                 getData: 'get_actor',
                 name_ru: 'Актеры:',
                 ret_id: 'ACTOR_ID',
                 ret_name: 'ACTOR_NAME'
             },
-            author: {
+            author_id: {
                 type: 'lov',
                 getData: 'get_author',
                 name_ru: 'Авторы:',
                 ret_id: 'AUTHOR_ID',
                 ret_name: 'AUTHOR_NAME'
             },
-            tag: {
+            action_tag_id: {
                 type: 'lov',
                 getData: 'get_action_tag',
                 name_ru: 'Теги мероприятий:',
@@ -282,15 +290,28 @@
     Filter.prototype.setHandlers = function(){
         var _t = this;
 
+        function getCheckboxState(type, id){
+
+        }
 
         if(_t.type == 'lov'){
 
             _t.wrapper.find('.mb-ch-wrapper').each(function(i,elem){
-                $(elem).mb_checkbox();
-                $(elem).off('change').on('change', function(e, data){
-//                console.log(data);
 
-                    _t.wrapper.trigger('filterChange', [{instance: _t, key: 'checkbox', val1: data}]);
+
+                var state = (filters[_t.name])? filters[_t.name].split(',').indexOf($(elem).attr('data-id')) != -1 : false;
+
+
+                console.log(state);
+
+                $(elem).attr('data-checked', state);
+
+                $(elem).mb_checkbox();
+
+                $(elem).off('change').on('change', function(e, data){
+
+                    _t.wrapper.trigger('filterChange', [{instance: _t, key: 'checkbox', val1: data, id: $(elem).attr('data-id')}]);
+
                 });
             });
 
@@ -425,6 +446,24 @@
 
             }else if(data.key == 'checkbox'){
 
+                var type =  data.instance.name;
+                var id =    data.id;
+                var state = data.val1;
+
+                var typeArray = (filters[type])? filters[type].split(',') : [];
+
+                if(!state){
+
+                    typeArray.splice(typeArray.indexOf(id),1);
+
+                    filters[type] = typeArray.join(',');
+                }else{
+
+                    typeArray.push(id);
+
+                    filters[type] = typeArray.join(',');
+                }
+
             }else{
                 filters[data.key] = data.val1;
             }
@@ -446,14 +485,14 @@
             socketQuery_site(o, function(res){
                 var jRes = JSON.parse(res)['results'][0];
 
-                $('.submit-filters').removeClass('disabled');
+                $('.submit-filters, .sc-submit-filters').removeClass('disabled');
 
                 if(jRes.count == 0){
-                    $('.submit-filters').addClass('disabled');
-                    $('.filter-count-actions').html('(' + jRes.count + ')');
+                    $('.submit-filters, .sc-submit-filters').addClass('disabled');
+                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
 
                 }else{
-                    $('.filter-count-actions').html('(' + jRes.count + ')');
+                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
 
                 }
             });
@@ -468,12 +507,21 @@
             generateUrl();
         });
 
-        $('.clear-filters').off('click').on('click', function(){
+        $('.extend-search-confirm').off('click').on('click', function(){
+
+            if($(this).hasClass('disabled')){return;}
+
+            generateUrl('extend_search');
+        });
 
 
+
+        $('.clear-filters, .sc-clear-filters').off('click').on('click', function(){
 
             filters = {};
-            filters.show_type_alias = $('body').attr('data-filter');
+            if($('body').attr('data-filter')){
+                filters.show_type_alias = $('body').attr('data-filter');
+            }
             generateUrl();
         });
 

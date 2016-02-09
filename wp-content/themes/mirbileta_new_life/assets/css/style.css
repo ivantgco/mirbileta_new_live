@@ -562,7 +562,7 @@ body{
     display: inline-block;
     padding-top: 3px;
     padding-left: 11px;
-    max-width: 260px;
+    max-width: 250px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -598,7 +598,7 @@ body{
 
 }
 .mb-tf-body {
-    padding: 8px 20px 15px 30px;
+    padding: 8px 30px 15px 30px;
     min-height: 210px;
     max-height: 210px;
 }
@@ -693,11 +693,35 @@ input.mb-tf-rs-to {
     background-color: #f7e128;
     padding-top: 6px;
 }
+.extend-search-confirm.disabled{
+    opacity: 0.6;
+}
 
 .extend-search-confirm:hover{
     background-color: #ffe829;
 }
 
+
+.extend-search-clear{
+    position: absolute;
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    text-align: center;
+    width: 176px;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    bottom: 26px;
+    right: 221px;
+    height: 34px;
+    background-color: #f5f5f5;
+    padding-top: 6px;
+}
+
+.extend-search-clear:hover{
+    background-color: #eee;
+}
 
 .mb-nrs-header{
     font-family: 'OpenSans-regular', arial, sans-serif;
@@ -1109,30 +1133,33 @@ input.mb-tf-fil-to-date {
 
 .mb-medium-actions .mb-me-a-title {
     font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
-    height: 32px;
+    height: 38px;
     font-size: 16px;
     color: #000;
 
-    white-space: nowrap;
-    overflow: hidden;
+    white-space: normal;
+    overflow: inherit;
     text-overflow: ellipsis;
+
+    line-height: 18px;
     padding-right: 30px;
 }
 .mb-medium-actions .mb-me-a-venue{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
-    height: 24px;
+    height: 20px;
     font-size: 12px;
     color: #5b5a35;
-
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-top: 4px;
 }
 .mb-medium-actions .mb-me-a-price{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
-    height: 18px;
+    height: 16px;
     font-size: 14px;
     color: #99693e;
+    padding-top: 2px;
 }
 .mb-medium-actions .mb-me-a-age{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
@@ -1149,7 +1176,7 @@ input.mb-tf-fil-to-date {
     color: #000;
 
     position: absolute;
-    bottom: 12px;
+    bottom: 6px;
     right: 15px;
 }
 
@@ -2726,6 +2753,14 @@ h2{
     margin-bottom: 48px;
 
 }
+h3{
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    color: #000;
+    font-size: 24px;
+    margin-top: 35px;
+    margin-bottom: 35px;
+
+}
 .padLeft25{
     padding-left: 25px;
 }
@@ -2863,4 +2898,17 @@ b{
 }
 .logo-item:hover .logo-item-text{
     color: #179A85;
+}
+
+
+.extend-search-page .actions-wrapper{
+    float: left;
+    width: 100%;
+    background-color: #f7f7f7;
+    padding-top: 40px;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+}
+.extend-search-page .mb-tag-filter-wrapper{
+    border-bottom: 1px solid rgba(0,0,0,0.15);
 }
