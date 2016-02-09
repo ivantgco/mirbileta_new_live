@@ -43,9 +43,9 @@
                     <div class="mb-tf-body">
                         <div class="mb-ms-rangeslider"></div>
                         <div class="mb-tf-rangeslider-inputs">
-                            <input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value="300"/>
+                            <input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value=""/>
                             &mdash;
-                            <input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value="Дороже"/>
+                            <input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value=""/>
                         </div>
                     </div>
 

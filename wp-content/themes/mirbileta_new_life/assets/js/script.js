@@ -660,7 +660,7 @@
                 actors_wrapper.html(loadingHtml);
 
                 var o = {
-                    command: 'site_search',
+                    command: 'site_search2',
                     params: {
                         url: gurl
                     }
@@ -682,13 +682,13 @@
 
                         console.log('actions', actions);
 
-                        var act_m_tpl = '{{#actions}}<a href="/{{ACTION_URL_ALIAS}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
+                        var act_m_tpl = '{{#actions}}<a href="/{{alias_link}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
                             '<div class="mb-me-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div>'+
                             '<div class="mb-me-a-title">{{ACTION_NAME}}</div>'+
                             '<div class="mb-me-a-venue">{{VENUE_NAME}}</div>'+
-                            '<div class="mb-me-a-price">от {{MIN_PRICE}} руб.</div>'+
+                            '<div class="mb-me-a-price">{{price_range}}</div>'+
                             '<div class="mb-me-a-age">{{AGE_CATEGORY}}</div>'+
-                            '<div class="mb-me-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                            '<div class="mb-me-a-date">{{#is_show}}с {{/is_show}}{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
                             '</div></a>{{/actions}}';
 
                         var ven_tpl = '{{#venues}}<a href="/{{VENUE_URL_ALIAS}}"><div class="mb-sub-entry" data-id="{{OBJ_ID}}">' +
@@ -706,10 +706,13 @@
                         var v_data = {venues: []};
                         var actors_data = {actors: []};
 
-                        console.log(actors_data);
 
                         for(var i in actions){
                             actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                            actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                            actions[i]['alias_link'] = (actions[i]['SHOW_ID'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                            actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
                             a_data.actions.push(actions[i]);
                         }
 
@@ -826,8 +829,8 @@
                 type: "double",
                 grid: true,
                 from: 0,
-                to: 6,
-                values: [300, 1000, 2000, 3000, 5000, 10000, 'Дороже'],
+                to: 7,
+                values: [0, 300, 1000, 2000, 3000, 5000, 10000, 'Дороже'],
                 onChange: function (data) {
                     var from_inp = ms_slider.next().find('.mb-tf-rs-from');
                     var to_inp = ms_slider.next().find('.mb-tf-rs-to');

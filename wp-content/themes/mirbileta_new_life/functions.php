@@ -40,6 +40,15 @@ function to_afisha_date($str, $format, $lang)
         )
     );
 
+    $months = array(
+        "rus"=> array(
+            "Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"
+        ),
+        "eng"=>array(
+            "January","Febuary","March","April","May","Juny","July","August","September","Oktober","November","December"
+        )
+    );
+
     $weekDays = array(
         "rus"=>array(
             "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "суббота", "Воскресенье"
@@ -69,6 +78,9 @@ function to_afisha_date($str, $format, $lang)
             break;
         case 'week_and_time':
             $res = $weekDays[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.':'.$mi.':00')) -1] .' '. $hh . ':' . $mi;
+            break;
+        case 'mounth_only':
+            $res = $months[$lang][intval($str)-1];
             break;
         default:
             break;

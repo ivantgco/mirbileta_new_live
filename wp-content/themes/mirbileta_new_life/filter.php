@@ -142,6 +142,7 @@
 
                 $act_id =       $value[array_search("ACTION_ID", $columns)];
                 $alias =        $value[array_search("ACTION_URL_ALIAS", $columns)];
+                $venue_alias =        $value[array_search("VENUE_URL_ALIAS", $columns)];
                 $frame =        $value[array_search("FRAME", $columns)];
                 $act_name =     $value[array_search("ACTION_NAME", $columns)];
                 $thumb =        (strpos("http" , $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
@@ -167,10 +168,10 @@
                 $time =                     to_afisha_date($act_date_time, "time", "rus");
 
                 $actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-                    .'<div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div>'
+                    .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
                     .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
                     .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-                    .'<div class="mb-a-venue">'.$venue.'</div>'
+                    .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
                     .'<div class="mb-a-buy-holder">'
                     .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
                     .'</div>'

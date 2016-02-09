@@ -7,11 +7,9 @@
  */
 
 
-//    include ('moment/Moment.php');
-//    $m = new \Moment\Moment();
-//    $m = new \Moment\Moment();
-//
-//    echo $m->format();
+
+//    $m = new \Moment\Moment(); // default is "now" UTC
+//    echo $m->format(); // e.g. 2012-10-03T10:00:00+0000
 
     $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><form_date></form_date><to_date></form_date>";
 

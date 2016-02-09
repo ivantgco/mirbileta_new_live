@@ -69,7 +69,7 @@
 
 ?>
 
-<div class="site-content">
+<div class="site-content actors-page">
     <div class="container">
 
         <div class="mb-inpage-search-wrapper">
@@ -89,16 +89,16 @@
             $name =             $value[array_search("ACTOR_NAME", $columns)];
             $alias =             $value[array_search("ACTOR_URL_ALIAS", $columns)];
             $image =            $value[array_search("URL_IMAGE_MEDIUM", $columns)];
-            $actions_count =    $value[array_search("ACTIONS_COUNT", $columns)];
+            $actions_count =    $value[array_search("ACTION_COUNT", $columns)];
 
             $actionsHtml .= '<div class="mb-big-tpl-item mb-block mb-inpage-search-entry">'
                             .'<div class="mb-btpl-image" style="background-image: url('.$image.')"></div>'
                             .'<div class="mb-btpl-info">'
                                 .'<div class="mb-btpl-title mb-inpage-search-entry-keyword"><a href="/'.$alias.'">'.$name.'</a></div>'
-                                .'<div class="mb-btpl-desc">'.$desc.'</div>'
+//                                .'<div class="mb-btpl-desc">'.$desc.'</div>'
                                 .'<div class="mb-btpl-link">'.$site_url.'</div>'
                             .'</div>'
-                            .'<div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия '.$actions_count.'</div>'
+                            .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия '.$actions_count.'</div></a>'
                             //.'<a href="'.$site_url.'" class="mb-btpl-url">Сайт площадки</a>'
                             .'</div>';
         }
