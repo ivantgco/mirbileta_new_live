@@ -6,11 +6,11 @@
  * Time: 19:28
  */
 
-//    require('../../../vendor/fightbulc/moment/src/MomentLocale.php');
-//    require('../../../vendor/fightbulc/moment/src/Moment.php');
-//
-//    $m = new \Moment\Moment(); // default is "now" UTC
-//    echo $m->format();
+    require('./vendor/fightbulc/moment/src/MomentLocale.php');
+    require('./vendor/fightbulc/moment/src/Moment.php');
+
+    $m = new \Moment\Moment(); // default is "now" UTC
+    echo $m->format();
 
     $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><form_date></form_date><to_date></form_date>";
 
