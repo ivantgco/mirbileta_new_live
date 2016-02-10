@@ -88,19 +88,18 @@
                 <div class="footer-menu-header">ПАРТЕНРЫ</div>
 
                 <div class="f-p-logo-row">
-                    <div class="f-p-logo gkd-f"></div>
-                    <div class="f-p-logo barvikha-f"></div>
-                    <div class="f-p-logo acquiropay-f"></div>
+                    <a href="http://kremlinpalace.org" target="_blank"><div class="f-p-logo gkd-f"></div></a>
+                    <a href="http://www.barvikhaconcerthall.ru/" target="_blank"><div class="f-p-logo barvikha-f"></div></a>
+                    <a href="http://acquiropay.com/" target="_blank"><div class="f-p-logo acquiropay-f"></div></a>
                 </div>
 
                 <div class="f-p-logo-row">
-                    <div class="f-p-logo vernadka-f"></div>
-                    <div class="f-p-logo sovremennik-f"></div>
+                    <a href="http://bigcirc.ru/" target="_blank"><div class="f-p-logo vernadka-f"></div></a>
+                    <a href="http://www.sovremennik.ru/" target="_blank"><div class="f-p-logo sovremennik-f"></div></a>
                 </div>
 
                 <div class="f-p-logo-row">
-                    <div class="f-p-logo multibooker-f"></div>
-
+                    <a href="/multibooker" target="_blank"><div class="f-p-logo multibooker-f"></div></a>
                 </div>
 
             </div>
