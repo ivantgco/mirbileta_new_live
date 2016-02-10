@@ -90,17 +90,19 @@
             $image =            $value[array_search("VENUE_URL_IMAGE_MEDIUM", $columns)];
             $actions_count =    $value[array_search("ACTIONS_COUNT", $columns)];
             $site_url =         $value[array_search("VENUE_SITE_URL", $columns)];
+            $site_url_html =    ($site_url)? '<a href="'.$site_url.'" class="mb-btpl-url " target="_blank">Сайт площадки</a>' : '';
             $desc =             $value[array_search("VENUE_DESCRIPTION", $columns)];
+            $readmore =         ($desc)? '<a class="mb-btpl-link" href="/'.$alias.'">Читать далее</a>' : '';
 
             $actionsHtml .= '<div class="mb-big-tpl-item mb-block mb-inpage-search-entry">'
                             .'<div class="mb-btpl-image" style="background-image: url('.$image.')"></div>'
                             .'<div class="mb-btpl-info">'
                                 .'<div class="mb-btpl-title mb-inpage-search-entry-keyword"><a href="/'.$alias.'">'.$name.'</a></div>'
                                 .'<div class="mb-btpl-desc">'.$desc.'</div>'
-                                .'<a class="mb-btpl-link" href="/'.$alias.'">Читать далее</a>'
+                                .$readmore
                             .'</div>'
                             .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия '.$actions_count.'</div></a>'
-                            .'<a href="'.$site_url.'" class="mb-btpl-url " target="_blank">Сайт площадки</a>'
+                            .$site_url_html
                             .'</div>';
         }
 

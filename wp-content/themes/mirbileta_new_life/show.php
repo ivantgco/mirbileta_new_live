@@ -1,13 +1,13 @@
     <?php
     /*
-        Template Name: single_action
+        Template Name: show
     */
 
     //$action_alias = $_GET['alias'];
     $cur_url = $_SERVER["REQUEST_URI"];
-    $action_alias = substr($cur_url, 1, (strlen($cur_url) - 2));//parse_url($cur_url)->path;
+    $show_alias = substr($cur_url, 1, (strlen($cur_url) - 2));//parse_url($cur_url)->path;
 
-    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><action_url_alias>".$action_alias."</action_url_alias>";
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><show_url_alias>".$show_alias."</show_url_alias>";
 
     $ch = curl_init();
 
@@ -27,40 +27,32 @@
 //    $jData = json_decode($data);
 
     $columns = json_decode($resp)->results["0"]->data_columns;
-    $data = json_decode($resp)->results["0"]->data[0];
+    $data = json_decode($resp)->results["0"]->data;
 
-    $act_id =       $data[array_search("ACTION_ID", $columns)];
-    $alias =        $data[array_search("ACTION_URL_ALIAS", $columns)];
-    $frame =        $data[array_search("FRAME", $columns)];
-    $act_name =     $data[array_search("ACTION_NAME", $columns)];
-    $g_act_name =     $data[array_search("ACTION_NAME", $columns)];
-    $thumb =        (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
-    $poster =       (strpos("http", $data[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_IMAGE", $columns)];
-    $act_date =     $data[array_search("ACTION_DATE_STR", $columns)];
-    $act_time =     $data[array_search("ACTION_TIME_STR", $columns)];
-    $hall =         $data[array_search("HALL_NAME", $columns)];
-    $genre =        $data[array_search("SHOW_GENRE", $columns)];
-    $venue =        $data[array_search("VENUE_NAME", $columns)];
-    $address =      $data[array_search("VENUE_ADDRESS", $columns)];
-    $free_places =  $data[array_search("FREE_PLACE_COUNT", $columns)];
-    $minprice =     $data[array_search("MIN_PRICE", $columns)];
-    $maxprice =     $data[array_search("MAX_PRICE", $columns)];
-    $day_of_week =  $data[array_search("ACTION_DAY_OF_WEEK", $columns)];
-    $duration =     $data[array_search("DURATION_HOUR_MIN", $columns)];
-    $is_wo =        $data[array_search("ACTION_TYPE", $columns)] == 'ACTION_WO_PLACES';
-    $sbag =        $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
+    $act_id =       $data[0][array_search("ACTION_ID", $columns)];
+//    $alias =        $data[0][array_search("ACTION_URL_ALIAS", $columns)];
+//    $frame =        $data[0][array_search("FRAME", $columns)];
+    $act_name =     $data[0][array_search("ACTION_NAME", $columns)];
+    $g_act_name =     $data[0][array_search("ACTION_NAME", $columns)];
+    $thumb =        (strpos("http", $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
+    $poster =       (strpos("http", $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_IMAGE", $columns)];
+//    $act_date =     $data[0][array_search("ACTION_DATE_STR", $columns)];
+//    $act_time =     $data[0][array_search("ACTION_TIME_STR", $columns)];
+    $hall =         $data[0][array_search("HALL_NAME", $columns)];
+    $genre =        $data[0][array_search("SHOW_GENRE", $columns)];
+    $venue =        $data[0][array_search("VENUE_NAME", $columns)];
+    $address =      $data[0][array_search("VENUE_ADDRESS", $columns)];
+//    $free_places =  $data[0][array_search("FREE_PLACE_COUNT", $columns)];
+//    $minprice =     $data[0][array_search("MIN_PRICE", $columns)];
+//    $maxprice =     $data[0][array_search("MAX_PRICE", $columns)];
+//    $day_of_week =  $data[0][array_search("ACTION_DAY_OF_WEEK", $columns)];
+//    $duration =     $data[0][array_search("DURATION_HOUR_MIN", $columns)];
+//    $is_wo =        $data[0][array_search("ACTION_TYPE", $columns)] == 'ACTION_WO_PLACES';
+//    $sbag =         $data[0][array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
 
     $isInfo = strlen($description) > 0;
-    $description = $data[array_search("DESCRIPTION", $columns)];
-
-    $ageCat = strlen($data[array_search("AGE_CATEGORY", $columns)]) ? $data[array_search("AGE_CATEGORY", $columns)] : '0+';
-    $act_date_time = $data[array_search("ACTION_DATE_TIME", $columns)];
-
-    $short_date = to_afisha_date($act_date_time, "short_date", "rus");
-    $short_date_with_year = to_afisha_date($act_date_time, "short_date_with_year", "rus");
-    $week_and_time = to_afisha_date($act_date_time, "week_and_time", "rus");
-    $weekday = to_afisha_date($act_date_time, "weekday", "rus");
-    $time = to_afisha_date($act_date_time, "time", "rus");
+    $description = $data[0][array_search("DESCRIPTION", $columns)];
+    $ageCat = strlen($data[0][array_search("AGE_CATEGORY", $columns)]) ? $data[0][array_search("AGE_CATEGORY", $columns)] : '0+';
 
 
     ?>
@@ -104,11 +96,10 @@
     <?php
     get_header();
     include('main_menu.php');
-//    echo $url;
 
     ?>
 
-    <div class="site-content">
+    <div class="site-content show-page">
 
         <div class="container">
 
@@ -129,22 +120,109 @@
 
                 ?>
 
-                <div class="flLeft one-action-date"><?php echo $act_date;?>, <span class="one-action-time"><?php echo $act_time; ?></span>&nbsp;&nbsp;<span class="one-action-weekday"><?php echo $day_of_week; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $durationHtml; ?></div>
+                <div class="show-dates-title">Выберите дату:</div>
 
-                <?php
-                    if($free_places == 0){
+                <div class="show-dates-wrapper">
 
-                }else{
+                    <div class="tabsParent sc_tabulatorParent">
+                        <div class="tabsTogglersRow sc_tabulatorToggleRow">
 
-                ?>
+                        <?php
 
-                <div class="mb-buy mb-buy32 yellow flLeft one-action-buy-link">Купить билет</div>
 
-                <?php
+                        $dates_html = '';
+                        $mths = array();
 
-                }
+                        foreach($data as $key2 => $value2){
 
-                ?>
+                            $itemDate = $value2[array_search("ACTION_DATE", $columns)];
+                            $itemMth = substr($itemDate, 3,2);
+
+
+                            $mths[$itemMth] = ($mths[$itemMth]) ? $mths[$itemMth] : array();
+
+                        }
+
+                        foreach($data as $k => $v){
+                            $itemDate2 = $v[array_search("ACTION_DATE", $columns)];
+                            $itemMth2 = substr($itemDate2, 3,2);
+
+                            array_push($mths[$itemMth2],$v);
+
+                        }
+
+                        $mth_indexer = 0;
+
+                        foreach($mths as $key_m => $value_m){
+                            $opened = ($mth_indexer == 0) ? 'opened' : '';
+                            $mth_title = to_afisha_date($key_m,'mounth_only', 'rus');
+                            $dates_html .= '<div class="tabToggle sc_tabulatorToggler '.$opened.'" dataitem="'.$mth_indexer.'" title="">'
+                                            .'<span class="">'.$mth_title.'</span>'
+                                            .'</div>';
+                            $mth_indexer ++;
+                        }
+
+                        $dates_html .= '</div><div class="ddRow notZindexed sc_tabulatorDDRow">';
+
+                        $mth_indexer2 = 0;
+
+                        foreach($mths as $key_m => $value_m){
+                            $opened2 = ($mth_indexer2 == 0) ? 'opened' : '';
+
+                            $dates_html .= '<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight '.$opened2.'" dataitem="'.$mth_indexer2.'">';
+
+
+
+                            foreach($value_m as $in_key => $in_value){
+
+                                $a_alias =      $in_value[array_search("ACTION_URL_ALIAS", $columns)];
+                                $a_date =       $in_value[array_search("ACTION_DATE_STR", $columns)];
+                                $a_time =       $in_value[array_search("ACTION_TIME_STR", $columns)];
+                                $a_hall =       $in_value[array_search("HALL_NAME", $columns)];
+
+                                $a_free_places =  ($in_value[array_search("FREE_PLACE_COUNT", $columns)] == 0)? 'Билетов нет' :  'мест: ' . $in_value[array_search("FREE_PLACE_COUNT", $columns)];
+                                $a_minprice =     $in_value[array_search("MIN_PRICE", $columns)];
+                                $a_maxprice =     $in_value[array_search("MAX_PRICE", $columns)];
+                                $a_day_of_week =  $in_value[array_search("ACTION_DAY_OF_WEEK", $columns)];
+
+                                $a_date_1 =       substr($in_value[array_search("ACTION_DATE", $columns)],0,2);
+                                $a_date_2 =       (substr($a_date_1,0,1) == '0')? substr($a_date_1,1,1) : $a_date_1;
+
+                                $a_mth_1 =          substr($in_value[array_search("ACTION_DATE", $columns)],3,2);
+
+                                $a_minmaxString = ($a_minprice && $a_maxprice)? ($a_minprice == $a_maxprice)? 'по '. $a_minprice . ' руб.' : 'от ' . $a_minprice . ' до ' . $a_maxprice . ' руб.' : '';
+
+                                $dates_html .=   '<a class="show-action-date-link" href="/'.$a_alias.'">'
+                                                 .'<div class="show-action-date">'
+                                                    .'<div class="s-a-train">'
+
+                                                        .'<div class="s-a-vagon"><div class="s-a-date">'.$a_date_2.'<span class="s-a-mth">.'.$a_mth_1.'</span></div><div class="s-a-time">'.$a_time.'</div></div>'
+                                                        .'<div class="s-a-vagon"><div class="s-a-places">'.$a_free_places.'</div><div class="s-a-prices">'.$a_minmaxString.'</div><div class="s-a-hall"><i class="fa fa-bank"></i>&nbsp;&nbsp;'.$a_hall.'</div></div>'
+
+                                                    .'</div>'
+
+
+                                                 .'<div class="s-a-buy">Выбрать</div></div></a>';
+
+                            }
+
+                            $dates_html .= '</div>';
+
+                            $mth_indexer2 ++;
+                        }
+
+                        $dates_html .= '</div></div>';
+
+                        echo $dates_html;
+
+                        ?>
+
+
+                </div>
+
+<!--                <div class="flLeft one-action-date">--><?php //echo $act_date;?><!--, <span class="one-action-time">--><?php //echo $act_time; ?><!--</span>&nbsp;&nbsp;<span class="one-action-weekday">--><?php //echo $day_of_week; ?><!--</span>&nbsp;&nbsp;&nbsp;&nbsp;--><?php //echo $durationHtml; ?><!--</div>-->
+
+
 
                 <div class="row">
                     <div class="col-md-12">
@@ -311,96 +389,9 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 ">
 
 
 
-
-                        <?php
-
-                        $minmaxString = ($minprice == $maxprice)? 'по '. $minprice . ' рублей' : 'от ' . $minprice . ' до ' . $maxprice . ' рублей';
-
-                        ?>
-
-                        <?php
-                            if($free_places == 0){
-
-                            ?>
-
-                                <div class="net-bilet">Нэт билэт!   Звоните +7 (906) 063-88-66</div>
-
-
-                            <?php
-
-                            }else{
-
-                        ?>
-                                <div class="one-action-widget-header">Купить билет: <span class="one-action-free-places"><?php echo $free_places; ?> мест, <?php echo $minmaxString; ?></div>
-                                <div class="one-action-widget-how-to">
-
-
-                                    <?php
-                                    $manualHtml = '';
-
-                                    if($is_wo){
-                                        $manualHtml =    '<div class="one-action-widget-how-to-item">1. Выберите места <div class="arrow"></div><div class="hint">Добавьте входные билеты в корзину.</div></div>'
-                                                        .'<div class="one-action-widget-how-to-item">2. Нажмите "Купить" <div class="arrow"></div><div class="hint">Выбрав билеты нажмите кнопку "Купить", примите условия пользовательского соглашения и нажмите "Подтвердить"</div></div>'
-                                                        .'<div class="one-action-widget-how-to-item">3. Оплата <div class="arrow"></div><div class="hint">После подтверждения система направит вас на страницу оплаты. Оплтаите билеты с помощью банковской карты.</div></div>'
-                                                        .'<div class="one-action-widget-how-to-item">4. Билеты <div class="arrow"></div><div class="hint">После успешной оплаты электронные билеты будут отправлены вам на email указанный при оплате. Распечатайте их и предъявите при проходе на мероприятие.</div></div>';
-                                    }else{
-
-                                        if($sbag){
-
-                                            $manualHtml =    '<div class="one-action-widget-how-to-item">1. Выберите сектор <div class="arrow"></div><div class="hint">Кликните по интересующему вас сектору на интеркативной схеме зала.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">2. Выберите места <div class="arrow"></div><div class="hint">Для добавления билета в корзину кликните по интересующему вас месту, чтобы вернуться к выбору сектора нажмите кнопку <br/>"К секторам" в левой нижней части схемы.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">3. Нажмите "Купить" <div class="arrow"></div><div class="hint">Выбрав билеты нажмите кнопку "Купить", примите условия пользовательского соглашения и нажмите "Подтвердить"</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">4. Оплата <div class="arrow"></div><div class="hint">После подтверждения система направит вас на страницу оплаты. Оплтаите билеты с помощью банковской карты.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">5. Билеты <div class="arrow"></div><div class="hint">После успешной оплаты электронные билеты будут отправлены вам на email указанный при оплате. Распечатайте их и предъявите при проходе на мероприятие.</div></div>';
-
-                                        }else{
-                                            $manualHtml =    '<div class="one-action-widget-how-to-item">1. Выберите места <div class="arrow"></div><div class="hint">Для добавления билета в корзину кликните по интересующему вас месту.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">2. Нажмите "Купить" <div class="arrow"></div><div class="hint">Выбрав билеты нажмите кнопку "Купить", примите условия пользовательского соглашения и нажмите "Подтвердить"</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">3. Оплата <div class="arrow"></div><div class="hint">После подтверждения система направит вас на страницу оплаты. Оплтаите билеты с помощью банковской карты.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">4. Билеты <div class="arrow"></div><div class="hint">После успешной оплаты электронные билеты будут отправлены вам на email указанный при оплате. Распечатайте их и предъявите при проходе на мероприятие.</div></div>';
-                                        }
-
-                                    }
-                                    echo $manualHtml;
-
-                                    ?>
-
-
-
-
-                                </div>
-                                <div class="one-action-widget-wrapper">
-
-                                    <div id="multibooker-widget-wrapper"
-                                         data-actions="<?php echo $act_id ?>"
-                                         data-widget_theme="light"
-                                         data-withdelivery="false"
-                                         data-mirbileta="true"
-                                         data-width=""
-                                         data-frame="<?php echo $frame ?>"
-                                         data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                                         data-ip="<?php echo $global_url; ?>">
-
-                                        <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
-
-                                    </div>
-                                    <div class="one-action-widget-underwrapper zi20 posRel"></div>
-
-                                </div>
-
-                        <?php
-                            }
-                        ?>
-
-
-
-                    </div>
-                </div>
 
                 <div class="row">
                     <div class="col-md-12">
@@ -438,7 +429,6 @@
 
                                     $act_id =       $value4[array_search("ACTION_ID", $sim_columns)];
                                     $alias =        $value4[array_search("ACTION_URL_ALIAS", $sim_columns)];
-                                    $venue_alias =        $value4[array_search("VENUE_URL_ALIAS", $sim_columns)];
                                     $frame =        $value4[array_search("FRAME", $sim_columns)];
                                     $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
                                     $poster =       (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)];
@@ -458,10 +448,10 @@
 
 
                                     $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                        .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
+                                        .'<div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                                         .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
                                         .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-                                        .'<a href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
+                                        .'<div class="mb-a-venue">'.$venue.'</div>'
                                         .'<div class="mb-a-buy-holder">'
                                         .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
                                         .'</div>'
@@ -479,6 +469,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="action-footer-info">

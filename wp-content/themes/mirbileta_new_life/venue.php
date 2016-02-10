@@ -71,21 +71,31 @@
 <?php
 get_header();
 include('main_menu.php');
-
+//echo $url;
 ?>
 
 <div class="site-content">
 
     <div class="container">
 
-        <div class="single-big-image-holder"style="background-image: url('<?php echo $data[array_search("VENUE_URL_IMAGE_BIG", $columns)]; ?>')"></div>
+        <div class="single-big-image-holder" style="background-image: url('<?php echo $data[array_search("VENUE_URL_IMAGE_BIG", $columns)]; ?>')"></div>
 
         <div class="single-title-holder wid100pr flLeft">
             <?php echo $data[array_search("VENUE_NAME", $columns)]; ?>
 
             <div class="sinlge-subtitle-holder">
                 <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<?php echo $data[array_search("VENUE_ADDRESS", $columns)]; ?>
-                <a class="single-ext-link" href="<?php echo $data[array_search("VENUE_SITE_URL", $columns)]; ?>" target="_blank">Сайт площадки</a>
+
+
+                <?php
+
+                if($data[array_search("VENUE_SITE_URL", $columns)]){
+                    echo '<a class="single-ext-link" href="'. $data[array_search("VENUE_SITE_URL", $columns)] .'" target="_blank">Сайт площадки</a>';
+                }
+
+                ?>
+
+
 
             </div>
 

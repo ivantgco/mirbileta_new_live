@@ -14,7 +14,7 @@
         }).toUpperCase();
     }
 
-    function generateUrl(){
+    function generateUrl(page){
 
         var url_str = '';
         var indexer = 0;
@@ -34,7 +34,12 @@
             indexer++;
         }
 
-        document.location.search = url_str;
+        if(page){
+            document.location.href = '/' + page +'?'+ url_str;
+        }else{
+            document.location.search = url_str;
+        }
+
 
     }
 
@@ -44,7 +49,10 @@
 
         filters = url.search(true);
 
-        filters.show_type_alias = $('body').attr('data-filter');
+        if($('body').attr('data-filter')){
+            filters.show_type_alias = $('body').attr('data-filter');
+        }
+
     }
 
     var Filter = function(params){
@@ -55,35 +63,35 @@
 
 
         this.filters_data = {
-            venue: {
+            venue_id: {
                 type: 'lov',
                 getData: 'get_venue',
                 name_ru: 'Театры:',
                 ret_id: 'VENUE_ID',
                 ret_name: 'VENUE_NAME'
             },
-            genre: {
+            show_genre_id: {
                 type: 'lov',
                 getData: 'get_genre',
                 name_ru: 'Жанры:',
                 ret_id: 'SHOW_GENRE_ID',
                 ret_name: 'SHOW_GENRE_NAME'
             },
-            actor: {
+            actor_id: {
                 type: 'lov',
                 getData: 'get_actor',
                 name_ru: 'Актеры:',
                 ret_id: 'ACTOR_ID',
                 ret_name: 'ACTOR_NAME'
             },
-            author: {
+            author_id: {
                 type: 'lov',
                 getData: 'get_author',
                 name_ru: 'Авторы:',
                 ret_id: 'AUTHOR_ID',
                 ret_name: 'AUTHOR_NAME'
             },
-            tag: {
+            action_tag_id: {
                 type: 'lov',
                 getData: 'get_action_tag',
                 name_ru: 'Теги мероприятий:',
@@ -282,15 +290,28 @@
     Filter.prototype.setHandlers = function(){
         var _t = this;
 
+        function getCheckboxState(type, id){
+
+        }
 
         if(_t.type == 'lov'){
 
             _t.wrapper.find('.mb-ch-wrapper').each(function(i,elem){
-                $(elem).mb_checkbox();
-                $(elem).off('change').on('change', function(e, data){
-//                console.log(data);
 
-                    _t.wrapper.trigger('filterChange', [{instance: _t, key: 'checkbox', val1: data}]);
+
+                var state = (filters[_t.name])? filters[_t.name].split(',').indexOf($(elem).attr('data-id')) != -1 : false;
+
+
+                console.log(state);
+
+                $(elem).attr('data-checked', state);
+
+                $(elem).mb_checkbox();
+
+                $(elem).off('change').on('change', function(e, data){
+
+                    _t.wrapper.trigger('filterChange', [{instance: _t, key: 'checkbox', val1: data, id: $(elem).attr('data-id')}]);
+
                 });
             });
 
@@ -425,6 +446,24 @@
 
             }else if(data.key == 'checkbox'){
 
+                var type =  data.instance.name;
+                var id =    data.id;
+                var state = data.val1;
+
+                var typeArray = (filters[type])? filters[type].split(',') : [];
+
+                if(!state){
+
+                    typeArray.splice(typeArray.indexOf(id),1);
+
+                    filters[type] = typeArray.join(',');
+                }else{
+
+                    typeArray.push(id);
+
+                    filters[type] = typeArray.join(',');
+                }
+
             }else{
                 filters[data.key] = data.val1;
             }
@@ -446,14 +485,14 @@
             socketQuery_site(o, function(res){
                 var jRes = JSON.parse(res)['results'][0];
 
-                $('.submit-filters').removeClass('disabled');
+                $('.submit-filters, .sc-submit-filters').removeClass('disabled');
 
                 if(jRes.count == 0){
-                    $('.submit-filters').addClass('disabled');
-                    $('.filter-count-actions').html('(' + jRes.count + ')');
+                    $('.submit-filters, .sc-submit-filters').addClass('disabled');
+                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
 
                 }else{
-                    $('.filter-count-actions').html('(' + jRes.count + ')');
+                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
 
                 }
             });
@@ -468,12 +507,21 @@
             generateUrl();
         });
 
-        $('.clear-filters').off('click').on('click', function(){
+        $('.extend-search-confirm').off('click').on('click', function(){
+
+            if($(this).hasClass('disabled')){return;}
+
+            generateUrl('extend_search');
+        });
 
 
+
+        $('.clear-filters, .sc-clear-filters').off('click').on('click', function(){
 
             filters = {};
-            filters.show_type_alias = $('body').attr('data-filter');
+            if($('body').attr('data-filter')){
+                filters.show_type_alias = $('body').attr('data-filter');
+            }
             generateUrl();
         });
 
@@ -660,7 +708,7 @@
                 actors_wrapper.html(loadingHtml);
 
                 var o = {
-                    command: 'site_search',
+                    command: 'site_search2',
                     params: {
                         url: gurl
                     }
@@ -682,13 +730,13 @@
 
                         console.log('actions', actions);
 
-                        var act_m_tpl = '{{#actions}}<a href="/{{ACTION_URL_ALIAS}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
+                        var act_m_tpl = '{{#actions}}<a href="/{{alias_link}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
                             '<div class="mb-me-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div>'+
                             '<div class="mb-me-a-title">{{ACTION_NAME}}</div>'+
                             '<div class="mb-me-a-venue">{{VENUE_NAME}}</div>'+
-                            '<div class="mb-me-a-price">от {{MIN_PRICE}} руб.</div>'+
+                            '<div class="mb-me-a-price">{{price_range}}</div>'+
                             '<div class="mb-me-a-age">{{AGE_CATEGORY}}</div>'+
-                            '<div class="mb-me-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                            '<div class="mb-me-a-date">{{#is_show}}с {{/is_show}}{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
                             '</div></a>{{/actions}}';
 
                         var ven_tpl = '{{#venues}}<a href="/{{VENUE_URL_ALIAS}}"><div class="mb-sub-entry" data-id="{{OBJ_ID}}">' +
@@ -706,10 +754,13 @@
                         var v_data = {venues: []};
                         var actors_data = {actors: []};
 
-                        console.log(actors_data);
 
                         for(var i in actions){
                             actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                            actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                            actions[i]['alias_link'] = (actions[i]['SHOW_ID'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                            actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
                             a_data.actions.push(actions[i]);
                         }
 
@@ -826,8 +877,8 @@
                 type: "double",
                 grid: true,
                 from: 0,
-                to: 6,
-                values: [300, 1000, 2000, 3000, 5000, 10000, 'Дороже'],
+                to: 7,
+                values: [0, 300, 1000, 2000, 3000, 5000, 10000, 'Дороже'],
                 onChange: function (data) {
                     var from_inp = ms_slider.next().find('.mb-tf-rs-from');
                     var to_inp = ms_slider.next().find('.mb-tf-rs-to');
