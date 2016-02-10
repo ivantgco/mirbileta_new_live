@@ -27,6 +27,7 @@
     $columns = json_decode($resp)->results["0"]->data_columns;
     $data = json_decode($resp)->results["0"]->data[0];
     $actor_id = $data[array_search("ACTOR_ID", $columns)];
+
 ?>
 
 
@@ -125,7 +126,7 @@ include('main_menu.php');
                 $columns = json_decode($resp)->results["0"]->data_columns;
                 $data = json_decode($resp)->results["0"]->data;
                 $actions_count = count($data);
-
+                $show_next_button = $actions_count == 15;
 
                 $actionsHtml = "";
 
@@ -178,6 +179,12 @@ include('main_menu.php');
                 //            echo $url;
                 ?>
             </div>
+
+            <?php if($show_next_button): ?>
+
+                <div id="load_next" class="load_next_style_1">Загрузить еще</div>
+
+            <?php endif ?>
 
         </div>
 

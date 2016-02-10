@@ -1,5 +1,11 @@
 (function(){
 
+    var defaultPoster = 'https://shop.mirbileta.ru/assets/img/default_mirbileta_poster.jpg';
+
+    var loadingHtml =       '<div class="ms-loading"><i class="fa fa-search"></i>&nbsp;&nbsp;Идет поиск&hellip;</div>';
+    var emptyHtml =         '<div class="ms-loading">Поискали &ndash; не нашли, попробуйте другой запрос.</div>';
+    var clearHtml =         '<div class="ms-loading">Введите поисковый запрос.</div>';
+    var errorHtml =         '<div class="ms-loading">Простите, но кажется с поиском что-то не так&hellip;<br/>Звоните:&nbsp;&nbsp;&nbsp;+7 (906) 063-88-66</div>';
 
     var gurl = 'mirbileta.ru';
 
@@ -514,8 +520,6 @@
             generateUrl('extend_search');
         });
 
-
-
         $('.clear-filters, .sc-clear-filters').off('click').on('click', function(){
 
             filters = {};
@@ -525,6 +529,113 @@
             generateUrl();
         });
 
+        $('#load_next').off('click').on('click', function(){
+            var btn = $(this);
+            var page = btn.attr('data-page');
+            var acts_wrapper = $('.actions-wrapper');
+
+
+            function loadNext(page, cb){
+
+                btn.html('<i class="fa fa-spinner fa-spin"></i>');
+
+                var o = {
+                    command: 'get_actions',
+                    params: {
+                        url: gurl,
+                        page_no:  page,
+                        row_max_num: 15
+                    }
+                };
+
+                for(var i in filters){
+                    var f = filters[i];
+                    o.params[i] = f;
+                }
+
+
+                socketQuery_site(o, function(res){
+
+
+
+                    if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
+
+                        var actions = jsonToObj(JSON.parse(res)['results'][0]);
+
+
+//                        var act_m_tpl = '{{#actions}}<a href="/{{alias_link}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
+//                            '<div class="mb-me-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div>'+
+//                            '<div class="mb-me-a-title">{{ACTION_NAME}}</div>'+
+//                            '<div class="mb-me-a-venue">{{VENUE_NAME}}</div>'+
+//                            '<div class="mb-me-a-price">{{price_range}}</div>'+
+//                            '<div class="mb-me-a-age">{{AGE_CATEGORY}}</div>'+
+//                            '<div class="mb-me-a-date">{{#is_show}}с {{/is_show}}{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+//                            '</div></a>{{/actions}}';
+
+
+                        var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
+                                        '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
+                                        '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
+                                        '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                                        '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
+                                        '<div class="mb-a-buy-holder">'+
+                                        '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
+                                        '</div>'+
+                                        '</div>{{/actions}}';
+
+                        var a_data = {actions: []};
+
+                        for(var i in actions){
+                            actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                            actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                            actions[i]['alias_link'] = (actions[i]['SHOW_ID'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                            actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
+                            a_data.actions.push(actions[i]);
+                        }
+
+
+
+
+                        if(a_data.actions.length == 0){
+
+                            btn.remove();
+
+                        }else{
+                            acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
+                        }
+
+
+                        if(cb && typeof cb == 'function'){
+                            btn.html('Загрузить еще');
+                            cb();
+                        }
+
+                    }else{
+                        acts_wrapper.append(errorHtml);
+                        if(cb && typeof cb == 'function'){
+                            cb();
+                        }
+                    }
+
+
+                });
+
+            }
+
+
+
+            if(!page){
+                loadNext(2, function(){
+
+                });
+            }else{
+                loadNext(+page + 1, function(){
+
+                });
+            }
+
+        });
     };
 
     Filter.prototype.return_value = function(){
@@ -650,12 +761,12 @@
         },
         initSearch: function(){
 
-            var defaultPoster = 'https://shop.mirbileta.ru/assets/img/default_mirbileta_poster.jpg';
 
-            var loadingHtml =       '<div class="ms-loading"><i class="fa fa-search"></i>&nbsp;&nbsp;Идет поиск&hellip;</div>';
-            var emptyHtml =         '<div class="ms-loading">Поискали &ndash; не нашли, попробуйте другой запрос.</div>';
-            var clearHtml =         '<div class="ms-loading">Введите поисковый запрос.</div>';
-            var errorHtml =         '<div class="ms-loading">Простите, но кажется с поиском что-то не так&hellip;<br/>Звоните:&nbsp;&nbsp;&nbsp;+7 (906) 063-88-66</div>';
+
+//            var loadingHtml =       '<div class="ms-loading"><i class="fa fa-search"></i>&nbsp;&nbsp;Идет поиск&hellip;</div>';
+//            var emptyHtml =         '<div class="ms-loading">Поискали &ndash; не нашли, попробуйте другой запрос.</div>';
+//            var clearHtml =         '<div class="ms-loading">Введите поисковый запрос.</div>';
+//            var errorHtml =         '<div class="ms-loading">Простите, но кажется с поиском что-то не так&hellip;<br/>Звоните:&nbsp;&nbsp;&nbsp;+7 (906) 063-88-66</div>';
 
             var ven_empty = '<div class="ms-loading">Площадок не найдено.</div>';
             var act_empty = '<div class="ms-loading">Актеров не найдено.</div>';
@@ -1076,6 +1187,7 @@
                 }
             });
         }
+
     };
 
     $(document).ready(function(){
@@ -1088,9 +1200,6 @@
         fs.initSlider();
         fs.initScroll();
         fs.initInPageSearch();
-
-
-
 
     });
 

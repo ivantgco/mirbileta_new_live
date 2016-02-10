@@ -49,6 +49,7 @@
     $columns = json_decode($resp)->results["0"]->data_columns;
     $data = json_decode($resp)->results["0"]->data;
     $actions_count = count($data);
+    $show_next_button = $actions_count == 15;
 
 ?>
 
@@ -102,7 +103,7 @@ include('main_menu.php');
 
     <div class="container">
 
-        <div class="mb-block-sh flLeft">
+        <div class="mb-block-sh flLeft posRel">
 
             <div class="flLeft mb-tag-filter-wrapper posRel">
 
@@ -194,43 +195,17 @@ include('main_menu.php');
             </div>
 
 
+<!--            --><?php //if($show_next_button): ?>
+
+                <div id="load_next" class="load_next_style_2">Загрузить еще</div>
+
+<!--            --><?php //endif ?>
+
 
         </div>
 
     </div>
 
-
-<!--    <div class="filter-page-content">-->
-<!---->
-<!---->
-<!---->
-<!--        <div class="filter-page-filters-wrapper flLeft wid100pr">-->
-<!--            <div class="container">-->
-<!--                <div class="flLeft wid100pr">-->
-<!--                    <div class="pr30"><div class="mb-tf-block" data-filter="search"></div></div>-->
-<!--                    <div class="pr30"><div class="mb-tf-block" data-filter="daterange"></div></div>-->
-<!--                    <div class="pr30"><div class="mb-tf-block" data-filter="price" data-inputs="false"></div></div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="filter-page-filters-buttons">-->
-<!---->
-<!--                    <div class="f-buttons-holder">-->
-<!--                        <div class="mb-buy mb-buy32 yellow-bordered flRight submit-filters">Показать <span class="filter-count-actions"></span></div>-->
-<!--                        <div class="mb-buy mb-buy32 white flRight clear-filters">Сборсить филтры</div>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--    </div>-->
-
-
-    <!--        </div>-->
-    <div class="container">
-
-    </div>
 
 </div>
 
