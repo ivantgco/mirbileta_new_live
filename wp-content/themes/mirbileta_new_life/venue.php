@@ -103,7 +103,13 @@ include('main_menu.php');
 
         <div class="row marBot40">
             <div class="col-md-12">
-                <div class="single-map-holder"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8982.005857353408!2d37.6140337!3d55.749790600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1453912939564" width="100%" height="280" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+                <div class="single-map-holder">
+
+                    <input id="address" type="hidden" value="<?php echo $address; ?>" />
+
+                    <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
+
+                </div>
 
                 <div class="single-desc-holder chromeScroll">
                     <?php echo $data[array_search("VENUE_DESCRIPTION", $columns)]; ?>
@@ -175,8 +181,8 @@ include('main_menu.php');
                 $time = to_afisha_date($act_date_time, "time", "rus");
 
                 $actionsHtml .= '<div class="mb-block mb-action" data-id="' . $act_id . '">'
-                    . '<div class="mb-a-image" style="background-image: url(\'' . $poster . '\');"></div>'
-                    . '<div class="mb-a-title">' . $act_name . '<span class="mb-a-age">' . $ageCat . '</span></div>'
+                    . '<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\'' . $poster . '\');"></div></a>'
+                    . '<a href="/'.$alias.'"><div class="mb-a-title">' . $act_name . '<span class="mb-a-age">' . $ageCat . '</span></div></a>'
                     . '<div class="mb-a-date">' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
                     . '<div class="mb-a-venue">' . $venue . '</div>'
                     . '<div class="mb-a-buy-holder">'
@@ -206,3 +212,59 @@ get_footer();
 
 
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var geocoder;
+        var map;
+        var address = $('#address').val();
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var myOptions = {
+                zoom: 16,
+                center: latlng,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                },
+                navigationControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+            if (geocoder) {
+                geocoder.geocode({
+                    'address': address
+                }, function(results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                            map.setCenter(results[0].geometry.location);
+
+                            var infowindow = new google.maps.InfoWindow({
+                                content: '<b>' + address + '</b>',
+                                size: new google.maps.Size(150, 50)
+                            });
+
+                            var marker = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map,
+                                title: address
+                            });
+                            google.maps.event.addListener(marker, 'click', function() {
+                                infowindow.open(map, marker);
+                            });
+
+                        } else {
+                            alert("No results found");
+                        }
+                    } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    });
+</script>

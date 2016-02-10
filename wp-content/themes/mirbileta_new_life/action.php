@@ -120,7 +120,14 @@
                 <div class="one-action-venue"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="one-action-hall"><?php echo $hall; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="one-action-address"><i class="fa fa-map-o"></i>&nbsp;&nbsp; <?php echo $address; ?> <span class="show-gmap-hint">Показать карту</span></span></div>
 <!--                &nbsp;&nbsp;--><?php //echo $venue;?><!--,-->
                 <div class="one-action-gmap">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8982.005857353408!2d37.6140337!3d55.749790600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1453912939564" width="100%" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                    <input id="address" type="hidden" value="<?php echo $address; ?>" />
+
+                    <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
+
+
+
+<!--                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8982.005857353408!2d37.6140337!3d55.749790600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1453912939564" width="100%" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>-->
                 </div>
 
                 <?php
@@ -515,3 +522,59 @@
 
 
     </body>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var geocoder;
+            var map;
+            var address = $('#address').val();
+            function initialize() {
+                geocoder = new google.maps.Geocoder();
+                var latlng = new google.maps.LatLng(-34.397, 150.644);
+                var myOptions = {
+                    zoom: 16,
+                    center: latlng,
+                    mapTypeControl: true,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                    },
+                    navigationControl: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+
+                map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+                if (geocoder) {
+                    geocoder.geocode({
+                        'address': address
+                    }, function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                map.setCenter(results[0].geometry.location);
+
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: '<b>' + address + '</b>',
+                                    size: new google.maps.Size(150, 50)
+                                });
+
+                                var marker = new google.maps.Marker({
+                                    position: results[0].geometry.location,
+                                    map: map,
+                                    title: address
+                                });
+                                google.maps.event.addListener(marker, 'click', function() {
+                                    infowindow.open(map, marker);
+                                });
+
+                            } else {
+                                alert("No results found");
+                            }
+                        } else {
+                            alert("Geocode was not successful for the following reason: " + status);
+                        }
+                    });
+                }
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        });
+    </script>
