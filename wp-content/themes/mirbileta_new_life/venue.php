@@ -72,6 +72,9 @@
 get_header();
 include('main_menu.php');
 //echo $url;
+
+$address = $data[array_search("VENUE_ADDRESS", $columns)];
+
 ?>
 
 <div class="site-content">
@@ -103,13 +106,18 @@ include('main_menu.php');
 
         <div class="row marBot40">
             <div class="col-md-12">
-                <div class="single-map-holder">
 
-                    <input id="address" type="hidden" value="<?php echo $address; ?>" />
+                <?php if(strlen($address) > 0): ?>
 
-                    <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
+                    <div class="single-map-holder">
 
-                </div>
+                        <input id="address" type="hidden" value="<?php echo $address; ?>" />
+
+                        <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
+
+                    </div>
+
+                <?php endif ?>
 
                 <div class="single-desc-holder chromeScroll">
                     <?php echo $data[array_search("VENUE_DESCRIPTION", $columns)]; ?>
@@ -213,58 +221,61 @@ get_footer();
 
 </body>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        var geocoder;
-        var map;
-        var address = $('#address').val();
-        function initialize() {
-            geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(-34.397, 150.644);
-            var myOptions = {
-                zoom: 16,
-                center: latlng,
-                mapTypeControl: true,
-                mapTypeControlOptions: {
-                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
-                },
-                navigationControl: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
 
-            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    <?php if(strlen($address) > 0): ?>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                var geocoder;
+                var map;
+                var address = $('#address').val();
+                function initialize() {
+                    geocoder = new google.maps.Geocoder();
+                    var latlng = new google.maps.LatLng(-34.397, 150.644);
+                    var myOptions = {
+                        zoom: 16,
+                        center: latlng,
+                        mapTypeControl: true,
+                        mapTypeControlOptions: {
+                            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                        },
+                        navigationControl: true,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
 
-            if (geocoder) {
-                geocoder.geocode({
-                    'address': address
-                }, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-                            map.setCenter(results[0].geometry.location);
+                    map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-                            var infowindow = new google.maps.InfoWindow({
-                                content: '<b>' + address + '</b>',
-                                size: new google.maps.Size(150, 50)
-                            });
+                    if (geocoder) {
+                        geocoder.geocode({
+                            'address': address
+                        }, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                                    map.setCenter(results[0].geometry.location);
 
-                            var marker = new google.maps.Marker({
-                                position: results[0].geometry.location,
-                                map: map,
-                                title: address
-                            });
-                            google.maps.event.addListener(marker, 'click', function() {
-                                infowindow.open(map, marker);
-                            });
+                                    var infowindow = new google.maps.InfoWindow({
+                                        content: '<b>' + address + '</b>',
+                                        size: new google.maps.Size(150, 50)
+                                    });
 
-                        } else {
-                            alert("No results found");
-                        }
-                    } else {
-                        alert("Geocode was not successful for the following reason: " + status);
+                                    var marker = new google.maps.Marker({
+                                        position: results[0].geometry.location,
+                                        map: map,
+                                        title: address
+                                    });
+                                    google.maps.event.addListener(marker, 'click', function() {
+                                        infowindow.open(map, marker);
+                                    });
+
+                                } else {
+        //                            alert("No results found");
+                                }
+                            } else {
+        //                        alert("Geocode was not successful for the following reason: " + status);
+                            }
+                        });
                     }
-                });
-            }
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    });
-</script>
+                }
+                google.maps.event.addDomListener(window, 'load', initialize);
+            });
+        </script>
+    <?php endif ?>

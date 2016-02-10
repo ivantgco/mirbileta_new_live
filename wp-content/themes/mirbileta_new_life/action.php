@@ -117,18 +117,29 @@
 
                 <div class="one-action-title"><?php echo $act_name; ?></div>
                 <div class="one-action-age"><?php echo $ageCat; ?></div>
-                <div class="one-action-venue"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="one-action-hall"><?php echo $hall; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="one-action-address"><i class="fa fa-map-o"></i>&nbsp;&nbsp; <?php echo $address; ?> <span class="show-gmap-hint">Показать карту</span></span></div>
-<!--                &nbsp;&nbsp;--><?php //echo $venue;?><!--,-->
-                <div class="one-action-gmap">
+                <div class="one-action-venue">
+                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;
+                    <span class="one-action-hall"><?php echo $hall; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <input id="address" type="hidden" value="<?php echo $address; ?>" />
+                    <?php if(strlen($address) > 0): ?>
 
-                    <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
+                        <span class="one-action-address"><i class="fa fa-map-o"></i>&nbsp;&nbsp; <?php echo $address; ?> <span class="show-gmap-hint">Показать карту</span></span>
 
+                    <?php endif; ?>
 
+                    </div>
 
-<!--                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8982.005857353408!2d37.6140337!3d55.749790600000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1453912939564" width="100%" height="280" frameborder="0" style="border:0" allowfullscreen></iframe>-->
-                </div>
+                    <?php if(strlen($address) > 0): ?>
+
+                        <div class="one-action-gmap">
+
+                            <input id="address" type="hidden" value="<?php echo $address; ?>" />
+
+                            <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
+
+                        </div>
+
+                    <?php endif; ?>
 
                 <?php
 
@@ -523,6 +534,7 @@
 
     </body>
 
+    <?php if(strlen($address) > 0): ?>
     <script type="text/javascript">
         $(document).ready(function(){
             var geocoder;
@@ -567,10 +579,10 @@
                                 });
 
                             } else {
-                                alert("No results found");
+//                                alert("No results found");
                             }
                         } else {
-                            alert("Geocode was not successful for the following reason: " + status);
+//                            alert("Geocode was not successful for the following reason: " + status);
                         }
                     });
                 }
@@ -578,3 +590,4 @@
             google.maps.event.addDomListener(window, 'load', initialize);
         });
     </script>
+    <?php endif ?>
