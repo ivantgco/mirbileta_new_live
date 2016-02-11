@@ -445,7 +445,7 @@
                                     $alias =        $value4[array_search("ACTION_URL_ALIAS", $sim_columns)];
                                     $frame =        $value4[array_search("FRAME", $sim_columns)];
                                     $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
-                                    $poster =       (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)];
+                                    $poster =       (strlen($value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) > 0)? (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)] : $defaultPoster;
                                     $act_date =     $value4[array_search("ACTION_DATE_STR", $sim_columns)];
                                     $act_time =     $value4[array_search("ACTION_TIME_STR", $sim_columns)];
                                     $hall =         $value4[array_search("HALL", $sim_columns)];
@@ -462,7 +462,7 @@
 
 
                                     $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                        .'<div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div>'
+                                        .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
                                         .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
                                         .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
                                         .'<div class="mb-a-venue">'.$venue.'</div>'

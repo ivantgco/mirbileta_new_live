@@ -134,7 +134,7 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
             <?php
 
 
-            $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num><venue_id>" . $venue_id . "</venue_id>";
+            $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_afisha</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num><venue_id>" . $venue_id . "</venue_id>";
 
             $ch = curl_init();
 
@@ -167,7 +167,8 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
                 $frame = $value[array_search("FRAME", $columns)];
                 $act_name = $value[array_search("ACTION_NAME", $columns)];
                 $thumb = (strpos("http", $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
-                $poster = (strpos("http", $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_IMAGE", $columns)];
+                $poster =       (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 )? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
+//                $poster = (strpos("http", $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_IMAGE", $columns)];
                 $act_date = $value[array_search("ACTION_DATE_STR", $columns)];
                 $act_time = $value[array_search("ACTION_TIME_STR", $columns)];
                 $hall = $value[array_search("HALL", $columns)];

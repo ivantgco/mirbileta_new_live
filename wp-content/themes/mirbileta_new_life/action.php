@@ -407,6 +407,8 @@
                                         <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
 
                                     </div>
+
+
                                     <div class="one-action-widget-underwrapper zi20 posRel"></div>
 
                                 </div>
@@ -459,7 +461,7 @@
                                     $venue_alias =        $value4[array_search("VENUE_URL_ALIAS", $sim_columns)];
                                     $frame =        $value4[array_search("FRAME", $sim_columns)];
                                     $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
-                                    $poster =       (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)];
+                                    $poster =       (strlen($value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) > 0)? (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)] : $defaultPoster;
                                     $act_date =     $value4[array_search("ACTION_DATE_STR", $sim_columns)];
                                     $act_time =     $value4[array_search("ACTION_TIME_STR", $sim_columns)];
                                     $hall =         $value4[array_search("HALL", $sim_columns)];
@@ -521,6 +523,10 @@
     <?php
     if($free_places > 0){
 
+
+        //7562 бой
+        //7556
+        //7564 отменим
 
     ?>
         <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>

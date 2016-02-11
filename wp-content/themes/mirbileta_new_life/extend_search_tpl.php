@@ -16,7 +16,7 @@
     $author_id =         $_GET['author_id'];
     $action_tag_id =     $_GET['action_tag_id'];
 
-    $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num>";
+    $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_afisha</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num>";
 
     if(strlen($from_date) > 0) { $url .= '<from_date>'.$from_date.'</from_date>'; }
     if(strlen($to_date) > 0) { $url .= '<to_date>'.$to_date.'</to_date>'; }
@@ -96,6 +96,7 @@
 <?php
 get_header();
 include('main_menu.php');
+//echo $url;
 
 ?>
 
@@ -149,12 +150,12 @@ include('main_menu.php');
                 foreach ($data as $key => $value){
 
                     $act_id =       $value[array_search("ACTION_ID", $columns)];
-                    $alias =        $value[array_search("ACTION_URL_ALIAS", $columns)];
+                    $alias =        (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0)? $value[array_search("SHOW_URL_ALIAS", $columns)] : $value[array_search("ACTION_URL_ALIAS", $columns)];
                     $venue_alias =        $value[array_search("VENUE_URL_ALIAS", $columns)];
                     $frame =        $value[array_search("FRAME", $columns)];
                     $act_name =     $value[array_search("ACTION_NAME", $columns)];
                     $thumb =        (strpos("http" , $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
-                    $poster =       (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)];
+                    $poster =       (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 )? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
                     $act_date =     $value[array_search("ACTION_DATE_STR", $columns)];
                     $act_time =     $value[array_search("ACTION_TIME_STR", $columns)];
                     $hall =         $value[array_search("HALL", $columns)];

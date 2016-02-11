@@ -1,6 +1,6 @@
 (function(){
 
-    var defaultPoster = 'https://shop.mirbileta.ru/assets/img/default_mirbileta_poster.jpg';
+    var defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 
     var loadingHtml =       '<div class="ms-loading"><i class="fa fa-search"></i>&nbsp;&nbsp;Идет поиск&hellip;</div>';
     var emptyHtml =         '<div class="ms-loading">Поискали &ndash; не нашли, попробуйте другой запрос.</div>';
@@ -476,7 +476,7 @@
 
 
             var o = {
-                command: 'get_actions',
+                command: 'get_afisha',
                 url: gurl,
                 params: {
                     count_only: "TRUE"
@@ -540,11 +540,11 @@
                 btn.html('<i class="fa fa-spinner fa-spin"></i>');
 
                 var o = {
-                    command: 'get_actions',
+                    command: 'get_afisha',
                     params: {
                         url: gurl,
                         page_no:  page,
-                        row_max_num: 15
+                        rows_max_num: 15
                     }
                 };
 
@@ -588,7 +588,7 @@
                         for(var i in actions){
                             actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
                             actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
-                            actions[i]['alias_link'] = (actions[i]['SHOW_ID'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                            actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
                             actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
 
                             a_data.actions.push(actions[i]);
@@ -598,20 +598,25 @@
 
 
                         if(a_data.actions.length == 0){
-
+                            btn.attr('data-page', page);
                             btn.remove();
 
                         }else{
                             acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
+                            if(a_data.actions.length < 15){
+                                btn.remove();
+                            }
                         }
 
 
                         if(cb && typeof cb == 'function'){
+                            btn.attr('data-page', page);
                             btn.html('Загрузить еще');
                             cb();
                         }
 
                     }else{
+                        btn.attr('data-page', page);
                         acts_wrapper.append(errorHtml);
                         if(cb && typeof cb == 'function'){
                             cb();

@@ -798,7 +798,9 @@ input.mb-tf-rs-to {
     right: 15px;
 }
 .mb-nrs-body{
-    min-height: 237px;
+    border-top: 1px solid rgba(0,0,0,0.10);
+    height: 236px;
+    overflow: auto;
 }
 
 
@@ -2581,6 +2583,7 @@ a.nounderline:hover{
     padding-bottom: 20px;
     border-top: 1px solid rgba(0,0,0,0.15);
     border-bottom: 1px solid rgba(0,0,0,0.15);
+    margin-bottom: -23px;
 }
 
 .show-action-date-hint{
@@ -2971,4 +2974,10 @@ b{
 }
 .extend-search-page .mb-block-sh{
     padding-bottom: 100px;
+}
+.nothing_to_show{
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+    color: #8A8A8A;
 }

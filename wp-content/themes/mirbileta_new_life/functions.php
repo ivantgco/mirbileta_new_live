@@ -10,7 +10,8 @@ define( 'WP_DEBUG', true );
 
 $global_prot = 'http';
 $global_url = '192.168.1.190';
-
+$defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
+$defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';
 //$global_prot = 'https';
 //$global_url = 'shop.mirbileta.ru';
 
@@ -21,6 +22,15 @@ function addRoutes() {
 //index.php?pagename=$matches[1]
 
 addRoutes();
+
+function to_short_mth($date_str)
+{
+    $space_idx = strpos($date_str, ' ');
+    $date_part = mb_substr($date_str, 0, $space_idx, 'utf-8');
+    $mth_part = mb_substr($date_str, $space_idx + 1, 3, 'utf-8');
+
+    return $date_part . ' ' . $mth_part;
+}
 
 function to_afisha_date($str, $format, $lang)
 {

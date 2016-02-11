@@ -98,10 +98,12 @@
 //                                .'<div class="mb-btpl-desc">'.$desc.'</div>'
                                 .'<div class="mb-btpl-link">'.$site_url.'</div>'
                             .'</div>'
-                            .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия '.$actions_count.'</div></a>'
+                            .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия</div></a>'
                             //.'<a href="'.$site_url.'" class="mb-btpl-url">Сайт площадки</a>'
                             .'</div>';
         }
+
+//        '.$actions_count.'
 
         if(strlen($actionsHtml) == 0){
             echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';

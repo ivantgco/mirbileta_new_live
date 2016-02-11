@@ -35,7 +35,7 @@
         </div>
 
         <div class="pr50">
-            <div class="mb-tf-block" data-filter="price"></div>
+            <div class="mb-tf-block" data-inputs="false" data-filter="price"></div>
         </div>
 
 
