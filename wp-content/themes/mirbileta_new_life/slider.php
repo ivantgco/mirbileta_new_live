@@ -53,7 +53,7 @@
                     $venue =                    $value[array_search("VENUE_NAME", $columns)];
                     $act_date =                 $value[array_search("ACTION_DATE_STR", $columns)];
                     $description =              $value[array_search("DESCRIPTION", $columns)];
-                    $cutted_desc =              substr($description,0,200);
+                    $cutted_desc =              mb_substr($description,0,200,'utf-8');
 
 
                     $slidesHtml .= '<div class="slider-item-vagon" style="width: '. $single_width .'%" data-slide="'.$indexer.'">'

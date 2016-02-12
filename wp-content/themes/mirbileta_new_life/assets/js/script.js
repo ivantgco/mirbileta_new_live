@@ -2,6 +2,8 @@
 
     var defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 
+    var today = new Date().toLocaleDateString();
+
     var loadingHtml =       '<div class="ms-loading"><i class="fa fa-search"></i>&nbsp;&nbsp;Идет поиск&hellip;</div>';
     var emptyHtml =         '<div class="ms-loading">Поискали &ndash; не нашли, попробуйте другой запрос.</div>';
     var clearHtml =         '<div class="ms-loading">Введите поисковый запрос.</div>';
@@ -300,6 +302,8 @@
 
         }
 
+        console.log('aAA', moment(new Date()).format('dd.mm.yyyy'));
+
         if(_t.type == 'lov'){
 
             _t.wrapper.find('.mb-ch-wrapper').each(function(i,elem){
@@ -377,6 +381,7 @@
             dp1.datepicker({
                 language: 'ru',
                 autoclose: true,
+                startDate: today,
                 todayBtn: 'linked'
             }).off('changeDate').on('changeDate', function(e){
                 var datePicked = e.format('dd.mm.yyyy');
@@ -394,6 +399,7 @@
             dp2.datepicker({
                 language: 'ru',
                 autoclose: true,
+                startDate: today,
                 todayBtn: 'linked'
             }).off('changeDate').on('changeDate', function(e){
                 var datePicked = e.format('dd.mm.yyyy');
@@ -933,6 +939,7 @@
             s_from_date.datepicker({
                 language: 'ru',
                 autoclose: true,
+                startDate: today,
                 todayBtn: 'linked'
             }).off('changeDate').on('changeDate', function(e){
                 var datePicked = e.format('dd.mm.yyyy');
@@ -945,6 +952,7 @@
             s_to_date.datepicker({
                 language: 'ru',
                 autoclose: true,
+                startDate: today,
                 todayBtn: 'linked'
             }).off('changeDate').on('changeDate', function(e){
                 var datePicked = e.format('dd.mm.yyyy');
@@ -956,6 +964,7 @@
             main_datepicker.datepicker({
                 language: 'ru',
                 autoclose: true,
+                startDate: today,
                 todayBtn: 'linked'
             }).off('changeDate').on('changeDate', function(e){
                 var datePicked = e.format('dd.mm.yyyy');
