@@ -8,12 +8,12 @@
 
 define( 'WP_DEBUG', true );
 
-$global_prot = 'http';
-$global_url = '192.168.1.190';
+//$global_prot = 'http';
+//$global_url = '192.168.1.190';
 $defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 $defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';
-//$global_prot = 'https';
-//$global_url = 'shop.mirbileta.ru';
+$global_prot = 'https';
+$global_url = 'shop.mirbileta.ru';
 
 function addRoutes() {
     $urlKey = $_SERVER[REQUEST_URI];

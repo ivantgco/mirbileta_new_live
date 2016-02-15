@@ -1,6 +1,6 @@
 var widgetWrapper = $("#multibooker-widget-wrapper");
 var doc_root = widgetWrapper.data('host');
-var host = '192.168.1.90';//'https://shop.mirbileta.ru/'
+var host = 'https://shop.mirbileta.ru/';//'192.168.1.90';//'https://shop.mirbileta.ru/'
 
 
 var applyDictionary = function (res) {
@@ -120,8 +120,8 @@ var clearEmpty = function(arr) {
 
 var socketQuery_site = function (obj, callback) {
     var config = {
-        protocol: 'http',//'https',
-        ip: '192.168.1.190'//'shop.mirbileta.ru'
+        protocol: 'https',//'http',//'https',
+        ip: 'shop.mirbileta.ru'//'192.168.1.190'//'shop.mirbileta.ru'
     };
 
     console.log('MQ', makeQuery(obj));
