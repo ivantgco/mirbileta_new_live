@@ -1,9 +1,27 @@
 
 
 
-<?php get_header(); ?>
+<?php
+
+get_header();
+
+
+
+?>
+
 
 <div id="content">
+
+
+
+
+
+
+</div><!-- #content -->
+
+<?php get_footer(); ?>
+
+
 
 <!--	--><?php //if ( wptouch_have_posts() ) while ( wptouch_have_posts() ) { ?>
 <!--		--><?php //wptouch_the_post(); ?>
@@ -37,8 +55,3 @@
 <!--		</div>-->
 <!---->
 <!--	--><?php //} ?>
-
-</div><!-- #content -->
-
-<?php get_footer(); ?>
-

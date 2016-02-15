@@ -1,6 +1,40 @@
 <?php
 
+
+$global_prot = 'http';
+$global_url = '192.168.1.190';
+$defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
+$defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';
+
+
 add_action( 'foundation_enqueue_scripts', 'bauhaus_enqueue_scripts' );
+
+
+function mmb_get_mth($date_str)
+{
+    $space_idx = strpos($date_str, ' ');
+    $mth_part = mb_substr($date_str, $space_idx + 1, 3, 'utf-8');
+
+    return $mth_part;
+}
+
+function mmb_get_day($date_str)
+{
+    $space_idx = strpos($date_str, ' ');
+    $date_part = mb_substr($date_str, 0, $space_idx, 'utf-8');
+
+
+    return $date_part;
+}
+
+function to_short_mth($date_str)
+{
+    $space_idx = strpos($date_str, ' ');
+    $date_part = mb_substr($date_str, 0, $space_idx, 'utf-8');
+    $mth_part = mb_substr($date_str, $space_idx + 1, 3, 'utf-8');
+
+    return $date_part . ' ' . $mth_part;
+}
 
 function bauhaus_enqueue_scripts() {
 	wp_enqueue_script(

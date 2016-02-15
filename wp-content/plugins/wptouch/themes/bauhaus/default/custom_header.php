@@ -39,15 +39,15 @@
             <div class="ddRow notZindexed sc_tabulatorDDRow wid100pr flLeft">
 
                 <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight opened" dataitem="0">
-                    <div class="mmb-search-actions">actions</div>
+                    <div class="mmb-search-actions mmb-search-lockscroll">actions</div>
                 </div>
 
                 <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight" dataitem="1">
-                    <div class="mmb-search-venues">venues</div>
+                    <div class="mmb-search-venues mmb-search-lockscroll">venues</div>
                 </div>
 
                 <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight" dataitem="2">
-                    <div class="mmb-search-actors">actors</div>
+                    <div class="mmb-search-actors mmb-search-lockscroll">actors</div>
                 </div>
 
             </div>

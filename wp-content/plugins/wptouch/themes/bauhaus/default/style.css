@@ -1206,11 +1206,12 @@ form#commentform input {
     height: 100%;
     position: absolute;
     z-index: 60;
-    background-color: #fff;
+    background-color: #F7F7F7;
     top: 0;
     width: 100%;
     padding-top: 58px;
     display: none;
+    box-sizing: border-box;
 }
 
 input#mmb-search-input::-webkit-input-placeholder {font-family: "PTSans-Regular", "OpenSans-semibold", arial, sans-serif; color: rgba(0,0,0,0.5);}
@@ -1325,8 +1326,14 @@ body{
 .mmb-tabsParent .tabsTogglersRow{
     width: 100%;
     float: left;
+
 }
 
+.mmb-tabsParent {
+    background-color: #fff;
+    float: left;
+    width: 100%;
+}
 .wid100pr{
     width: 100%;
 }
@@ -1359,6 +1366,7 @@ body{
     font-family: arial, sans-serif;
     font-weight: bold;
     margin-bottom: 10px;
+    padding-right: 5px;
     padding-top: 10px;
 
 }
@@ -1370,17 +1378,22 @@ body{
 }
 .mb-me-a-date{
     font-size: 14px;
-    color: #000;
+    color: #fff;
     font-family: arial, sans-serif;
     font-weight: bold;
     position: absolute;
-    bottom: 10px;
-    /*left: 123px;*/
-    right: 10px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+    width: 108px;
+    text-align: center;
+    padding-bottom: 6px;
+    padding-top: 5px;
 }
 .mb-a-time{
     font-size: 14px;
-    color: #555;
+    /*color: rgba(255,255,255,0.7);*/
+    color: yellow;
     font-family: arial, sans-serif;
     font-weight: normal;
 }
@@ -1403,4 +1416,240 @@ body{
     padding-top: 10px;
     background-color: #f7f7f7;
     border-top: 1px solid rgba(0,0,0,0.15);
+    min-height: 368px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.mmb-search-venues{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background-color: #f7f7f7;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    min-height: 368px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+.mmb-search-actors{
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background-color: #f7f7f7;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    min-height: 368px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.ms-loading {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #868686;
+}
+.sc_tabulatorDDItem{
+    display: none;
+}
+.sc_tabulatorDDItem.opened{
+    display: inherit;
+}
+
+.mb-sub-entry-image {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: 50% 50%;
+    float: left;
+    margin-right: 15px;
+}
+
+.mb-sub-entry-title{
+    font-size: 14px;
+    color: #000;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    padding-top: 10px;
+}
+.mb-sub-entry {
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    padding-top: 10px;
+}
+
+.mb-sub-entry-text{
+    font-size: 12px;
+    color: #555;
+    font-family: arial, sans-serif;
+    padding-right: 5px;
+}
+
+.slider-item {
+    height: 305px;
+    background-size: cover;
+    width: 100%;
+    background-position: 50% 50%;
+}
+
+.mmb-slider-holder{
+    width: 100%;
+}
+.mmb-slider-overflow{
+    overflow: hidden;
+    width: 100%;
+    min-height: 430px;
+    position: relative;
+}
+.mmb-slider-train{
+
+}
+.mmb-slider-vagon{
+    position: relative;
+    height: 320px;
+    float: left;
+}
+.slider-item-info{
+
+    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%), linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 50%), linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.7) 70%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+
+
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+
+}
+
+.mmb-slider-date{
+    font-size: 50px;
+    color: #000;
+    width: 60px;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: center;
+    float: left;
+}
+.mmb-slider-mth{
+    font-size: 24px;
+    color: #000;
+    width: 60px;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mmb-slider-venue{
+    font-size: 20px;
+    color: #4c4c4c;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    float: left;
+    width: 220px;
+    position: absolute;
+    left: 94px;
+    bottom: 55px;
+}
+.mmb-slider-title{
+    font-size: 24px;
+    color: #000;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    text-align: left;
+    float: left;
+    padding-left: 20px;
+    width: 100%;
+    padding-right: 20px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+.sa-buy-wrapper{
+    position: absolute;
+    right: 20px;
+    bottom: -60px;
+}
+
+.sa-buy-wrapper a{
+    font-family: arial, sans-serif;
+
+    color: #ffc000;
+    font-size: 18px;
+    text-decoration: none;
+}
+.sa-buy-wrapper a:hover{
+    color: #ffc000;
+    text-decoration: none;
+}
+
+.mmb-slider-holder {
+    /*margin-top: -1px;*/
+    /*z-index: 100;*/
+    /*position: relative;*/
+}
+.mmb-slider-underline{
+    height: 7px;
+    position: absolute;
+    width: 100%;
+    background-image: url('img/underline.png');
+    bottom: 0;
+}
+.mmb-top-sales-wrapper{
+    background-color: #f7f7f7;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 20px;
+    margin-top: -7px;
+}
+
+body.body-search-opened{
+    overflow: hidden;
+}
+
+.body-fader{
+    height: 100%;
+    width: 100%;
+    z-index: 59;
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+}
+
+#pushit-overlay.active{
+    z-index: 59;
+    background-color: #fff;
+}
+
+#pushit-overlay{
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.mmb-cs-text{
+    font-family: Rambla-Regular, arial, sans-serif;
+    color: #fff;
+    font-size: 17px;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.mmb-cs-logo{
+    font-family: Rambla-Regular, arial, sans-serif;
+    color: #fff;
+    font-size: 40px;
+    width: 100%;
+    text-align: center;
+}
+.mmb-coming-soon{
+    z-index: 10000;
+    margin-top: 130px;
+    position: absolute;
 }

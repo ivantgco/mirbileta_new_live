@@ -1061,28 +1061,6 @@
             var dots = $('.slider-dot');
 
             var blur_idx = 0;
-//            var blurInt = window.setInterval(function(){
-//
-//                var vagon = $('.slider-item-vagon').eq(blur_idx);
-//
-//                var info = vagon.find('.slide-info');
-//                var bg = vagon.find('.slider-item');
-//                var source = '.slider-item-'+ blur_idx;
-//
-//                info.eq(0).blurjs({
-//                    source: source,
-//                    radius: 10,
-//                    overlay: 'rgba(0,0,0,0.3)'
-//                });
-//
-//                blur_idx++;
-//
-//                if(blur_idx == vagons.length){
-//                    clearInterval(blurInt);
-//                    return;
-//                }
-//            }, 100);
-
 
             var toSet;
             var cur_slide;
