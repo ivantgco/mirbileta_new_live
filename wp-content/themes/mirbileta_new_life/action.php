@@ -49,7 +49,9 @@
     $day_of_week =  $data[array_search("ACTION_DAY_OF_WEEK", $columns)];
     $duration =     $data[array_search("DURATION_HOUR_MIN", $columns)];
     $is_wo =        $data[array_search("ACTION_TYPE", $columns)] == 'ACTION_WO_PLACES';
-    $sbag =        $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
+    $sbag =         $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
+    $tag_list =     $data[array_search("ACTION_TAG_LIST", $columns)];
+    $actor_list =   $data[array_search("ACTION_ACTOR_LIST", $columns)];
 
     $isInfo = strlen($description) > 0;
     $description = $data[array_search("DESCRIPTION", $columns)];
@@ -224,37 +226,15 @@
 
                                 // Подгружаем актеров
 
-                                $actor_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actor_for_action</command><url>mirbileta.ru</url><action_id>".$act_id."</action_id>";
-
-                                $ch = curl_init();
-
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                                curl_setopt($ch, CURLOPT_URL, $actor_url);
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                                curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-                                $resp2 = curl_exec($ch);
-
-                                if(curl_errno($ch))
-                                print curl_error($ch);
-                                else
-                                curl_close($ch);
-
-                                $actor_columns = json_decode($resp2)->results["0"]->data_columns;
-                                $actor_data = json_decode($resp2)->results["0"]->data;
-
-
-
+                                $actorsArray = json_decode($actor_list);
                                 $actors_html = "";
 
-                                foreach ($actor_data as $key2 => $value2){
+                                foreach ($actorsArray as $key2 => $value2){
 
-                                    $actor_id =     $value2[array_search("ACTOR_ID", $actor_columns)];
-                                    $actor_alias =  $value2[array_search("ACTOR_URL_ALIAS", $actor_columns)];
-                                    $actor_name =   $value2[array_search("ACTOR_NAME", $actor_columns)];
-                                    $actor_image =  $value2[array_search("URL_IMAGE_MEDIUM", $actor_columns)];
-                                    $actor_image_small =  $value2[array_search("URL_IMAGE_SMALL", $actor_columns)];
+                                    $actor_id =     $value2->id;
+                                    $actor_alias =  $value2->alias;
+                                    $actor_name =   $value2->name;
+                                    $actor_image_small =  $value2->url_image_small;
 
 
 
@@ -278,36 +258,17 @@
                             <div class="one-action-tags-body">
                                 <?php
 
-                                // Подгружаем актеров
+                                // Собираем массив тегов
 
-                                $tag_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_action_tag</command><url>mirbileta.ru</url><action_id>".$act_id."</action_id>";
-                                $tag_ids = '';
-                                $ch = curl_init();
-
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                                curl_setopt($ch, CURLOPT_URL, $tag_url);
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                                curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-                                $resp3 = curl_exec($ch);
-
-                                if(curl_errno($ch))
-                                    print curl_error($ch);
-                                else
-                                    curl_close($ch);
-
-                                $tag_columns = json_decode($resp3)->results["0"]->data_columns;
-                                $tag_data = json_decode($resp3)->results["0"]->data;
-
-
+                                $tagsArray = json_decode($tag_list);
 
                                 $tag_html = "";
                                 $indexer = 0;
-                                foreach ($tag_data as $key3 => $value3){
 
-                                    $tag_id =             $value3[array_search("ACTION_TAG_ID", $tag_columns)];
-                                    $tag_name =           $value3[array_search("ACTION_TAG", $tag_columns)];
+                                foreach ($tagsArray as $key3 => $value3){
+
+                                    $tag_id =             $value3->id;
+                                    $tag_name =           $value3->name;
 
                                     $tag_html .= '<a class="action-tag-link" href="/extend_search?action_tag_id='.$tag_id.'"><div class="action-tag" data-id="'.$tag_id.'">'.$tag_name.'</div></a>';
 
@@ -320,9 +281,6 @@
 
                                     $indexer++;
                                 }
-
-    //                                                            var_dump($tag_columns);
-    //                                                            var_dump($tag_data);
 
                                 echo $tag_html;
 
@@ -493,7 +451,7 @@
                                 }
 
                                 if(strlen($sim_actionsHtml) == 0){
-                                    echo '<div class="somethinggoeswrong">-</div>';
+                                    echo '<div class="somethinggoeswrong">Мероприятие настолько уникально, что нет ничего похожего...</div>';
                                 }else{
                                     echo $sim_actionsHtml;
                                 }

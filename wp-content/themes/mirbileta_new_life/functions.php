@@ -107,6 +107,7 @@ function my_theme_load_resources() {
     wp_enqueue_style('rangeslider',     get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.css');
     wp_enqueue_style('rangeslider_cus', get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.custom.css');
     wp_enqueue_style('datepicker',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css');
+    wp_enqueue_style('toastr',          get_stylesheet_directory_uri() . '/assets/plugins/toastr/toastr.min.css');
     wp_enqueue_style('core',            get_stylesheet_directory_uri() . '/assets/css/core.css');
     wp_enqueue_style('style',           get_stylesheet_directory_uri() . '/assets/css/style.css');
 
@@ -114,6 +115,7 @@ function my_theme_load_resources() {
     wp_enqueue_script('uri',            get_stylesheet_directory_uri() . '/assets/plugins/uri/URI.js');
     wp_enqueue_script('uri_tpl',        get_stylesheet_directory_uri() . '/assets/plugins/uri/URITemplate.js');
     wp_enqueue_script('bootstrap',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js');
+    wp_enqueue_script('toastr',         get_stylesheet_directory_uri() . '/assets/plugins/toastr/toastr.min.js');
     wp_enqueue_script('blur',           get_stylesheet_directory_uri() . '/assets/plugins/blur/blur.js');
     wp_enqueue_script('mb_checkbox',    get_stylesheet_directory_uri() . '/assets/plugins/mb-chekbox/mb-checkbox.js');
     wp_enqueue_script('uitabs',         get_stylesheet_directory_uri() . '/assets/plugins/uiTabs/uiTabs.js');

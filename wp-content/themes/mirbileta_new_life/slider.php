@@ -97,11 +97,11 @@
 
                                                 .'<div class="ddRow notZindexed sc_tabulatorDDRow">'
 
-                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight" dataitem="0">'
+                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight chromeScroll" dataitem="0">'
                                                         .$description
                                                     .'</div>'
 
-                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight" dataitem="1">'
+                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight chromeScroll" dataitem="1">'
                                                         .'asdadsdasdsa'
                                                     .'</div>'
 

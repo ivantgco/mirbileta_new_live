@@ -11,6 +11,10 @@
 
     var gurl = 'mirbileta.ru';
 
+    var inQuery = false;
+    var lastInputTime = undefined;
+
+
     var filters = {};
 
     function getGuid(){
@@ -302,8 +306,6 @@
 
         }
 
-        console.log('aAA', moment(new Date()).format('dd.mm.yyyy'));
-
         if(_t.type == 'lov'){
 
             _t.wrapper.find('.mb-ch-wrapper').each(function(i,elem){
@@ -497,16 +499,25 @@
             socketQuery_site(o, function(res){
                 var jRes = JSON.parse(res)['results'][0];
 
-                $('.submit-filters, .sc-submit-filters').removeClass('disabled');
 
-                if(jRes.count == 0){
-                    $('.submit-filters, .sc-submit-filters').addClass('disabled');
-                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+                if(jRes.code == 0){
+                    $('.submit-filters, .sc-submit-filters').removeClass('disabled');
+
+                    if(jRes.count == 0){
+                        $('.submit-filters, .sc-submit-filters').addClass('disabled');
+                        $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+
+                    }else{
+                        $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+
+                    }
 
                 }else{
-                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+
+                    toastr['error']('Внимание!', 'Произошла системаня ошибка, скоро все исправим.');
 
                 }
+
             });
 
 
@@ -819,6 +830,7 @@
 
 
             function runQuery(cb){
+
                 var search_keyword = search.val();
                 var from_date =     s_from_date.val();
                 var to_date =       s_to_date.val();
@@ -914,15 +926,20 @@
                         }
 
                         if(cb && typeof cb == 'function'){
+                            inQuery = false;
                             cb();
                         }
 
                     }else{
                         acts_wrapper.html(errorHtml);
+                        inQuery = false;
                     }
-
-
                 });
+
+
+
+
+
             }
 
 
@@ -946,7 +963,7 @@
 
                 main_datepicker.datepicker('update', datePicked);
 
-                runQuery();
+                runQuery(function(){});
             });
 
             s_to_date.datepicker({
@@ -958,7 +975,7 @@
                 var datePicked = e.format('dd.mm.yyyy');
 
 
-                runQuery();
+                runQuery(function(){});
             });
 
             main_datepicker.datepicker({
@@ -976,7 +993,7 @@
                 }
 
 
-                runQuery();
+                runQuery(function(){});
 
             });
 
@@ -986,13 +1003,34 @@
                 }
             });
 
+
+
+
             search.off('input').on('input', function(){
+
+                if(lastInputTime === undefined) lastInputTime = new Date();
+
                 var val = $(this).val();
                 if(val.length > 1){
                     search_dd.show(0);
 
+                    var curTime = new Date();
 
-                    runQuery();
+                    if(curTime - lastInputTime >= 300){
+
+                        console.log('RUN QUERY', search.val());
+
+                        lastInputTime = curTime;
+
+
+                        runQuery(function(){
+
+                            lastInputTime = undefined;
+
+                        });
+                    }
+
+
                 }else if(val.length == 0){
                     search_dd.hide(0);
                 }
@@ -1011,7 +1049,7 @@
                     to_inp.val(data.to_value);
 
 
-                    runQuery();
+                    runQuery(function(){});
                 }
             });
         },
