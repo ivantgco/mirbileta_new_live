@@ -41,7 +41,8 @@
     $hall =         $data[array_search("HALL_NAME", $columns)];
     $genre =        $data[array_search("SHOW_GENRE", $columns)];
     $venue =        $data[array_search("VENUE_NAME", $columns)];
-    $address =      $data[array_search("VENUE_ADDRESS", $columns)];
+    $address =      $data[array_search("HALL_ADDR", $columns)];
+    $g_address =    $data[array_search("HALL_GOOGLE_ADDRESS", $columns)];
     $free_places =  $data[array_search("FREE_PLACE_COUNT", $columns)];
     $minprice =     $data[array_search("MIN_PRICE", $columns)];
     $maxprice =     $data[array_search("MAX_PRICE", $columns)];
@@ -135,7 +136,7 @@
 
                         <div class="one-action-gmap">
 
-                            <input id="address" type="hidden" value="<?php echo $address; ?>" />
+                            <input id="address" type="hidden" value="<?php echo $g_address; ?>" />
 
                             <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
 
@@ -145,7 +146,7 @@
 
                 <?php
 
-                    $durationHtml = (strlen($duration) > 0)? '<span class="one-action-length">Продолжительность: '. $duration .' </span>' : '';
+                    $durationHtml = (strlen($duration) > 1)? '<span class="one-action-length">Продолжительность: '. $duration .' </span>' : '';
 
                 ?>
 
@@ -180,21 +181,22 @@
                                     </div>
 
                                     <div class="tabToggle sc_tabulatorToggler " dataitem="1" title="">
-                                        <span class="">Отзывы (6)</span>
+                                        <span class=""></span>
+<!--                                        Отзывы (6)-->
                                     </div>
 
                                 </div>
 
                                 <div class="ddRow notZindexed sc_tabulatorDDRow">
 
-                                    <div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight" dataitem="0">
+                                    <div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight chromeScroll" dataitem="0">
 
 
                                         <?php echo $description;?>
 
                                     </div>
 
-                                    <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight" dataitem="1">
+                                    <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight chromeScroll" dataitem="1">
 
 
 

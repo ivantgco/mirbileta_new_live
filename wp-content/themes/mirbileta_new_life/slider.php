@@ -88,7 +88,7 @@
                                                     .'</div>'
 
                                                     .'<div class="tabToggle sc_tabulatorToggler" dataitem="1" title="">'
-                                                        .'<span class="">Отзывы (4)</span>'
+                                                        .'<span class=""></span>' //Отзывы
                                                     .'</div>'
 
                                                     .'<div class="sl-reviews-exp-close"></div>'

@@ -126,15 +126,16 @@ body{
 
 
 .sa-title {
-    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
     color: #fff;
-    font-size: 40px;
+    font-size: 32px;
+    padding-right: 10px;
 }
 
 .sa-venue {
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
     color: #eaeaea;
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 14px;
 }
 
@@ -478,7 +479,7 @@ body{
     padding-left: 19px;
     height: 44px;
     overflow: hidden;
-
+    padding-right: 5px;
 }
 
 .mb-action a:hover{
@@ -2981,4 +2982,9 @@ b{
     text-align: center;
     padding-top: 100px;
     color: #8A8A8A;
+}
+.one-action-desc .tabulatorDDItem{
+    height: 342px;
+    overflow: auto;
+    margin-right: 10px;
 }
