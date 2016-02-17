@@ -136,7 +136,6 @@
 
             <?php
 
-
             $actionsHtml = "";
 
             foreach ($data as $key => $value){

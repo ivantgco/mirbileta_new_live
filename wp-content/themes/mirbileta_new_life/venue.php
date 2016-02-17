@@ -66,7 +66,7 @@
 
 </head>
 
-<body <?php body_class(); ?> data-page="inner" data-border="noborder">
+<body <?php body_class(); ?> data-page="inner" data-venue="<?php echo $venue_id;?>" data-border="noborder">
 
 <?php
 get_header();
@@ -112,7 +112,7 @@ $g_address = $data[array_search("VENUE_ADDRESS", $columns)];
 
                     <div class="single-map-holder">
 
-                        <input id="address" type="hidden" value="<?php echo $address; ?>" />
+                        <input id="address" type="hidden" value="<?php echo $g_address; ?>" />
 
                         <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
 

@@ -1,5 +1,23 @@
 (function(){
 
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "100000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
     var defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 
     var today = new Date().toLocaleDateString();
@@ -64,6 +82,17 @@
         if($('body').attr('data-filter')){
             filters.show_type_alias = $('body').attr('data-filter');
         }
+
+        if($('body').attr('data-venue')){
+            filters.venue_id = $('body').attr('data-venue');
+        }
+
+        if($('body').attr('data-actor')){
+            filters.actor_id = $('body').attr('data-actor');
+        }
+
+
+        console.log(filters);
 
     }
 
@@ -514,7 +543,7 @@
 
                 }else{
 
-                    toastr['error']('Внимание!', 'Произошла системаня ошибка, скоро все исправим.');
+                    toastr['error']('Кажется произошла системаня ошибка, скоро все исправим.', 'Ой');
 
                 }
 
@@ -546,118 +575,8 @@
             generateUrl();
         });
 
-        $('#load_next').off('click').on('click', function(){
-            var btn = $(this);
-            var page = btn.attr('data-page');
-            var acts_wrapper = $('.actions-wrapper');
 
 
-            function loadNext(page, cb){
-
-                btn.html('<i class="fa fa-spinner fa-spin"></i>');
-
-                var o = {
-                    command: 'get_afisha',
-                    params: {
-                        url: gurl,
-                        page_no:  page,
-                        rows_max_num: 15
-                    }
-                };
-
-                for(var i in filters){
-                    var f = filters[i];
-                    o.params[i] = f;
-                }
-
-
-                socketQuery_site(o, function(res){
-
-
-
-                    if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
-
-                        var actions = jsonToObj(JSON.parse(res)['results'][0]);
-
-
-//                        var act_m_tpl = '{{#actions}}<a href="/{{alias_link}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
-//                            '<div class="mb-me-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div>'+
-//                            '<div class="mb-me-a-title">{{ACTION_NAME}}</div>'+
-//                            '<div class="mb-me-a-venue">{{VENUE_NAME}}</div>'+
-//                            '<div class="mb-me-a-price">{{price_range}}</div>'+
-//                            '<div class="mb-me-a-age">{{AGE_CATEGORY}}</div>'+
-//                            '<div class="mb-me-a-date">{{#is_show}}с {{/is_show}}{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
-//                            '</div></a>{{/actions}}';
-
-
-                        var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
-                                        '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
-                                        '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
-                                        '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
-                                        '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
-                                        '<div class="mb-a-buy-holder">'+
-                                        '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
-                                        '</div>'+
-                                        '</div>{{/actions}}';
-
-                        var a_data = {actions: []};
-
-                        for(var i in actions){
-                            actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
-                            actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
-                            actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
-                            actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
-
-                            a_data.actions.push(actions[i]);
-                        }
-
-
-
-
-                        if(a_data.actions.length == 0){
-                            btn.attr('data-page', page);
-                            btn.remove();
-
-                        }else{
-                            acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
-                            if(a_data.actions.length < 15){
-                                btn.remove();
-                            }
-                        }
-
-
-                        if(cb && typeof cb == 'function'){
-                            btn.attr('data-page', page);
-                            btn.html('Загрузить еще');
-                            cb();
-                        }
-
-                    }else{
-                        btn.attr('data-page', page);
-                        acts_wrapper.append(errorHtml);
-                        if(cb && typeof cb == 'function'){
-                            cb();
-                        }
-                    }
-
-
-                });
-
-            }
-
-
-
-            if(!page){
-                loadNext(2, function(){
-
-                });
-            }else{
-                loadNext(+page + 1, function(){
-
-                });
-            }
-
-        });
     };
 
     Filter.prototype.return_value = function(){
@@ -765,6 +684,107 @@
                 }, 250, function(){
 
                 });
+            });
+
+
+            $('#load_next').off('click').on('click', function(){
+                var btn = $(this);
+                var page = btn.attr('data-page');
+                var acts_wrapper = $('.actions-wrapper');
+
+
+                function loadNext(page, cb){
+
+                    btn.html('<i class="fa fa-spinner fa-spin"></i>');
+
+                    var o = {
+                        command: 'get_afisha',
+                        params: {
+                            url: gurl,
+                            page_no:  page,
+                            rows_max_num: 15
+                        }
+                    };
+
+                    for(var i in filters){
+                        var f = filters[i];
+                        o.params[i] = f;
+                    }
+
+
+                    console.log('OBJ', o);
+
+                    socketQuery_site(o, function(res){
+
+
+
+                        if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
+
+                            var actions = jsonToObj(JSON.parse(res)['results'][0]);
+
+                            var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
+                                '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
+                                '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
+                                '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                                '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
+                                '<div class="mb-a-buy-holder">'+
+                                '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
+                                '</div>'+
+                                '</div>{{/actions}}';
+
+                            var a_data = {actions: []};
+
+                            for(var i in actions){
+                                actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                                actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                                actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                                actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
+                                a_data.actions.push(actions[i]);
+                            }
+
+                            if(a_data.actions.length == 0){
+                                btn.attr('data-page', page);
+                                btn.remove();
+
+                            }else{
+                                acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
+                                if(a_data.actions.length < 15){
+                                    btn.remove();
+                                }
+                            }
+
+
+                            if(cb && typeof cb == 'function'){
+                                btn.attr('data-page', page);
+                                btn.html('Загрузить еще');
+                                cb();
+                            }
+
+                        }else{
+                            btn.attr('data-page', page);
+                            acts_wrapper.append(errorHtml);
+                            if(cb && typeof cb == 'function'){
+                                cb();
+                            }
+                        }
+
+                    });
+
+                }
+
+
+
+                if(!page){
+                    loadNext(2, function(){
+
+                    });
+                }else{
+                    loadNext(+page + 1, function(){
+
+                    });
+                }
+
             });
 
             uiTabs();
