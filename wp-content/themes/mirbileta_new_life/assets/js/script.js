@@ -525,11 +525,12 @@
                 o.params[i] = f;
             }
 
+            $('.filter-count-actions, .sc-filter-count-actions').html('<i class="fa fa-spinner fa-spin"></i>');
+
             socketQuery_site(o, function(res){
                 var jRes = JSON.parse(res)['results'][0];
 
-
-                if(jRes.code == 0){
+                if(!jRes.code){
                     $('.submit-filters, .sc-submit-filters').removeClass('disabled');
 
                     if(jRes.count == 0){
@@ -1024,32 +1025,30 @@
             });
 
 
-
+            var t1 = window.setTimeout(function(){}, 200);
 
             search.off('input').on('input', function(){
 
-                if(lastInputTime === undefined) lastInputTime = new Date();
-
                 var val = $(this).val();
+
                 if(val.length > 1){
+
                     search_dd.show(0);
 
-                    var curTime = new Date();
+                    if(typeof t1 == 'number'){
 
-                    if(curTime - lastInputTime >= 300){
+                        clearTimeout(t1);
 
-                        console.log('RUN QUERY', search.val());
+                        t1 = window.setTimeout(function(){
+                            console.log(search.val());
 
-                        lastInputTime = curTime;
+                            runQuery(function(){
 
+                            });
 
-                        runQuery(function(){
+                        }, 300);
 
-                            lastInputTime = undefined;
-
-                        });
                     }
-
 
                 }else if(val.length == 0){
                     search_dd.hide(0);
