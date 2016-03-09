@@ -25,6 +25,11 @@
 }
 
 @font-face {
+    font-family: 'Helvetica-Bold';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Bold.otf);
+}
+
+@font-face {
     font-family: 'Rambla-Regular';
     src: url(../fonts/Rambla/Rambla-Regular.ttf);
 }
@@ -41,6 +46,39 @@
     font-family: 'PTSans-Bold';
     src: url(../fonts/PT_sans/PT_Sans-Web-Bold.ttf);
 }
+
+@font-face {
+    font-family: 'Arvo-Regular';
+    src: url(../fonts/arvo/Arvo-Regular.ttf);
+}
+@font-face {
+    font-family: 'Arvo-Italic';
+    src: url(../fonts/arvo/Arvo-Italic.ttf);
+}
+@font-face {
+    font-family: 'Arvo-Bold';
+    src: url(../fonts/arvo/Arvo-Bold.ttf);
+}
+@font-face {
+    font-family: 'Arvo-BoldItalic';
+    src: url(../fonts/arvo/Arvo-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url(../fonts/Roboto_Condensed/RobotoCondensed-Light.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url(../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url(../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf);
+}
+
 
 .posRel{
     position: relative;

@@ -96,6 +96,22 @@
 
     }
 
+    function getCookie(c_name)
+    {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+
     var Filter = function(params){
         this.data =     {};
         this.id =       params.id || getGuid();
@@ -264,21 +280,21 @@
 
             if(!_t.wrapper.attr('data-inputs') || _t.wrapper.attr('data-inputs') != 'false'){
                 inputshtml = '<div class="mb-tf-rangeslider-inputs">' +
-                                '<input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value="1000"/>' +
-                                '&mdash;' +
-                                '<input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value="10000"/>' +
-                              '</div>' ;
+                    '<input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value="1000"/>' +
+                    '&mdash;' +
+                    '<input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value="10000"/>' +
+                    '</div>' ;
             }else{
                 inputshtml = '';
             }
 
 
             tpl =  '<div class="mb-tf-header">'+
-                        '<div class="mb-tf-title">{{name_ru}}</div>'+
-                    '</div>'+
-                    '<div class="mb-tf-body">'+
-                        '<div class="mb-tf-rangeslider"></div>' + inputshtml +
-                    '</div>';
+                '<div class="mb-tf-title">{{name_ru}}</div>'+
+                '</div>'+
+                '<div class="mb-tf-body">'+
+                '<div class="mb-tf-rangeslider"></div>' + inputshtml +
+                '</div>';
 
             mO = {
                 name_ru: _t.name_ru
@@ -290,15 +306,15 @@
         }else if(_t.type == 'daterange'){
 
             tpl =   '<div class="mb-tf-header">'+
-                        '<div class="mb-tf-title">{{name_ru}}</div>'+
-                    '</div>'+
-                    '<div class="mb-tf-body">'+
-                        '<div class="taCenter">'+
-                            '<input class="mb-tf-rs-input mb-tf-fil-from-date" type="text" placeholder=""/>'+
-                            '&mdash;'+
-                            '<input class="mb-tf-rs-input mb-tf-fil-to-date" type="text" placeholder=""/>'+
-                        '</div>'+
-                    '</div>';
+                '<div class="mb-tf-title">{{name_ru}}</div>'+
+                '</div>'+
+                '<div class="mb-tf-body">'+
+                '<div class="taCenter">'+
+                '<input class="mb-tf-rs-input mb-tf-fil-from-date" type="text" placeholder=""/>'+
+                '&mdash;'+
+                '<input class="mb-tf-rs-input mb-tf-fil-to-date" type="text" placeholder=""/>'+
+                '</div>'+
+                '</div>';
 
 
 
@@ -314,7 +330,7 @@
                 '<div class="mb-tf-title">{{name_ru}}</div>'+
                 '</div>'+
                 '<div class="mb-tf-body">'+
-                    '<input class="mb-tf-rs-input mb-search-byname" type="text" placeholder="Поиск по названию"/>'+
+                '<input class="mb-tf-rs-input mb-search-byname" type="text" placeholder="Поиск по названию"/>'+
                 '</div>';
 
             mO = {
@@ -1009,9 +1025,9 @@
                 search_dd.show(0);
                 s_from_date.datepicker('update', datePicked);
 
-                if(s_to_date.val().length == 0){
-                    s_to_date.datepicker('update', datePicked);
-                }
+//                if(s_to_date.val().length == 0){
+//                    s_to_date.datepicker('update', datePicked);
+//                }
 
 
                 runQuery(function(){});
@@ -1235,6 +1251,167 @@
 
                 }
             });
+        },
+        initContest: function(){
+
+            var contestHolder = $('.contest-holder');
+            var timerHolder = $('.contest-fast-timer');
+            // FAST CONTEST
+            (function(){
+
+                var s = '';
+                function runTimer(startTime, timeAgo){
+
+                    var delta = moment() - startTime;
+                    var totalDelta = timeAgo + delta;
+                    var s2 = moment(totalDelta).format('mm:ss:SS');
+                    if (s!== s2){
+                        s = s2;
+                        timerHolder.html('<span class="contest-fast-timer-time">' + s + '</span>');
+                    }
+                }
+
+                $('.contest-fast-open-rules').off('click').on('click', function(){
+
+                    $('html, body').animate({
+                        scrollTop: $('.contest-fast-rules').offset().top + 'px'
+                    }, 350, function(){
+
+                    });
+
+                });
+
+                $('.contest-fast-close').off('click').on('click', function(){
+                    contestHolder.hide(0);
+                });
+
+                $('.contest-fast-reject').off('click').on('click', function(){
+
+                    localStorage.setItem('mb-fast-reject', 'REJECT');
+                    contestHolder.hide(0);
+                });
+
+                $('.contest-fast-go').off('click').on('click', function(){
+                    var self = this;
+                    contestHolder.hide(0);
+
+                    if(localStorage){
+
+                        if(localStorage.getItem('mb-fast-contest') == null){
+
+                            var starto = {
+                                command: 'start_create_order'
+                            };
+
+                            socketQuery_b2e(starto, function(res){
+
+                                var jRes = JSON.parse(res);
+
+                                if(jRes.results[0].code == 0){
+
+                                    var session_id = jRes.results[0].session_id;
+
+
+                                    var o = {
+                                        start: new Date(),
+                                        sid: session_id,
+                                        device: navigator.userAgent
+                                    };
+
+                                    localStorage.setItem('mb-fast-contest', JSON.stringify(o));
+
+                                    if($(self).parents('.contest-fast-timer-rate').length > 0){
+                                        document.location.href = '/';
+                                        return;
+                                    }
+
+                                    contestData = o;
+
+                                    var startTime = moment();
+                                    var timeAgo = startTime - moment(contestData.start);
+                                    setInterval(function(){
+                                        runTimer(startTime ,timeAgo);
+                                    },1);
+
+                                    $('html, body').animate({
+                                        scrollTop: 0
+                                    }, 250);
+                                }else{
+                                    toastr['error']('Ошибка сервера');
+                                }
+
+                            });
+
+                        }else{
+
+                        }
+                    }
+                });
+
+                if(!!localStorage){
+
+                    var contestData = localStorage.getItem('mb-fast-contest');
+
+                    if(localStorage.getItem('mb-fast-contest') != null){
+
+                        $('.contest-page-footer .contest-fast-go').hide(0);
+
+                        contestData = JSON.parse(contestData);
+
+                        var startTime = moment();
+                        var timeAgo = startTime - moment(contestData.start);
+                        setInterval(function(){
+                            runTimer(startTime ,timeAgo);
+                        },1);
+
+                    }else{
+
+                        if(localStorage.getItem('mb-fast-reject') != null || localStorage.getItem('mb-fast-contest-finished') != null){
+
+                            if(localStorage.getItem('mb-fast-reject') != null && localStorage.getItem('mb-fast-reject') == 'REJECT'){
+                                $('.contest-page-footer .contest-fast-go').show(0);
+                                return;
+                            }
+
+                            if(localStorage.getItem('mb-fast-contest-finished') != null && localStorage.getItem('mb-fast-contest-finished') == 'TRUE'){
+
+                                if(document.location.href.indexOf('success') == -1){
+                                    contestHolder.find('.contest-fast-wrapper h3').html('Попробуете еще раз?').show(0);
+                                    $('.contest-page-footer .contest-fast-go').show(0);
+                                }
+                            }
+                        }
+
+                        if(document.location.href.indexOf('success') == -1 && document.location.href.indexOf('contest-fast') == -1){
+                            contestHolder.show(0);
+                        }
+
+                        $('.contest-page-footer .contest-fast-go').show(0);
+                    }
+                }
+
+                var resultsTable = $('table.contest-fast-results');
+                var trs = resultsTable.find('tbody tr');
+
+                $('.find-contest-result-input').off('input').on('input', function(){
+
+                    trs.show(0);
+
+                    var val = $(this).val();
+
+                    trs.each(function(i, elem){
+                        var tr = $(elem);
+
+                        if(tr.attr('data-order').indexOf(val) == -1){
+                            tr.hide(100);
+                        }
+
+                    });
+
+                });
+
+            }());
+
         }
 
     };
@@ -1249,6 +1426,7 @@
         fs.initSlider();
         fs.initScroll();
         fs.initInPageSearch();
+        fs.initContest();
 
     });
 

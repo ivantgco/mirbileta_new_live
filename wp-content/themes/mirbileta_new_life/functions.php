@@ -74,6 +74,9 @@ function to_afisha_date($str, $format, $lang)
         case 'short_date':
             $res = $dd . ' ' . $mths[$lang][intval($mm)-1];
             break;
+        case 'year':
+            $res = $yy;
+            break;
         case 'short_date_with_year':
             $res = $dd . ' ' . $mths[$lang][intval($mm)-1] . ' ' . $yy;
             break;
@@ -91,6 +94,9 @@ function to_afisha_date($str, $format, $lang)
             break;
         case 'mounth_only':
             $res = $months[$lang][intval($str)-1];
+            break;
+        case 'is_holiday':
+            $res = date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00"));
             break;
         default:
             break;
@@ -119,6 +125,7 @@ function my_theme_load_resources() {
     wp_enqueue_script('blur',           get_stylesheet_directory_uri() . '/assets/plugins/blur/blur.js');
     wp_enqueue_script('mb_checkbox',    get_stylesheet_directory_uri() . '/assets/plugins/mb-chekbox/mb-checkbox.js');
     wp_enqueue_script('uitabs',         get_stylesheet_directory_uri() . '/assets/plugins/uiTabs/uiTabs.js');
+    wp_enqueue_script('moment',         get_stylesheet_directory_uri() . '/assets/plugins/moment/moment.js');
     wp_enqueue_script('mustache',       get_stylesheet_directory_uri() . '/assets/plugins/mustache/mustache.js');
     wp_enqueue_script('rangeslider',    get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/js/ion-rangeSlider/ion.rangeSlider.min.js');
     wp_enqueue_script('datepicker',     get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js');

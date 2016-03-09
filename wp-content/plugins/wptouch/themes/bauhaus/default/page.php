@@ -7,15 +7,21 @@
 
 <?php } else { ?>
 
+
+
 	<?php get_header(); ?>
 
-	<div id="content">
+	<div id="content" class="main-page">
+
+
 
 
         <?php
 
         include('custom_slider.php');
+        include('custom_inline_menu.php');
         include('custom_top_sales.php');
+        include('custom_footer.php');
 
         ?>
 
@@ -27,12 +33,12 @@
 <!--		--><?php //} ?>
 	</div> <!-- content -->
 
-	<?php if ( comments_open() || have_comments() ) { ?>
-		<div id="comments">
-			<?php comments_template(); ?>
-		</div>
-	<?php } ?>
+<!--	--><?php //if ( comments_open() || have_comments() ) { ?>
+<!--		<div id="comments">-->
+<!--			--><?php //comments_template(); ?>
+<!--		</div>-->
+<!--	--><?php //} ?>
 
-	<?php get_footer(); ?>
+<!--	--><?php //get_footer(); ?>
 
 <?php } ?>

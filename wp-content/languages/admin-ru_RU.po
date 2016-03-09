@@ -16,79 +16,79 @@ msgstr "Спасибо за обновление! WordPress %s делает ва
 
 #. translators: 1: WP_Term class name, WP_Comment class name, WP_Network class
 #. name
-#: wp-admin/about.php:185
+#: wp-admin/about.php:189
 msgid "New %1$s, %2$s, and %3$s objects make interacting with terms, comments, and networks more predictable and intuitive in code."
 msgstr "Новые объекты %1$s, %2$s и %3$s делают взаимодействие с элементами, комментариями и сетями на уровне кода более простым и понятным."
 
 #. translators: WP_Comment_Query class name
-#: wp-admin/about.php:178
+#: wp-admin/about.php:182
 msgid "Comment queries now have cache handling to improve performance. New arguments in %s make crafting robust comment queries simpler."
 msgstr "Запросы комментариев теперь поддерживают кеширование. С помощью новых аргументов %s можно создавать более гибкие запросы."
 
-#: wp-admin/about.php:182
+#: wp-admin/about.php:186
 msgid "Term, comment, and network objects"
 msgstr "Объекты элементов и комментариев"
 
-#: wp-admin/about.php:175
+#: wp-admin/about.php:179
 msgid "Comment query improvements"
 msgstr "Улучшения в запросах комментариев"
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:168
 msgid "Term meta"
 msgstr "Метаданные для элементов"
 
 #. translators: 1: add_term_meta() docs link, 2: get_term_meta() docs link, 3:
 #. update_term_meta() docs link
-#: wp-admin/about.php:167
+#: wp-admin/about.php:171
 msgid "Terms now support metadata, just like posts. See %1$s, %2$s, and %3$s for more information."
 msgstr "Элементы таксономий теперь поддерживают метаданные, как и записи. См. %1$s, %2$s и %3$s."
 
 #. translators: WordPress REST API plugin link
-#: wp-admin/about.php:156
+#: wp-admin/about.php:160
 msgid "Infrastructure is the first part of a multi-stage rollout for the REST API. Inclusion of core endpoints is targeted for an upcoming release. To get a sneak peek of the core endpoints, and for more information on extending the REST API, check out the official %s plugin."
 msgstr "Инфраструктура — первый из запланированных этапов интеграции REST API. Интеграция точек входа запланирована на одну из будущих версий. Чтобы посмотреть точки входа ядра и узнать больше о расширении REST API, установите плагин %s."
 
-#: wp-admin/about.php:139
+#: wp-admin/about.php:143
 msgid "Infrastructure for the REST API has been integrated into core, marking a new era in developing with WordPress. The REST API serves to provide developers with a path forward for building and extending RESTful APIs on top of WordPress."
 msgstr "В ядро интегрирована инфраструктура REST API, что означает новую эру в разработке для WordPress. REST API позволяет разработчикам создавать и расширять приложения с использованием RESTful API на основе WordPress."
 
-#: wp-admin/about.php:137
+#: wp-admin/about.php:141
 msgid "REST API infrastructure"
 msgstr "Инфраструктура REST API"
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:130
 msgid "In addition to post embeds, WordPress 4.4 also adds support for five new oEmbed providers: Cloudup, Reddit&nbsp;Comments, ReverbNation, Speaker&nbsp;Deck, and VideoPress."
 msgstr "Помимо вставки записей, WordPress 4.4 поддерживает вставку объектов с пяти новых сервисов oEmbed: Cloudup, Reddit, ReverbNation, Speaker&nbsp;Deck и VideoPress."
 
-#: wp-admin/about.php:125
+#: wp-admin/about.php:129
 msgid "Even more embed providers"
 msgstr "Ещё больше провайдеров объектов"
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:116
 msgid "Now you can embed your posts on other sites, even other WordPress sites. Simply drop a post URL into the editor and see an instant embed preview, complete with the title, excerpt, and featured image if you&#8217;ve set one. We&#8217;ll even include your site icon and links for comments and sharing."
 msgstr "Теперь можно добавлять ваши записи на другие сайты, включая сайты под управлением WordPress. Просто вставьте URL записи в редактор, и вы увидите карточку записи, включая заголовок, фрагмент текста и миниатюру (если есть). Там также будут иконка сайта, ссылка на комментарии и варианты вставки на другие сайты."
 
-#: wp-admin/about.php:98
+#: wp-admin/about.php:102
 msgid "WordPress now takes a smarter approach to displaying appropriate image sizes on any device, ensuring a perfect fit every time. You don&#8217;t need to do anything to your theme, it just works."
 msgstr "WordPress выбирает наиболее подходящие для того или иного устройства размеры изображений, в соответствии с разрешением экрана. Тему оформления менять не нужно, всё работает и так."
 
-#: wp-admin/about.php:111
+#: wp-admin/about.php:115
 msgid "Embed your WordPress content"
 msgstr "Вставка материалов"
 
-#: wp-admin/about.php:97
+#: wp-admin/about.php:101
 msgid "Responsive images"
 msgstr "Адаптивные изображения"
 
-#: wp-admin/about.php:75
+#: wp-admin/about.php:79
 msgid "Twenty Sixteen was built to look great on any device. A fluid grid design, flexible header, fun color schemes, and more, will make your content shine."
 msgstr "Twenty Sixteen прекрасно выглядит на любом устройстве. Растяжимая сетка, гибкий заголовок, цветовые схемы и аккуратное оформление представят ваши материалы в лучшем виде."
 
-#: wp-admin/about.php:74
+#: wp-admin/about.php:78
 msgid "Our newest default theme, Twenty Sixteen, is a modern take on a classic blog design."
 msgstr "Наша новая тема, Twenty Sixteen, — современная версия классического дизайна для блога."
 
-#: wp-admin/about.php:67
+#: wp-admin/about.php:71
 msgid "Twenty Sixteen"
 msgstr "Twenty Sixteen"
 
@@ -112,7 +112,7 @@ msgid "Welcome to %s. This is your first post. Edit or delete it, then start blo
 msgstr "Добро пожаловать на сайт %s. Это ваша первая запись. Отредактируйте или удалите её, затем пишите!"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:222
+#: wp-admin/about.php:226
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "В <strong>версии %s</strong> решена проблема с безопасностью."
 
@@ -129,15 +129,15 @@ msgstr "Аватар можно изменить на сайте <a href=\"%s\">
 msgid "Profile Picture"
 msgstr "Аватар"
 
-#: wp-admin/about.php:219
+#: wp-admin/about.php:223
 msgid "Maintenance and Security Releases"
 msgstr "Технические обновления безопасности"
 
-#: wp-admin/about.php:216
+#: wp-admin/about.php:220
 msgid "Security Releases"
 msgstr "Обновления безопасности"
 
-#: wp-admin/about.php:213
+#: wp-admin/about.php:217
 msgid "Maintenance Releases"
 msgstr "Технические обновления"
 
@@ -317,7 +317,7 @@ msgstr "Файлы в каталоге %s выполняются автомат�
 msgid "You are not allowed to manage these items."
 msgstr "Вам не разрешено редактировать эти элементы."
 
-#: wp-admin/widgets.php:431
+#: wp-admin/widgets.php:436
 msgid "This will clear all items from the inactive widgets list. You will not be able to restore any customizations."
 msgstr "Эта функция удалит все элементы из списка неактивных виджетов. Вы не сможете вернуть сделанные изменения."
 
@@ -333,7 +333,7 @@ msgstr "Список пользователей"
 msgid "One of the selected users is not a member of this site."
 msgstr "Один из выбранных пользователей не является участником сайта."
 
-#: wp-admin/widgets.php:423
+#: wp-admin/widgets.php:426
 msgid "Clear Inactive Widgets"
 msgstr "Очистить неактивные виджеты"
 
@@ -1993,7 +1993,7 @@ msgstr "Вы авторизованы только в текущем брауз�
 msgid "Log Out Everywhere"
 msgstr "Завершить все сессии"
 
-#: wp-admin/about.php:73
+#: wp-admin/about.php:77
 msgid "Introducing Twenty Sixteen"
 msgstr "Встречайте Twenty Sixteen"
 
@@ -2783,7 +2783,7 @@ msgstr "Показать предыдущую тему"
 msgid "Show next theme"
 msgstr "Показать следующую тему"
 
-#: wp-admin/widgets.php:498
+#: wp-admin/widgets.php:504
 msgid "Add Widget"
 msgstr "Добавить виджет"
 
@@ -4990,12 +4990,12 @@ msgid "Contributing Developers"
 msgstr "Помощники по разработке"
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:55 wp-admin/about.php:239
+#: wp-admin/about.php:55 wp-admin/about.php:59 wp-admin/about.php:243
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Дополнительную информацию можно найти в <a href=\"%s\">заметке о релизе</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:227
+#: wp-admin/about.php:231
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> исправлена %2$s ошибка."
@@ -5004,7 +5004,7 @@ msgstr[2] "В <strong>версии %1$s</strong> исправлены %2$s ош�
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:231
+#: wp-admin/about.php:235
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> решена проблема с безопасностью и исправлена %2$s ошибка."
@@ -5013,7 +5013,7 @@ msgstr[2] "В <strong>версии %1$s</strong> решена проблема �
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:53 wp-admin/about.php:235
+#: wp-admin/about.php:53 wp-admin/about.php:57 wp-admin/about.php:239
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "В <strong>версии %1$s</strong> решены несколько проблем с безопасностью и исправлена %2$s ошибка."
@@ -5028,15 +5028,15 @@ msgstr "Добро пожаловать в консоль WordPress! Этот э
 msgid "What&#8217;s New"
 msgstr "Что нового"
 
-#: wp-admin/about.php:212
+#: wp-admin/about.php:216
 msgid "Maintenance Release"
 msgstr "Техническое обновление"
 
-#: wp-admin/about.php:215
+#: wp-admin/about.php:219
 msgid "Security Release"
 msgstr "Обновление безопасности"
 
-#: wp-admin/about.php:52 wp-admin/about.php:218
+#: wp-admin/about.php:52 wp-admin/about.php:222
 msgid "Maintenance and Security Release"
 msgid_plural "Maintenance and Security Releases"
 msgstr[0] "Техническое обновление безопасности"
@@ -5044,7 +5044,7 @@ msgstr[1] "Технические обновления безопасности"
 msgstr[2] "Технические обновления безопасности"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:224
+#: wp-admin/about.php:228
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "В <strong>версии %s</strong> решены несколько проблем с безопасностью."
 
@@ -5056,7 +5056,7 @@ msgstr "На этом экране можно выбрать структуру 
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "Добро пожаловать в WordPress %1$s. <a href=\"%2$s\">Узнать больше</a>."
 
-#: wp-admin/about.php:197
+#: wp-admin/about.php:201
 msgid "Return to Updates"
 msgstr "Вернуться на страницу &laquo;Обновления&raquo;"
 
@@ -5344,11 +5344,11 @@ msgstr "Похоже, для вызова функции add_meta_box() был �
 msgid "Welcome to WordPress %s"
 msgstr "Добро пожаловать в WordPress %s"
 
-#: wp-admin/about.php:197
+#: wp-admin/about.php:201
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Вернуться на страницу &laquo;Консоль&raquo; &rarr; &laquo;Обновления&raquo;"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:204
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Перейти на страницу &laquo;Консоль&raquo; &rarr; &laquo;Главная&raquo;"
 
@@ -5360,7 +5360,7 @@ msgstr "WordPress развивается силами международной
 msgid "Core Developers"
 msgstr "Разработчики ядра"
 
-#: wp-admin/about.php:133
+#: wp-admin/about.php:137
 msgid "Under the Hood"
 msgstr "Под капотом"
 
@@ -7522,7 +7522,7 @@ msgstr "Вы уверены, что хотите удалить эти файл�
 msgid "Inactive:"
 msgstr "Неактивен:"
 
-#: wp-admin/about.php:200
+#: wp-admin/about.php:204
 msgid "Go to Dashboard"
 msgstr "Перейти на страницу &laquo;Консоль&raquo;"
 

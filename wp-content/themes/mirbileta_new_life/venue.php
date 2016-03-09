@@ -74,7 +74,9 @@ include('main_menu.php');
 //echo $url;
 
 $address = $data[array_search("VENUE_ADDRESS", $columns)];
-$g_address = $data[array_search("VENUE_ADDRESS", $columns)];
+$g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
+
+
 
 ?>
 

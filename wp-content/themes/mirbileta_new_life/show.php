@@ -30,30 +30,19 @@
     $data = json_decode($resp)->results["0"]->data;
 
     $act_id =       $data[0][array_search("ACTION_ID", $columns)];
-//    $alias =        $data[0][array_search("ACTION_URL_ALIAS", $columns)];
-//    $frame =        $data[0][array_search("FRAME", $columns)];
+    $alias =        $data[0][array_search("ACTION_URL_ALIAS", $columns)];
+
     $act_name =     $data[0][array_search("ACTION_NAME", $columns)];
     $g_act_name =     $data[0][array_search("ACTION_NAME", $columns)];
-    $thumb =        (strlen($data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] )> 0) ? (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
-    $poster =       (strlen($data[array_search("ACTION_POSTER_IMAGE", $columns)] )> 0) ? (strpos("http", $data[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_IMAGE", $columns)]: '';
-//    $thumb =        (strpos("http", $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
-//    $poster =       (strpos("http", $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_IMAGE", $columns)];
-//    $act_date =     $data[0][array_search("ACTION_DATE_STR", $columns)];
-//    $act_time =     $data[0][array_search("ACTION_TIME_STR", $columns)];
+    $thumb =        (strlen($data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] )> 0) ? (strpos("http", $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
+    $poster =       (strlen($data[0][array_search("ACTION_POSTER_IMAGE", $columns)] )> 0) ? (strpos("http", $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]: '';
     $hall =         $data[0][array_search("HALL_NAME", $columns)];
     $genre =        $data[0][array_search("SHOW_GENRE", $columns)];
     $venue =        $data[0][array_search("VENUE_NAME", $columns)];
     $address =      $data[0][array_search("VENUE_ADDRESS", $columns)];
     $g_address =      $data[0][array_search("HALL_GOOGLE_ADDRESS", $columns)];
-    $tag_list =     $data[array_search("ACTION_TAG_LIST", $columns)];
-    $actor_list =     $data[array_search("ACTION_ACTOR_LIST", $columns)];
-//    $free_places =  $data[0][array_search("FREE_PLACE_COUNT", $columns)];
-//    $minprice =     $data[0][array_search("MIN_PRICE", $columns)];
-//    $maxprice =     $data[0][array_search("MAX_PRICE", $columns)];
-//    $day_of_week =  $data[0][array_search("ACTION_DAY_OF_WEEK", $columns)];
-//    $duration =     $data[0][array_search("DURATION_HOUR_MIN", $columns)];
-//    $is_wo =        $data[0][array_search("ACTION_TYPE", $columns)] == 'ACTION_WO_PLACES';
-//    $sbag =         $data[0][array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
+    $tag_list =     $data[0][array_search("ACTION_TAG_LIST", $columns)];
+    $actor_list =     $data[0][array_search("ACTION_ACTOR_LIST", $columns)];
 
     $isInfo = strlen($description) > 0;
     $description = $data[0][array_search("DESCRIPTION", $columns)];
@@ -101,7 +90,6 @@
     <?php
     get_header();
     include('main_menu.php');
-
     ?>
 
     <div class="site-content show-page">
@@ -191,7 +179,6 @@
                             $dates_html .= '<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight '.$opened2.'" dataitem="'.$mth_indexer2.'">';
 
 
-
                             foreach($value_m as $in_key => $in_value){
 
                                 $a_alias =      $in_value[array_search("ACTION_URL_ALIAS", $columns)];
@@ -209,13 +196,15 @@
 
                                 $a_mth_1 =          substr($in_value[array_search("ACTION_DATE", $columns)],3,2);
 
+                                $is_holi =          to_afisha_date($in_value[array_search("ACTION_DATE", $columns)], 'is_holiday', 'rus');
+                                $is_holi =          ($is_holi == 6 || $is_holi == 7)? 'holiday' : '';
+
                                 $a_minmaxString = ($a_minprice && $a_maxprice)? ($a_minprice == $a_maxprice)? 'по '. $a_minprice . ' руб.' : 'от ' . $a_minprice . ' до ' . $a_maxprice . ' руб.' : '';
 
                                 $dates_html .=   '<a class="show-action-date-link" href="/'.$a_alias.'">'
                                                  .'<div class="show-action-date">'
                                                     .'<div class="s-a-train">'
-
-                                                        .'<div class="s-a-vagon"><div class="s-a-date">'.$a_date_2.'<span class="s-a-mth">.'.$a_mth_1.'</span></div><div class="s-a-time">'.$a_time.'</div></div>'
+                                                        .'<div class="s-a-vagon"><div class="s-a-date '.$is_holi.'">'.$a_date_2.'<span class="s-a-mth"></span></div><div class="s-a-time">'.$a_time.'</div></div>'
                                                         .'<div class="s-a-vagon"><div class="s-a-places">'.$a_free_places.'</div><div class="s-a-prices">'.$a_minmaxString.'</div><div class="s-a-hall"><i class="fa fa-bank"></i>&nbsp;&nbsp;'.$a_hall.'</div></div>'
 
                                                     .'</div>'
@@ -292,7 +281,16 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="one-action-actors pr50 flLeft">
-                            <div class="one-action-actors-header">Действующе лица:</div>
+
+                            <?php
+                            $actorsArray = json_decode($actor_list);
+
+                            if(count($actorsArray) > 0): ?>
+
+                                <div class="one-action-actors-header">Действующе лица:</div>
+
+                            <?php endif ?>
+
 
                             <ul>
 
@@ -300,26 +298,29 @@
 
                                 // Подгружаем актеров
 
-                                $actorsArray = json_decode($actor_list);
                                 $actors_html = "";
 
-                                foreach ($actorsArray as $key2 => $value2){
+                                if(count($actorsArray) > 0){
+                                    foreach ($actorsArray as $key2 => $value2){
 
-                                    $actor_id =     $value2->id;
-                                    $actor_alias =  $value2->alias;
-                                    $actor_name =   $value2->name;
-                                    $actor_image_small =  $value2->url_image_small;
+                                        $actor_id =     $value2->id;
+                                        $actor_alias =  $value2->alias;
+                                        $actor_name =   $value2->name;
+                                        $actor_image_small =  $value2->url_image_small;
 
 
 
 
-                                    $actors_html .= '<li data-id="'.$actor_id.'"><a class="one-action-actor-link" href="/'.$actor_alias.'"><div class="one-action-actor-image" style="background-image: url('.$actor_image_small.')"></div>'
-                                                        .'<div class="one-action-actor-name">'.$actor_name.'</div>'
-                                                    .'</a></li>';
-                                }
+                                        $actors_html .= '<li data-id="'.$actor_id.'"><a class="one-action-actor-link" href="/'.$actor_alias.'"><div class="one-action-actor-image" style="background-image: url('.$actor_image_small.')"></div>'
+                                            .'<div class="one-action-actor-name">'.$actor_name.'</div>'
+                                            .'</a></li>';
+                                    }
 
 //                                var_dump($actor_columns);
-                                echo $actors_html;
+                                    echo $actors_html;
+                                }
+
+
 
                                 ?>
 
@@ -338,27 +339,33 @@
 
                                 $tag_html = "";
                                 $indexer = 0;
-                                foreach ($tagsArray as $key3 => $value3){
 
-                                    $tag_id =             $value3[array_search("ACTION_TAG_ID", $tag_columns)];
-                                    $tag_name =           $value3[array_search("ACTION_TAG", $tag_columns)];
 
-                                    $tag_html .= '<a class="action-tag-link" href="/extend_search?action_tag_id='.$tag_id.'"><div class="action-tag" data-id="'.$tag_id.'">'.$tag_name.'</div></a>';
+                                if(count($tagsArray) > 0){
+                                    foreach ($tagsArray as $key3 => $value3){
 
-                                    if($indexer == 0){
-                                        $tag_ids .= $tag_id;
-                                    }else{
-                                        $tag_ids .= ','.$tag_id;
+                                        $tag_id =             $value3->id;
+                                        $tag_name =           $value3->name;
+
+                                        $tag_html .= '<a class="action-tag-link" href="/extend_search?action_tag_id='.$tag_id.'"><div class="action-tag" data-id="'.$tag_id.'">'.$tag_name.'</div></a>';
+
+                                        if($indexer == 0){
+                                            $tag_ids .= $tag_id;
+                                        }else{
+                                            $tag_ids .= ','.$tag_id;
+                                        }
+
+
+                                        $indexer++;
                                     }
 
+                                    //                                                            var_dump($tag_columns);
+                                    //                                                            var_dump($tag_data);
 
-                                    $indexer++;
+                                    echo $tag_html;
                                 }
 
-    //                                                            var_dump($tag_columns);
-    //                                                            var_dump($tag_data);
 
-                                echo $tag_html;
 
                                 ?>
 
@@ -380,7 +387,7 @@
                             <div class="one-action-similar-wrapper actions-wrapper marTop40">
                                 <?php
 
-                                $similar_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>4</rows_max_num><action_tag_id>".$tag_ids."</action_tag_id>";
+                                $similar_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_similar_action</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>4</rows_max_num><action_url_alias>".$alias."</action_url_alias>";
 
                                 $ch = curl_init();
 
@@ -397,51 +404,58 @@
                                 else
                                     curl_close($ch);
 
-                                $sim_columns = json_decode($resp4)->results["0"]->data_columns;
-                                $sim_data = json_decode($resp4)->results["0"]->data;
 
+                                if(json_decode($resp4)->results["0"]->code && json_decode($resp4)->results["0"]->code != 0){
 
-                                $sim_actionsHtml = "";
-
-                                foreach ($sim_data as $key4 => $value4){
-
-                                    $act_id =       $value4[array_search("ACTION_ID", $sim_columns)];
-                                    $alias =        $value4[array_search("ACTION_URL_ALIAS", $sim_columns)];
-                                    $frame =        $value4[array_search("FRAME", $sim_columns)];
-                                    $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
-                                    $poster =       (strlen($value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) > 0)? (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)] : $defaultPoster;
-                                    $act_date =     $value4[array_search("ACTION_DATE_STR", $sim_columns)];
-                                    $act_time =     $value4[array_search("ACTION_TIME_STR", $sim_columns)];
-                                    $hall =         $value4[array_search("HALL", $sim_columns)];
-                                    $genre =        $value4[array_search("SHOW_GENRE", $sim_columns)];
-                                    $venue =        $value4[array_search("VENUE_NAME", $sim_columns)];
-                                    $minprice =     $value4[array_search("MIN_PRICE", $sim_columns)];
-                                    $maxprice =     $value4[array_search("MAX_PRICE", $sim_columns)];
-
-                                    $isInfo =       strlen($description) > 0;
-                                    $description =  $value4[array_search("DESCRIPTION", $sim_columns)];
-
-                                    $ageCat =       strlen($value4[array_search("AGE_CATEGORY", $sim_columns)])? $value4[array_search("AGE_CATEGORY", $sim_columns)]: '0+';
-                                    $act_date_time = $value4[array_search("ACTION_DATE_TIME", $sim_columns)];
-
-
-                                    $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                        .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
-                                        .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
-                                        .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-                                        .'<div class="mb-a-venue">'.$venue.'</div>'
-                                        .'<div class="mb-a-buy-holder">'
-                                        .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
-                                        .'</div>'
-                                        .'</div>';
-                                }
-
-                                if(strlen($sim_actionsHtml) == 0){
                                     echo '<div class="somethinggoeswrong">Мероприятие настолько уникально, что нет ничего похожего...</div>';
-                                }else{
-                                    echo $sim_actionsHtml;
-                                }
 
+                                }else{
+
+                                    $sim_columns = json_decode($resp4)->results["0"]->data_columns;
+                                    $sim_data = json_decode($resp4)->results["0"]->data;
+
+
+                                    $sim_actionsHtml = "";
+
+                                    foreach ($sim_data as $key4 => $value4){
+
+                                        $act_id =       $value4[array_search("ACTION_ID", $sim_columns)];
+                                        $alias =        $value4[array_search("ACTION_URL_ALIAS", $sim_columns)];
+                                        $frame =        $value4[array_search("FRAME", $sim_columns)];
+                                        $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
+                                        $poster =       (strlen($value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) > 0)? (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)] : $defaultPoster;
+                                        $act_date =     $value4[array_search("ACTION_DATE_STR", $sim_columns)];
+                                        $act_time =     $value4[array_search("ACTION_TIME_STR", $sim_columns)];
+                                        $hall =         $value4[array_search("HALL", $sim_columns)];
+                                        $genre =        $value4[array_search("SHOW_GENRE", $sim_columns)];
+                                        $venue =        $value4[array_search("VENUE_NAME", $sim_columns)];
+                                        $minprice =     $value4[array_search("MIN_PRICE", $sim_columns)];
+                                        $maxprice =     $value4[array_search("MAX_PRICE", $sim_columns)];
+
+                                        $isInfo =       strlen($description) > 0;
+                                        $description =  $value4[array_search("DESCRIPTION", $sim_columns)];
+
+                                        $ageCat =       strlen($value4[array_search("AGE_CATEGORY", $sim_columns)])? $value4[array_search("AGE_CATEGORY", $sim_columns)]: '0+';
+                                        $act_date_time = $value4[array_search("ACTION_DATE_TIME", $sim_columns)];
+
+
+                                        $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
+                                            .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
+                                            .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
+                                            .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
+                                            .'<div class="mb-a-venue">'.$venue.'</div>'
+                                            .'<div class="mb-a-buy-holder">'
+                                            .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
+                                            .'</div>'
+                                            .'</div>';
+                                    }
+
+                                    if(strlen($sim_actionsHtml) == 0){
+                                        echo '<div class="somethinggoeswrong">Мероприятие настолько уникально, что нет ничего похожего...</div>';
+                                    }else{
+                                        echo $sim_actionsHtml;
+                                    }
+                                }
                                 ?>
                             </div>
                         </div>

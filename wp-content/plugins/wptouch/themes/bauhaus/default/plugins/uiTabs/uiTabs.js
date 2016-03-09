@@ -12,7 +12,15 @@ var uiTabs = function(){
         item.css('display','block');
     }
 
-    $(document).on('click', '.sc_tabulatorToggler', function () {
+//
+//    $(document).on('click', function(e){
+//        alert($(e.target).attr('class'));
+//    });
+
+    $('.sc_tabulatorToggler').off('click').on('click', function(){
+
+//    $(document).on('click', '.sc_tabulatorToggler', function () {
+
         var parent = $(this).parents('.sc_tabulatorParent').eq(0),
             togRow = parent.find('.sc_tabulatorToggleRow').eq(0),
             togglers = togRow.find('.sc_tabulatorToggler'),

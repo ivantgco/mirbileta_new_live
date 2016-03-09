@@ -5,6 +5,9 @@
 
 //include ("../../../vendor/fightbulc/moment/src/Moment.php");
 
+//include 'zaglushka.php';
+//return false;
+
 ?>
 
 
@@ -43,16 +46,19 @@
 
 <body <?php body_class(); ?>>
 
+
 <?php
     get_header();
     include('slider.php');
-    include('main_menu.php');
+//    include('main_menu_main.php');
 
 ?>
 
+
+
+
 <div class="site-content">
     <div class="container">
-
         <div class="content-block most-important">
 
             <?php include('top_sales.php'); ?>

@@ -21,11 +21,12 @@
 
     $action_count = count($data);
     $full_width = $action_count * 100;
-    $single_width = 100 / $action_count;
+    $single_width = ($action_count > 0 )? 100 / $action_count: 0;
 ?>
 
 <div class="mmb-slider-holder">
     <div class="mmb-slider-overflow">
+
         <div class="mmb-slider-train" data-max="<?php echo $full_width;?>" data-move="0" style="width: <?php echo $full_width;?>%">
 
 
@@ -38,7 +39,7 @@
 
                     $act_id =                   $value[array_search("ACTION_ID", $columns)];
                     $alias =                    $value[array_search("ACTION_URL_ALIAS", $columns)];
-                    $action_slider_image =      $value[array_search("MOBILE_SLIDER_IMAGE_URL", $columns)];
+                    $action_slider_image =      (strlen($value[array_search("MOBILE_SLIDER_IMAGE_URL", $columns)]) > 0)? $value[array_search("MOBILE_SLIDER_IMAGE_URL", $columns)] : $value[array_search("ACTION_SLIDER_IMAGE", $columns)];
                     $action_name =              $value[array_search("ACTION_NAME", $columns)];
                     $venue =                    $value[array_search("VENUE_NAME", $columns)];
                     $act_date =                 mmb_get_day($value[array_search("ACTION_DATE_STR", $columns)]);
