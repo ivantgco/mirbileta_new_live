@@ -2746,6 +2746,8 @@ a.nounderline:hover{
 
     position: absolute;
     bottom: 0;
+    width: 148px;
+    min-height: 40px;
 }
 .s-a-places{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
@@ -3760,6 +3762,8 @@ table.contest-fast-results tbody tr:nth-child(odd) td{
     text-align: center;
     color: #777;
     font-size: 22px;
+    cursor: pointer;
+    display: none;
 }
 .contest-fast-full-rules:hover{
     text-decoration: none;
@@ -3814,4 +3818,46 @@ table.contest-fast-results tbody tr:nth-child(odd) td{
     padding-left: 14px;
     padding-right: 12px;
     margin-top: -1px;
+}
+
+.s-a-dow{
+    position: absolute;
+    top: 9px;
+    left: 8px;
+    font-size: 12px;
+}
+
+.mb-tf-block[data-filter="action_tag_id"] .mb-ch-label{
+    max-width: 150px;
+}
+
+
+
+.mbw-add-to-basket-icon{
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    color: #24A71A;
+    padding-top: 24px;
+    left: 7px;
+    font-size: 24px!important;
+    box-shadow: 0 0 25px rgba(70, 142, 17, 0.61);
+    opacity: 1;
+}
+.mbw-remove-from-basket-icon{
+    height: 70px;
+    width: 70px;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    color: red;
+    padding-top: 24px;
+    left: 7px;
+    font-size: 24px!important;
+    box-shadow: 0 0 25px rgba(188, 0, 0, 0.61);
+    opacity: 1;
 }

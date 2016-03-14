@@ -35,6 +35,10 @@
 
     var filters = {};
 
+    function generateDatesList(str){
+
+    }
+
     function getGuid(){
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxxx".replace(/[xy]/g, function (c) {
             var r, v;
@@ -1325,6 +1329,8 @@
                                         return;
                                     }
 
+
+
                                     contestData = o;
 
                                     var startTime = moment();
@@ -1332,6 +1338,10 @@
                                     setInterval(function(){
                                         runTimer(startTime ,timeAgo);
                                     },1);
+
+                                    if($(self).parents('.contest-page-footer').length > 0){
+                                        document.location.href = '/';
+                                    }
 
                                     $('html, body').animate({
                                         scrollTop: 0
@@ -1363,6 +1373,8 @@
                         setInterval(function(){
                             runTimer(startTime ,timeAgo);
                         },1);
+
+                        $('.contest-fast-full-rules').show(0);
 
                     }else{
 
@@ -1407,6 +1419,19 @@
                         }
 
                     });
+
+                });
+
+                $('.contest-fast-full-rules').off('click').on('click', function(){
+
+                    if(!!localStorage){
+                        localStorage.removeItem('mb-fast-reject');
+                        localStorage.removeItem('mb-fast-contest');
+                        localStorage.removeItem('mb-fast-contest-finished');
+                        localStorage.removeItem('mb-fast-contest-finished-result');
+
+                        document.location.href = '/';
+                    }
 
                 });
 

@@ -1149,6 +1149,8 @@
                             runTimer(startTime ,timeAgo);
                         },1);
 
+                        $('.contest-fast-full-rules').show(0);
+
                     }else{
 
                         if(localStorage.getItem('mb-fast-reject') != null || localStorage.getItem('mb-fast-contest-finished') != null){
@@ -1193,6 +1195,19 @@
                         }
 
                     });
+
+                });
+
+                $('.contest-fast-full-rules').off('click').on('click', function(){
+
+                    if(!!localStorage){
+                        localStorage.removeItem('mb-fast-reject');
+                        localStorage.removeItem('mb-fast-contest');
+                        localStorage.removeItem('mb-fast-contest-finished');
+                        localStorage.removeItem('mb-fast-contest-finished-result');
+
+                        document.location.href = '/';
+                    }
 
                 });
 

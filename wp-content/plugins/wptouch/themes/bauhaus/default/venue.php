@@ -147,7 +147,7 @@ get_header();
         foreach ($data as $key => $value) {
 
             $act_id = $value[array_search("ACTION_ID", $columns)];
-            $alias = $value[array_search("ACTION_URL_ALIAS", $columns)];
+            $alias = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? $value[array_search("SHOW_URL_ALIAS", $columns)] : $value[array_search("ACTION_URL_ALIAS", $columns)];
             $venue_alias = $value[array_search("VENUE_URL_ALIAS", $columns)];
             $frame = $value[array_search("FRAME", $columns)];
             $act_name = $value[array_search("ACTION_NAME", $columns)];
@@ -174,14 +174,14 @@ get_header();
             $weekday = to_afisha_date($act_date_time, "weekday", "rus");
             $time = to_afisha_date($act_date_time, "time", "rus");
             $price_range = ($minprice && $maxprice)? ($minprice == $maxprice)? 'по ' . $minprice . ' руб.' : $minprice . ' - ' . $maxprice . ' руб.' : '';
-
+            $isShow = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? 'c': '';
 
             $actionsHtml .= '<a href="/'.$alias.'"><div class="mb-me-action" data-id="'.$act_id.'">'
                 .'<div class="mb-me-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                 .'<div class="mb-me-a-title">'.$act_name.'<span class="mb-me-a-age">'.$ageCat.'</span></div>'
                 .'<div class="mb-me-a-venue">'.$venue.'</div>'
                 .'<div class="mb-me-a-price">'.$price_range.'</div>'
-                .'<div class="mb-me-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
+                .'<div class="mb-me-a-date">'.$isShow.' '.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
                 .'</div></a>';
         }
 

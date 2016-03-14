@@ -204,7 +204,7 @@
                                 $dates_html .=   '<a class="show-action-date-link" href="/'.$a_alias.'">'
                                                  .'<div class="show-action-date">'
                                                     .'<div class="s-a-train">'
-                                                        .'<div class="s-a-vagon"><div class="s-a-date '.$is_holi.'">'.$a_date_2.'<span class="s-a-mth"></span></div><div class="s-a-time">'.$a_time.'</div></div>'
+                                                        .'<div class="s-a-vagon"><div class="s-a-date '.$is_holi.'">'.$a_date_2.'<span class="s-a-dow">'.$a_day_of_week.'</span></div><div class="s-a-time">'.$a_time.'</div></div>'
                                                         .'<div class="s-a-vagon"><div class="s-a-places">'.$a_free_places.'</div><div class="s-a-prices">'.$a_minmaxString.'</div><div class="s-a-hall"><i class="fa fa-bank"></i>&nbsp;&nbsp;'.$a_hall.'</div></div>'
 
                                                     .'</div>'

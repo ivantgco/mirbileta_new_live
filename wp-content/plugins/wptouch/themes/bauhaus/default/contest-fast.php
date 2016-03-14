@@ -78,17 +78,19 @@ $data = json_decode($resp)->results["0"]->data;
         <div class="mmb-cf-page-image"></div>
 
         <div class="mmb-cf-page-text">
-            Оформите заказ быстрее всех, используя мобильную версию сайта!<br/>
+            Оформите заказ на ЛЮБОЕ мероприятие быстрее всех, используя мобильную версию сайта!<br/>
             Победитель конкурса получит<br/>
             2 пригласительных <br/>
             на спектакль <b>«С наступающим...»</b> <br/>
-            19 апреля во Дворце на Яузе <br/>
+            театра "Современник" 19 апреля<br/>
+            в ТКЗ "Дворец на Яузе" <br/>
             <b>в подарок!</b>
         </div>
 
         <div class="mmb-cf-bunner-footer contest-page-footer">
 
             <div class="mmb-cf-bunner-btn contest-fast-go">Принять участие!</div>
+            <div class="contest-fast-full-rules">Сбросить счетчик</div>
 
 
             <div class="mmb-cf-results-holder">
@@ -137,7 +139,7 @@ $data = json_decode($resp)->results["0"]->data;
 
 
                         if(strlen($resultsHtml) == 0){
-                            echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+//                            echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
                         }else{
                             echo $resultsHtml;
                         }

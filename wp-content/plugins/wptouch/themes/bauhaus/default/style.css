@@ -2865,6 +2865,10 @@ a.one-action-actor-link {
     background-color: #ee3c51;
     color: #fff;
 }
+#menu-item-1903 {
+    background-color: #ee3c51;
+    color: #fff;
+}
 
 .contest-page .mmb-headline{
 
@@ -3044,4 +3048,22 @@ table.contest-fast-results tbody tr:nth-child(odd) td{
 .contest-fast-wrapper{
     font-size: 18px;
     font-weight: bold;
+}
+
+.contest-fast-full-rules{
+    height: 50px;
+    width: 100%;
+    border-radius: 4px;
+    text-align: center;
+    padding-top: 18px;
+    box-sizing: border-box;
+    font-family: "Helvetica Neue",arial, sans-serif;
+    margin-bottom: 15px;
+    float: right;
+    background-color: #232323;
+    color: #fff;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 16px;
+    display: none;
 }

@@ -97,7 +97,7 @@ include('main_menu.php');
                 <div class="contest-rules-title">Простые правила:</div>
                 <div class="contest-rules-text">
                     <b>Задача:</b><br/>
-                    Максимально быстро оформить заказ и оплатить Электронные билеты на сайте www.mirbileta.ru в течение
+                    Максимально быстро оформить заказ и оплатить Электронные билеты на <b>ЛЮБОЕ</b> мероприятие на сайте www.mirbileta.ru в течение
                     периода проведения Акции.<br/>
                     Участник, потративший минимум времени, признается победителем.<br/><br/>
                     <b>Сроки проведения:</b><br/> с 10.03.2016 12:00 по 14.04.2016 15:59<br/><br/>
@@ -161,7 +161,7 @@ include('main_menu.php');
 
 
                             if(strlen($resultsHtml) == 0){
-                                echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+//                                echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
                             }else{
                                 echo $resultsHtml;
                             }
@@ -176,7 +176,7 @@ include('main_menu.php');
         </div>
         <div class="contest-page-footer posRel flLeft wid100pr">
             <div class="contest-fast-go">Принять участие!</div>
-<!--            <a href="/contest-fast-rules.pdf" class="contest-fast-full-rules">Подробные правила</a>-->
+            <div class="contest-fast-full-rules">Сбросить счетчик</div>
         </div>
 
 
