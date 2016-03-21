@@ -2,29 +2,6 @@
 // Модуль для генерации объявлений яндекс директ.
 
 
-//{{ACTION_NAME_CUTTED_WITH_DATE}} купить билет
-//
-//{{ACTION_NAME_CUTTED}} купить билет
-//
-//{{ACTION_NAME_CUTTED}} билеты
-//
-//{{ACTION_NAME_CUTTED}} электронные билеты
-//
-//{{ACTION_NAME_CUTTED}} площадка
-//
-//концерт {{ACTION_NAME_CUTTED_WITH_DATE}} площадка билет
-//
-//{{ACTION_NAME_CUTTED}} площадка купить билет
-//
-//{{ACTION_NAME_CUTTED}} 2016
-//
-//концерт / спектакль / шоу {{ACTION_NAME_CUTTED}}
-//
-//
-//концерт басты 21 апреля в кремле билеты
-//
-//концерт басты 21 апреля в кремле билеты
-
 
 
 var directGenerator = {
@@ -196,6 +173,9 @@ var directGenerator = {
 //            console.log(keywords);
 //            console.log(keywords.length);
 //        document.write(res.join(','));
+
+
+
 
 
 

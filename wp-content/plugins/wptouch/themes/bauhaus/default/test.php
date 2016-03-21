@@ -50,21 +50,14 @@ $page_id = get_the_ID();
 
 
     <div id="multibooker-widget-wrapper"
-         data-actions=""
-         data-widget_theme="light"
-         data-withdelivery="false"
-         data-mirbileta="true"
-         data-mobile="true"
-         data-width=""
-         data-frame="sdfsd9f8uorj83421o901hndhfs78df5t61yu4g1dck3h1239186yhoi"
-         data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-         data-ip="<?php echo $global_url; ?>">
-
-        <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
-
+         data-action_id="3037"
+         data-frame="kjhsdfsd87789sdfjs734j238dsj834g234i58skdu4y3278gyujwe7r3"
+         data-host="https://shop.mirbileta.ru/"
+         data-ip="shop.mirbileta.ru">
     </div>
 
-    <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
+    <script type="text/javascript" src="https://shop.mirbileta.ru/assets/widget/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://shop.mirbileta.ru/assets/widget/widget-mobile.js"></script>
 
 
     <?php
