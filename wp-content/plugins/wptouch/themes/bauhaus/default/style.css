@@ -2622,9 +2622,9 @@ a.one-action-actor-link {
 }
 
 .one-action-widget-wrapper{
-    padding-right: 5px;
-    border-right: 2px dotted #9f998e;
-    margin-right: 6px;
+    /*padding-right: 5px;*/
+    /*border-right: 2px dotted #9f998e;*/
+    /*margin-right: 6px;*/
 }
 
 .mmb-widget-holder #multibooker-widget-wrapper .mbw-mobile-choose-sector-content ul li:nth-child(even){

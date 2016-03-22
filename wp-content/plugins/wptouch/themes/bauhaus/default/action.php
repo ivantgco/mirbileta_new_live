@@ -192,20 +192,32 @@
 
                     <div class="one-action-widget-wrapper mmb-widget-holder">
 
+
                         <div id="multibooker-widget-wrapper"
-                             data-actions="<?php echo $act_id ?>"
-                             data-widget_theme="light"
-                             data-withdelivery="false"
-                             data-mirbileta="true"
-                             data-mobile="true"
-                             data-width=""
+                             data-action_id="<?php echo $act_id ?>"
                              data-frame="<?php echo $frame ?>"
                              data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
                              data-ip="<?php echo $global_url; ?>">
-
-                            <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
-
                         </div>
+
+
+
+
+
+<!--                        <div id="multibooker-widget-wrapper"-->
+<!--                             data-actions="--><?php //echo $act_id ?><!--"-->
+<!--                             data-widget_theme="light"-->
+<!--                             data-withdelivery="false"-->
+<!--                             data-mirbileta="true"-->
+<!--                             data-mobile="true"-->
+<!--                             data-width=""-->
+<!--                             data-frame="--><?php //echo $frame ?><!--"-->
+<!--                             data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
+<!--                             data-ip="--><?php //echo $global_url; ?><!--">-->
+<!---->
+<!--                            <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>-->
+<!---->
+<!--                        </div>-->
 
 <!--                        <div id="multibooker-widget-wrapper"-->
 <!--                             data-actions="3120"-->
@@ -244,7 +256,7 @@
 </div>
 
 <?php if($free_places > 0):?>
-    <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
+    <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget-mobile.js"></script>
 <!--    <script type="text/javascript" src="http://mb-dev.mirbileta.ru/assets/widget/widget.js"></script>-->
 <?php endif; ?>
 
