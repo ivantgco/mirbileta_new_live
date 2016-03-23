@@ -3,8 +3,11 @@
     Template Name: show
 */
 
-    $cur_url = $_SERVER["REQUEST_URI"];
-    $show_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+
+    $href = request_url();
+    $arr = parse_url($href);
+    $show_alias = preg_replace('/^\//','',$arr['path']);
+    $show_alias = preg_replace('/(^\w+)\/.*/','$1',$show_alias);
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><show_url_alias>".$show_alias."</show_url_alias>";
 
