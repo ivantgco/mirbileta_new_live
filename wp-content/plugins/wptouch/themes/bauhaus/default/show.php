@@ -3,9 +3,7 @@
     Template Name: show
 */
 
-//$action_alias = $_GET['alias'];
     $cur_url = $_SERVER["REQUEST_URI"];
-//    $action_alias = substr($cur_url, 1, (strlen($cur_url) - 2));//parse_url($cur_url)->path;
     $show_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><show_url_alias>".$show_alias."</show_url_alias>";
@@ -46,6 +44,7 @@
     $isInfo = strlen($description) > 0;
     $description = $data[0][array_search("DESCRIPTION", $columns)];
     $ageCat = strlen($data[0][array_search("AGE_CATEGORY", $columns)]) ? $data[0][array_search("AGE_CATEGORY", $columns)] : '0+';
+
 
 
 
