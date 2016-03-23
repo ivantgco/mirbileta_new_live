@@ -47,6 +47,10 @@ $page_id = get_the_ID();
     get_header();
     ?>
 
+    <script>
+        alert(navigator.userAgent);
+    </script>
+
 
 
     <div id="multibooker-widget-wrapper"

@@ -5,6 +5,11 @@
 
     //$action_alias = $_GET['alias'];
     $cur_url = $_SERVER["REQUEST_URI"];
+
+    $lastSlash = strrpos($cur_url, '/');
+
+
+
     $action_alias = substr($cur_url, 1, (strlen($cur_url) - 2));//parse_url($cur_url)->path;
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><action_url_alias>".$action_alias."</action_url_alias>";
@@ -107,12 +112,14 @@
 
     </head>
 
+
+
     <body <?php body_class(); ?> data-page="inner">
 
     <?php
     get_header();
     include('main_menu.php');
-//    echo $url;
+//    echo $cur_url;
 
     ?>
 

@@ -39,7 +39,8 @@
     $hall =         $data[0][array_search("HALL_NAME", $columns)];
     $genre =        $data[0][array_search("SHOW_GENRE", $columns)];
     $venue =        $data[0][array_search("VENUE_NAME", $columns)];
-    $address =      $data[0][array_search("VENUE_ADDRESS", $columns)];
+    $address =      $data[0][array_search("HALL_ADDR", $columns)];
+
     $g_address =      $data[0][array_search("HALL_GOOGLE_ADDRESS", $columns)];
     $tag_list =     $data[0][array_search("ACTION_TAG_LIST", $columns)];
     $actor_list =     $data[0][array_search("ACTION_ACTOR_LIST", $columns)];
@@ -105,7 +106,9 @@
 
                     <?php if(strlen($address) > 0): ?>
 
-                        <span class="one-action-address"><i class="fa fa-map-o"></i>&nbsp;&nbsp; <?php echo $address; ?> <span class="show-gmap-hint">Показать карту</span></span>
+
+
+                        <span class="one-action-address"><i class="fa fa-map-o"></i>&nbsp;&nbsp;<?php echo $address; ?> <span class="show-gmap-hint">Показать карту</span></span>
 
                     <?php endif ?>
 

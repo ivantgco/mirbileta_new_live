@@ -52,6 +52,10 @@ include('main_menu.php');
 
 <div class="site-content thanks-page">
 
+    <script>
+        document.write(navigator.userAgent);
+    </script>
+
     <div class="container">
 
         <div id="multibooker-widget-wrapper"
@@ -70,6 +74,13 @@ include('main_menu.php');
 
     </div>
 </div>
+
+
+
+
+
+
+
 
 <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
 
