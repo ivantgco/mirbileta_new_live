@@ -513,6 +513,9 @@
         </div>
     </div>
 
+
+
+
     <?php
 
     get_footer();
@@ -530,6 +533,16 @@
 
     ?>
         <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+
+
+
+            });
+        </script>
+
     <?php
 
     }
