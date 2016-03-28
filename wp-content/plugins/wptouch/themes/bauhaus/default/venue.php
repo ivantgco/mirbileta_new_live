@@ -2,10 +2,15 @@
 /*
     Template Name: single_venue
 */
-$cur_url = $_SERVER["REQUEST_URI"];
+//$cur_url = $_SERVER["REQUEST_URI"];
+//
+//$venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+//$venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-$venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
-$venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
+$href = request_url();
+$arr = parse_url($href);
+$venue_alias = preg_replace('/^\//','',$arr['path']);
+$venue_alias = preg_replace('/(^\w+)\/.*/','$1',$venue_alias);
 
 $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_venue</command><url>mirbileta.ru</url><venue_url_alias>".$venue_alias."</venue_url_alias>";
 

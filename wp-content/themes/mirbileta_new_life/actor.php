@@ -2,10 +2,16 @@
 /*
     Template Name: single_actor
 */
-    $cur_url = $_SERVER["REQUEST_URI"];
+//    $cur_url = $_SERVER["REQUEST_URI"];
+//
+//    $actor_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+//    $actor_alias = (strpos($actor_alias, '-') > -1)? substr($actor_alias,0, strpos($actor_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-    $actor_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
-    $actor_alias = (strpos($actor_alias, '-') > -1)? substr($actor_alias,0, strpos($actor_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
+    $href = request_url();
+    $arr = parse_url($href);
+    $actor_alias = preg_replace('/^\//','',$arr['path']);
+    $actor_alias = preg_replace('/(^\w+)\/.*/','$1',$actor_alias);
+
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actor</command><url>mirbileta.ru</url><actor_url_alias>".$actor_alias."</actor_url_alias>";
 

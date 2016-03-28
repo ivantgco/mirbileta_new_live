@@ -1061,6 +1061,7 @@
                 }
 
                 $('.contest-fast-close').off('click').on('click', function(){
+                    localStorage.setItem('mb-fast-reject', 'REJECT');
                     contestHolder.hide(0);
                 });
 

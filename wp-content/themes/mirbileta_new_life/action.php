@@ -345,6 +345,7 @@
 
                         ?>
                                 <div class="one-action-widget-header">Купить билет: <span class="one-action-free-places"><?php echo $free_places; ?> мест, <?php echo $minmaxString; ?></div>
+                                <div class="one-action-widget-tip">Выберите билеты на интерактивной схеме зала</div>
                                 <div class="one-action-widget-how-to">
 
 

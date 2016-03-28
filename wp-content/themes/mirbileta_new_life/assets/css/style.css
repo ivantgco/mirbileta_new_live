@@ -1927,6 +1927,7 @@ input.mb-tf-rs-input.mb-search-byname{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
     background-color: #fff;
     padding-left: 25px;
+    position: relative;
     /*border-bottom: 1px solid rgba(0,0,0,0.1);*/
 }
 .single-a-title-holder{
@@ -3960,5 +3961,64 @@ table.contest-fast-results tbody tr:nth-child(odd) td{
 .ad-keywords{
     font-size: 13px;
     color: #000;
-    font-family: "PTSans-Bold";
+    font-family: "PTSans-Bold", arial, sans-serif;
+}
+
+
+
+.mb-go-to-top{
+    position: fixed;
+    height: 44px;
+    width: 44px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    box-sizing: border-box;
+    bottom: 10px;
+    left: 10px;
+    padding-top: 14px;
+    border: 1px solid rgba(0,0,0,0.15);
+    cursor: pointer;
+    display: none;
+}
+
+body.scrolled .mb-go-to-top{
+    display: block;
+}
+
+.mb-go-to-top:hover{
+    background-color: #ffff00;
+}
+.mb-single-param{
+
+}
+
+.mb-venue-to-actions{
+    right: 20px;
+    position: absolute;
+    top: 50px;
+}
+
+.one-action-widget-tip{
+    margin-left: 25px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    font-family: "PTSans-Bold", arial, sans-serif;
+    color: #333;
+}
+.mb-venue-tip{
+    height: 60px;
+    background-color: #E8E8E8;
+    margin-bottom: 40px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.2);
+    border-radius: 0 0 5px 5px;
+    font-size: 15px;
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+}
+
+#multibooker-widget-wrapper .mbw-redirect-notification{
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
 }

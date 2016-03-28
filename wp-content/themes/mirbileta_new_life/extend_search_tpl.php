@@ -51,6 +51,8 @@
     $actions_count = count($data);
     $show_next_button = $actions_count == 15;
 
+
+
 ?>
 
 
@@ -137,7 +139,7 @@ include('main_menu.php');
 
             </div>
 
-            <h3 class="padLeft25 wid100pr flLeft">Результаты поиска:</h3>
+            <h3 class="padLeft25 wid100pr flLeft">Результаты поиска: <span class="mb-single-param"><?php echo $singleParam; ?></span></h3>
 
 
             <div class="actions-wrapper">

@@ -707,7 +707,6 @@
                 });
             });
 
-
             $('#load_next').off('click').on('click', function(){
                 var btn = $(this);
                 var page = btn.attr('data-page');
@@ -805,6 +804,24 @@
 
                     });
                 }
+
+            });
+
+            $('.mb-go-to-top').off('click').on('click', function(){
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 350, function(){
+
+                });
+            });
+
+            $('.mb-venue-to-actions').off('click').on('click', function(){
+
+                $('html, body').animate({
+                    scrollTop: 904
+                }, 250, function(){
+
+                });
 
             });
 
@@ -1286,6 +1303,8 @@
                 });
 
                 $('.contest-fast-close').off('click').on('click', function(){
+
+                    localStorage.setItem('mb-fast-reject', 'REJECT');
                     contestHolder.hide(0);
                 });
 

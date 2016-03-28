@@ -110,6 +110,8 @@
         </div>
     </div>
 
+    <div class="mb-go-to-top fa fa-arrow-up"></div>
+
 </div>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">

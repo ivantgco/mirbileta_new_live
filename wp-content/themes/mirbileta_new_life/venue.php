@@ -3,10 +3,17 @@
     Template Name: single_venue
 */
 
-    $cur_url = $_SERVER["REQUEST_URI"];
+//    $cur_url = $_SERVER["REQUEST_URI"];
+//
+//    $venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+//    $venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-    $venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
-    $venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
+    $href = request_url();
+    $arr = parse_url($href);
+    $venue_alias = preg_replace('/^\//','',$arr['path']);
+    $venue_alias = preg_replace('/(^\w+)\/.*/','$1',$venue_alias);
+
+
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_venue</command><url>mirbileta.ru</url><venue_url_alias>".$venue_alias."</venue_url_alias>";
 
@@ -105,9 +112,13 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
 
             </div>
 
+            <div class="mb-venue-to-actions mb-buy blue mb-buy32">Смотреть афишу</div>
+
         </div>
 
-        <div class="row marBot40">
+
+
+        <div class="row ">
             <div class="col-md-12">
 
                 <?php if(strlen($address) > 0): ?>
@@ -127,6 +138,9 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
                 </div>
             </div>
         </div>
+
+        <div class="mb-venue-tip"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;<b>Схему зала</b> можно посмотреть в любом мероприятии.</div>
+
 
         <div class="page-headline-wrapper">
             <div class="p-h-line"></div>
