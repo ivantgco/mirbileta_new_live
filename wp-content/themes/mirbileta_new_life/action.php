@@ -319,7 +319,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" id="mb-launchFullScreen">
                     <div class="col-md-12 ">
 
 

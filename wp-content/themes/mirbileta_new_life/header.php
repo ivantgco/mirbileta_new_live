@@ -56,7 +56,7 @@ $query_h = $arr_h['query'];
         document.cookie = updatedCookie;
     }
 
-    if(getCookie('mb_utm') == 0){
+    if(getCookie('mb_utm') == undefined){
         setCookie('mb_utm', '<?php echo $query_h; ?>', {path: '/'});
     }
 

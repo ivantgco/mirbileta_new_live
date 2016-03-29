@@ -1475,5 +1475,41 @@
     });
 
 
+//    function setRow(num){
+//        var m = MB.User.mapEditor_map;
+//        var s = m.selection;
+//
+//        var o = {
+//            command: 'operation',
+//            object: 'modify_hall_scheme_item',
+//            params: {
+//
+//            }
+//        };
+//
+//
+//        var ids = [];
+//        var lines = [];
+//
+//        for(var i in s){
+////            var sq = m.squares[s[i]];
+//            ids.push(s[i]);
+//            lines.push(num);
+//        }
+//
+//        o.params.hall_scheme_item_id = ids.join('|!|');
+//        o.params.line = lines.join('|!|');
+//
+//
+//        console.log(o);
+//
+//        socketQuery(o, function(res){
+//            console.log(res);
+//        });
+//    }
+//
+//    setRow(4);
+
+
 
 }());

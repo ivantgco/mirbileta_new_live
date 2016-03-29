@@ -273,9 +273,18 @@ include('main_menu.php');
                     $('.contest-fast-timer-rate').find('.contest-fast-go').show(0);
                     $('.contest-fast-result').html(s2);
 
+                }else{
+                    $('.contest-fast-result-holder').hide(0);
                 }
 
+                if(localStorage.getItem('mb-fast-reject') != null){
+                    if(localStorage.getItem('mb-fast-reject') == 'REJECT'){
+                        $('.contest-fast-result-holder').hide(0);
+                    }
+                }
             }
+
+
 
             $('.contest-fast-timer').remove();
 
