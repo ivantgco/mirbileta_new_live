@@ -202,6 +202,7 @@ var directGenerator = {
 };
 
 directGenerator.getActions(function(){
+    return false;
     directGenerator.generate();
     directGenerator.render();
 });
