@@ -10,6 +10,7 @@
     $payment_id =       $_POST['paymentcode'];  // id платежа
     $email = $_POST['email'];
 
+    $isRealOrder = ($order_id || $ext_order_id)? 'real' : 'fake';
 
 //host + 'cgi-bin/b2e?request=' + query
 //<query><command>get_external_order_id</command><order_id>'+orderId+'</order_id><cf3>'+frame+'</cf3><payment_id>'+payment_id+'</payment_id></query>
@@ -50,6 +51,55 @@
     <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all'/>
 
     <?php wp_head(); ?>
+
+    <script type="text/javascript">
+
+        function getCookie(name) {
+            var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        function setCookie(name, value, options) {
+            options = options || {};
+
+            var expires = options.expires;
+
+            if (typeof expires == "number" && expires) {
+                var d = new Date();
+                d.setTime(d.getTime() + expires * 1000);
+                expires = options.expires = d;
+            }
+            if (expires && expires.toUTCString) {
+                options.expires = expires.toUTCString();
+            }
+
+            value = encodeURIComponent(value);
+
+            var updatedCookie = name + "=" + value;
+
+            for (var propName in options) {
+                updatedCookie += "; " + propName;
+                var propValue = options[propName];
+                if (propValue !== true) {
+                    updatedCookie += "=" + propValue;
+                }
+            }
+
+            document.cookie = updatedCookie;
+        }
+
+        var isRealOrder = <?php echo $isRealOrder;?> == 'real';
+
+        if(!getCookie('mb_reach_success')){
+
+            yaCounter32940504.reachGoal('SUCCESS');
+
+            setCookie('mb_reach_success', true);
+        }
+
+    </script>
 
 </head>
 

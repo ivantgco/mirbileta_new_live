@@ -170,4 +170,14 @@ function my_theme_load_resources() {
 
 add_action('wp_enqueue_scripts', 'my_theme_load_resources');
 
+function wp_head_meta_description() {
+    global $post;
+    if( is_single() ) {
+        echo "<meta name=\"description\" value=\"" . esc_attr( get_post_meta( $post->ID, 'seo_description', true ) ) ."\" />\n\r";
+    }
+}
+
+add_action("wp_head", "wp_head_meta_description", 1);
+
+
 ?>

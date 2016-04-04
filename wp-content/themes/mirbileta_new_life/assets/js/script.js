@@ -100,8 +100,7 @@
 
     }
 
-    function getCookie(c_name)
-    {
+    function getCookie(c_name){
         var i,x,y,ARRcookies=document.cookie.split(";");
 
         for (i=0;i<ARRcookies.length;i++)
@@ -114,6 +113,35 @@
                 return unescape(y);
             }
         }
+    }
+
+    function setCookie(name, value, options) {
+        options = options || {};
+
+        var expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        var updatedCookie = name + "=" + value;
+
+        for (var propName in options) {
+            updatedCookie += "; " + propName;
+            var propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
     }
 
     var Filter = function(params){
@@ -822,6 +850,19 @@
                 }, 250, function(){
 
                 });
+
+            });
+
+            $(document).on('emit_use_widget', function(){
+
+                if(!getCookie('mb_use_widget')){
+
+                    yaCounter32940504.reachGoal('USE_WIDGET');
+
+                    setCookie('mb_use_widget', true);
+
+                }
+
 
             });
 
