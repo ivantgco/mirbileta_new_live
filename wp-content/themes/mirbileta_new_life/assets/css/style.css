@@ -4025,3 +4025,39 @@ body.scrolled .mb-go-to-top{
 #multibooker-widget-wrapper .mbw-redirect-notification{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
 }
+
+
+.cfw-header{
+    font-size: 28px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    font-family: "PTSans-Bold", OpenSans-semibold, arial, sans-serif;
+
+}
+.cfw-photo img{
+    width: 90%;
+}
+.cfw-type-title {
+    font-family: "PTSans-Bold", OpenSans-semibold, arial, sans-serif;
+    color: #444;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.cfw-name {
+    font-family: "PTSans-Bold", OpenSans-semibold, arial, sans-serif;
+    color: #3E3E3E;
+    font-size: 26px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+.cfw-result{
+    font-family: "PTSans-Bold", OpenSans-semibold, arial, sans-serif;
+    color: #ee3c51;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.cfw-red{
+    color: #ee3c51;
+    font-family: "Helvetica-Bold", "OpenSans-semibold", arial, sans-serif;
+    font-style: italic;
+}

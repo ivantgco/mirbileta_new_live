@@ -76,6 +76,47 @@ include('main_menu.php');
 
     <div class="container">
 
+        <div class="contest-fast-winner">
+            <div class="cfw-header">
+                Поздравляем победителей конкурса <span class="cfw-red">"Кто быстрее?!"</span>
+            </div>
+
+            <div class="pr50">
+                <div class="cfw-type-title">Компьютерный</div>
+                <div class="cfw-photo">
+                    <img src="/images/gkd_actor_buinov.jpg" />
+                </div>
+                <div class="cfw-name">
+                    Юлия Ворошилова
+                </div>
+                <div class="cfw-result">
+                    1 минута 43 секунды 28 миллисекунд
+                </div>
+                <div class="cfw-feedback">
+                    asdasdasdasd asd asd asda sdas
+                    <br/><br/>
+                    Спасибо mirbileta.ru!
+                </div>
+            </div>
+            <div class="pr50">
+                <div class="cfw-type-title">Мобильный</div>
+                <div class="cfw-photo">
+                    <img src="/images/gkd_actor_meladze.jpg" />
+                </div>
+                <div class="cfw-name">
+                    Ольга Фролова
+                </div>
+                <div class="cfw-result">
+                    2 минуты 17 секунд 11 миллисекунд
+                </div>
+                <div class="cfw-feedback">
+                    asdasdasdasd asd asd asda sdas
+                    <br/><br/>
+                    Спасибо mirbileta.ru!
+                </div>
+            </div>
+        </div>
+
         <div class="contest-page-holder posRel flLeft wid100pr">
 
             <div class="contest-page-block contest-page-block-1">

@@ -1315,7 +1315,7 @@
             });
         },
         initContest: function(){
-
+            return false;
             var contestHolder = $('.contest-holder');
             var timerHolder = $('.contest-fast-timer');
             // FAST CONTEST

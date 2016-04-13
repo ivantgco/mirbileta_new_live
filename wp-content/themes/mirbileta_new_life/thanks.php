@@ -129,22 +129,22 @@ include('main_menu.php');
                 info@mirbileta.ru
             </div>
 
-            <div class="contest-fast-result-holder">
-                <div class="contest-fast-congrats">
-                    Поздравляем!
-                </div>
-                <div class="contest-fast-result-wrapper">
-                    <div class="contest-fast-result-text">Ваш результат:</div>
-                    <div class="contest-fast-result"></div>
-                </div>
-
-                <div class="contest-fast-timer-rate"><div class="contest-fast-go">Улучшить результат!</div></div>
-                <div class="contest-fast-timer-img"></div>
-                <a target="_blank" href="/contest-fast"><div class="contest-fast-watch-results">
-                    Смотреть все результаты
-                </div></a>
-
-            </div>
+<!--            <div class="contest-fast-result-holder">-->
+<!--                <div class="contest-fast-congrats">-->
+<!--                    Поздравляем!-->
+<!--                </div>-->
+<!--                <div class="contest-fast-result-wrapper">-->
+<!--                    <div class="contest-fast-result-text">Ваш результат:</div>-->
+<!--                    <div class="contest-fast-result"></div>-->
+<!--                </div>-->
+<!---->
+<!--                <div class="contest-fast-timer-rate"><div class="contest-fast-go">Улучшить результат!</div></div>-->
+<!--                <div class="contest-fast-timer-img"></div>-->
+<!--                <a target="_blank" href="/contest-fast"><div class="contest-fast-watch-results">-->
+<!--                    Смотреть все результаты-->
+<!--                </div></a>-->
+<!---->
+<!--            </div>-->
 
         </div>
         <div class="thx-footer">
