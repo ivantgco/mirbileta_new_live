@@ -27,7 +27,7 @@
     <div class="footer-line-2">
         <div class="container posRel">
             <div class="footer-menu-wrapper footer-menu-1">
-                <div class="footer-menu-header">О НАС</div>
+                <div class="footer-menu-header">О НАС VK21076260</div>
 
                 <?php
                 $args = array(
