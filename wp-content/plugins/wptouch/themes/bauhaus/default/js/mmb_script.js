@@ -1042,6 +1042,8 @@
         },
         initContest: function(){
 
+            return false;
+
             var contestHolder = $('.mmb-cf-holder');
             var timerHolder = $('.contest-fast-timer');
 

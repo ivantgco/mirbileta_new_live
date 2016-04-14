@@ -34,7 +34,7 @@
         ?>
 
 
-<!--        <a href="/contest-fast"><div class="contest-fast-launcher inner-page-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>-->
+        <a href="/contest-fast"><div class="contest-fast-launcher inner-page-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>
 
     </div>
 </div>

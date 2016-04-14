@@ -78,43 +78,45 @@ include('main_menu.php');
 
         <div class="contest-fast-winner">
             <div class="cfw-header">
-                Поздравляем победителей конкурса <span class="cfw-red">"Кто быстрее?!"</span>
+
+                Поздравляем победителей!
+<!--                Поздравляем победителей конкурса <span class="cfw-red">"Кто быстрее?!"</span>-->
             </div>
 
-            <div class="pr50">
-                <div class="cfw-type-title">Компьютерный</div>
-                <div class="cfw-photo">
-                    <img src="/images/gkd_actor_buinov.jpg" />
-                </div>
-                <div class="cfw-name">
-                    Юлия Ворошилова
-                </div>
-                <div class="cfw-result">
-                    1 минута 43 секунды 28 миллисекунд
-                </div>
-                <div class="cfw-feedback">
-                    asdasdasdasd asd asd asda sdas
-                    <br/><br/>
-                    Спасибо mirbileta.ru!
-                </div>
-            </div>
-            <div class="pr50">
-                <div class="cfw-type-title">Мобильный</div>
-                <div class="cfw-photo">
-                    <img src="/images/gkd_actor_meladze.jpg" />
-                </div>
-                <div class="cfw-name">
-                    Ольга Фролова
-                </div>
-                <div class="cfw-result">
-                    2 минуты 17 секунд 11 миллисекунд
-                </div>
-                <div class="cfw-feedback">
-                    asdasdasdasd asd asd asda sdas
-                    <br/><br/>
-                    Спасибо mirbileta.ru!
-                </div>
-            </div>
+<!--            <div class="pr50">-->
+<!--                <div class="cfw-type-title">Компьютерный</div>-->
+<!--                <div class="cfw-photo">-->
+<!--                    <img src="/images/gkd_actor_buinov.jpg" />-->
+<!--                </div>-->
+<!--                <div class="cfw-name">-->
+<!--                    Юлия Ворошилова-->
+<!--                </div>-->
+<!--                <div class="cfw-result">-->
+<!--                    1 минута 43 секунды 28 миллисекунд-->
+<!--                </div>-->
+<!--                <div class="cfw-feedback">-->
+<!--                    asdasdasdasd asd asd asda sdas-->
+<!--                    <br/><br/>-->
+<!--                    Спасибо mirbileta.ru!-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="pr50">-->
+<!--                <div class="cfw-type-title">Мобильный</div>-->
+<!--                <div class="cfw-photo">-->
+<!--                    <img src="/images/gkd_actor_meladze.jpg" />-->
+<!--                </div>-->
+<!--                <div class="cfw-name">-->
+<!--                    Ольга Фролова-->
+<!--                </div>-->
+<!--                <div class="cfw-result">-->
+<!--                    2 минуты 17 секунд 11 миллисекунд-->
+<!--                </div>-->
+<!--                <div class="cfw-feedback">-->
+<!--                    asdasdasdasd asd asd asda sdas-->
+<!--                    <br/><br/>-->
+<!--                    Спасибо mirbileta.ru!-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
 
         <div class="contest-page-holder posRel flLeft wid100pr">
@@ -151,7 +153,7 @@ include('main_menu.php');
             </div>
 
             <div class="contest-page-block contest-page-block-3">
-                <div class="contest-rules-title">Промежуточные результаты:</div>
+                <div class="contest-rules-title">Результаты конкурса:</div>
 
                 <div class="find-contest-result-wrapper">
                     <div class="find-contest-result-title">Найдите свой результат:</div>
@@ -161,6 +163,9 @@ include('main_menu.php');
 
 
                 <div class="find-contest-results-holder chromeScroll">
+
+                    <h3 style="text-align:center ">Десктопный</h3>
+
                     <table class="contest-fast-results">
                         <thead>
                         <tr>
@@ -188,14 +193,40 @@ include('main_menu.php');
                                 $isMobile =         $value[array_search("USER_AGENT", $columns)] == 'MOBILE';
 
                                 if(!$isMobile){
-                                    $resultsHtml .= ' <tr data-order="'.$id.'">'
-                                        .'<td>'.$place.'</td>'
-                                        .'<td>'.$id.'</td>'
-                                        .'<td>'.$name.'</td>'
-                                        .'<td>'.$time.'</td>'
-                                        .'</tr>';
 
-                                    $place++;
+                                    if($id == 91257 || $id == 91260 || $id == 91258){
+                                        $resultsHtml .= ' <tr data-order="'.$id.'">'
+                                            .'<td> - </td>'
+                                            .'<td style="text-decoration:line-through;">'.$id.'</td>'
+                                            .'<td>'.$name.' - Результат недействителен.</td>'
+                                            .'<td style="text-decoration:line-through;">'.$time.'</td>'
+                                            .'</tr>';
+
+//                                        $place++;
+                                    }else{
+
+                                        if($place != 1){
+                                            $resultsHtml .= ' <tr data-order="'.$id.'">'
+                                                .'<td>'.$place.'</td>'
+                                                .'<td>'.$id.'</td>'
+                                                .'<td>'.$name.'</td>'
+                                                .'<td>'.$time.'</td>'
+                                                .'</tr>';
+                                        }else{
+                                            $resultsHtml .= ' <tr data-order="'.$id.'">'
+                                                .'<td><i class="fa fa-star" style="color:red;"></i></td>'
+                                                .'<td>'.$id.'</td>'
+                                                .'<td>'.$name.'</td>'
+                                                .'<td>'.$time.'</td>'
+                                                .'</tr>';
+                                        }
+
+
+
+                                        $place++;
+                                    }
+
+
                                 }
 
                             }
@@ -206,6 +237,84 @@ include('main_menu.php');
                             }else{
                                 echo $resultsHtml;
                             }
+                        ?>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="find-contest-results-holder chromeScroll">
+
+                    <h3 style="text-align:center ">Мобильный</h3>
+
+                    <table class="contest-fast-results">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Заказ</th>
+                            <th>Участник</th>
+                            <th>Результат</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                        <?php
+                        $resultsHtml = "";
+
+                        $place = 1;
+                        foreach ($data as $key => $value){
+
+
+
+                            $id =               $value[array_search("ORDER_ID", $columns)];
+                            $name =             $value[array_search("CRM_USER_NAME", $columns)];
+                            $time =             $value[array_search("TOTAL_TIME_STR", $columns)];
+                            $isMobile =         $value[array_search("USER_AGENT", $columns)] == 'MOBILE';
+
+                            if($isMobile){
+
+                                if($id == 91257 || $id == 91260 || $id == 91258){
+                                    $resultsHtml .= ' <tr data-order="'.$id.'">'
+                                        .'<td> - </td>'
+                                        .'<td style="text-decoration:line-through;">'.$id.'</td>'
+                                        .'<td>'.$name.' - Результат недействителен.</td>'
+                                        .'<td style="text-decoration:line-through;">'.$time.'</td>'
+                                        .'</tr>';
+
+//                                        $place++;
+                                }else{
+                                    if($place != 1){
+                                        $resultsHtml .= ' <tr data-order="'.$id.'">'
+                                            .'<td>'.$place.'</td>'
+                                            .'<td>'.$id.'</td>'
+                                            .'<td>'.$name.'</td>'
+                                            .'<td>'.$time.'</td>'
+                                            .'</tr>';
+
+                                    }else{
+                                        $resultsHtml .= ' <tr data-order="'.$id.'">'
+                                            .'<td><i class="fa fa-star"  style="color:red;"></i></td>'
+                                            .'<td>'.$id.'</td>'
+                                            .'<td>'.$name.'</td>'
+                                            .'<td>'.$time.'</td>'
+                                            .'</tr>';
+                                    }
+                                    $place++;
+                                }
+
+
+                            }
+
+                        }
+
+
+                        if(strlen($resultsHtml) == 0){
+//                                echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+                        }else{
+                            echo $resultsHtml;
+                        }
                         ?>
 
                         </tbody>
