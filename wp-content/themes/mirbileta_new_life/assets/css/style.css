@@ -4061,3 +4061,11 @@ body.scrolled .mb-go-to-top{
     font-family: "Helvetica-Bold", "OpenSans-semibold", arial, sans-serif;
     font-style: italic;
 }
+.run-mobile-version{
+    text-decoration: none;
+    color: #359DC3;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    letter-spacing: 0.5px;
+}

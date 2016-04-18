@@ -866,6 +866,13 @@
 
             });
 
+            $('.run-mobile-version').off('click').on('click', function(){
+
+                $.removeCookie('wptouch-pro-view');
+                document.location.reload();
+
+            });
+
             uiTabs();
 
         },

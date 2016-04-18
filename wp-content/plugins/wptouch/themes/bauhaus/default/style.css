@@ -1355,8 +1355,11 @@ body{
     background-color: #fff!important;
 }
 
-.wptouch-mobile-switch{
-    display: none;
+.wptouch-mobile-switch a{
+    font-family: "PTSans-Regular", "OpenSans-semibold", arial, sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    box-sizing: border-box;
+    /*display: none;*/
 }
 
 .mmb-tabsParent .tabToggle{

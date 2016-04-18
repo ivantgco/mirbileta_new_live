@@ -83,6 +83,10 @@
                 wp_nav_menu($args)
                 ?>
 
+                <div class="run-mobile-version">Мобильная версия</div>
+
+
+
             </div>
             <div class="footer-menu-wrapper">
                 <div class="footer-menu-header">ПАРТНЕРЫ</div>
@@ -106,7 +110,11 @@
 
             <div class="mb-copyright">
                 mirbileta.ru все права защищены&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by Multibooker
+
             </div>
+
+
+
         </div>
     </div>
 

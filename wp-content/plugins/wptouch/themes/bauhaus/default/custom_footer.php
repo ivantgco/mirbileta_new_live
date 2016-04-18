@@ -12,7 +12,12 @@
         </div>
     </div>
     <div class="mmb-footer-2">
-        <div class="mmb-footer-full">Полная версия</div>
+
+
+        <div class="mmb-footer-full">
+            <?php get_template_part( 'switch-link' ); ?>
+<!--            Полная версия-->
+        </div>
         <div class="mmb-footer-top"><i class="fa fa-chevron-up"></i></div>
     </div>
 
