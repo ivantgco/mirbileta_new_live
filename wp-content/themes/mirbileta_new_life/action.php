@@ -124,6 +124,8 @@
         <div class="container">
 
 
+<!--        <h1>ВНИМАНИЕ, мы все сломали, скоро починим! извините =)</h1>-->
+
             <div class="mb-block-sh posRel">
 
                 <div class="one-action-title"><?php echo $act_name; ?></div>

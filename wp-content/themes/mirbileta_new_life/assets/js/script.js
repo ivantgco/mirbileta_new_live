@@ -1504,6 +1504,81 @@
 
             }());
 
+        },
+        initReviews: function(){
+
+            var rating_changed = false;
+
+            $('.wr-review-rating').ionRangeSlider({
+                type: "single",
+                grid: true,
+                min: 0,
+                max: 10,
+                from:5,
+                step:0.1,
+                onChange: function (data) {
+                    rating_changed = true;
+                    $('.wr-review-rating-value').html(data.from.toFixed(1));
+                }
+            });
+
+
+            $('.wr-confirm').off('click').on('click', function(){
+
+                var text = $('.wr-review-text').val();
+                var o;
+
+                if(text.length > 0){
+
+                    o = {
+                        command: 'add_action_review',
+                        object: 'asd',
+                        params:{
+                            text: text
+                        }
+                    };
+
+                    if(rating_changed){
+                        o.params.rating = parseFloat($('.wr-review-rating-value').html());
+                    }
+                    
+                    console.log(o);
+                    
+                    socketQuery_b2e(o, function(r){
+
+                    });
+
+                }else{
+
+                    if(rating_changed){
+
+                        o = {
+                            command: 'add_action_review',
+                            object: 'asd',
+                            params:{
+                                text: text,
+                                rating: parseFloat($('.wr-review-rating-value').html())
+                            }
+                        };
+
+                        console.log(o);
+
+                        socketQuery_b2e(o, function(r){
+
+                        });
+
+                    }else{
+
+                        $('.wr-error-holder').html('Вы ничего не написали, какой в этом смысл?');
+
+                        window.setTimeout(function(){
+
+                            $('.wr-error-holder').html('');
+
+                        }, 6000);
+                    }
+                }
+            });
         }
 
     };
@@ -1519,6 +1594,7 @@
         fs.initScroll();
         fs.initInPageSearch();
         fs.initContest();
+        fs.initReviews();
 
     });
 

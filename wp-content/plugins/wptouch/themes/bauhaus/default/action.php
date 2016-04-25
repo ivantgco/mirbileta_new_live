@@ -126,6 +126,8 @@
 
     <div class="mmb-oa-image" style="background-image: url(<?php echo $poster;?>)"></div>
 
+<!--    <h1>ВНИМАНИЕ, мы все сломали, скоро починим! извините =)</h1>-->
+
     <div class="mmb-oa-info">
         <div class="mmb-oa-date-wrapper">
             <div class="mmb-oa-date"><?php echo $act_date;?></div>

@@ -4069,3 +4069,119 @@ body.scrolled .mb-go-to-top{
     font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
     letter-spacing: 0.5px;
 }
+.ptsans{
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+}
+
+.wr-header{
+    font-size: 24px;
+    color: #000;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.wr-subtitle{
+    font-style: italic;
+    color: #268c23;
+    font-size: 18px;
+}
+
+.wr-group{
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+}
+
+.wr-group label{
+    font-weight: normal;
+    font-size: 15px;
+    color: #555;
+    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
+}
+.wr-group textarea{
+    width: 100%;
+    margin-top: 5px;
+    resize: vertical;
+    outline: 0;
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.2);
+
+}
+
+.wr-review-file-add{
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 18px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.wr-review-file-add:hover{
+    border: 1px solid #179A85;
+    color: #179A85;
+}
+
+.wr-review-rating-bar{
+    width: 100%;
+    height: 70px;
+}
+.wr-review-rating-holder{
+    width: 400px;
+    float: left;
+}
+
+.wr-review-rating-value{
+    color: #cb2121;
+    font-family: "OpenSans-semibold", arail, sans-serif;
+    font-size: 48px;
+    float: right;
+    width: 70px;
+    text-align: center;
+}
+.wr-confirm {
+    height: 48px;
+    background-color: #fff;
+    width: 150px;
+    text-align: center;
+    border-radius: 3px;
+    padding-top: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    font-size: 15px;
+    border: 1px solid #179A85;
+    cursor: pointer;
+    float: left;
+}
+.wr-confirm:hover{
+    color: #179A85;
+}
+.wr-text{
+    margin-left: 60px;
+    width: 300px;
+    margin-top: 30px;
+    font-style: italic;
+    line-height: 21px;
+    color: #000;
+    background-color: #FFFFE7;
+    padding: 14px 22px;
+    padding-top: 24px;
+    padding-bottom: 60px;
+    border: 1px dashed #CCCC9E;
+    border-radius: 5px;
+}
+.wr-review-file{
+
+}
+.wr-review-file-holder{
+    margin-top: 22px;
+}
+.wr-error-holder{
+    margin-left: 20px;
+    margin-top: 13px;
+    float: left;
+    color: red;
+}

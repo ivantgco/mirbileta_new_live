@@ -1,6 +1,6 @@
 <?php
 /*
-    Template Name: write_review
+    Template Name: personal_account
 */
 
 
