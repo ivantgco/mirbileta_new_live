@@ -4185,3 +4185,27 @@ body.scrolled .mb-go-to-top{
     float: left;
     color: red;
 }
+.pa-sidebar {
+    width: 210px;
+    padding-top: 60px;
+}
+.pa-content{
+}
+
+
+.pa-menu-holder li{
+    list-style: none;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-size: 14px;
+    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
+    cursor: pointer;
+}
+
+.pa-menu-holder li:hover{
+    color: red;
+}
+
+.h100pr{
+    height: 100%;
+}
