@@ -103,7 +103,17 @@
 
             <div class="mb-block-sh posRel">
 
-                <div class="one-action-title"><?php echo $act_name; ?></div>
+            <?php
+
+            if($act_id == 3382){
+                echo '<div class="one-action-title">ВНИМАНИЕ! Замена: <span style="text-decoration: line-through;">'. $act_name .'</span> Три товарища</div> <a href="http://sovremennik.ru/news/sezon_2015_2016/may_2016/4_maya_2016_goda_viesto_spektaklya_anarkhiya_sostoitsya_spektakl_tri_tovarishcha/" target="_blank" style="color: red;">Подробнее</a>';
+            }else{
+                echo '<div class="one-action-title">'. $act_name .'</div>';
+            }
+
+            ?>
+
+<!--                <div class="one-action-title">--><?php //echo $act_name; ?><!--</div>-->
                 <div class="one-action-age"><?php echo $ageCat; ?></div>
                 <div class="one-action-venue"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="one-action-hall"><?php echo $hall; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 

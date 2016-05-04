@@ -101,7 +101,18 @@
     <div class="mmb-oa-image" style="background-image: url(<?php echo $poster;?>)"></div>
 
     <div class="mmb-show-info">
-        <div class="mmb-oa-title"><?php echo $act_name;?></div>
+
+        <?php
+
+        if($act_id == 3382){
+        echo '<div class="mmb-oa-title">ВНИМАНИЕ! Замена: <span style="text-decoration: line-through;">'. $act_name .'</span> Три товарища</div> <a href="http://sovremennik.ru/news/sezon_2015_2016/may_2016/4_maya_2016_goda_viesto_spektaklya_anarkhiya_sostoitsya_spektakl_tri_tovarishcha/" target="_blank" style="color: red;">Подробнее</a>';
+        }else{
+        echo '<div class="mmb-oa-title">'. $act_name .'</div>';
+        }
+
+        ?>
+
+<!--        <div class="mmb-oa-title">--><?php //echo $act_name;?><!--</div>-->
         <div class="mmb-oa-venue"><?php echo $hall;?></div>
 
 
