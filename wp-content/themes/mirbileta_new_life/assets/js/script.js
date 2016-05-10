@@ -873,6 +873,11 @@
 
             });
 
+            $('.sidebar-calendar').datepicker({
+                language: "ru",
+                todayHighlight: true
+            });
+
             uiTabs();
 
         },

@@ -57,25 +57,56 @@
 
 
 
-<div class="site-content">
-    <div class="container">
-        <div class="content-block most-important">
 
-            <?php include('top_sales.php'); ?>
+
+<div class="site-content white-bg">
+    <div class="site-container">
+
+        <div class="site-sidebar">
+
+<!--            <div style="background-color: red; height: 40px; width: 100%;"></div>-->
+
+            <div class="sidebar-popular-holder sidebar-block">
+                <?php include('sidebar-popular.php'); ?>
+            </div>
+            <div class="sidebar-search-holder sidebar-block">
+                <?php include('sidebar-search.php'); ?>
+            </div>
+            <div class="sidebar-calendar-holder sidebar-block">
+                <?php include('sidebar-calendar.php'); ?>
+            </div>
+            <div class="sidebar-tags-holder sidebar-block">
+                <?php include('sidebar-tags.php'); ?>
+            </div>
+            <div class="sidebar-filters-holder sidebar-block"></div>
+            <div class="sidebar-price-holder sidebar-block"></div>
+            <div class="sidebar-groups-holder sidebar-block"></div>
 
         </div>
-
-        <div class="content-block extend-search">
-
-            <?php include('extend_search.php'); ?>
-
+        <div class="mb-site-content">
+<!--            <div style="background-color: red; height: 40px; width: 100%;"></div>-->
         </div>
 
-        <div class="content-block nearrest-aсtions">
 
-            <?php include('nearrest_actions.php'); ?>
 
-        </div>
+
+<!--        <div class="content-block most-important">-->
+<!---->
+<!--            --><?php //include('top_sales.php'); ?>
+<!---->
+<!--        </div>-->
+<!---->
+<!--        <div class="content-block extend-search">-->
+<!---->
+<!--            --><?php //include('extend_search.php'); ?>
+<!---->
+<!--        </div>-->
+<!---->
+<!--        <div class="content-block nearrest-aсtions">-->
+<!---->
+<!--            --><?php //include('nearrest_actions.php'); ?>
+<!---->
+<!--        </div>-->
     </div>
 </div>
 

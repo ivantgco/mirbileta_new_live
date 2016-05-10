@@ -4209,3 +4209,108 @@ body.scrolled .mb-go-to-top{
 .h100pr{
     height: 100%;
 }
+
+
+/* DESIGN 10.05.2016 START */
+
+
+body{
+    font-family: PTSans-Regular, OpenSans-Regular, arial, sans-serif;
+}
+
+.sidebar-title{
+    color: #848484;
+    font-size: 12px;
+    font-family: PTSans-Regular, OpenSans-Regular, arial, sans-serif;
+    margin-bottom: 22px;
+}
+
+.sidebar-popular-action{
+    color: #848484;
+    font-size: 14px;
+    font-family: PTSans-Bold, OpenSans-Regular, arial, sans-serif;
+    margin-bottom: 16px;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-popular-holder a{
+    text-decoration: none;
+}
+.sidebar-popular-holder a:hover .sidebar-popular-action{
+    color: #3C6CEE;
+}
+
+.white-bg{
+    background-color: #fff;
+}
+
+
+.sidebar-popular-toggler{
+    background-image: url("../img/sprite.png");
+    background-position: -8px -121px;
+    height: 17px;
+    width: 17px;
+    float: left;
+    margin-right: 14px;
+}
+.sidebar-block{
+    background-image: url("../img/sidebar-block.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 26px;
+    padding-top: 26px;
+
+
+}
+input.sidebar-search {
+    border: 2px solid #fff000;
+    border-radius: 10px;
+    height: 28px;
+    outline: 0;
+    box-shadow: inset 0 0px 3px rgba(0,0,0,0.1), 0 0 4px rgba(255, 240, 0, 0.2);
+    width: 100%;
+    padding-left: 24px;
+}
+
+input.sidebar-search:focus{
+    border: 2px solid #ffc800;
+}
+.site-content{
+    float: left;
+    width: 100%;
+}
+.site-footer{
+    float: left;
+    width: 100%;
+}
+.datepicker-inline{
+    padding-left: 0;
+}
+
+.sidebar-title-inner {
+    display: inline-block;
+    position: absolute;
+}
+.sidebar-tags-search-wrapper{
+    display: inline-block;
+    margin-left: 10px;
+    width: 100%;
+    padding-left: 40px;
+
+}
+.sidebar-tags-search{
+    border: 1px solid #a3a3a3;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    outline: 0;
+    border-radius: 4px;
+    padding-left: 6px;
+    font-size: 14px;
+    width: 100%;
+    height: 21px;
+}
+.sidebar-tags-search:focus{
+    border: 1px solid #2e4cff;
+}
