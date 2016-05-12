@@ -878,6 +878,45 @@
                 todayHighlight: true
             });
 
+            $('.sidebar-tags-toggler').off('click').on('click', function(){
+                var list = $('.sidebar-tags-list');
+
+                if(list.hasClass('opened')){
+                    list.removeClass('opened');
+                    $(this).html('Показать больше тегов');
+                }else{
+                    list.addClass('opened');
+                    $(this).html('Скрыть список тегов');
+                }
+
+            });
+
+            $('.sidebar-filter-item-title').off('click').on('click', function(){
+                var p = $(this).parents('.sidebar-filter-item-wrapper').eq(0);
+                var dd = p.find('.sidebar-filter-item-dd').eq(0);
+                var filter = p.attr('data-filter');
+
+                if(p.hasClass('opened')){
+                    p.removeClass('opened');
+                }else{
+                    if(p.hasClass('loaded')){
+                        p.addClass('opened');
+                    }else{
+                        var fid = getGuid();
+                        var f = new Filter({
+                            id: fid,
+                            wrapper:dd
+                        });
+
+                        p.addClass('loaded');
+                        p.addClass('opened');
+
+                    }
+                }
+
+
+            });
+
             uiTabs();
 
         },

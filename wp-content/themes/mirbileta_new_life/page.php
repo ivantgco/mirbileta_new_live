@@ -78,12 +78,37 @@
             <div class="sidebar-tags-holder sidebar-block">
                 <?php include('sidebar-tags.php'); ?>
             </div>
-            <div class="sidebar-filters-holder sidebar-block"></div>
-            <div class="sidebar-price-holder sidebar-block"></div>
-            <div class="sidebar-groups-holder sidebar-block"></div>
+            <div class="sidebar-filters-holder sidebar-block">
+                <?php include('sidebar-filters.php'); ?>
+            </div>
+            <div class="sidebar-price-holder sidebar-block">
+                <?php include('sidebar-price.php'); ?>
+            </div>
+            <div class="sidebar-groups-holder sidebar-block">
+                <?php include('sidebar-groups.php'); ?>
+            </div>
 
         </div>
         <div class="mb-site-content">
+
+            <div class="mb-set-holder">
+
+                <?php include('main-set.php'); ?>
+
+            </div>
+
+            <div class="mb-main-actions-holder">
+
+                <div class="mb-title">
+                    <div class="mb-title-inner">
+                        Главные события
+                    </div>
+                </div>
+
+                <?php include('main-actions.php'); ?>
+            </div>
+
+
 <!--            <div style="background-color: red; height: 40px; width: 100%;"></div>-->
         </div>
 

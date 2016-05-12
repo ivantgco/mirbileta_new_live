@@ -185,6 +185,6 @@
 
 </div>
 
-<div class="container posRel">
-    <a href="/contest-fast"><div class="contest-fast-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>
-</div>
+<!--<div class="container posRel">-->
+<!--    <a href="/contest-fast"><div class="contest-fast-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>-->
+<!--</div>-->
