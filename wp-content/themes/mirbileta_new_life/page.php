@@ -101,20 +101,110 @@
 
                 <div class="mb-title">
                     <div class="mb-title-inner">
-                        Главные события
+                        Главные события <span class="fa fa-long-arrow-down"></span>
                     </div>
                 </div>
 
                 <?php include('main-actions.php'); ?>
             </div>
 
+            <div class="mb-main-nearrest-holder">
 
-<!--            <div style="background-color: red; height: 40px; width: 100%;"></div>-->
+                <?php include('nearrest_actions.php'); ?>
+
+            </div>
+
+
+
+
         </div>
 
+    </div>
+
+    <div class="mb-wide-devide">
+
+
+        <div class="site-container">
+
+            <div class="site-sidebar">
+                <div class="sidebar-block"></div>
+            </div>
+
+
+            <div class="mb-site-content">
+
+                <div class="mb-coming-soon-holder">
+
+                    <div class="mb-title">
+                        <div class="mb-title-inner">
+                            Скоро появится в продаже <span class="fa fa-long-arrow-down"></span>
+                        </div>
+                    </div>
+
+                    <?php include('coming-soon.php'); ?>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="site-container">
+
+        <div class="site-sidebar">
+            <div class="sidebar-block"></div>
+        </div>
+
+        <div class="mb-site-content">
+
+            <div class="mb-title">
+                <div class="mb-title-inner">
+                    Все мероприятия <span class="fa fa-long-arrow-down"></span>
+                </div>
+            </div>
+
+            <div class="mb-actions-list-holder">
+                <?php include('actions-list.php'); ?>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="mb-wide-devide">
+
+
+        <div class="site-container">
+
+            <div class="site-sidebar">
+                <div class="sidebar-block"></div>
+            </div>
+
+
+            <div class="mb-site-content">
+
+                <div class="mb-subscriptions-holder">
+
+                    <?php include('subscriptions.php'); ?>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 
 
 
+
+<?php
+
+    get_footer();
+
+?>
+
+
+</body>
 <!--        <div class="content-block most-important">-->
 <!---->
 <!--            --><?php //include('top_sales.php'); ?>
@@ -132,14 +222,3 @@
 <!--            --><?php //include('nearrest_actions.php'); ?>
 <!---->
 <!--        </div>-->
-    </div>
-</div>
-
-<?php
-
-    get_footer();
-
-?>
-
-
-</body>

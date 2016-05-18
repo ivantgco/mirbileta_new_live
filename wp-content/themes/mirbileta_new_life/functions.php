@@ -98,6 +98,17 @@ function to_afisha_date($str, $format, $lang)
         )
     );
 
+    $weekDays_short = array(
+        "rus"=>array(
+            "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"
+        ),
+        "eng"=>array(
+            "mo", "tu", "we", "th", "fr", "sa", "su"
+        )
+    );
+
+
+
     $res = '';
 
     switch ($format){
@@ -115,6 +126,9 @@ function to_afisha_date($str, $format, $lang)
             break;
         case 'weekday':
             $res = $weekDays[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
+            break;
+        case 'weekday_short':
+            $res = $weekDays_short[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
             break;
         case 'time':
             $res = $hh . ':' . $mi;

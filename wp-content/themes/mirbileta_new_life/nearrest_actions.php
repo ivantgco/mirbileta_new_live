@@ -113,18 +113,18 @@
 
 ?>
 
-<div class="page-headline-wrapper">
-    <div class="p-h-line"></div>
-    <div class="p-h-title"><span>Ближайшие мероприятия:</span></div>
-    <?php
-
-
-    ?>
-</div>
+<!--<div class="page-headline-wrapper">-->
+<!--    <div class="p-h-line"></div>-->
+<!--    <div class="p-h-title"><span>Ближайшие мероприятия:</span></div>-->
+<!--    --><?php
+//
+//
+//    ?>
+<!--</div>-->
 
 <div class="row">
     <div class="col-md-3">
-        <div class="mb-block">
+        <div class="mb-block-1">
             <div class="mb-nrs-wrapper">
                 <div class="mb-nrs-header">Сегодня:</div>
                 <div class="mb-nrs-body chromeScroll" data-date="today">
@@ -179,7 +179,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="mb-block">
+        <div class="mb-block-1">
             <div class="mb-nrs-wrapper">
                 <div class="mb-nrs-header">Завтра:</div>
                 <div class="mb-nrs-body chromeScroll" data-date="tomorrow">
@@ -237,7 +237,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="mb-block">
+        <div class="mb-block-1">
             <div class="mb-nrs-wrapper">
                 <div class="mb-nrs-header">На выходных:</div>
                 <div class="mb-nrs-body chromeScroll" data-date="weekend">
@@ -293,7 +293,7 @@
     </div>
 
     <div class="col-md-3">
-        <div class="mb-block">
+        <div class="mb-block-1">
             <div class="mb-nrs-wrapper">
                 <div class="mb-nrs-header">Следующая неделя:</div>
                 <div class="mb-nrs-body chromeScroll" data-date="nextweek">

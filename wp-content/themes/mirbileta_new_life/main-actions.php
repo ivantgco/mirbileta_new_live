@@ -64,10 +64,12 @@
             .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
             .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
             .'<div class="mb-a-date">'.$act_date.' '.$year.', <span class="mb-a-time">'.$act_time.'</span><span class="mb-week">'.$weekday.'</span></div>'
+
             .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
-            .'<div class="mb-a-buy-holder">'
-            .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
-            .'</div>'
+//            .'<div class="mb-a-buy-holder">'
+//            .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
+//            .'</div>'
+            .'<div class="mb-a-reviews">Отзывы (<span class="mb-a-reviews-count">3</span>)</div>'
             .'</div>';
     }
 

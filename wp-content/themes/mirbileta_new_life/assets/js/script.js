@@ -891,6 +891,20 @@
 
             });
 
+            $('.mb-subscr-button-toggler').off('click').on('click', function(){
+
+                var p = $(this).parents('.mb-subscr-button-wrapper').eq(0);
+//                var dd = p.find('.mb-subscr-button-dd').eq(0);
+
+                if(p.hasClass('opened')){
+                    p.removeClass('opened');
+                }else{
+                    p.addClass('opened');
+                }
+
+            });
+
+
             $('.sidebar-filter-item-title').off('click').on('click', function(){
                 var p = $(this).parents('.sidebar-filter-item-wrapper').eq(0);
                 var dd = p.find('.sidebar-filter-item-dd').eq(0);
