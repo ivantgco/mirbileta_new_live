@@ -4327,6 +4327,8 @@ input.sidebar-search:focus{
     font-size: 12px;
     cursor: pointer;
     box-shadow: 0 2px 1px rgba(0,0,0,0.15);
+    color: #000;
+    text-decoration: none;
 }
 .sidebar-tag-item:hover{
     color: #179A85;
@@ -4865,6 +4867,7 @@ input.mb-subscr-subscr-input {
     color: #030303;
     margin-bottom: 50px;
     margin-top: 140px;
+    width: 550px;
 }
 .action-date{
     font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
@@ -4883,9 +4886,16 @@ input.mb-subscr-subscr-input {
     margin-bottom: 10px;
 }
 
+.a-image-reviews-holder{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
 
 .image-gallery-holder{
     width: 575px;
+    float: left;
+
 
 }
 .ig-main-wrapper{
@@ -4893,7 +4903,7 @@ input.mb-subscr-subscr-input {
     height: 400px;
 }
 .ig-list-wrapper{
-
+    margin-top: 14px;
 }
 .ig-main-img{
     width:100%;
@@ -4934,4 +4944,188 @@ input.mb-subscr-subscr-input {
 }
 .action-description {
     width: 575px;
+    float: left;
+}
+
+.a-review-item {
+    width: 300px;
+    border-left: 2px solid green;
+    margin-bottom: 30px;
+}
+.a-review-text {
+    margin-bottom: 13px;
+    padding-left: 20px;
+}
+
+.a-review-footer{
+    background-color: #fff;
+    width: 100%;
+    height: 56px;
+    margin-top: 20px;
+}
+img.a-review-img:first-child {
+    margin-left: 0;
+}
+img.a-review-img {
+    display: inline-block;
+    width: 60px;
+    margin-left: 5px;
+}
+.a-review-media-item {
+    display: inline-block;
+}
+
+.a-review-media {
+    padding-left: 20px;
+}
+.a-review-rating {
+    display: inline-block;
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 16px;
+    color: #030303;
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+    text-align: center;
+    padding-top: 4px;
+
+}
+.a-review-rating {
+    display: inline-block;
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 16px;
+    color: #030303;
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+    text-align: center;
+    padding-top: 8px;
+    background-color: antiquewhite;
+    margin-left: 20px;
+    margin-top: 9px;
+}
+
+.a-review-item.good{
+    border-left: 2px solid #55e941;
+}
+.a-review-item.good .a-review-rating{
+    background-color: #55e941;
+}
+
+.a-review-item.bad{
+    border-left: 2px solid #f09903;
+}
+.a-review-item.bad .a-review-rating{
+    background-color: #f09903;
+}
+.a-review-item.worst{
+    border-left: 2px solid red;
+}
+.a-review-item.worst .a-review-rating{
+    background-color: red;
+}
+
+
+
+.a-review-owner{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.a-review-date{
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 20px;
+}
+.a-reviews-holder {
+    float: left;
+    padding-left: 26px;
+}
+.a-reviews-holder .ap-title{
+    margin-top: 0;
+}
+.a-reviews-list {
+    margin-top: 40px;
+}
+.action-places-info-holder{
+    background-image: url("../img/sprite.png");
+    height: 172px;
+    width: 500px;
+    background-repeat: no-repeat;
+    background-position: -11px -303px;
+    position: absolute;
+    left: 590px;
+    top: 90px;
+}
+
+.a-places-info-title{
+    margin-top: 55px;
+    margin-left: 140px;
+    font-size: 16px;
+}
+.a-places-info-title b{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-weight: normal;
+}
+.a-places-info-sub {
+    margin-left: 140px;
+    margin-top: 16px;
+    color: #646464;
+}
+.a-places-info-link{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    color: #1e8e23;
+    text-decoration: underline;
+}
+.action-buy-button{
+    background-color: #ffea00;
+    width: 160px;
+    text-align: center;
+    padding-top: 13px;
+    padding-bottom: 12px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+.action-sidebar-holder{
+    margin-top: 200px;
+}
+.action-actors-holder ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.action-actors-holder ul li{
+    list-style: none;
+}
+
+.action-actors-holder .one-action-actor-name{
+    font-family: PTSans-Regular, OpenSans-Regular, arial, sans-serif;
+    font-size: 16px;
+    color: #030303;
+    text-decoration: none;
+}
+.action-tags-holder {
+    margin-top: 50px;
+}
+.modal-widget-holder{
+    position: fixed;
+    z-index: 100000000;
+    width: 100%;
+    padding: 15px;
+    height: 100%;
+    background-color: rgba(0,0,0,0.15);
+    top: 0;
+    left: 0;
+}
+.modal-widget-inner{
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    border: 1px solid yellow;
+}
+.modal-widget-inner .mbw-header{
+    display: none;
 }

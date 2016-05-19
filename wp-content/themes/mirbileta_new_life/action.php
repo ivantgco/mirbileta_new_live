@@ -128,6 +128,95 @@
             <div class="site-sidebar">
                 <div class="sidebar-block">
 
+                    <div class="action-sidebar-holder">
+
+                        <div title="<?php echo $act_name; ?> Купить билеты" class="action-buy-button">Купить билеты</div>
+
+                        <div class="action-actors-holder">
+
+
+                                <?php
+                                $actorsArray = json_decode($actor_list);
+
+                                if(count($actorsArray) > 0): ?>
+
+                                <h2 class="ap-title">Участники:</h2>
+
+                                <?php endif ?>
+
+                                <ul>
+
+                                    <?php
+
+                                    // Подгружаем актеров
+
+
+                                    $actors_html = "";
+
+                                    foreach ($actorsArray as $key2 => $value2){
+
+                                        $actor_id =     $value2->id;
+                                        $actor_alias =  $value2->alias;
+                                        $actor_name =   $value2->name;
+                                        $actor_image_small =  $value2->url_image_small;
+
+
+
+
+                                        $actors_html .= '<li data-id="'.$actor_id.'"><a class="one-action-actor-link" href="/'.$actor_alias.'"><div class="one-action-actor-image" style="background-image: url('.$actor_image_small.')"></div>'
+                                            .'<div class="one-action-actor-name">'.$actor_name.'</div>'
+                                            .'</a></li>';
+                                    }
+
+                                    //                                var_dump($actor_columns);
+                                    echo $actors_html;
+
+                                    ?>
+
+                                </ul>
+
+
+                        </div>
+
+
+                        <div class="action-tags-holder">
+
+                            <h2 class="ap-title">Теги:</h2>
+
+                            <?php
+
+                            $tagsArray = json_decode($tag_list);
+                            $tag_html = "";
+                            $indexer = 0;
+
+                            foreach ($tagsArray as $key3 => $value3){
+
+                                $tag_id =             $value3->id;
+                                $tag_name =           $value3->name;
+
+
+
+                                $tag_html .= '<a class="sidebar-tag-item" href="/extend_search?action_tag_id='.$tag_id.'">'.$tag_name.'</a>';
+
+                                if($indexer == 0){
+                                    $tag_ids .= $tag_id;
+                                }else{
+                                    $tag_ids .= ','.$tag_id;
+                                }
+
+
+                                $indexer++;
+                            }
+
+                            echo $tag_html;
+
+                            ?>
+                        </div>
+
+                    </div>
+
+
+
                 </div>
             </div>
 
@@ -137,37 +226,118 @@
                 <div class="action-date"><?php echo $act_date .' '. $act_date_year; ?> <span class="weekday">(<?php echo $weekday_short;?>)</span> <?php echo $act_time;?></div>
                 <div class="action-venue"><?php echo $hall; ?></div>
 
-                <div class="image-gallery-holder">
 
-                    <div class="ig-main-wrapper">
-                        <img class="ig-main-img" src="http://www.sovremennik.ru/upload/resize_cache/iblock/1d0/1177_785_2/1d0873deece2ec66410a364b96a36d8f.JPG" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                <div class="action-places-info-holder">
+                    <div class="a-places-info-title">
+                        Есть <b>2 отличных места</b> в партере<br/>
+                        по 5500 руб! <span class="a-places-info-link">Смотреть</span>
+                    </div>
+                    <div class="a-places-info-sub">
+                        Всего осталось более 100 билетов<br/>
+                        от 1000 до 5000 руб.
+                    </div>
+                </div>
+
+                <div class="a-image-reviews-holder">
+
+
+                    <div class="image-gallery-holder">
+
+                        <div class="ig-main-wrapper">
+                            <img class="ig-main-img" src="http://mirbileta.ru/images/sov_dvoe_na_kachelah.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                        </div>
+
+                        <div class="ig-list-wrapper">
+
+                            <div class="ig-list-train">
+                                <div class="ig-list-item">
+                                    <img class="ig-main-img" src="http://mirbileta.ru/images/gkd_1001.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                </div>
+                                <div class="ig-list-item">
+                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_igra_v_djin.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                </div>
+                                <div class="ig-list-item video">
+                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_dvoe_na_kachelah.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    <div class="ig-video-corners"></div>
+                                </div>
+                                <div class="ig-list-item">
+                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <div class="ig-list-wrapper">
+                    <div class="a-reviews-holder">
+                        <h2 class="ap-title">Отзывы</h2>
 
-                        <div class="ig-list-train">
-                            <div class="ig-list-item">
-                                <img class="ig-main-img" src="http://mirbileta.ru/images/gkd_1001.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                        <div class="a-reviews-list">
+
+                            <div class="a-review-item good">
+                                <div class="a-review-text">
+                                    Джем дома.) Мы в полном восторге! Спасибо организаторам, спасибо Сэм и всем кто был на мк и концерте.
+                                </div>
+
+                                <div class="a-review-media">
+                                    <div class="a-review-media-item">
+                                        <img class="a-review-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    </div>
+                                    <div class="a-review-media-item">
+                                        <img class="a-review-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    </div>
+                                    <div class="a-review-media-item">
+                                        <img class="a-review-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    </div>
+                                    <div class="a-review-media-item">
+                                        Еще 3 фото
+                                    </div>
+
+                                </div>
+
+                                <div class="a-review-footer">
+                                    <div class="a-review-rating">9.7</div>
+                                    <div class="a-review-owner">Alisa</div>
+                                    <div class="a-review-date">Вчера в 22:17</div>
+                                </div>
+
                             </div>
-                            <div class="ig-list-item">
-                                <img class="ig-main-img" src="http://mirbileta.ru/images/sov_igra_v_djin.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+
+                            <div class="a-review-item bad">
+                                <div class="a-review-text">
+                                    Ну мы ожидали большего... Спасибо конечно, организаторам. Но за такие деньги.. Говно.
+                                </div>
+
+                                <div class="a-review-media">
+
+
+                                </div>
+
+                                <div class="a-review-footer">
+                                    <div class="a-review-rating">5.4</div>
+                                    <div class="a-review-owner">Nikolay</div>
+                                    <div class="a-review-date">Вчера в 21:58</div>
+                                </div>
+
                             </div>
-                            <div class="ig-list-item video">
-                                <img class="ig-main-img" src="http://www.sovremennik.ru/upload/resize_cache/iblock/1d0/1177_785_2/1d0873deece2ec66410a364b96a36d8f.JPG" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
-                                <div class="ig-video-corners"></div>
-                            </div>
-                            <div class="ig-list-item">
-                                <img class="ig-main-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
-                            </div>
+
+<!--                            <div class="a-review-toggler">Смотреть еще 7 отзывов</div>-->
+
                         </div>
+
 
                     </div>
 
                 </div>
 
-                <h2 class="ap-title">Описание</h2>
+
+
+
 
                 <div class="action-description">
+
+                    <h2 class="ap-title">Описание</h2>
+
                     В этот вечер с большим концертом и презентацией нового альбома «Mexico» выступит легендарный Хулио Иглесиас.
 
                     Творческий путь Хулио Иглесиаса, которого мировая пресса давно окрестила «Великим испанцем», просто невероятен: более 300 миллионов копий 80 альбомов, выпущенных во всем мире, более пяти тысяч концертов в 600 городах планеты, 2600 платиновых и золотых дисков, самые престижные музыкальные премии...
@@ -199,6 +369,26 @@
 
     ?>
 
+    <div class="modal-widget-holder">
+        <div class="modal-widget-inner">
+
+            <div id="multibooker-widget-wrapper"
+                 data-actions="<?php echo $act_id ?>"
+                 data-widget_theme="light"
+                 data-withdelivery="false"
+                 data-mirbileta="true"
+                 data-width=""
+                 data-frame="<?php echo $frame ?>"
+                 data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
+                 data-ip="<?php echo $global_url; ?>">
+
+                <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
+
+            </div>
+
+        </div>
+    </div>
+
 
     <?php
     if($free_places > 0){
@@ -215,6 +405,8 @@
 
     }
     ?>
+
+
 
 
 
