@@ -57,6 +57,7 @@
     $sbag =         $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
     $tag_list =     $data[array_search("ACTION_TAG_LIST", $columns)];
     $actor_list =   $data[array_search("ACTION_ACTOR_LIST", $columns)];
+    $images_list =   $data[array_search("ACTION_IMAGES_LIST", $columns)];
 
     $isInfo = strlen($description) > 0;
     $description = $data[array_search("DESCRIPTION", $columns)];

@@ -55,6 +55,7 @@
     $sbag =         $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
     $tag_list =     $data[array_search("ACTION_TAG_LIST", $columns)];
     $actor_list =   $data[array_search("ACTION_ACTOR_LIST", $columns)];
+    $images_list =   $data[array_search("ACTION_IMAGES_LIST", $columns)];
 
     $isInfo = strlen($description) > 0;
     $description = $data[array_search("DESCRIPTION", $columns)];
@@ -68,9 +69,6 @@
     $weekday = to_afisha_date($act_date_time, "weekday", "rus");
     $weekday_short = to_afisha_date($act_date_time, "weekday_short", "rus");
     $time = to_afisha_date($act_date_time, "time", "rus");
-
-
-
 
 
     ?>
@@ -116,8 +114,6 @@
     <?php
     get_header();
     include('main_menu.php');
-
-
 
     ?>
 
@@ -338,22 +334,13 @@
 
                     <h2 class="ap-title">Описание</h2>
 
-                    В этот вечер с большим концертом и презентацией нового альбома «Mexico» выступит легендарный Хулио Иглесиас.
+                        <?php echo $description; ?>
 
-                    Творческий путь Хулио Иглесиаса, которого мировая пресса давно окрестила «Великим испанцем», просто невероятен: более 300 миллионов копий 80 альбомов, выпущенных во всем мире, более пяти тысяч концертов в 600 городах планеты, 2600 платиновых и золотых дисков, самые престижные музыкальные премии...
+                    </div>
 
-                    В начале своей карьеры он легко завоевал песенный олимп родины, а вскоре двинулся дальше, покоряя страны и континенты. «Испанский певец номер один» гастролировал по всей Европе, срывая овации на самых престижных концертных площадках. Покорение американского континента произошло после его выступления в Лос-Анджелесе со звёздами Голливуда и последовавших совместных записей с Дайаной Росс, Стиви Уандером и многими другими знаменитыми артистами. Но главным событием американского вояжа стал выход диска «Дуэты». Иглесиас добился своей цели: патриарх американской поп-музыки, маэстро Фрэнк Синатра, пригласил Иглесиаса исполнить вместе с ним песню «Summer Wind».
-
-                    Он поет на испанском, итальянском, французском, английском и немецком языках. Это не только расширило аудиторию певца, но и повысило тиражи его записей. В «Книгу рекордов Гиннесса» Хулио Иглесиас попал как единственный обладатель бриллиантового диска, которого он удостоился за более чем 100 миллионов проданных альбомов на шести языках.
-
-                    Публику покоряет сдержанная манера исполнения певца. Минимум жестов и движений — в центре внимания только голос, погружающий вас в глубины страсти, заставляющий сопереживать радостям и печалям. Он оказывает на слушателей поистине гипнотическое воздействие. Иглесиас обращается именно к вам и поёт только для вас. Единожды услышав, вы уже никогда ни с кем его не перепутаете.
-
-                    Иглесиас легко импровизирует, но не меняет «классическое» звучание всеми любимых песен. Любая вещь в его интерпретации моментально узнается слушателями. Определение манеры и стиля исполнения Хулио Иглесиаса давно не вызывает споров — критики сошлись в точной формулировке: «квинтэссенция песен о любви». Однажды кто-то из них верно отметил, что музыкальные вкусы часто меняются, но мода на Хулио Иглесиаса не проходит.
-
-                    Каждый концерт этого элегантного кабальеро проходит в приятной, романтической атмосфере: Хулио Иглесиас поёт сердцем, для всех сразу и каждого в отдельности. «Меня переполняет страсть. Я пою, чтобы продолжать жить», — признаётся певец.
-
-                    Новый альбом «Mexico» и лучшие хиты артиста сделают этот вечер поистине незабываемым для каждого зрителя. Не пропустите!
-                </div>
+                <div id="multibooker-afisha-wrapper"
+                     data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
+                     data-ip="<?php echo $global_url; ?>"></div>
 
 
             </div>
@@ -365,26 +352,34 @@
 
             <?php
 
-    get_footer();
+            get_footer();
 
-    ?>
+            ?>
 
-    <div class="modal-widget-holder">
-        <div class="modal-widget-inner">
+    <div class="modal-widget-holder-1">
+        <div class="modal-widget-inner-1">
 
-            <div id="multibooker-widget-wrapper"
-                 data-actions="<?php echo $act_id ?>"
-                 data-widget_theme="light"
-                 data-withdelivery="false"
-                 data-mirbileta="true"
-                 data-width=""
-                 data-frame="<?php echo $frame ?>"
-                 data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                 data-ip="<?php echo $global_url; ?>">
 
-                <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
 
-            </div>
+
+
+
+
+
+
+<!--            <div id="multibooker-widget-wrapper"-->
+<!--                 data-actions="--><?php //echo $act_id ?><!--"-->
+<!--                 data-widget_theme="light"-->
+<!--                 data-withdelivery="false"-->
+<!--                 data-mirbileta="true"-->
+<!--                 data-width=""-->
+<!--                 data-frame="--><?php //echo $frame ?><!--"-->
+<!--                 data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
+<!--                 data-ip="--><?php //echo $global_url; ?><!--">-->
+<!---->
+<!--                <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>-->
+<!---->
+<!--            </div>-->
 
         </div>
     </div>
@@ -399,7 +394,8 @@
         //7564 отменим
 
     ?>
-        <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
+<!--        <script type="text/javascript" src="--><?php //echo $global_prot .'://'. $global_url?><!--/assets/widget/widget.js"></script>-->
+        <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/afisha.js"></script>
 
     <?php
 
