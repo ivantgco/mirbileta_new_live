@@ -340,7 +340,8 @@
 
                 <div id="multibooker-afisha-wrapper"
                      data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                     data-ip="<?php echo $global_url; ?>"></div>
+                     data-ip="<?php echo $global_url; ?>"
+                    ></div>
 
 
             </div>
