@@ -239,29 +239,60 @@
 
                     <div class="image-gallery-holder">
 
+
                         <div class="ig-main-wrapper">
-                            <img class="ig-main-img" src="http://mirbileta.ru/images/sov_dvoe_na_kachelah.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                            <img class="ig-main-img" src="<?php echo $poster; ?>" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
                         </div>
 
                         <div class="ig-list-wrapper">
 
                             <div class="ig-list-train">
-                                <div class="ig-list-item">
-                                    <img class="ig-main-img" src="http://mirbileta.ru/images/gkd_1001.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
-                                </div>
-                                <div class="ig-list-item">
-                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_igra_v_djin.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
-                                </div>
-                                <div class="ig-list-item video">
-                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_dvoe_na_kachelah.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
-                                    <div class="ig-video-corners"></div>
-                                </div>
-                                <div class="ig-list-item">
-                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
-                                </div>
-                            </div>
 
+                                <?php
+
+                                $images = explode(',', $images_list);
+
+
+
+                                $images_html = '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+
+                                foreach ($images as $key1 => $value1){
+
+                                    if(strpos($value1, 'youtube.com')){
+                                        $images_html .= '<div class="one-action-image-list-item" alt="'.$act_name . ' Купить билет" data-url="'.$value1.'" data-type="video"><div class="video_play"></div></div>';
+                                    }else{
+                                        $images_html .= '<div data-type="img" data-url="'.$value1.'" class="ig-list-item"><img class="ig-main-img" src="'.$value1.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+                                    }
+
+                                }
+
+
+                                echo($images_html);
+
+                                ?>
+
+                            </div>
                         </div>
+
+
+
+<!--                        <div class="ig-list-wrapper">-->
+<!---->
+<!--                            <div class="ig-list-train">-->
+<!---->
+<!--                                <div class="ig-list-item">-->
+<!--                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_igra_v_djin.jpg" alt="--><?php //echo $act_name; ?><!--" title="--><?php //echo $act_name; ?><!--" />-->
+<!--                                </div>-->
+<!--                                <div class="ig-list-item video">-->
+<!--                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_dvoe_na_kachelah.jpg" alt="--><?php //echo $act_name; ?><!--" title="--><?php //echo $act_name; ?><!--" />-->
+<!--                                    <div class="ig-video-corners"></div>-->
+<!--                                </div>-->
+<!--                                <div class="ig-list-item">-->
+<!--                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="--><?php //echo $act_name; ?><!--" title="--><?php //echo $act_name; ?><!--" />-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!---->
+<!--                        </div>-->
 
                     </div>
 
@@ -338,10 +369,10 @@
 
                     </div>
 
-                <div id="multibooker-afisha-wrapper"
-                     data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                     data-ip="<?php echo $global_url; ?>"
-                    ></div>
+<!--                <div id="multibooker-afisha-wrapper"-->
+<!--                     data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
+<!--                     data-ip="--><?php //echo $global_url; ?><!--"-->
+<!--                    ></div>-->
 
 
             </div>
@@ -357,8 +388,8 @@
 
             ?>
 
-    <div class="modal-widget-holder-1">
-        <div class="modal-widget-inner-1">
+    <div class="modal-widget-holder">
+        <div class="modal-widget-inner">
 
 
 
@@ -368,19 +399,16 @@
 
 
 
-<!--            <div id="multibooker-widget-wrapper"-->
-<!--                 data-actions="--><?php //echo $act_id ?><!--"-->
-<!--                 data-widget_theme="light"-->
-<!--                 data-withdelivery="false"-->
-<!--                 data-mirbileta="true"-->
-<!--                 data-width=""-->
-<!--                 data-frame="--><?php //echo $frame ?><!--"-->
-<!--                 data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
-<!--                 data-ip="--><?php //echo $global_url; ?><!--">-->
-<!---->
-<!--                <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>-->
-<!---->
-<!--            </div>-->
+            <div id="multibooker-widget-wrapper"
+                 data-actions="<?php echo $act_id ?>"
+                 data-mirbileta="true"
+                 data-frame="<?php echo $frame ?>"
+                 data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
+                 data-ip="<?php echo $global_url; ?>">
+
+                <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
+
+            </div>
 
         </div>
     </div>
@@ -395,8 +423,8 @@
         //7564 отменим
 
     ?>
-<!--        <script type="text/javascript" src="--><?php //echo $global_prot .'://'. $global_url?><!--/assets/widget/widget.js"></script>-->
-        <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/afisha.js"></script>
+        <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget.js"></script>
+<!--        <script type="text/javascript" src="--><?php //echo $global_prot .'://'. $global_url?><!--/assets/widget/afisha.js"></script>-->
 
     <?php
 

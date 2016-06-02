@@ -904,7 +904,6 @@
 
             });
 
-
             $('.sidebar-filter-item-title').off('click').on('click', function(){
                 var p = $(this).parents('.sidebar-filter-item-wrapper').eq(0);
                 var dd = p.find('.sidebar-filter-item-dd').eq(0);
@@ -929,6 +928,26 @@
                 }
 
 
+            });
+
+            $('.ig-list-item').off('click').on('click', function(){
+
+                var type = $(this).data('type');
+                var url = $(this).data('url');
+                var tpl;
+
+                if(type == 'video'){
+                    tpl = '<iframe width="575" height="400" src="'+url+'" frameborder="0" allowfullscreen></iframe>';
+                    $('.ig-main-wrapper').html(tpl);
+
+                }else{
+                    $('.ig-main-wrapper').html('');
+                    $('.ig-main-wrapper').attr('style', 'background-image: url('+url+')' );
+                }
+
+
+
+                console.log('item');
             });
 
             uiTabs();
