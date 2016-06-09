@@ -9,7 +9,7 @@
     $action_alias = preg_replace('/(^\w+)\/.*/','$1',$action_alias);
 
 
-    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><action_url_alias>".$action_alias."</action_url_alias>";
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><action_url_alias>".$action_alias."</action_url_alias>";
 
     $ch = curl_init();
 
@@ -103,7 +103,11 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
         <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all'/>
 
+        <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget.js" src=""></script>
+
         <?php wp_head(); ?>
+
+
 
     </head>
 
@@ -386,23 +390,17 @@
 
             get_footer();
 
+
             ?>
 
     <div class="modal-widget-holder">
         <div class="modal-widget-inner">
 
 
-
-
-
-
-
-
-
             <div id="multibooker-widget-wrapper"
-                 data-actions="1237"
+                 data-actions="<?php echo $act_id; ?>"
                  data-mirbileta="true"
-                 data-frame="kjhsdfsd87789sdfjs734j238dsj834g234i58skdu4y3278gyujwe7r3"
+                 data-frame="<?php echo $frame; ?>"
                  data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
                  data-ip="<?php echo $global_url; ?>">
 
@@ -415,6 +413,10 @@
 
 
     <?php
+
+
+
+
     if($free_places > 0){
 
 
@@ -423,7 +425,7 @@
         //7564 отменим
 
     ?>
-        <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget.js"></script>
+
 <!--        <script type="text/javascript" src="--><?php //echo $global_prot .'://'. $global_url?><!--/assets/widget/afisha.js"></script>-->
 
     <?php

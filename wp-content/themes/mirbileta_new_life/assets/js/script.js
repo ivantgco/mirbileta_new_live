@@ -950,6 +950,15 @@
                 console.log('item');
             });
 
+            $('.action-buy-button').off('click').on('click', function(){
+                $('.modal-widget-holder').show(0);
+
+                $.getScript($('#mbw-script-loader').attr('data-src'), function(){
+
+                });
+
+            });
+
             uiTabs();
 
         },
