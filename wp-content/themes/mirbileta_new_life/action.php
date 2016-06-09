@@ -400,9 +400,9 @@
 
 
             <div id="multibooker-widget-wrapper"
-                 data-actions="<?php echo $act_id ?>"
+                 data-actions="1237"
                  data-mirbileta="true"
-                 data-frame="<?php echo $frame ?>"
+                 data-frame="kjhsdfsd87789sdfjs734j238dsj834g234i58skdu4y3278gyujwe7r3"
                  data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
                  data-ip="<?php echo $global_url; ?>">
 
