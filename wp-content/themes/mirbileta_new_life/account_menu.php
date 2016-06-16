@@ -12,7 +12,7 @@
         // чем указанное местоположение theme_location - если указано, то параметр theme_location игнорируется)
         'container'       => 'ul',            // (string) Контейнер меню. Обворачиватель ul. Указывается тег контейнера (по умолчанию в тег div)
         'container_class' => 'account-sidebar-menu',     // (string) class контейнера (div тега)
-        'container_id'    => '',              // (string) id контейнера (div тега)
+        'container_id'    => 'account-sidebar-menu',              // (string) id контейнера (div тега)
         'menu_class'      => '',              // (string) class самого меню (ul тега)
         'menu_id'         => '',              // (string) id самого меню (ul тега)
         'echo'            => true,            // (boolean) Выводить на экран или возвращать для обработки

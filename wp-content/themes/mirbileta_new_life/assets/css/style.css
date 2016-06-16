@@ -1565,14 +1565,17 @@ input.mb-tf-fil-to-date {
 
 [data-page="inner"] .logo-wrapper .mb-logo-title{
     color: #000;
+    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
+    font-size: 21.3px;
+    letter-spacing: 0.9px;
 }
 
 [data-page="inner"] .logo-wrapper .mb-logo-subtitle{
     color: #269A54;
 }
 
-[data-page="inner"] .site-header{
-    background-color: #fff;
+[data-page="inner"] .site-header {
+    background-color: #f7f7f7;
 }
 
 [data-page="inner"] .main-input {
@@ -1598,8 +1601,8 @@ input.mb-tf-fil-to-date {
 }
 [data-page="inner"] .main-menu-wrapper{
     height: 55px;
-    background-color: #FFFFFF;
-    border-top: 1px solid #EFEFEF;
+    background-color: #f7f7f7;
+    border-top: 1px solid #eee;
     border-bottom: 1px solid #d9d9d9;
 }
 
@@ -5131,5 +5134,136 @@ img.a-review-img {
     display: none;
 }
 .mb-personal-account-content{
-    background-color: #f7f7f7;
+    /*background-color: #f7f7f7;*/
+}
+#menu-account_sidebar_menu{
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+    border-radius: 4px;
+    /*box-shadow: 0 3px 1px rgba(0,0,0,0.5);*/
+    background-color: #fcfcfc;
+}
+
+#menu-account_sidebar_menu li {
+    list-style: none;
+    border-bottom: 1px solid #ddd;
+}
+#menu-account_sidebar_menu li:last-child {
+    border-bottom: 0;
+    border-radius: 0 0 4px 4px;
+}
+
+#menu-account_sidebar_menu li:first-child{
+    border-radius: 4px 4px 0 0;
+}
+
+#menu-account_sidebar_menu li a{
+    color: #000;
+    text-decoration: none;
+    display: block;
+    padding: 13px 15px 11px 16px;
+}
+#menu-account_sidebar_menu li a:hover{
+    background-color: rgba(255, 234, 0, 0.5);
+}
+#menu-account_sidebar_menu li.current-menu-item a{
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+}
+.pa-color-list {
+    margin: 0;
+    padding: 0;
+    margin-top: 150px;
+}
+.pa-color-list li{
+    list-style: none;
+    margin-bottom: 18px;
+}
+
+.pa-color-num {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    text-align: center;
+    margin-right: 17px;
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 30px;
+    color: #fff;
+    padding-left: 3px;
+}
+.pa-color-text {
+    display: inline-block;
+    font-size: 18px;
+}
+.pa-intro-holder{
+    padding-left: 100px;
+    background-image: url('../img/pa-intro-circle.png');
+    background-position: 50px 281px;
+    background-repeat: no-repeat;
+    padding-bottom: 160px;
+    margin-left: 0;
+    /*background-color: #fcfcfc;*/
+    padding-top: 100px;
+    margin-top: -70px;
+
+}
+
+
+.pa-color-list li:nth-child(1) .pa-color-num{background-color: #46e85d;}
+.pa-color-list li:nth-child(2) .pa-color-num{background-color: #ff9600;}
+.pa-color-list li:nth-child(3) .pa-color-num{background-color: #468ee8;}
+.pa-color-list li:nth-child(4) .pa-color-num{background-color: #c846e8;}
+.pa-color-list li:nth-child(5) .pa-color-num{background-color: #e84659;}
+.pa-color-list li:nth-child(6) .pa-color-num{background-color: #e8e246;}
+.pa-color-list li:nth-child(7) .pa-color-num{background-color: #ff5ebd;}
+
+
+
+.pa-hello{
+    background-image: url("../img/pa-intro-1.png");
+    padding-right: 50px;
+    padding-bottom: 54px;
+    font-size: 18px;
+    font-family: PTSans-Regular, OpenSans-Regular , arial, sans-serif;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    display: inline-block;
+}
+.pa-second-bg{
+    background-image: url("../img/pa-intro-2.png");
+    width: 344px;
+    height: 34px;
+    background-repeat: no-repeat;
+    background-position: left top;
+    position: absolute;
+    margin-top: 52px;
+    margin-left: 50px;
+}
+.pa-you-can{
+    font-size: 18px;
+    font-family: PTSans-Regular, OpenSans-Regular , arial, sans-serif;
+    margin-top: 35px;
+}
+.pa-third-bg{
+    background-image: url("../img/pa-intro-3.png");
+    width: 244px;
+    height: 112px;
+    background-repeat: no-repeat;
+    background-position: left top;
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 50px;
+}
+.pa-hello-name{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 26px;
+    color: #000;
+
+}
+.pa-color-text a{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    color: #3a7fd6;
+    text-decoration: underline;
 }

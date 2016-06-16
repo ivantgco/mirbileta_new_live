@@ -62,7 +62,60 @@ include('main_menu.php');
         <div class="mb-site-content">
 
             <div class="mb-personal-account-content">
-                123
+
+                <div class="pa-intro-holder">
+
+                    <div class="pa-hello">
+                        <span class="pa-hello-name">Alexandr,</span>
+                        Приветсвуем вас в вашем личном кабинете!
+
+                        <div class="pa-second-bg"></div>
+
+                    </div>
+
+                    <div class="pa-you-can">Здесь вы можете:</div>
+
+                    <div class="pa-third-bg"></div>
+
+                    <ul class="pa-color-list">
+
+                        <li><div class="pa-color-num">1.</div><div class="pa-color-text">Получить <a href="#" target="_blank" >постоянную скидку</a> на ВСЕ билеты, это легко!</div></li>
+                        <li><div class="pa-color-num">2.</div><div class="pa-color-text">Посмотреть свои <a href="#" target="_blank" >заказы</a> и <a href="#" target="_blank" >скачать билеты</a></div></li>
+                        <li><div class="pa-color-num">3.</div><div class="pa-color-text">Писать <a href="#" target="_blank" >отзывы</a> о мероприятиях и действующих лицах.</div></li>
+                        <li><div class="pa-color-num">4.</div><div class="pa-color-text">Ставить <a href="#" target="_blank" >оценки местам в зале.</a></div></li>
+                        <li><div class="pa-color-num">5.</div><div class="pa-color-text">Управлять <a href="#" target="_blank" >подписками.</a></div></li>
+                        <li><div class="pa-color-num">6.</div><div class="pa-color-text">Посмотреть или сохранить себе наши <a href="#" target="_blank" >роскошные подборки</a> лучших мероприятий.</div></li>
+                        <li><div class="pa-color-num">7.</div><div class="pa-color-text">Заполнить информацию <a href="#" target="_blank" >о себе.</a></div></li>
+
+                    </ul>
+
+                </div>
+
+
+
+
+                Фото
+
+                Пол
+
+                Возраст
+
+                SHOW_TYPE
+
+                Любимые исполнители
+
+                Любимые авторы
+
+                Комфортная цена билета
+
+                Опишите как вы отдыхаете:
+
+                - Все время мониторю кудаб сходить, хожу почти на все популярное
+                - Слежу, хожу только на некоторые
+                - Не слежу, меня зовут близкие
+                - Попадаю куда либо редко и спонтанно
+                - Вообще странно, что я здесь..
+
             </div>
 
 
