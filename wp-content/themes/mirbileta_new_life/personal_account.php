@@ -79,12 +79,12 @@ include('main_menu.php');
 
                     <ul class="pa-color-list">
 
-                        <li><div class="pa-color-num">1.</div><div class="pa-color-text">Получить <a href="#" target="_blank" >постоянную скидку</a> на ВСЕ билеты, это легко!</div></li>
-                        <li><div class="pa-color-num">2.</div><div class="pa-color-text">Посмотреть свои <a href="#" target="_blank" >заказы</a> и <a href="#" target="_blank" >скачать билеты</a></div></li>
-                        <li><div class="pa-color-num">3.</div><div class="pa-color-text">Писать <a href="#" target="_blank" >отзывы</a> о мероприятиях и действующих лицах.</div></li>
-                        <li><div class="pa-color-num">4.</div><div class="pa-color-text">Ставить <a href="#" target="_blank" >оценки местам в зале.</a></div></li>
-                        <li><div class="pa-color-num">5.</div><div class="pa-color-text">Управлять <a href="#" target="_blank" >подписками.</a></div></li>
-                        <li><div class="pa-color-num">6.</div><div class="pa-color-text">Посмотреть или сохранить себе наши <a href="#" target="_blank" >роскошные подборки</a> лучших мероприятий.</div></li>
+                        <li><div class="pa-color-num">1.</div><div class="pa-color-text">Получить <a href="/discount" target="" >постоянную скидку</a> на ВСЕ билеты, это легко!</div></li>
+                        <li><div class="pa-color-num">2.</div><div class="pa-color-text">Посмотреть свои <a href="/orders" target="" >заказы</a> и <a href="#" target="_blank" >скачать билеты</a></div></li>
+                        <li><div class="pa-color-num">3.</div><div class="pa-color-text">Писать <a href="/reviews" target="" >отзывы</a> о мероприятиях и действующих лицах.</div></li>
+                        <li><div class="pa-color-num">4.</div><div class="pa-color-text">Ставить <a href="/reviews" target="" >оценки местам в зале.</a></div></li>
+                        <li><div class="pa-color-num">5.</div><div class="pa-color-text">Управлять <a href="subscriptions" target="" >подписками.</a></div></li>
+                        <li><div class="pa-color-num">6.</div><div class="pa-color-text">Посмотреть или сохранить себе наши <a href="luxurious_sets" target="" >роскошные подборки</a> лучших мероприятий.</div></li>
                         <li><div class="pa-color-num">7.</div><div class="pa-color-text">Заполнить информацию <a href="#" target="_blank" >о себе.</a></div></li>
 
                     </ul>
