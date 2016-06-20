@@ -959,6 +959,12 @@
 
             });
 
+
+            $(document).off('mbw_close').on('mbw_close', function(){
+                $('#multibooker-widget-wrapper').html('');
+                $('.modal-widget-holder').hide(0);
+            });
+
             uiTabs();
 
         },
