@@ -5,7 +5,7 @@
 
 
 
-    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>GET_DATA</command><object>order</object><url>".$global_salesite."</url><sid>ndrhSdvEApggSrkQDgpqlHosqVwGGArUcxSsetMxifkVomgBry</sid>";
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/b2c?request=<command>get</command><object>order</object><url>".$global_salesite."</url><sid>JlzCZuLnrxToxFJZNYDauGuCBJszzObLiLXKDLOPlmgdrzBMLB</sid>";
 
     $ch = curl_init();
 
