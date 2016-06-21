@@ -12,6 +12,8 @@ $arr_h = parse_url($href_h);
 $query_h = $arr_h['query'];
 
 
+require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.php';
+
 
 ?>
 
@@ -213,6 +215,75 @@ $query_h = $arr_h['query'];
         <div class="contacts-wrapper">
             <div class="contacts-phone">+7 (499) 391<span>-61</span>-97</div>
             <div class="contacts-email">info@mirbileta.ru</div>
+        </div>
+
+        <div class="pa-holder">
+            <div class="pa-title">Вход / Регистрация</div>
+        </div>
+
+        <div class="pa-modal-holder">
+            <div class="pa-modal-fader"></div>
+            <div class="pa-modal-wrapper pa-registration-login-holder">
+
+                <div class="sc_tabulatorParent">
+                    <div class="tabsTogglersRow sc_tabulatorToggleRow">
+
+                        <div class="tabToggle sc_tabulatorToggler opened" dataitem="0" title="">
+                            <span class="">Регистрация</span>
+                        </div>
+
+                        <div class="tabToggle sc_tabulatorToggler" dataitem="1" title="">
+                            <span class="">Вход</span>
+                        </div>
+
+                    </div>
+
+                    <div class="ddRow notZindexed sc_tabulatorDDRow">
+
+                        <div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight chromeScroll" dataitem="0">
+
+
+                            <div class="pa-social-reg-holder">
+
+                                <?php
+
+                                
+
+                                ?>
+
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <input type="text" placeholder="Ваш e-mail" id="pa-reg-email"/>
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <input type="password" placeholder="Пароль" id="pa-reg-pass"/>
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <input type="password" placeholder="Пароль повторно" id="pa-reg-pass-re"/>
+                            </div>
+
+                        </div>
+
+                        <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight chromeScroll" dataitem="1">
+
+                            <div class="pa-login-field-holder">
+                                <input type="text" placeholder="Ваш e-mail" id="pa-log-email"/>
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <input type="password" placeholder="Пароль" id="pa-log-pass"/>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                </div>
         </div>
 
     </div>
