@@ -959,6 +959,56 @@
 
             });
 
+            $('.pa-reg-confirm').off('click').on('click', function(){
+
+                var email = $('#pa-reg-email').val();
+                var pass = $('#pa-reg-pass').val();
+
+                var o = {
+                    command: 'register_new_customer',
+                    params: {
+                        url: gurl,
+                        email: email,
+                        password: pass
+                    }
+                };
+
+                socketQuery_b2c(o, function(res){
+                    var jRes = jsonToObj(JSON.parse(res)['results'][0]);
+
+                    console.log(res);
+
+                });
+
+            });
+
+            $('.pa-login-confirm').off('click').on('click', function(){
+
+                var email = $('#pa-log-email').val();
+                var pass = $('#pa-log-pass').val();
+
+                var o = {
+                    command: 'login',
+                    params: {
+                        url: gurl,
+                        email: email,
+                        password: pass
+                    }
+                };
+
+                socketQuery_b2c(o, function(res){
+                    var jRes = JSON.parse(res)['results'][0];
+
+                    var sid = jRes.sid;
+
+
+
+                    console.log(sid, jRes);
+
+                });
+
+            });
+
 
             $(document).off('mbw_close').on('mbw_close', function(){
                 $('#multibooker-widget-wrapper').html('');

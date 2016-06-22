@@ -247,11 +247,94 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
 
                                 <?php
 
-                                
+                                // конфигурация настроек адаптера
+                                $vkAdapterConfig = array(
+                                    'client_id'     => '5516978',
+                                    'client_secret' => 'uYYXOq8uswQQKJVgktHH',
+                                    'redirect_uri'  => 'http://mirbileta.ru/auth?provider=vk'
+                                );
+
+                                // создание адаптера и передача настроек
+                                $vkAdapter = new SocialAuther\Adapter\Vk($vkAdapterConfig);
+
+                                // передача адаптера в SocialAuther
+                                $auther = new SocialAuther\SocialAuther($vkAdapter);
+
+                                // аутентификация и вывод данных пользователя или вывод ссылки для аутентификации
+                                if (!isset($_GET['code'])) {
+                                    echo '<p><a href="' . $auther->getAuthUrl() . '">Аутентификация через ВКонтакте</a></p>';
+                                } else {
+                                    if ($auther->authenticate()) {
+                                        if (!is_null($auther->getSocialId()))
+                                            echo "Социальный ID пользователя: " . $auther->getSocialId() . '<br />';
+
+                                        if (!is_null($auther->getName()))
+                                            echo "Имя пользователя: " . $auther->getName() . '<br />';
+
+                                        if (!is_null($auther->getEmail()))
+                                            echo "Email пользователя: " . $auther->getEmail() . '<br />';
+
+                                        if (!is_null($auther->getSocialPage()))
+                                            echo "Ссылка на профиль пользователя: " . $auther->getSocialPage() . '<br />';
+
+                                        if (!is_null($auther->getSex()))
+                                            echo "Пол пользователя: " . $auther->getSex() . '<br />';
+
+                                        if (!is_null($auther->getBirthday()))
+                                            echo "День Рождения: " . $auther->getBirthday() . '<br />';
+
+                                        // аватар пользователя
+                                        if (!is_null($auther->getAvatar()))
+                                            echo '<img src="' . $auther->getAvatar() . '" />'; echo "<br />";
+                                    }
+                                }
+
+
+                                $facebookAdapterConfig = array(
+                                    'client_id'     => '911528195635736',
+                                    'client_secret' => '2de1ab376d1c17cd47250920c05ab386',
+                                    'redirect_uri'  => 'http://localhost/auth?provider=facebook'
+                                );
+
+                                $facebookAdapter = new SocialAuther\Adapter\Facebook($facebookAdapterConfig);
+
+                                $auther = new SocialAuther\SocialAuther($facebookAdapter);
+
+                                if (!isset($_GET['code'])) {
+                                    echo '<p><a href="' . $auther->getAuthUrl() . '">Аутентификация через Facebook</a></p>';
+                                } else {
+                                    if ($auther->authenticate()) {
+                                        if (!is_null($auther->getSocialId()))
+                                            echo "Социальный ID пользователя: " . $auther->getSocialId() . '<br />';
+
+                                        if (!is_null($auther->getName()))
+                                            echo "Имя пользователя: " . $auther->getName() . '<br />';
+
+                                        if (!is_null($auther->getEmail()))
+                                            echo "Email пользователя: " . $auther->getEmail() . '<br />';
+
+                                        if (!is_null($auther->getSocialPage()))
+                                            echo "Ссылка на профиль пользователя: " . $auther->getSocialPage() . '<br />';
+
+                                        if (!is_null($auther->getSex()))
+                                            echo "Пол пользователя: " . $auther->getSex() . '<br />';
+
+                                        if (!is_null($auther->getBirthday()))
+                                            echo "День Рождения: " . $auther->getBirthday() . '<br />';
+
+                                        // аватар пользователя
+                                        if (!is_null($auther->getAvatar()))
+                                            echo '<img src="' . $auther->getAvatar() . '" />'; echo "<br />";
+                                    }
+                                }
 
                                 ?>
 
+
                             </div>
+
+                            <div class="">Или</div>
+
 
                             <div class="pa-login-field-holder">
                                 <input type="text" placeholder="Ваш e-mail" id="pa-reg-email"/>
@@ -265,6 +348,14 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
                                 <input type="password" placeholder="Пароль повторно" id="pa-reg-pass-re"/>
                             </div>
 
+                            <div class="pa-login-field-holder">
+                                <div class="pa-reg-confirm">Зарегистрироваться</div>
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <div class="pa-forget-pass">Забыли пароль?</div>
+                            </div>
+
                         </div>
 
                         <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight chromeScroll" dataitem="1">
@@ -275,6 +366,14 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
 
                             <div class="pa-login-field-holder">
                                 <input type="password" placeholder="Пароль" id="pa-log-pass"/>
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <div class="pa-login-confirm">Войти</div>
+                            </div>
+
+                            <div class="pa-login-field-holder">
+                                <div class="pa-forget-pass">Забыли пароль?</div>
                             </div>
 
                         </div>
