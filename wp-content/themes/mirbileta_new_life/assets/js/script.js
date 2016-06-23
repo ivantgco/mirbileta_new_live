@@ -1001,12 +1001,18 @@
 
                     var sid = jRes.sid;
 
-
-
-                    console.log(sid, jRes);
+                    setCookie('site_sid', sid);
 
                 });
 
+            });
+
+            $('.pa-holder').off('click').on('click', function(){
+                $('.pa-modal-holder').show(0);
+            });
+
+            $('.pa-modal-close').off('click').on('click', function(){
+                $('.pa-modal-holder').hide(0);
             });
 
 

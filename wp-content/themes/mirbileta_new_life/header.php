@@ -11,6 +11,7 @@ $href_h = request_url();
 $arr_h = parse_url($href_h);
 $query_h = $arr_h['query'];
 
+$sid = $_COOKIE["site_sid"];
 
 require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.php';
 
@@ -235,6 +236,8 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
                         <div class="tabToggle sc_tabulatorToggler" dataitem="1" title="">
                             <span class="">Вход</span>
                         </div>
+
+                        <div class="pa-modal-close fa fa-times"></div>
 
                     </div>
 

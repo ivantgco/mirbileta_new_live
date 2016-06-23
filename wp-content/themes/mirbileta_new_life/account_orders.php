@@ -4,8 +4,9 @@
 */
 
 
+    $sid = $_COOKIE["site_sid"];
 
-    $url = $global_prot . "://" . $global_url . "/cgi-bin/b2c?request=<command>get</command><object>order</object><url>".$global_salesite."</url><sid>JlzCZuLnrxToxFJZNYDauGuCBJszzObLiLXKDLOPlmgdrzBMLB</sid>";
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/b2c?request=<command>get</command><object>order</object><url>".$global_salesite."</url><sid>".$sid."</sid>";
 
     $ch = curl_init();
 
@@ -24,6 +25,7 @@
 
     $columns = json_decode($resp)->results["0"]->data_columns;
     $data = json_decode($resp)->results["0"]->data[0];
+
 
 
     var_dump($resp);
@@ -87,6 +89,30 @@ include('main_menu.php');
         <div class="mb-site-content">
 
             <div class="mb-personal-account-content">
+
+
+                <?php
+
+                var_dump($data);
+
+                $orders_html = '';
+
+                foreach ($data as $key => $value){
+
+
+
+                    $id = $value[array_search("ORDER_ID", $columns)];
+
+                    echo $id;
+                    $orders_html .= '<div data-id="'.$id.'"></div>';
+
+                }
+
+
+                echo($orders_html);
+
+                ?>
+
 
                 <div class="pa-intro-holder">
 
