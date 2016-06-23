@@ -24,12 +24,7 @@
         curl_close($ch);
 
     $columns = json_decode($resp)->results["0"]->data_columns;
-    $data = json_decode($resp)->results["0"]->data[0];
-
-
-
-    var_dump($resp);
-
+    $data = json_decode($resp)->results["0"]->data;
 
 ?>
 
@@ -93,7 +88,7 @@ include('main_menu.php');
 
                 <?php
 
-                var_dump($data);
+                var_dump($resp);
 
                 $orders_html = '';
 
@@ -102,9 +97,21 @@ include('main_menu.php');
 
 
                     $id = $value[array_search("ORDER_ID", $columns)];
+                    $actions_list = $value[array_search("ACTION_LIST", $columns)];
+                    $tickets_count = $value[array_search("TICKETS_COUNT", $columns)];
+                    $amount = $value[array_search("TOTAL_ORDER_AMOUNT", $columns)];
+                    $order_date = $value[array_search("ORDER_DATE", $columns)];
 
-                    echo $id;
-                    $orders_html .= '<div data-id="'.$id.'"></div>';
+                    $orders_html .=  '<div class="pa-order-holder" data-id="'.$id.'">'
+                                        .'<div class="pa-order-id">Заказ № '.$id.'<span class="pa-order-date">Дата заказа: '.$order_date.'</span></div>'
+                                        .'<div class="pa-order-action">'.$actions_list.'</div>'
+                                        .'<div class="pa-order-tickets-count">'.$tickets_count.' билет</div>'
+                                        .'<div class="pa-order-amount">на сумму: '.$amount.' руб.</div>'
+                                        .'<div class="button yellow pa-order-tickets" data-loaded="false" data-id="'.$id.'">Билеты</div>'
+                                        .'<div class="pa-order-tickets-dd">'
+                                            .'<div class="pa-order-tickets-list">list</div>'
+                                        .'</div>'
+                                    .'</div>';
 
                 }
 

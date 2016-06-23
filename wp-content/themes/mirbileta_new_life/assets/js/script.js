@@ -1015,6 +1015,96 @@
                 $('.pa-modal-holder').hide(0);
             });
 
+            $('.pa-order-tickets').off('click').on('click', function(){
+                var _t = this;
+                var p = $(_t).parents('.pa-order-holder');
+                var list = p.find('.pa-order-tickets-list');
+                var id = $(_t).data('id');
+                var loaded = p.data('loaded');
+
+                if(p.hasClass('opened')){
+
+                    p.removeClass('opened');
+
+                    $(_t).html('Билеты');
+
+                }else{
+
+                    if(!loaded){
+
+                        var o = {
+                            command: 'get',
+                            object: 'order_ticket',
+                            params: {
+                                url: gurl,
+                                order_id: id
+                            }
+                        };
+
+                        $(_t).html('<i class="fa fa-spin fa-cog"></i>');
+
+                        socketQuery_b2c(o, function(res){
+
+                            var jRes = jsonToObj(JSON.parse(res)['results'][0]);
+
+                            console.log(jRes);
+
+                            var tpl = '{{#tickets}}<div class="pa-order-ticket-item" data-id="{{ORDER_TICKET_ID}}">' +
+                                '<div class="pa-ticket-line-place">{{LINE_TITLE}} {{LINE}}{{#isSit}},{{/isSit}} {{PLACE_TITLE}} {{PLACE}}</div>' +
+                                '<div class="pa-ticket-area-group">{{AREA_GROUP}}</div>' +
+                                '<div class="pa-ticket-price">{{PRICE}} руб.</div>' +
+                                '<div class="pa-ticket-print button"><i class="fa fa-print"></i>&nbsp;&nbsp;Распечатать</div>' +
+                                '<div class="pa-ticket-download button"><i class="fa fa-download"></i>&nbsp;&nbsp;Скачать</div>' +
+                                '</div>{{/tickets}}';
+
+                            var mO = {
+                                tickets: []
+                            };
+
+                            for(var i in jRes){
+                                var t = jRes[i];
+
+                                if(t.PLACE_TYPE == 'SEAT_PLACE'){
+
+                                    t.isSit = true;
+
+                                    mO.tickets[i] = t;
+
+                                }else if(t.PLACE_TYPE == 'WO_PLACE'){
+
+                                    t.isSit = false;
+                                    t.LINE_TITLE = t.ACTION_SCHEME_TICKET_ZONE;
+
+
+                                    mO.tickets[i] = t;
+
+                                }else{
+
+                                }
+
+                            }
+
+
+                            list.html(Mustache.to_html(tpl,mO));
+
+
+                            p.data('loaded', true);
+                            p.addClass('opened');
+                            $(_t).html('Свернуть');
+
+                        });
+
+
+                    }else{
+                        p.addClass('opened');
+                        $(_t).html('Свернуть');
+                    }
+
+                }
+
+
+            });
+
 
             $(document).off('mbw_close').on('mbw_close', function(){
                 $('#multibooker-widget-wrapper').html('');

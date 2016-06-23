@@ -3,6 +3,21 @@ var doc_root = widgetWrapper.data('host');
 var host = 'https://shop.mirbileta.ru/';//'192.168.1.90'
 
 
+function getCookie(c_name){
+    var i,x,y,ARRcookies=document.cookie.split(";");
+
+    for (i=0;i<ARRcookies.length;i++)
+    {
+        x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+        y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+        x=x.replace(/^\s+|\s+$/g,"");
+        if (x==c_name)
+        {
+            return unescape(y);
+        }
+    }
+}
+
 var applyDictionary = function (res) {
     var r = res.results[0];
     if (r.extra_data && r.extra_data.DICTIONARIES) {
@@ -178,6 +193,9 @@ var socketQuery_b2c = function (obj, callback) {
         protocol: 'http',//'http',//'https',
         ip: '192.168.1.190'//'192.168.1.190'//'shop.mirbileta.ru'
     };
+
+
+    obj.params.sid = getCookie('site_sid');
 
     console.log('MQ', makeQuery(obj));
 
