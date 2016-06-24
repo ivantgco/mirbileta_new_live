@@ -1053,8 +1053,9 @@
                                 '<div class="pa-ticket-line-place">{{LINE_TITLE}} {{LINE}}{{#isSit}},{{/isSit}} {{PLACE_TITLE}} {{PLACE}}</div>' +
                                 '<div class="pa-ticket-area-group">{{AREA_GROUP}}</div>' +
                                 '<div class="pa-ticket-price">{{PRICE}} руб.</div>' +
-                                '<div class="pa-ticket-print button"><i class="fa fa-print"></i>&nbsp;&nbsp;Распечатать</div>' +
-                                '<div class="pa-ticket-download button"><i class="fa fa-download"></i>&nbsp;&nbsp;Скачать</div>' +
+                                '<div class="pa-ticket-print button" data-id="{{ORDER_TICKET_ID}}"><i class="fa fa-print"></i>&nbsp;&nbsp;Распечатать</div>' +
+                                '<div class="pa-ticket-download button"  data-id="{{ORDER_TICKET_ID}}"><i class="fa fa-download"></i>&nbsp;&nbsp;Скачать</div>' +
+                                '<div class="pa-ticket-send button"  data-id="{{ORDER_TICKET_ID}}"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Отправить</div>' +
                                 '</div>{{/tickets}}';
 
                             var mO = {
@@ -1074,6 +1075,9 @@
 
                                     t.isSit = false;
                                     t.LINE_TITLE = t.ACTION_SCHEME_TICKET_ZONE;
+                                    t.LINE = '';
+                                    t.PLACE_TITLE = '';
+                                    t.PLACE = '';
 
 
                                     mO.tickets[i] = t;
@@ -1091,6 +1095,26 @@
                             p.data('loaded', true);
                             p.addClass('opened');
                             $(_t).html('Свернуть');
+
+
+
+                            $('.pa-ticket-download').off('click').on('click', function(){
+                                var id = $(this).data('id');
+
+
+                            });
+
+                            $('.pa-ticket-print').off('click').on('click', function(){
+                                var id = $(this).data('id');
+
+
+                            });
+
+                            $('.pa-ticket-send').off('click').on('click', function(){
+                                var id = $(this).data('id');
+
+
+                            });
 
                         });
 

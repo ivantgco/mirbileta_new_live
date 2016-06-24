@@ -5155,6 +5155,7 @@ img.a-review-img {
 }
 .mb-personal-account-content{
     /*background-color: #f7f7f7;*/
+    padding-left: 25px;
 }
 #menu-account_sidebar_menu{
     margin: 0;
@@ -5163,6 +5164,7 @@ img.a-review-img {
     border-radius: 4px;
     /*box-shadow: 0 3px 1px rgba(0,0,0,0.5);*/
     background-color: #fcfcfc;
+    margin-top: 54px;
 }
 
 #menu-account_sidebar_menu li {
@@ -5399,27 +5401,28 @@ img.a-review-img {
 
 .pa-order-holder {
     width: 610px;
-    border: 1px solid #ddd;
     margin-bottom: 20px;
     position: relative;
+    background-color: #fcfcfc;
 }
 
 .pa-order-id {
-    background-color: #fffeee;
+    background-color: #3eae6c;
     padding-top: 10px;
     padding-bottom: 7px;
-    font-family: PTSans-Bold, arial, sans-serif;
-    font-size: 14px;
-    border-bottom: 1px solid #ddd;
-    color: #666;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    color: #fff;
     padding-left: 10px;
 }
 
 span.pa-order-date {
-    color: #777;
-    font-family: PTSans-Regular, arial, sans-serif;
+    color: rgba(255,255,255,0.78);
+    font-family: arial, sans-serif;
     padding-right: 10px;
     float: right;
+    font-weight: normal;
     font-size: 13px;
 }
 
@@ -5467,11 +5470,11 @@ span.pa-order-date {
     width: 130px;
     margin-top: -13px;
     text-align: center;
-    /*background-color: #fffeee;*/
+    background-color: #fff;
 }
 
 .pa-order-tickets:hover{
-    background-color: #f7f7f7!important;
+    background-color: #ffea00!important;
 }
 
 .pa-order-tickets-dd{
@@ -5485,7 +5488,7 @@ span.pa-order-date {
 }
 
 .pa-order-tickets-list{
-    background-color: #fcfcfc;
+    background-color: #f2f2f2;
     border-top: 1px solid #ddd;}
 
 .pa-order-ticket-item {
@@ -5494,6 +5497,12 @@ span.pa-order-date {
     margin-right: 10px;
     position: relative;
 }
+
+.pa-order-ticket-item:last-child{
+    border-bottom: 0;
+}
+
+
 .pa-ticket-line-place {
     font-family: arial, sans-serif;
     font-size: 13px;
@@ -5502,7 +5511,7 @@ span.pa-order-date {
     padding-bottom: 4px;
 }
 
-.pa-ticket-print, .pa-ticket-download {
+.pa-ticket-print, .pa-ticket-download, .pa-ticket-send {
     position: absolute;
     right: 0;
     margin-top: -42px;
@@ -5510,11 +5519,44 @@ span.pa-order-date {
     text-align: center;
 }
 
-.pa-ticket-print:hover, .pa-ticket-download:hover {
+.pa-ticket-print:hover, .pa-ticket-download:hover, .pa-ticket-send:hover{
     background-color: #000;
     color: #fff;
 }
 
 .pa-ticket-download {
-    right: 153px;
+    right: 295px;
+}
+.pa-ticket-price {
+    font-size: 12px;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 9px;
+}
+.pa-ticket-area-group {
+    color: #666;
+    font-size: 13px;
+}
+
+.mb-pa-headline{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 28px;
+    color: #000;
+    margin-bottom: 20px;
+    margin-top: -15px;
+}
+
+.mb-pa-sub{
+    font-family: arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 10px;
+    width: 610px;
+    padding-bottom: 20px;
+    padding-right: 80px;
+}
+
+.pa-ticket-print {
+    right: 143px;
 }

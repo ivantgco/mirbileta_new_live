@@ -86,9 +86,12 @@ include('main_menu.php');
             <div class="mb-personal-account-content">
 
 
+                <div class="mb-pa-headline">Мои Заказы и билеты</div>
+                <div class="mb-pa-sub">Здесь вы можете посмотреть все ваши заказы, скачать, распечатаь или отправить по почте электронные билеты.</div>
+
                 <?php
 
-                var_dump($resp);
+
 
                 $orders_html = '';
 
