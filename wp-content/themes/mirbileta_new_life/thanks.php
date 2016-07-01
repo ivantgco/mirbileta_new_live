@@ -4,8 +4,8 @@
 */
 
 
-    $order_id =         $_POST['cf'];   // номер нашего заказа
-    $ext_order_id =     $_POST['cf2'];  // внешний номер заказа
+    $order_id =         $_POST['cf'] || $_GET['order_id'];   // номер нашего заказа
+    $ext_order_id =     $_POST['cf2'] || $_GET['ext_order_id'];  // внешний номер заказа
     $frame =            $_POST['cf3'];  // Фрейм
     $payment_id =       $_POST['paymentcode'];  // id платежа
     $email = $_POST['email'];
