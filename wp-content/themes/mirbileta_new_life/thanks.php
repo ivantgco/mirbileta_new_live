@@ -4,8 +4,8 @@
 */
 
 
-    $order_id =         $_POST['cf'] || $_GET['order_id'];   // номер нашего заказа
-    $ext_order_id =     $_POST['cf2'] || $_GET['ext_order_id'];  // внешний номер заказа
+    $order_id =         (strlen($_POST['cf']) > 0)?  $_POST['cf'] : $_GET['order_id'];   // номер нашего заказа
+    $ext_order_id =     (strlen($_POST['cf2']) > 0)?  $_POST['cf2'] : $_GET['ext_order_id'];  // внешний номер заказа
     $frame =            $_POST['cf3'];  // Фрейм
     $payment_id =       $_POST['paymentcode'];  // id платежа
     $email = $_POST['email'];
@@ -73,7 +73,7 @@ include('main_menu.php');
             <div class="thx-thx">Спасибо!</div>
             <div class="thx-order">
                 Ваш заказ № <span class="order_id"><?php echo $order_id; ?></span> успешно оплачен, билеты<br>
-                отправлены вам на почту. <span class="thx-email">(<?php echo $email;?>)</span>
+                отправлены вам на почту. <?php if(strlen($email) > 0):?><span class="thx-email">(<?php echo $email;?>)</span><?php endif; ?>
             </div>
             <div class="thx-contacts">
                 По всем вопросам обращайтесь:<br>
