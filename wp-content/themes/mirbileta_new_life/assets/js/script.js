@@ -1101,11 +1101,96 @@
                             $('.pa-ticket-download').off('click').on('click', function(){
                                 var id = $(this).data('id');
 
+                                var o = {
+                                    command: 'operation',
+                                    object: 'get_web_pdf_ticket',
+                                    params: {
+                                        order_ticket_id: id
+                                    }
+                                };
 
+                                socketQuery_b2c(o, function(res){
+
+                                    res = JSON.parse(res)['results'][0];
+
+                                    if (+res.code) {
+                                        alert('Что-то не сработало, звоните пожалуйста - поможем! +7 (906) 063-88-66');
+                                    }
+
+
+                                    var filename = res.filename;
+                                    var id = 'need_be_removed'+id;
+
+                                    $("body").prepend('<a style="display:none;" id="'+ id +'" href="'+ host +'/' + filename +'" download></a>');
+
+                                    var btn = $('#'+id);
+
+                                    btn.on("click",function (e) {
+                                        $(this).remove();
+                                    });
+
+                                    btn[0].click();
+
+                                });
                             });
 
                             $('.pa-ticket-print').off('click').on('click', function(){
                                 var id = $(this).data('id');
+
+                                var o = {
+                                    command: 'operation',
+                                    object: 'get_web_pdf_ticket',
+                                    params: {
+                                        order_ticket_id: id
+                                    }
+                                };
+
+                                socketQuery_b2c(o, function(res){
+
+                                    res = JSON.parse(res)['results'][0];
+
+                                    if (+res.code) {
+                                        alert('Что-то не сработало, звоните пожалуйста - поможем! +7 (906) 063-88-66');
+                                    }
+
+
+                                    var filename = res.filename;
+                                    var id = 'need_be_removed'+id;
+
+
+                                    function openPrintWindow(url, name, specs) {
+                                        var printWindow = window.open(url, name, specs);
+                                        var printAndClose = function () {
+                                            if (printWindow.document.readyState == 'complete') {
+                                                clearInterval(sched);
+                                                printWindow.print();
+                                                printWindow.close();
+                                            }
+                                        };
+                                        var sched = setInterval(printAndClose, 200);
+                                    }
+
+                                    openPrintWindow(host +'/' + filename, 'name', 'width=700,height=400,_blank');
+
+
+//                                    $("body").prepend('<iframe id="'+ id +'" name="'+ id +'" style="width: 0px; height:0px; overflow:hidden;" src="'+ host +'/' + filename +'"></ireame>');
+//
+//                                    var f = window.frames[id];
+//                                    f.focus();
+//                                    f.print();
+
+
+
+//                                    f.close();
+
+
+//                                    btn.on("click",function (e) {
+//                                        $(this).remove();
+//                                    });
+
+//                                    btn[0].click();
+
+                                });
 
 
                             });

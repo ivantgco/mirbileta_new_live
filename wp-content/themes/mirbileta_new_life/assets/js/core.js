@@ -1,6 +1,6 @@
 var widgetWrapper = $("#multibooker-widget-wrapper");
 var doc_root = widgetWrapper.data('host');
-var host = 'https://shop.mirbileta.ru/';//'192.168.1.90'
+var host = 'http://mb-dev.mirbileta.ru/';//'https://shop.mirbileta.ru/';//'192.168.1.90'
 
 
 function getCookie(c_name){

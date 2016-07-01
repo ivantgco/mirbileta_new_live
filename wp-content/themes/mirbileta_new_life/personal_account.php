@@ -79,8 +79,8 @@ include('main_menu.php');
 
                     <ul class="pa-color-list">
 
-                        <li><div class="pa-color-num">1.</div><div class="pa-color-text">Получить <a href="/discount" target="" >постоянную скидку</a> на ВСЕ билеты, это легко!</div></li>
-                        <li><div class="pa-color-num">2.</div><div class="pa-color-text">Посмотреть свои <a href="/orders" target="" >заказы</a> и <a href="#" target="_blank" >скачать билеты</a></div></li>
+                        <li><div class="pa-color-num">1.</div><div class="pa-color-text">Получить <a href="/discount" target="" >постоянную СКИДКУ</a> на ВСЕ билеты, это легко!</div></li>
+                        <li><div class="pa-color-num">2.</div><div class="pa-color-text">Посмотреть свои <a href="/orders" target="" >заказы</a> и <a href="/orders" target="_blank" >скачать билеты</a></div></li>
                         <li><div class="pa-color-num">3.</div><div class="pa-color-text">Писать <a href="/reviews" target="" >отзывы</a> о мероприятиях и действующих лицах.</div></li>
                         <li><div class="pa-color-num">4.</div><div class="pa-color-text">Ставить <a href="/reviews" target="" >оценки местам в зале.</a></div></li>
                         <li><div class="pa-color-num">5.</div><div class="pa-color-text">Управлять <a href="subscriptions" target="" >подписками.</a></div></li>
@@ -90,6 +90,7 @@ include('main_menu.php');
                     </ul>
 
                 </div>
+<!--                //http://ch23882.tmweb.ru-->
 
 
 
