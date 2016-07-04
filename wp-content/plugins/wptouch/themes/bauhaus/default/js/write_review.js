@@ -1,4 +1,9 @@
+
+
 $(document).on("ready", function() {
+
+    var gurl = 'mirbileta.ru';
+
 
 	$(".fake_input_file").on('click', function(e){
 	    e.preventDefault();
@@ -10,7 +15,7 @@ $(document).on("ready", function() {
 		min: 0,
 		max: 10,
 		step:0.1,
-		grid: true,
+		grid: true
 		//values: [0, 3.5, 5, 7.5, 10],
 	});
 
@@ -19,5 +24,20 @@ $(document).on("ready", function() {
 		$(this).parents('form').hide();
 		$(this).parents('form').next('form:hidden').show();
 	});
+
+    //get / new / modify / remove
+
+    var o = {
+        command: 'new',
+        object: 'review',
+        params:{
+            url: gurl
+        }
+    };
+
+
+    socketQuery_b2c(o, function(r){
+        console.log(r);
+    });
 
 });
