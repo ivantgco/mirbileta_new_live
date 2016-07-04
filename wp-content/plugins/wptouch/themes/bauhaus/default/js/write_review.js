@@ -29,20 +29,37 @@ $(document).on("ready", function() {
 
     var rat = $('slider').val();
 
-    var o = {
-        command: 'new',
-        object: 'review',
-        params:{
-            url: gurl
-            //rating
-            //review
-            //files // как загрузить файл
-        }
-    };
+
+    $('.btn').off('click').on('click', function(){
+
+        var o = {
+            command: 'new',
+            object: 'review',
+            params:{
+                url: gurl
+                //rating
+                //review
+                //files // как загрузить файл
+            }
+        };
 
 
-    socketQuery_b2c(o, function(r){
-        console.log(r);
+        socketQuery_b2c(o, function(r){
+
+
+            // Если ответ от сервака - ОК
+                // Приезжает следующая форма ( про место в зале )
+                // Собираем данные - отправляем
+                    // Если ок - повторить про сервис
+                        // В Финале редирект в рут личного кабинета
+            // Если НЕТ - выводим ошибку
+
+            console.log(r);
+
+        });
+
+
     });
+
 
 });

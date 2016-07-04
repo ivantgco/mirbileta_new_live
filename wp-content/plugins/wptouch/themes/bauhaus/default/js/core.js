@@ -105,7 +105,6 @@ var jsonToObj = function (obj) {
                     obj_true[i][obj['data_columns'][index]] = obj['data'][i][index];
                 }
             }
-
         }
     }
 
