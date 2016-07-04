@@ -302,7 +302,6 @@
 
         }
 
-        console.log('aAA', moment(new Date()).format('dd.mm.yyyy'));
 
         if(_t.type == 'lov'){
 

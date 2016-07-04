@@ -6,6 +6,9 @@
  * Time: 17:24
  */
 
+//update_option('siteurl', 'http://mirbileta.ru');
+//update_option('home', 'http://mirbileta.ru');
+
 define( 'WP_DEBUG', true );
 
 //$global_prot = 'http';

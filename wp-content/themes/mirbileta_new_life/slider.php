@@ -28,7 +28,7 @@
 
     $action_count = count($data);
     $full_width = $action_count * 100;
-    $single_width = 100 / $action_count;
+    $single_width = ($action_count > 0) ? 100 / $action_count : 0;
 
 
 ?>
