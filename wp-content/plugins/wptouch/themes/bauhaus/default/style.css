@@ -4,9 +4,9 @@
 Responsive styles can be applied via '.smartphone', '.tablet', '.portrait' & '.landscape' classes.
 These classes are automatically applied and manipulated on <body> by Foundation.
 */
-
+html {height: 100%}
 body {
-	font-family: "Helvetica Neue", Helvetica, Geneva, Arial, sans-serif;
+	font-family: 'PT Sans', Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -3069,4 +3069,222 @@ table.contest-fast-results tbody tr:nth-child(odd) td{
     font-style: italic;
     font-size: 16px;
     display: none;
+}
+
+
+/* Write review template */
+.page-template-write_review {
+	background-color: #f7f7f7!important;
+	height: 100%;
+	min-height: 100%;
+}
+
+
+.page-template-write_review .header_block {
+	background: #3a47a3;
+	padding:10px 20px;
+}
+
+.page-template-write_review .header_block a {
+	color:#fff;
+	text-decoration: #fff;
+}
+
+.page-template-write_review .header_block {
+	background: #3a47a3;
+}
+
+.page-template-write_review .lk_link {
+	display: block;
+	background: #df3b3b;
+	width:55px;
+	height: 55px;
+	line-height: 55px;
+	border-radius: 50px;
+	font-size: 10px;
+	text-align: center;
+	float:right;
+	margin-top: -2px;
+}
+
+.page-template-write_review .lk_link span {
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 10px; 
+}
+
+.page-template-write_review .header_block h1 {
+	text-transform: uppercase;
+	font-family: Rambla;
+	font-size:20px;
+	letter-spacing: 0.5px;
+	display: inline-block;
+	margin:15px 0 10px;
+}
+
+.page-template-write_review h2 {
+	font-size:24px;
+	font-weight: normal;
+	padding:30px 20px;
+	background:#fff;
+	margin:0;
+}
+
+.page-template-write_review .inner {
+	padding:20px;
+}
+
+.page-template-write_review .feedback_slider {
+	background:#fcfcfc;
+	font-size: 10px;
+	position: relative;
+}
+
+.page-template-write_review .feedback_slider .smile {
+	background:url('img/i_smiles.png') no-repeat right 0;
+	width:50px;
+	height: 50px;
+	position: absolute;
+	right:20px;
+	bottom:27px;
+}
+
+.page-template-write_review .feedback_slider h3 {
+	font-weight: normal;
+	margin:-5px 0 10px;
+	letter-spacing: 0.5px;
+	font-size: 15px;
+	color:#555555;
+}
+
+.page-template-write_review .feedback_slider .range-slider {
+	padding-left:60px;
+	height: 50px;
+}
+
+.page-template-write_review .feedback_slider .irs .irs {
+	background:#f7f7f7;
+	border:1px solid rgba(0,0,0,0.15);
+	border-radius: 40px;
+	height:50px;
+}
+
+.page-template-write_review .feedback_slider .irs .irs-single {
+	display: block;
+	color:red;
+	font-size:20px;
+	z-index: 100;
+	background: transparent;
+	padding:12px 3px;
+	font-family: PTSans-Regular;
+    font-weight: normal;
+}
+
+.page-template-write_review .feedback_slider .irs .irs-grid {
+	top:12px;
+}
+
+.page-template-write_review .feedback_slider .irs .irs-grid .irs-grid-text {
+	display:none;
+}
+
+.page-template-write_review .feedback_slider .irs .irs-grid .irs-grid-text.js-grid-text-2,
+.page-template-write_review .feedback_slider .irs .irs-grid .irs-grid-text.js-grid-text-4 {
+	display:block;
+	font-size:20px;
+	color:#afafaf;
+}
+
+.page-template-write_review .feedback_slider .irs .irs-grid .irs-grid-pol,
+.page-template-write_review .feedback_slider .irs .irs-single:after {display: none}
+
+.page-template-write_review .feedback_slider .irs .irs-line-left,
+.page-template-write_review .feedback_slider .irs .irs-line-mid,
+.page-template-write_review .feedback_slider .irs .irs-line-right,
+.page-template-write_review .feedback_slider .irs .irs-bar-edge {
+	background:none;
+}
+.page-template-write_review .feedback_slider .irs .irs-bar {
+	background: #19c40c;
+	height: 48px;
+	top:0px;
+	border-radius: 50px 0 0 50px;
+	left:0px!important;
+	padding-right: 25px;
+	border:2px solid #f7f7f7;
+}
+
+.page-template-write_review .feedback_slider .irs .irs-slider {
+	background: #fff;
+	width:52px;
+	height: 52px;
+	border-radius: 40px;
+	top:0px;
+	box-shadow: 1px 1px 5px 0px rgba(50, 50, 50, 0.1);
+}
+
+.page-template-write_review .feedback_text {
+	width:100%;
+	height: 70px;
+	font-size:16px;
+	border:1px solid #cccccc; 
+	padding:10px;
+	box-sizing:border-box;
+	resize:none;
+	/*box-shadow: 2px 2px 7px 0px rgba(50, 50, 50, 0.1);*/
+	border-radius: 3px;
+}
+
+
+.page-template-write_review .addfile {
+	display: block;
+	 /*background: url('img/i_addfile.png') no-repeat 0 center;*/
+	 color:#007aff;
+	 font-size: 15px;
+	 padding:15px 0 15px 0;
+	 margin:10px 0;
+}
+.page-template-write_review .fa-paperclip {
+	color:#007aff;
+	font-size: 27px;
+	margin-right: 7px;
+	position: relative;
+	top:3px;
+}
+
+.page-template-write_review input[type="file"] {display: none}
+
+.page-template-write_review input[type="submit"] {
+	display: block;
+	font-size: 24px;
+	text-align: center;
+	background: transparent;
+	border:0;
+	margin:0 auto;
+	padding:10px;
+	width:140px;
+}
+
+.page-template-write_review .irs-hidden-input {
+    display: block!important;
+    z-index: 10000!important;
+    width: 50px!important;
+    height: 50px!important;
+    top: 43px!important;
+    left: 20px!important;
+    right: 20px!important;
+    opacity: 1;
+    font-size: 33px!important;
+    font-family: PTSans-Regular;
+    font-weight: normal;
+    text-align: center;
+}
+
+.page-template-write_review form.hidden {
+	display: none;
+}
+
+.page-template-write_review .next-q {
+	float: right;
+	margin-top:-32px;
 }
