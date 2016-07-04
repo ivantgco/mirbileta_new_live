@@ -191,7 +191,7 @@ var socketQuery_b2c = function (obj, callback) {
 
     config = {
         protocol: 'http',//'http',//'https',
-        ip: '192.168.1.190'//'192.168.1.190'//'shop.mirbileta.ru'
+        ip: 'mb-dev.mirbileta.ru'//'192.168.1.190'//'shop.mirbileta.ru'
     };
 
 

@@ -27,11 +27,16 @@ $(document).on("ready", function() {
 
     //get / new / modify / remove
 
+    var rat = $('slider').val();
+
     var o = {
         command: 'new',
         object: 'review',
         params:{
             url: gurl
+            //rating
+            //review
+            //files // как загрузить файл
         }
     };
 
