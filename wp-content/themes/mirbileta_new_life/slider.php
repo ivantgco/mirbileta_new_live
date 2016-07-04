@@ -88,7 +88,7 @@
                                                     .'</div>'
 
                                                     .'<div class="tabToggle sc_tabulatorToggler" dataitem="1" title="">'
-                                                        .'<span class="">Отзывы (4)</span>'
+                                                        .'<span class=""></span>' //Отзывы
                                                     .'</div>'
 
                                                     .'<div class="sl-reviews-exp-close"></div>'
@@ -97,11 +97,11 @@
 
                                                 .'<div class="ddRow notZindexed sc_tabulatorDDRow">'
 
-                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight" dataitem="0">'
+                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight chromeScroll" dataitem="0">'
                                                         .$description
                                                     .'</div>'
 
-                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight" dataitem="1">'
+                                                    .'<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight chromeScroll" dataitem="1">'
                                                         .'asdadsdasdsa'
                                                     .'</div>'
 
@@ -149,125 +149,42 @@
 
 
 
+            <div class="main-menu-wrapper-main-page">
+                <div class="container">
 
-<!--            <div class="slider-item-vagon" style="width: 33.333%" data-slide="1">-->
-<!--                <div class="slider-item slider-item-1" style="background-image: url(/wp-content/themes/mirbileta_new_life/assets/img/slide-2.jpg)"></div>-->
-<!---->
-<!--                <div class="container slider-item-info">-->
-<!--                    <div class="slide-info">-->
-<!---->
-<!--                        <div class="sa-title">Детские игры</div>-->
-<!--                        <div class="sa-venue">театр «Современник»</div>-->
-<!--                        <div class="sa-date">27 апреля</div>-->
-<!--                        <div class="sa-buy-wrapper">-->
-<!--                            <div class="mb-buy mb-buy32 yellow">от 3000 руб.</div>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="sa-reviews-wrapper">-->
-<!--                            <ul>-->
-<!--                                <li>-->
-<!--                                    Спектакль просто супер, ходили на него уже давно,-->
-<!--                                    а впечатлений хоть отбавляй.-->
-<!--                                    Советую сходить всем!!! :)-->
-<!--                                    <div class="sa-review-chevron fa fa-chevron-right"></div>-->
-<!--                                </li>-->
-<!--                                <li>-->
-<!--                                    Ходили на спектакль с учениками 6 класса. Всем-->
-<!--                                    детям понравилось. Кто-то тайком утирал слёзы.-->
-<!--                                    Кто-то держался...-->
-<!--                                    <div class="sa-review-chevron fa fa-chevron-right"></div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!---->
-<!--                    </div>-->
-<!---->
-<!--                    <div class="slide-reviews-expanded">-->
-<!--                        <div class="slide-reviews-expanded-header">-->
-<!---->
-<!--                            <div class="sl-reviews-exp-nav sl-reviews-exp-prev">-->
-<!--                                <div class="sl-reviews-exp-nav-title">Ольга</div>-->
-<!--                                <div class="sl-reviews-exp-nav-sub">13 ноября 2015</div>-->
-<!--                            </div>-->
-<!--                            <div class="sl-reviews-exp-nav sl-reviews-exp-current">-->
-<!--                                <div class="sl-reviews-exp-nav-title">Александра</div>-->
-<!--                                <div class="sl-reviews-exp-nav-sub">21 декабря 2015</div>-->
-<!--                            </div>-->
-<!--                            <div class="sl-reviews-exp-nav sl-reviews-exp-next">-->
-<!--                                <div class="sl-reviews-exp-nav-title">Сергей</div>-->
-<!--                                <div class="sl-reviews-exp-nav-sub">2 января 2016</div>-->
-<!--                            </div>-->
-<!---->
-<!--                            <div class="sl-reviews-exp-close"></div>-->
-<!--                        </div>-->
-<!--                        <div class="slide-reviews-expanded-body">-->
-<!--                            А знаете, Алксандр, мы как раз ходили с детьми 8 и 10 лет, и всем все было понятно! Мне не хотелось бы кого-либо в чем-то разубеждать, т.к., наверное, раз на раз не приходится - актеры не играют дважды абсолютно одинаково, бывает и лучше и хуже, да и люди, которые смотрят спектакль, видят происходящее каждый под своим углом. Но мы во время просмотра "Собак" не препарировали каждую деталь, как то: "очки-пиночеты", "а причем тут Modern Talking?" и проч., однако в глазах детей (и взрослых тоже) стояли искренние слезы, и они верили всему тому, что видели на сцене, забывая, что перед ними люди-актеры, а не это ли высшая похвала актерской игре?!!-->
-<!--                            Что касается самой пьесы и затронутой в ней темы, то я расценивала бы ее как "инъекцию человечности", которой так не хватает нам всем в нынешнее время, - увы... Дело ведь не только в брошенных собачках, спектакль учит добру, состраданию, участию, дружбе - прописные, кажется, понятия, но многие даже не догадываются об их подлинном значении. Разумеется, сколько людей - столько и мнений, мне лично спектакль "Собаки" понравился очень, равно как и всем моим абсолютно разновозрастным друзьям и родственникам (10 человек от 8 до 67 лет), также с удовольствием посмотревшим этот спектакль.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!--            </div>-->
+                    <?php
+                    $args = array(
+                        'menu'            => 'main_menu',     // (string) Название выводимого меню (указывается в админке при создании меню, приоритетнее
+                        // чем указанное местоположение theme_location - если указано, то параметр theme_location игнорируется)
+                        'container'       => 'ul',            // (string) Контейнер меню. Обворачиватель ul. Указывается тег контейнера (по умолчанию в тег div)
+                        'container_class' => 'main-menu',     // (string) class контейнера (div тега)
+                        'container_id'    => '',              // (string) id контейнера (div тега)
+                        'menu_class'      => '',              // (string) class самого меню (ul тега)
+                        'menu_id'         => '',              // (string) id самого меню (ul тега)
+                        'echo'            => true,            // (boolean) Выводить на экран или возвращать для обработки
+                        'fallback_cb'     => 'wp_page_menu',  // (string) Используемая (резервная) функция, если меню не существует (не удалось получить)
+                        'before'          => '',              // (string) Текст перед <a> каждой ссылки
+                        'after'           => '',              // (string) Текст после </a> каждой ссылки
+                        'link_before'     => '<div class="mm-title-mp"><span class="afisha-icon"></span>',              // (string) Текст перед анкором (текстом) ссылки
+                        'link_after'      => '</div>',              // (string) Текст после анкора (текста) ссылки
+                        'depth'           => 0,               // (integer) Глубина вложенности (0 - неограничена, 2 - двухуровневое меню)
+                        'walker'          => '',              // (object) Класс собирающий меню. Default: new Walker_Nav_Menu
+                        'theme_location'  => ''               // (string) Расположение меню в шаблоне. (указывается ключ которым было зарегистрировано меню в функции register_nav_menus)
+                    );
 
-<!--            <div class="slider-item-vagon" style="width: 33.333%" data-slide="2">-->
-<!--                <div class="slider-item slider-item-2" style="background-image: url(/wp-content/themes/mirbileta_new_life/assets/img/slide-3.jpg)"></div>-->
-<!---->
-<!--                <div class="container slider-item-info">-->
-<!--                    <div class="slide-info">-->
-<!---->
-<!--                        <div class="sa-title">Матч Россия - Австрия</div>-->
-<!--                        <div class="sa-venue">стадион «Открытие Арена»</div>-->
-<!--                        <div class="sa-date">14 апреля</div>-->
-<!--                        <div class="sa-buy-wrapper">-->
-<!--                            <div class="mb-buy mb-buy32 yellow">от 900 руб.</div>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="sa-reviews-wrapper">-->
-<!--                            <ul>-->
-<!--                                <li>-->
-<!--                                    Спектакль просто супер, ходили на него уже давно,-->
-<!--                                    а впечатлений хоть отбавляй.-->
-<!--                                    Советую сходить всем!!! :)-->
-<!--                                    <div class="sa-review-chevron fa fa-chevron-right"></div>-->
-<!--                                </li>-->
-<!--                                <li>-->
-<!--                                    Ходили на спектакль с учениками 6 класса. Всем-->
-<!--                                    детям понравилось. Кто-то тайком утирал слёзы.-->
-<!--                                    Кто-то держался...-->
-<!--                                    <div class="sa-review-chevron fa fa-chevron-right"></div>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!---->
-<!--                    </div>-->
-<!---->
-<!--                    <div class="slide-reviews-expanded">-->
-<!--                        <div class="slide-reviews-expanded-header">-->
-<!---->
-<!--                            <div class="sl-reviews-exp-nav sl-reviews-exp-prev">-->
-<!--                                <div class="sl-reviews-exp-nav-title">Ольга</div>-->
-<!--                                <div class="sl-reviews-exp-nav-sub">13 ноября 2015</div>-->
-<!--                            </div>-->
-<!--                            <div class="sl-reviews-exp-nav sl-reviews-exp-current">-->
-<!--                                <div class="sl-reviews-exp-nav-title">Александра</div>-->
-<!--                                <div class="sl-reviews-exp-nav-sub">21 декабря 2015</div>-->
-<!--                            </div>-->
-<!--                            <div class="sl-reviews-exp-nav sl-reviews-exp-next">-->
-<!--                                <div class="sl-reviews-exp-nav-title">Сергей</div>-->
-<!--                                <div class="sl-reviews-exp-nav-sub">2 января 2016</div>-->
-<!--                            </div>-->
-<!---->
-<!--                            <div class="sl-reviews-exp-close"></div>-->
-<!--                        </div>-->
-<!--                        <div class="slide-reviews-expanded-body">-->
-<!--                            А знаете, Алксандр, мы как раз ходили с детьми 8 и 10 лет, и всем все было понятно! Мне не хотелось бы кого-либо в чем-то разубеждать, т.к., наверное, раз на раз не приходится - актеры не играют дважды абсолютно одинаково, бывает и лучше и хуже, да и люди, которые смотрят спектакль, видят происходящее каждый под своим углом. Но мы во время просмотра "Собак" не препарировали каждую деталь, как то: "очки-пиночеты", "а причем тут Modern Talking?" и проч., однако в глазах детей (и взрослых тоже) стояли искренние слезы, и они верили всему тому, что видели на сцене, забывая, что перед ними люди-актеры, а не это ли высшая похвала актерской игре?!!-->
-<!--                            Что касается самой пьесы и затронутой в ней темы, то я расценивала бы ее как "инъекцию человечности", которой так не хватает нам всем в нынешнее время, - увы... Дело ведь не только в брошенных собачках, спектакль учит добру, состраданию, участию, дружбе - прописные, кажется, понятия, но многие даже не догадываются об их подлинном значении. Разумеется, сколько людей - столько и мнений, мне лично спектакль "Собаки" понравился очень, равно как и всем моим абсолютно разновозрастным друзьям и родственникам (10 человек от 8 до 67 лет), также с удовольствием посмотревшим этот спектакль.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!---->
-<!--                </div>-->
-<!--            </div>-->
+                    wp_nav_menu($args)
+                    ?>
+
+                </div>
+            </div>
+
+
 
 
     </div>
+
 </div>
+
+<!--<div class="container posRel">-->
+<!--    <a href="/contest-fast"><div class="contest-fast-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>-->
+<!--</div>-->

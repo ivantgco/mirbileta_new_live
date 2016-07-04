@@ -77,7 +77,7 @@
             <input type="text" class="mb-inpage-search" placeholder="Поиск по актерам"/>
         </div>
 
-        <div class="mb-inpage-search-results">
+        <div class="mb-inpage-search-results mb-tiles-wrapper">
         <?php
 
 
@@ -91,16 +91,23 @@
             $image =            $value[array_search("URL_IMAGE_MEDIUM", $columns)];
             $actions_count =    $value[array_search("ACTION_COUNT", $columns)];
 
-            $actionsHtml .= '<div class="mb-big-tpl-item mb-block mb-inpage-search-entry">'
-                            .'<div class="mb-btpl-image" style="background-image: url('.$image.')"></div>'
-                            .'<div class="mb-btpl-info">'
-                                .'<div class="mb-btpl-title mb-inpage-search-entry-keyword"><a href="/'.$alias.'">'.$name.'</a></div>'
-//                                .'<div class="mb-btpl-desc">'.$desc.'</div>'
-                                .'<div class="mb-btpl-link">'.$site_url.'</div>'
+            $actionsHtml .= '<a href="/'.$alias.'"><div class="mb-tile-item col-md-3 mb-inpage-search-entry">'
+                            .'<div class="mb-tile-image" style="background-image: url('.$image.')"></div>'
+                            .'<div class="mb-tile-info">'
+                                .'<div class="mb-tile-title mb-inpage-search-entry-keyword">'.$name.'</div>'
                             .'</div>'
-                            .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия</div></a>'
-                            //.'<a href="'.$site_url.'" class="mb-btpl-url">Сайт площадки</a>'
-                            .'</div>';
+                            .'</div></a>';
+
+//            $actionsHtml .= '<div class="mb-big-tpl-item mb-block mb-inpage-search-entry">'
+//                            .'<div class="mb-btpl-image" style="background-image: url('.$image.')"></div>'
+//                            .'<div class="mb-btpl-info">'
+//                                .'<div class="mb-btpl-title mb-inpage-search-entry-keyword"><a href="/'.$alias.'">'.$name.'</a></div>'
+////                                .'<div class="mb-btpl-desc">'.$desc.'</div>'
+//                                .'<div class="mb-btpl-link">'.$site_url.'</div>'
+//                            .'</div>'
+//                            .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия</div></a>'
+//                            //.'<a href="'.$site_url.'" class="mb-btpl-url">Сайт площадки</a>'
+//                            .'</div>';
         }
 
 //        '.$actions_count.'

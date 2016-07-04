@@ -83,9 +83,13 @@
                 wp_nav_menu($args)
                 ?>
 
+                <div class="run-mobile-version">Мобильная версия</div>
+
+
+
             </div>
             <div class="footer-menu-wrapper">
-                <div class="footer-menu-header">ПАРТЕНРЫ</div>
+                <div class="footer-menu-header">ПАРТНЕРЫ</div>
 
                 <div class="f-p-logo-row">
                     <a href="http://kremlinpalace.org" target="_blank"><div class="f-p-logo gkd-f"></div></a>
@@ -106,8 +110,57 @@
 
             <div class="mb-copyright">
                 mirbileta.ru все права защищены&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by Multibooker
+
             </div>
+
+
+
         </div>
     </div>
 
+    <div class="mb-go-to-top fa fa-arrow-up"></div>
+
 </div>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter32940504 = new Ya.Metrika({
+                    id:32940504,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/32940504" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- begin of Top100 code -->
+<div style="display: none">
+    <script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?4416842"></script>
+    <noscript>
+        <a href="http://top100.rambler.ru/navi/4416842/">
+            <img src="http://counter.rambler.ru/top100.cnt?4416842" alt="Rambler's Top100" border="0" />
+        </a>
+
+    </noscript>
+</div>
+
+<!-- end of Top100 code -->

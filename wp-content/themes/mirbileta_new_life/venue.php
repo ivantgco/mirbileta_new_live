@@ -3,10 +3,17 @@
     Template Name: single_venue
 */
 
-    $cur_url = $_SERVER["REQUEST_URI"];
+//    $cur_url = $_SERVER["REQUEST_URI"];
+//
+//    $venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+//    $venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-    $venue_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
-    $venue_alias = (strpos($venue_alias, '-') > -1)? substr($venue_alias,0, strpos($venue_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
+    $href = request_url();
+    $arr = parse_url($href);
+    $venue_alias = preg_replace('/^\//','',$arr['path']);
+    $venue_alias = preg_replace('/(^\w+)\/.*/','$1',$venue_alias);
+
+
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_venue</command><url>mirbileta.ru</url><venue_url_alias>".$venue_alias."</venue_url_alias>";
 
@@ -66,7 +73,7 @@
 
 </head>
 
-<body <?php body_class(); ?> data-page="inner" data-border="noborder">
+<body <?php body_class(); ?> data-page="inner" data-venue="<?php echo $venue_id;?>" data-border="noborder">
 
 <?php
 get_header();
@@ -74,6 +81,9 @@ include('main_menu.php');
 //echo $url;
 
 $address = $data[array_search("VENUE_ADDRESS", $columns)];
+$g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
+
+
 
 ?>
 
@@ -102,16 +112,20 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
 
             </div>
 
+            <div class="mb-venue-to-actions mb-buy blue mb-buy32">Смотреть афишу</div>
+
         </div>
 
-        <div class="row marBot40">
+
+
+        <div class="row ">
             <div class="col-md-12">
 
                 <?php if(strlen($address) > 0): ?>
 
                     <div class="single-map-holder">
 
-                        <input id="address" type="hidden" value="<?php echo $address; ?>" />
+                        <input id="address" type="hidden" value="<?php echo $g_address; ?>" />
 
                         <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
 
@@ -124,6 +138,9 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
                 </div>
             </div>
         </div>
+
+        <div class="mb-venue-tip"><i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;<b>Схему зала</b> можно посмотреть в любом мероприятии.</div>
+
 
         <div class="page-headline-wrapper">
             <div class="p-h-line"></div>
@@ -151,7 +168,6 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
             else
                 curl_close($ch);
 
-            $jData = json_decode($data);
 
             $columns = json_decode($resp)->results["0"]->data_columns;
             $data = json_decode($resp)->results["0"]->data;
@@ -163,11 +179,11 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
             foreach ($data as $key => $value) {
 
                 $act_id = $value[array_search("ACTION_ID", $columns)];
-                $alias = $value[array_search("ACTION_URL_ALIAS", $columns)];
+                $alias = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? $value[array_search("SHOW_URL_ALIAS", $columns)] : $value[array_search("ACTION_URL_ALIAS", $columns)];
                 $frame = $value[array_search("FRAME", $columns)];
                 $act_name = $value[array_search("ACTION_NAME", $columns)];
-                $thumb = (strpos("http", $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
-                $poster =       (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 )? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
+                $thumb = (strlen($value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0)? (strpos("http", $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
+                $poster = (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 )? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
 //                $poster = (strpos("http", $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_IMAGE", $columns)];
                 $act_date = $value[array_search("ACTION_DATE_STR", $columns)];
                 $act_time = $value[array_search("ACTION_TIME_STR", $columns)];
@@ -188,11 +204,12 @@ $address = $data[array_search("VENUE_ADDRESS", $columns)];
                 $week_and_time = to_afisha_date($act_date_time, "week_and_time", "rus");
                 $weekday = to_afisha_date($act_date_time, "weekday", "rus");
                 $time = to_afisha_date($act_date_time, "time", "rus");
+                $isShow = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? 'c': '';
 
-                $actionsHtml .= '<div class="mb-block mb-action" data-id="' . $act_id . '">'
+                    $actionsHtml .= '<div class="mb-block mb-action" data-id="' . $act_id . '">'
                     . '<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\'' . $poster . '\');"></div></a>'
                     . '<a href="/'.$alias.'"><div class="mb-a-title">' . $act_name . '<span class="mb-a-age">' . $ageCat . '</span></div></a>'
-                    . '<div class="mb-a-date">' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
+                    . '<div class="mb-a-date"> '.$isShow.' ' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
                     . '<div class="mb-a-venue">' . $venue . '</div>'
                     . '<div class="mb-a-buy-holder">'
                     . '<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.

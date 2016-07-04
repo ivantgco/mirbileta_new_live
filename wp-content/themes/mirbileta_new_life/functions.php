@@ -11,12 +11,49 @@
 
 define( 'WP_DEBUG', true );
 
-//$global_prot = 'http';
-//$global_url = '192.168.1.190';
+$global_prot = 'http';
+$global_url = '192.168.1.190';
+
+//$global_prot = 'https';
+//$global_url = 'shop.mirbileta.ru';
+
+$global_salesite = 'dev.mirbileta.ru';
+//$global_salesite = 'mirbileta.ru';
+
 $defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 $defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';
-$global_prot = 'https';
-$global_url = 'shop.mirbileta.ru';
+
+
+
+
+function request_url()
+{
+    $result = ''; // Пока результат пуст
+    $default_port = 80; // Порт по-умолчанию
+
+    // А не в защищенном-ли мы соединении?
+    if (isset($_SERVER['HTTPS']) && ($_SERVER['HTTPS']=='on')) {
+        // В защищенном! Добавим протокол...
+        $result .= 'https://';
+        // ...и переназначим значение порта по-умолчанию
+        $default_port = 443;
+    } else {
+        // Обычное соединение, обычный протокол
+        $result .= 'http://';
+    }
+    // Имя сервера, напр. site.com или www.site.com
+    $result .= $_SERVER['SERVER_NAME'];
+
+    // А порт у нас по-умолчанию?
+    if ($_SERVER['SERVER_PORT'] != $default_port) {
+        // Если нет, то добавим порт в URL
+        $result .= ':'.$_SERVER['SERVER_PORT'];
+    }
+    // Последняя часть запроса (путь и GET-параметры).
+    $result .= $_SERVER['REQUEST_URI'];
+    // Уфф, вроде получилось!
+    return $result;
+}
 
 function addRoutes() {
     $urlKey = $_SERVER[REQUEST_URI];
@@ -71,11 +108,25 @@ function to_afisha_date($str, $format, $lang)
         )
     );
 
+    $weekDays_short = array(
+        "rus"=>array(
+            "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"
+        ),
+        "eng"=>array(
+            "mo", "tu", "we", "th", "fr", "sa", "su"
+        )
+    );
+
+
+
     $res = '';
 
     switch ($format){
         case 'short_date':
             $res = $dd . ' ' . $mths[$lang][intval($mm)-1];
+            break;
+        case 'year':
+            $res = $yy;
             break;
         case 'short_date_with_year':
             $res = $dd . ' ' . $mths[$lang][intval($mm)-1] . ' ' . $yy;
@@ -86,6 +137,9 @@ function to_afisha_date($str, $format, $lang)
         case 'weekday':
             $res = $weekDays[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
             break;
+        case 'weekday_short':
+            $res = $weekDays_short[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
+            break;
         case 'time':
             $res = $hh . ':' . $mi;
             break;
@@ -94,6 +148,9 @@ function to_afisha_date($str, $format, $lang)
             break;
         case 'mounth_only':
             $res = $months[$lang][intval($str)-1];
+            break;
+        case 'is_holiday':
+            $res = date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00"));
             break;
         default:
             break;
@@ -110,6 +167,7 @@ function my_theme_load_resources() {
     wp_enqueue_style('rangeslider',     get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.css');
     wp_enqueue_style('rangeslider_cus', get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.custom.css');
     wp_enqueue_style('datepicker',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css');
+    wp_enqueue_style('toastr',          get_stylesheet_directory_uri() . '/assets/plugins/toastr/toastr.min.css');
     wp_enqueue_style('core',            get_stylesheet_directory_uri() . '/assets/css/core.css');
     wp_enqueue_style('style',           get_stylesheet_directory_uri() . '/assets/css/style.css');
 
@@ -117,19 +175,34 @@ function my_theme_load_resources() {
     wp_enqueue_script('uri',            get_stylesheet_directory_uri() . '/assets/plugins/uri/URI.js');
     wp_enqueue_script('uri_tpl',        get_stylesheet_directory_uri() . '/assets/plugins/uri/URITemplate.js');
     wp_enqueue_script('bootstrap',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js');
+    wp_enqueue_script('toastr',         get_stylesheet_directory_uri() . '/assets/plugins/toastr/toastr.min.js');
     wp_enqueue_script('blur',           get_stylesheet_directory_uri() . '/assets/plugins/blur/blur.js');
     wp_enqueue_script('mb_checkbox',    get_stylesheet_directory_uri() . '/assets/plugins/mb-chekbox/mb-checkbox.js');
     wp_enqueue_script('uitabs',         get_stylesheet_directory_uri() . '/assets/plugins/uiTabs/uiTabs.js');
+    wp_enqueue_script('moment',         get_stylesheet_directory_uri() . '/assets/plugins/moment/moment.js');
     wp_enqueue_script('mustache',       get_stylesheet_directory_uri() . '/assets/plugins/mustache/mustache.js');
     wp_enqueue_script('rangeslider',    get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/js/ion-rangeSlider/ion.rangeSlider.min.js');
     wp_enqueue_script('datepicker',     get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js');
     wp_enqueue_script('datepicker_loc', get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js');
     wp_enqueue_script('core',           get_stylesheet_directory_uri() . '/assets/js/core.js');
     wp_enqueue_script('script',         get_stylesheet_directory_uri() . '/assets/js/script.js');
+    wp_enqueue_script('adv',            get_stylesheet_directory_uri() . '/assets/js/adv_generator.js');
+    wp_enqueue_script('cookie',         get_stylesheet_directory_uri() . '/assets/plugins/jquery.cookie/jquery.cookie.js');
+
     wp_enqueue_script('gmaps',         'http://maps.googleapis.com/maps/api/js?sensor=false');
 
 }
 
 add_action('wp_enqueue_scripts', 'my_theme_load_resources');
+
+function wp_head_meta_description() {
+    global $post;
+    if( is_single() ) {
+        echo "<meta name=\"description\" value=\"" . esc_attr( get_post_meta( $post->ID, 'seo_description', true ) ) ."\" />\n\r";
+    }
+}
+
+add_action("wp_head", "wp_head_meta_description", 1);
+
 
 ?>

@@ -1,5 +1,23 @@
 (function(){
 
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-bottom-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "100000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
     var defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 
     var today = new Date().toLocaleDateString();
@@ -11,7 +29,15 @@
 
     var gurl = 'mirbileta.ru';
 
+    var inQuery = false;
+    var lastInputTime = undefined;
+
+
     var filters = {};
+
+    function generateDatesList(str){
+
+    }
 
     function getGuid(){
         return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -61,6 +87,61 @@
             filters.show_type_alias = $('body').attr('data-filter');
         }
 
+        if($('body').attr('data-venue')){
+            filters.venue_id = $('body').attr('data-venue');
+        }
+
+        if($('body').attr('data-actor')){
+            filters.actor_id = $('body').attr('data-actor');
+        }
+
+
+        console.log(filters);
+
+    }
+
+    function getCookie(c_name){
+        var i,x,y,ARRcookies=document.cookie.split(";");
+
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+            {
+                return unescape(y);
+            }
+        }
+    }
+
+    function setCookie(name, value, options) {
+        options = options || {};
+
+        var expires = options.expires;
+
+        if (typeof expires == "number" && expires) {
+            var d = new Date();
+            d.setTime(d.getTime() + expires * 1000);
+            expires = options.expires = d;
+        }
+        if (expires && expires.toUTCString) {
+            options.expires = expires.toUTCString();
+        }
+
+        value = encodeURIComponent(value);
+
+        var updatedCookie = name + "=" + value;
+
+        for (var propName in options) {
+            updatedCookie += "; " + propName;
+            var propValue = options[propName];
+            if (propValue !== true) {
+                updatedCookie += "=" + propValue;
+            }
+        }
+
+        document.cookie = updatedCookie;
     }
 
     var Filter = function(params){
@@ -231,21 +312,21 @@
 
             if(!_t.wrapper.attr('data-inputs') || _t.wrapper.attr('data-inputs') != 'false'){
                 inputshtml = '<div class="mb-tf-rangeslider-inputs">' +
-                                '<input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value="1000"/>' +
-                                '&mdash;' +
-                                '<input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value="10000"/>' +
-                              '</div>' ;
+                    '<input class="mb-tf-rs-input mb-tf-rs-from" disabled type="text" placeholder="" value="1000"/>' +
+                    '&mdash;' +
+                    '<input class="mb-tf-rs-input mb-tf-rs-to" disabled type="text" placeholder="" value="10000"/>' +
+                    '</div>' ;
             }else{
                 inputshtml = '';
             }
 
 
             tpl =  '<div class="mb-tf-header">'+
-                        '<div class="mb-tf-title">{{name_ru}}</div>'+
-                    '</div>'+
-                    '<div class="mb-tf-body">'+
-                        '<div class="mb-tf-rangeslider"></div>' + inputshtml +
-                    '</div>';
+                '<div class="mb-tf-title">{{name_ru}}</div>'+
+                '</div>'+
+                '<div class="mb-tf-body">'+
+                '<div class="mb-tf-rangeslider"></div>' + inputshtml +
+                '</div>';
 
             mO = {
                 name_ru: _t.name_ru
@@ -257,15 +338,15 @@
         }else if(_t.type == 'daterange'){
 
             tpl =   '<div class="mb-tf-header">'+
-                        '<div class="mb-tf-title">{{name_ru}}</div>'+
-                    '</div>'+
-                    '<div class="mb-tf-body">'+
-                        '<div class="taCenter">'+
-                            '<input class="mb-tf-rs-input mb-tf-fil-from-date" type="text" placeholder=""/>'+
-                            '&mdash;'+
-                            '<input class="mb-tf-rs-input mb-tf-fil-to-date" type="text" placeholder=""/>'+
-                        '</div>'+
-                    '</div>';
+                '<div class="mb-tf-title">{{name_ru}}</div>'+
+                '</div>'+
+                '<div class="mb-tf-body">'+
+                '<div class="taCenter">'+
+                '<input class="mb-tf-rs-input mb-tf-fil-from-date" type="text" placeholder=""/>'+
+                '&mdash;'+
+                '<input class="mb-tf-rs-input mb-tf-fil-to-date" type="text" placeholder=""/>'+
+                '</div>'+
+                '</div>';
 
 
 
@@ -281,7 +362,7 @@
                 '<div class="mb-tf-title">{{name_ru}}</div>'+
                 '</div>'+
                 '<div class="mb-tf-body">'+
-                    '<input class="mb-tf-rs-input mb-search-byname" type="text" placeholder="Поиск по названию"/>'+
+                '<input class="mb-tf-rs-input mb-search-byname" type="text" placeholder="Поиск по названию"/>'+
                 '</div>';
 
             mO = {
@@ -301,7 +382,6 @@
         function getCheckboxState(type, id){
 
         }
-
 
         if(_t.type == 'lov'){
 
@@ -493,19 +573,29 @@
                 o.params[i] = f;
             }
 
+            $('.filter-count-actions, .sc-filter-count-actions').html('<i class="fa fa-spinner fa-spin"></i>');
+
             socketQuery_site(o, function(res){
                 var jRes = JSON.parse(res)['results'][0];
 
-                $('.submit-filters, .sc-submit-filters').removeClass('disabled');
+                if(!jRes.code){
+                    $('.submit-filters, .sc-submit-filters').removeClass('disabled');
 
-                if(jRes.count == 0){
-                    $('.submit-filters, .sc-submit-filters').addClass('disabled');
-                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+                    if(jRes.count == 0){
+                        $('.submit-filters, .sc-submit-filters').addClass('disabled');
+                        $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+
+                    }else{
+                        $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+
+                    }
 
                 }else{
-                    $('.filter-count-actions, .sc-filter-count-actions').html('(' + jRes.count + ')');
+
+                    toastr['error']('Кажется произошла системаня ошибка, скоро все исправим.', 'Ой');
 
                 }
+
             });
 
 
@@ -534,118 +624,8 @@
             generateUrl();
         });
 
-        $('#load_next').off('click').on('click', function(){
-            var btn = $(this);
-            var page = btn.attr('data-page');
-            var acts_wrapper = $('.actions-wrapper');
 
 
-            function loadNext(page, cb){
-
-                btn.html('<i class="fa fa-spinner fa-spin"></i>');
-
-                var o = {
-                    command: 'get_afisha',
-                    params: {
-                        url: gurl,
-                        page_no:  page,
-                        rows_max_num: 15
-                    }
-                };
-
-                for(var i in filters){
-                    var f = filters[i];
-                    o.params[i] = f;
-                }
-
-
-                socketQuery_site(o, function(res){
-
-
-
-                    if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
-
-                        var actions = jsonToObj(JSON.parse(res)['results'][0]);
-
-
-//                        var act_m_tpl = '{{#actions}}<a href="/{{alias_link}}"><div class="mb-me-action" data-id="{{ACTION_ID}}">'+
-//                            '<div class="mb-me-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div>'+
-//                            '<div class="mb-me-a-title">{{ACTION_NAME}}</div>'+
-//                            '<div class="mb-me-a-venue">{{VENUE_NAME}}</div>'+
-//                            '<div class="mb-me-a-price">{{price_range}}</div>'+
-//                            '<div class="mb-me-a-age">{{AGE_CATEGORY}}</div>'+
-//                            '<div class="mb-me-a-date">{{#is_show}}с {{/is_show}}{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
-//                            '</div></a>{{/actions}}';
-
-
-                        var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
-                                        '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
-                                        '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
-                                        '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
-                                        '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
-                                        '<div class="mb-a-buy-holder">'+
-                                        '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
-                                        '</div>'+
-                                        '</div>{{/actions}}';
-
-                        var a_data = {actions: []};
-
-                        for(var i in actions){
-                            actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
-                            actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
-                            actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
-                            actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
-
-                            a_data.actions.push(actions[i]);
-                        }
-
-
-
-
-                        if(a_data.actions.length == 0){
-                            btn.attr('data-page', page);
-                            btn.remove();
-
-                        }else{
-                            acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
-                            if(a_data.actions.length < 15){
-                                btn.remove();
-                            }
-                        }
-
-
-                        if(cb && typeof cb == 'function'){
-                            btn.attr('data-page', page);
-                            btn.html('Загрузить еще');
-                            cb();
-                        }
-
-                    }else{
-                        btn.attr('data-page', page);
-                        acts_wrapper.append(errorHtml);
-                        if(cb && typeof cb == 'function'){
-                            cb();
-                        }
-                    }
-
-
-                });
-
-            }
-
-
-
-            if(!page){
-                loadNext(2, function(){
-
-                });
-            }else{
-                loadNext(+page + 1, function(){
-
-                });
-            }
-
-        });
     };
 
     Filter.prototype.return_value = function(){
@@ -755,6 +735,491 @@
                 });
             });
 
+            $('#load_next').off('click').on('click', function(){
+                var btn = $(this);
+                var page = btn.attr('data-page');
+                var acts_wrapper = $('.actions-wrapper');
+
+
+                function loadNext(page, cb){
+
+                    btn.html('<i class="fa fa-spinner fa-spin"></i>');
+
+                    var o = {
+                        command: 'get_afisha',
+                        params: {
+                            url: gurl,
+                            page_no:  page,
+                            rows_max_num: 15
+                        }
+                    };
+
+                    for(var i in filters){
+                        var f = filters[i];
+                        o.params[i] = f;
+                    }
+
+
+                    console.log('OBJ', o);
+
+                    socketQuery_site(o, function(res){
+
+
+
+                        if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
+
+                            var actions = jsonToObj(JSON.parse(res)['results'][0]);
+
+                            var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
+                                '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
+                                '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
+                                '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                                '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
+                                '<div class="mb-a-buy-holder">'+
+                                '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
+                                '</div>'+
+                                '</div>{{/actions}}';
+
+                            var a_data = {actions: []};
+
+                            for(var i in actions){
+                                actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                                actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                                actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                                actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
+                                a_data.actions.push(actions[i]);
+                            }
+
+                            if(a_data.actions.length == 0){
+                                btn.attr('data-page', page);
+                                btn.remove();
+
+                            }else{
+                                acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
+                                if(a_data.actions.length < 15){
+                                    btn.remove();
+                                }
+                            }
+
+
+                            if(cb && typeof cb == 'function'){
+                                btn.attr('data-page', page);
+                                btn.html('Загрузить еще');
+                                cb();
+                            }
+
+                        }else{
+                            btn.attr('data-page', page);
+                            acts_wrapper.append(errorHtml);
+                            if(cb && typeof cb == 'function'){
+                                cb();
+                            }
+                        }
+
+                    });
+
+                }
+
+
+
+                if(!page){
+                    loadNext(2, function(){
+
+                    });
+                }else{
+                    loadNext(+page + 1, function(){
+
+                    });
+                }
+
+            });
+
+            $('.mb-go-to-top').off('click').on('click', function(){
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 350, function(){
+
+                });
+            });
+
+            $('.mb-venue-to-actions').off('click').on('click', function(){
+
+                $('html, body').animate({
+                    scrollTop: 904
+                }, 250, function(){
+
+                });
+
+            });
+
+            $(document).on('emit_use_widget', function(){
+
+                if(!getCookie('mb_use_widget')){
+
+                    yaCounter32940504.reachGoal('USE_WIDGET');
+
+                    setCookie('mb_use_widget', true);
+
+                }
+
+
+            });
+
+            $('.run-mobile-version').off('click').on('click', function(){
+
+                $.removeCookie('wptouch-pro-view');
+                document.location.reload();
+
+            });
+
+            $('.sidebar-calendar').datepicker({
+                language: "ru",
+                todayHighlight: true
+            });
+
+            $('.sidebar-tags-toggler').off('click').on('click', function(){
+                var list = $('.sidebar-tags-list');
+
+                if(list.hasClass('opened')){
+                    list.removeClass('opened');
+                    $(this).html('Показать больше тегов');
+                }else{
+                    list.addClass('opened');
+                    $(this).html('Скрыть список тегов');
+                }
+
+            });
+
+            $('.mb-subscr-button-toggler').off('click').on('click', function(){
+
+                var p = $(this).parents('.mb-subscr-button-wrapper').eq(0);
+//                var dd = p.find('.mb-subscr-button-dd').eq(0);
+
+                if(p.hasClass('opened')){
+                    p.removeClass('opened');
+                }else{
+                    p.addClass('opened');
+                }
+
+            });
+
+            $('.sidebar-filter-item-title').off('click').on('click', function(){
+                var p = $(this).parents('.sidebar-filter-item-wrapper').eq(0);
+                var dd = p.find('.sidebar-filter-item-dd').eq(0);
+                var filter = p.attr('data-filter');
+
+                if(p.hasClass('opened')){
+                    p.removeClass('opened');
+                }else{
+                    if(p.hasClass('loaded')){
+                        p.addClass('opened');
+                    }else{
+                        var fid = getGuid();
+                        var f = new Filter({
+                            id: fid,
+                            wrapper:dd
+                        });
+
+                        p.addClass('loaded');
+                        p.addClass('opened');
+
+                    }
+                }
+
+
+            });
+
+            $('.ig-list-item').off('click').on('click', function(){
+
+                var type = $(this).data('type');
+                var url = $(this).data('url');
+                var tpl;
+
+                if(type == 'video'){
+                    tpl = '<iframe width="575" height="400" src="'+url+'" frameborder="0" allowfullscreen></iframe>';
+                    $('.ig-main-wrapper').html(tpl);
+
+                }else{
+                    $('.ig-main-wrapper').html('');
+                    $('.ig-main-wrapper').attr('style', 'background-image: url('+url+')' );
+                }
+
+
+
+                console.log('item');
+            });
+
+            $('.action-buy-button').off('click').on('click', function(){
+                $('.modal-widget-holder').show(0);
+
+                $.getScript($('#mbw-script-loader').attr('data-src'), function(){
+
+                });
+
+            });
+
+            $('.pa-reg-confirm').off('click').on('click', function(){
+
+                var email = $('#pa-reg-email').val();
+                var pass = $('#pa-reg-pass').val();
+
+                var o = {
+                    command: 'register_new_customer',
+                    params: {
+                        url: gurl,
+                        email: email,
+                        password: pass
+                    }
+                };
+
+                socketQuery_b2c(o, function(res){
+                    var jRes = jsonToObj(JSON.parse(res)['results'][0]);
+
+                    console.log(res);
+
+                });
+
+            });
+
+            $('.pa-login-confirm').off('click').on('click', function(){
+
+                var email = $('#pa-log-email').val();
+                var pass = $('#pa-log-pass').val();
+
+                var o = {
+                    command: 'login',
+                    params: {
+                        url: gurl,
+                        email: email,
+                        password: pass
+                    }
+                };
+
+                socketQuery_b2c(o, function(res){
+                    var jRes = JSON.parse(res)['results'][0];
+
+                    var sid = jRes.sid;
+
+                    setCookie('site_sid', sid);
+
+                });
+
+            });
+
+            $('.pa-holder').off('click').on('click', function(){
+                $('.pa-modal-holder').show(0);
+            });
+
+            $('.pa-modal-close').off('click').on('click', function(){
+                $('.pa-modal-holder').hide(0);
+            });
+
+            $('.pa-order-tickets').off('click').on('click', function(){
+                var _t = this;
+                var p = $(_t).parents('.pa-order-holder');
+                var list = p.find('.pa-order-tickets-list');
+                var id = $(_t).data('id');
+                var loaded = p.data('loaded');
+
+                if(p.hasClass('opened')){
+
+                    p.removeClass('opened');
+
+                    $(_t).html('Билеты');
+
+                }else{
+
+                    if(!loaded){
+
+                        var o = {
+                            command: 'get',
+                            object: 'order_ticket',
+                            params: {
+                                url: gurl,
+                                order_id: id
+                            }
+                        };
+
+                        $(_t).html('<i class="fa fa-spin fa-cog"></i>');
+
+                        socketQuery_b2c(o, function(res){
+
+                            var jRes = jsonToObj(JSON.parse(res)['results'][0]);
+
+                            console.log(jRes);
+
+                            var tpl = '{{#tickets}}<div class="pa-order-ticket-item" data-id="{{ORDER_TICKET_ID}}">' +
+                                '<div class="pa-ticket-line-place">{{LINE_TITLE}} {{LINE}}{{#isSit}},{{/isSit}} {{PLACE_TITLE}} {{PLACE}}</div>' +
+                                '<div class="pa-ticket-area-group">{{AREA_GROUP}}</div>' +
+                                '<div class="pa-ticket-price">{{PRICE}} руб.</div>' +
+                                '<div class="pa-ticket-print button" data-id="{{ORDER_TICKET_ID}}"><i class="fa fa-print"></i>&nbsp;&nbsp;Распечатать</div>' +
+                                '<div class="pa-ticket-download button"  data-id="{{ORDER_TICKET_ID}}"><i class="fa fa-download"></i>&nbsp;&nbsp;Скачать</div>' +
+                                '<div class="pa-ticket-send button"  data-id="{{ORDER_TICKET_ID}}"><i class="fa fa-envelope-o"></i>&nbsp;&nbsp;Отправить</div>' +
+                                '</div>{{/tickets}}';
+
+                            var mO = {
+                                tickets: []
+                            };
+
+                            for(var i in jRes){
+                                var t = jRes[i];
+
+                                if(t.PLACE_TYPE == 'SEAT_PLACE'){
+
+                                    t.isSit = true;
+
+                                    mO.tickets[i] = t;
+
+                                }else if(t.PLACE_TYPE == 'WO_PLACE'){
+
+                                    t.isSit = false;
+                                    t.LINE_TITLE = t.ACTION_SCHEME_TICKET_ZONE;
+                                    t.LINE = '';
+                                    t.PLACE_TITLE = '';
+                                    t.PLACE = '';
+
+
+                                    mO.tickets[i] = t;
+
+                                }else{
+
+                                }
+
+                            }
+
+
+                            list.html(Mustache.to_html(tpl,mO));
+
+
+                            p.data('loaded', true);
+                            p.addClass('opened');
+                            $(_t).html('Свернуть');
+
+
+
+                            $('.pa-ticket-download').off('click').on('click', function(){
+                                var id = $(this).data('id');
+
+                                var o = {
+                                    command: 'operation',
+                                    object: 'get_web_pdf_ticket',
+                                    params: {
+                                        order_ticket_id: id
+                                    }
+                                };
+
+                                socketQuery_b2c(o, function(res){
+
+                                    res = JSON.parse(res)['results'][0];
+
+                                    if (+res.code) {
+                                        alert('Что-то не сработало, звоните пожалуйста - поможем! +7 (906) 063-88-66');
+                                    }
+
+
+                                    var filename = res.filename;
+                                    var id = 'need_be_removed'+id;
+
+                                    $("body").prepend('<a style="display:none;" id="'+ id +'" href="'+ host +'/' + filename +'" download></a>');
+
+                                    var btn = $('#'+id);
+
+                                    btn.on("click",function (e) {
+                                        $(this).remove();
+                                    });
+
+                                    btn[0].click();
+
+                                });
+                            });
+
+                            $('.pa-ticket-print').off('click').on('click', function(){
+                                var id = $(this).data('id');
+
+                                var o = {
+                                    command: 'operation',
+                                    object: 'get_web_pdf_ticket',
+                                    params: {
+                                        order_ticket_id: id
+                                    }
+                                };
+
+                                socketQuery_b2c(o, function(res){
+
+                                    res = JSON.parse(res)['results'][0];
+
+                                    if (+res.code) {
+                                        alert('Что-то не сработало, звоните пожалуйста - поможем! +7 (906) 063-88-66');
+                                    }
+
+
+                                    var filename = res.filename;
+                                    var id = 'need_be_removed'+id;
+
+
+                                    function openPrintWindow(url, name, specs) {
+                                        var printWindow = window.open(url, name, specs);
+                                        var printAndClose = function () {
+                                            if (printWindow.document.readyState == 'complete') {
+                                                clearInterval(sched);
+                                                printWindow.print();
+                                                printWindow.close();
+                                            }
+                                        };
+                                        var sched = setInterval(printAndClose, 200);
+                                    }
+
+                                    openPrintWindow(host +'/' + filename, 'name', 'width=700,height=400,_blank');
+
+
+//                                    $("body").prepend('<iframe id="'+ id +'" name="'+ id +'" style="width: 0px; height:0px; overflow:hidden;" src="'+ host +'/' + filename +'"></ireame>');
+//
+//                                    var f = window.frames[id];
+//                                    f.focus();
+//                                    f.print();
+
+
+
+//                                    f.close();
+
+
+//                                    btn.on("click",function (e) {
+//                                        $(this).remove();
+//                                    });
+
+//                                    btn[0].click();
+
+                                });
+
+
+                            });
+
+                            $('.pa-ticket-send').off('click').on('click', function(){
+                                var id = $(this).data('id');
+
+
+                            });
+
+                        });
+
+
+                    }else{
+                        p.addClass('opened');
+                        $(_t).html('Свернуть');
+                    }
+
+                }
+
+
+            });
+
+
+            $(document).off('mbw_close').on('mbw_close', function(){
+                $('#multibooker-widget-wrapper').html('');
+                $('.modal-widget-holder').hide(0);
+            });
+
             uiTabs();
 
         },
@@ -818,6 +1283,7 @@
 
 
             function runQuery(cb){
+
                 var search_keyword = search.val();
                 var from_date =     s_from_date.val();
                 var to_date =       s_to_date.val();
@@ -913,15 +1379,20 @@
                         }
 
                         if(cb && typeof cb == 'function'){
+                            inQuery = false;
                             cb();
                         }
 
                     }else{
                         acts_wrapper.html(errorHtml);
+                        inQuery = false;
                     }
-
-
                 });
+
+
+
+
+
             }
 
 
@@ -945,7 +1416,7 @@
 
                 main_datepicker.datepicker('update', datePicked);
 
-                runQuery();
+                runQuery(function(){});
             });
 
             s_to_date.datepicker({
@@ -957,7 +1428,7 @@
                 var datePicked = e.format('dd.mm.yyyy');
 
 
-                runQuery();
+                runQuery(function(){});
             });
 
             main_datepicker.datepicker({
@@ -970,12 +1441,12 @@
                 search_dd.show(0);
                 s_from_date.datepicker('update', datePicked);
 
-                if(s_to_date.val().length == 0){
-                    s_to_date.datepicker('update', datePicked);
-                }
+//                if(s_to_date.val().length == 0){
+//                    s_to_date.datepicker('update', datePicked);
+//                }
 
 
-                runQuery();
+                runQuery(function(){});
 
             });
 
@@ -985,13 +1456,32 @@
                 }
             });
 
+
+            var t1 = window.setTimeout(function(){}, 200);
+
             search.off('input').on('input', function(){
+
                 var val = $(this).val();
+
                 if(val.length > 1){
+
                     search_dd.show(0);
 
+                    if(typeof t1 == 'number'){
 
-                    runQuery();
+                        clearTimeout(t1);
+
+                        t1 = window.setTimeout(function(){
+                            console.log(search.val());
+
+                            runQuery(function(){
+
+                            });
+
+                        }, 300);
+
+                    }
+
                 }else if(val.length == 0){
                     search_dd.hide(0);
                 }
@@ -1010,7 +1500,7 @@
                     to_inp.val(data.to_value);
 
 
-                    runQuery();
+                    runQuery(function(){});
                 }
             });
         },
@@ -1177,6 +1667,265 @@
 
                 }
             });
+        },
+        initContest: function(){
+            return false;
+            var contestHolder = $('.contest-holder');
+            var timerHolder = $('.contest-fast-timer');
+            // FAST CONTEST
+            (function(){
+
+                var s = '';
+                function runTimer(startTime, timeAgo){
+
+                    var delta = moment() - startTime;
+                    var totalDelta = timeAgo + delta;
+                    var s2 = moment(totalDelta).format('mm:ss:SS');
+                    if (s!== s2){
+                        s = s2;
+                        timerHolder.html('<span class="contest-fast-timer-time">' + s + '</span>');
+                    }
+                }
+
+                $('.contest-fast-open-rules').off('click').on('click', function(){
+
+                    $('html, body').animate({
+                        scrollTop: $('.contest-fast-rules').offset().top + 'px'
+                    }, 350, function(){
+
+                    });
+
+                });
+
+                $('.contest-fast-close').off('click').on('click', function(){
+
+                    localStorage.setItem('mb-fast-reject', 'REJECT');
+                    contestHolder.hide(0);
+                });
+
+                $('.contest-fast-reject').off('click').on('click', function(){
+
+                    localStorage.setItem('mb-fast-reject', 'REJECT');
+                    contestHolder.hide(0);
+                });
+
+                $('.contest-fast-go').off('click').on('click', function(){
+                    var self = this;
+                    contestHolder.hide(0);
+
+                    if(localStorage){
+
+                        if(localStorage.getItem('mb-fast-contest') == null){
+
+                            var starto = {
+                                command: 'start_create_order'
+                            };
+
+                            socketQuery_b2e(starto, function(res){
+
+                                var jRes = JSON.parse(res);
+
+                                if(jRes.results[0].code == 0){
+
+                                    var session_id = jRes.results[0].session_id;
+
+
+                                    var o = {
+                                        start: new Date(),
+                                        sid: session_id,
+                                        device: navigator.userAgent
+                                    };
+
+                                    localStorage.setItem('mb-fast-contest', JSON.stringify(o));
+
+                                    if($(self).parents('.contest-fast-timer-rate').length > 0){
+                                        document.location.href = '/';
+                                        return;
+                                    }
+
+
+
+                                    contestData = o;
+
+                                    var startTime = moment();
+                                    var timeAgo = startTime - moment(contestData.start);
+                                    setInterval(function(){
+                                        runTimer(startTime ,timeAgo);
+                                    },1);
+
+                                    if($(self).parents('.contest-page-footer').length > 0){
+                                        document.location.href = '/';
+                                    }
+
+                                    $('html, body').animate({
+                                        scrollTop: 0
+                                    }, 250);
+                                }else{
+                                    toastr['error']('Ошибка сервера');
+                                }
+
+                            });
+
+                        }else{
+
+                        }
+                    }
+                });
+
+                if(!!localStorage){
+
+                    var contestData = localStorage.getItem('mb-fast-contest');
+
+                    if(localStorage.getItem('mb-fast-contest') != null){
+
+                        $('.contest-page-footer .contest-fast-go').hide(0);
+
+                        contestData = JSON.parse(contestData);
+
+                        var startTime = moment();
+                        var timeAgo = startTime - moment(contestData.start);
+                        setInterval(function(){
+                            runTimer(startTime ,timeAgo);
+                        },1);
+
+                        $('.contest-fast-full-rules').show(0);
+
+                    }else{
+
+                        if(localStorage.getItem('mb-fast-reject') != null || localStorage.getItem('mb-fast-contest-finished') != null){
+
+                            if(localStorage.getItem('mb-fast-reject') != null && localStorage.getItem('mb-fast-reject') == 'REJECT'){
+                                $('.contest-page-footer .contest-fast-go').show(0);
+                                return;
+                            }
+
+                            if(localStorage.getItem('mb-fast-contest-finished') != null && localStorage.getItem('mb-fast-contest-finished') == 'TRUE'){
+
+                                if(document.location.href.indexOf('success') == -1){
+                                    contestHolder.find('.contest-fast-wrapper h3').html('Попробуете еще раз?').show(0);
+                                    $('.contest-page-footer .contest-fast-go').show(0);
+                                }
+                            }
+                        }
+
+                        if(document.location.href.indexOf('success') == -1 && document.location.href.indexOf('contest-fast') == -1){
+                            contestHolder.show(0);
+                        }
+
+                        $('.contest-page-footer .contest-fast-go').show(0);
+                    }
+                }
+
+                var resultsTable = $('table.contest-fast-results');
+                var trs = resultsTable.find('tbody tr');
+
+                $('.find-contest-result-input').off('input').on('input', function(){
+
+                    trs.show(0);
+
+                    var val = $(this).val();
+
+                    trs.each(function(i, elem){
+                        var tr = $(elem);
+
+                        if(tr.attr('data-order').indexOf(val) == -1){
+                            tr.hide(100);
+                        }
+
+                    });
+
+                });
+
+                $('.contest-fast-full-rules').off('click').on('click', function(){
+
+                    if(!!localStorage){
+                        localStorage.removeItem('mb-fast-reject');
+                        localStorage.removeItem('mb-fast-contest');
+                        localStorage.removeItem('mb-fast-contest-finished');
+                        localStorage.removeItem('mb-fast-contest-finished-result');
+
+                        document.location.href = '/';
+                    }
+
+                });
+
+            }());
+
+        },
+        initReviews: function(){
+
+            var rating_changed = false;
+
+            $('.wr-review-rating').ionRangeSlider({
+                type: "single",
+                grid: true,
+                min: 0,
+                max: 10,
+                from:5,
+                step:0.1,
+                onChange: function (data) {
+                    rating_changed = true;
+                    $('.wr-review-rating-value').html(data.from.toFixed(1));
+                }
+            });
+
+
+            $('.wr-confirm').off('click').on('click', function(){
+
+                var text = $('.wr-review-text').val();
+                var o;
+
+                if(text.length > 0){
+
+                    o = {
+                        command: 'add_action_review',
+                        object: 'asd',
+                        params:{
+                            text: text
+                        }
+                    };
+
+                    if(rating_changed){
+                        o.params.rating = parseFloat($('.wr-review-rating-value').html());
+                    }
+                    
+                    console.log(o);
+                    
+                    socketQuery_b2e(o, function(r){
+
+                    });
+
+                }else{
+
+                    if(rating_changed){
+
+                        o = {
+                            command: 'add_action_review',
+                            object: 'asd',
+                            params:{
+                                text: text,
+                                rating: parseFloat($('.wr-review-rating-value').html())
+                            }
+                        };
+
+                        console.log(o);
+
+                        socketQuery_b2e(o, function(r){
+
+                        });
+
+                    }else{
+
+                        $('.wr-error-holder').html('Вы ничего не написали, какой в этом смысл?');
+
+                        window.setTimeout(function(){
+
+                            $('.wr-error-holder').html('');
+
+                        }, 6000);
+                    }
+                }
+            });
         }
 
     };
@@ -1191,8 +1940,46 @@
         fs.initSlider();
         fs.initScroll();
         fs.initInPageSearch();
+        fs.initContest();
+        fs.initReviews();
 
     });
+
+
+//    function setRow(num){
+//        var m = MB.User.mapEditor_map;
+//        var s = m.selection;
+//
+//        var o = {
+//            command: 'operation',
+//            object: 'modify_hall_scheme_item',
+//            params: {
+//
+//            }
+//        };
+//
+//
+//        var ids = [];
+//        var lines = [];
+//
+//        for(var i in s){
+////            var sq = m.squares[s[i]];
+//            ids.push(s[i]);
+//            lines.push(num);
+//        }
+//
+//        o.params.hall_scheme_item_id = ids.join('|!|');
+//        o.params.line = lines.join('|!|');
+//
+//
+//        console.log(o);
+//
+//        socketQuery(o, function(res){
+//            console.log(res);
+//        });
+//    }
+//
+//    setRow(4);
 
 
 

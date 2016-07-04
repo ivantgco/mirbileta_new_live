@@ -10,7 +10,7 @@
 
 <div class="page-headline-wrapper">
     <div class="p-h-line"></div>
-    <div class="p-h-title"><span>Подберите что-нибудь на ваш вкус!</span></div>
+    <div class="p-h-title"><span>Расширенный поиск:</span></div>
 </div>
 
 <div class="mb-block mb-tag-filter-wrapper posRel">

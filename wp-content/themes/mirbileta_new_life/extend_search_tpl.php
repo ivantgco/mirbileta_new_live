@@ -51,6 +51,8 @@
     $actions_count = count($data);
     $show_next_button = $actions_count == 15;
 
+
+
 ?>
 
 
@@ -106,7 +108,7 @@ include('main_menu.php');
 
         <div class="mb-block-sh flLeft posRel">
 
-            <div class="flLeft mb-tag-filter-wrapper posRel">
+            <div class="flLeft mb-tag-filter-wrapper posRel wid100pr">
 
                 <h2 class="padLeft25"><?php echo get_the_title($page_id);?></h2>
 
@@ -137,7 +139,7 @@ include('main_menu.php');
 
             </div>
 
-            <h3 class="padLeft25 wid100pr flLeft">Результаты поиска:</h3>
+            <h3 class="padLeft25 wid100pr flLeft">Результаты поиска: <span class="mb-single-param"><?php echo $singleParam; ?></span></h3>
 
 
             <div class="actions-wrapper">
@@ -154,7 +156,7 @@ include('main_menu.php');
                     $venue_alias =        $value[array_search("VENUE_URL_ALIAS", $columns)];
                     $frame =        $value[array_search("FRAME", $columns)];
                     $act_name =     $value[array_search("ACTION_NAME", $columns)];
-                    $thumb =        (strlen($value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0)? (strpos("http" , $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
+                    $thumb =        (strlen($value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0)? (strpos("http" , $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
                     $poster =       (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 )? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
                     $act_date =     $value[array_search("ACTION_DATE_STR", $columns)];
                     $act_time =     $value[array_search("ACTION_TIME_STR", $columns)];

@@ -55,15 +55,15 @@
 
                 update_post_meta($newPageId, '_wp_page_template', $tpl);
 
-                echo 'success';
+                echo '<STATUS>SUCCESS</STATUS>';
             }else{
 
-                echo 'already exsists';
+                echo '<STATUS>ALREADY_EXSISTS</STATUS>';
 
             }
 
     }else{
-        echo 'error code';
+        echo '<STATUS>ERROR</STATUS>';
     }
 
 ?>

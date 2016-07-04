@@ -2,10 +2,16 @@
 /*
     Template Name: single_actor
 */
-    $cur_url = $_SERVER["REQUEST_URI"];
+//    $cur_url = $_SERVER["REQUEST_URI"];
+//
+//    $actor_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
+//    $actor_alias = (strpos($actor_alias, '-') > -1)? substr($actor_alias,0, strpos($actor_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
 
-    $actor_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
-    $actor_alias = (strpos($actor_alias, '-') > -1)? substr($actor_alias,0, strpos($actor_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
+    $href = request_url();
+    $arr = parse_url($href);
+    $actor_alias = preg_replace('/^\//','',$arr['path']);
+    $actor_alias = preg_replace('/(^\w+)\/.*/','$1',$actor_alias);
+
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actor</command><url>mirbileta.ru</url><actor_url_alias>".$actor_alias."</actor_url_alias>";
 
@@ -64,7 +70,7 @@
 
 </head>
 
-<body <?php body_class(); ?> data-page="inner">
+<body <?php body_class(); ?>  data-actor="<?php echo $actor_id;?>" data-page="inner">
 
 <?php
 get_header();
@@ -121,7 +127,6 @@ include('main_menu.php');
                 else
                     curl_close($ch);
 
-                $jData = json_decode($data);
 
                 $columns = json_decode($resp)->results["0"]->data_columns;
                 $data = json_decode($resp)->results["0"]->data;
@@ -133,12 +138,12 @@ include('main_menu.php');
                 foreach ($data as $key => $value) {
 
                     $act_id = $value[array_search("ACTION_ID", $columns)];
-                    $alias = $value[array_search("ACTION_URL_ALIAS", $columns)];
+                    $alias = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? $value[array_search("SHOW_URL_ALIAS", $columns)] : $value[array_search("ACTION_URL_ALIAS", $columns)];
                     $venue_alias = $value[array_search("VENUE_URL_ALIAS", $columns)];
                     $frame = $value[array_search("FRAME", $columns)];
                     $act_name = $value[array_search("ACTION_NAME", $columns)];
-                    $thumb = (strpos("http", $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)];
-                    $poster =       (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 )? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
+                    $thumb =    (strlen($value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0)? (strpos("http", $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]: $defaultPoster;
+                    $poster =   (strlen($value[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0 ) ? (strpos("http" , $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1)? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)]: $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
 //                    $poster = (strpos("http", $value[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ? 'https://shop.mirbileta.ru/upload/' . $value[array_search("ACTION_POSTER_IMAGE", $columns)] : $value[array_search("ACTION_POSTER_IMAGE", $columns)];
                     $act_date = $value[array_search("ACTION_DATE_STR", $columns)];
                     $act_time = $value[array_search("ACTION_TIME_STR", $columns)];
@@ -159,11 +164,12 @@ include('main_menu.php');
                     $week_and_time = to_afisha_date($act_date_time, "week_and_time", "rus");
                     $weekday = to_afisha_date($act_date_time, "weekday", "rus");
                     $time = to_afisha_date($act_date_time, "time", "rus");
+                    $isShow = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? 'c': '';
 
                     $actionsHtml .= '<div class="mb-block mb-action" data-id="' . $act_id . '">'
                         . '<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\'' . $poster . '\');"></div></a>'
                         . '<a href="/'.$alias.'"><div class="mb-a-title">' . $act_name . '<span class="mb-a-age">' . $ageCat . '</span></div></a>'
-                        . '<div class="mb-a-date">' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
+                        . '<div class="mb-a-date"> '.$isShow.' ' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
                         . '<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">' . $venue . '</div></a>'
                         . '<div class="mb-a-buy-holder">'
                         . '<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.

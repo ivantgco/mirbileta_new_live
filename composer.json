@@ -1,0 +1,6 @@
+{
+    "require": {
+        "fightbulc/moment": "*",
+        "lawondyss/moment-php": "^1.1"
+    }
+}

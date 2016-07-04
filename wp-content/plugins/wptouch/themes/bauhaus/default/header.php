@@ -17,11 +17,12 @@
 
 	<body <?php body_class( wptouch_get_body_classes() ); ?>>
     <div id="mmb-page-container">
-        <div class="mmb-coming-soon">
-            <div class="mmb-cs-logo">MIRBILETA.RU</div>
-            <div class="mmb-cs-text">Мобильная версия в разработке, релиз на днях!</div>
-            <div class="mmb-cs-text">+7 (906) 063-<span>88</span>-66</div>
-        </div>
+<!--        <div class="mmb-coming-soon">-->
+<!--            <div class="mmb-cs-logo">MIRBILETA.R2U</div>-->
+<!--            <div class="mmb-cs-text">Мобильная версия в разработке, релиз на днях!</div>-->
+<!--            <div class="mmb-cs-text">+7 (906) 063-<span>88</span>-66</div>-->
+<!--        </div>-->
+
         <?php
 
         include('custom_header.php');

@@ -3,11 +3,13 @@
         Template Name: single_action
     */
 
-    //$action_alias = $_GET['alias'];
-    $cur_url = $_SERVER["REQUEST_URI"];
-    $action_alias = substr($cur_url, 1, (strlen($cur_url) - 2));//parse_url($cur_url)->path;
+    $href = request_url();
+    $arr = parse_url($href);
+    $action_alias = preg_replace('/^\//','',$arr['path']);
+    $action_alias = preg_replace('/(^\w+)\/.*/','$1',$action_alias);
 
-    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><action_url_alias>".$action_alias."</action_url_alias>";
+
+    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><action_url_alias>".$action_alias."</action_url_alias>";
 
     $ch = curl_init();
 
@@ -24,31 +26,36 @@
     else
         curl_close($ch);
 
-//    $jData = json_decode($data);
-
     $columns = json_decode($resp)->results["0"]->data_columns;
     $data = json_decode($resp)->results["0"]->data[0];
 
     $act_id =       $data[array_search("ACTION_ID", $columns)];
     $alias =        $data[array_search("ACTION_URL_ALIAS", $columns)];
+    $show_alias =   $data[array_search("SHOW_URL_ALIAS", $columns)];
     $frame =        $data[array_search("FRAME", $columns)];
     $act_name =     $data[array_search("ACTION_NAME", $columns)];
     $g_act_name =     $data[array_search("ACTION_NAME", $columns)];
-    $thumb =        (strlen($data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] > 0)) ? (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
-    $poster =       (strlen($data[array_search("ACTION_POSTER_IMAGE", $columns)] > 0)) ? (strpos("http", $data[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_IMAGE", $columns)]: '';
+    $thumb =        (strlen($data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
+    $poster =       (strlen($data[array_search("ACTION_POSTER_IMAGE", $columns)])> 0) ? (strpos("http", $data[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?                          $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_IMAGE", $columns)]: $defaultPoster;
+    $act_date_full =     $data[array_search("ACTION_DATE", $columns)];
     $act_date =     $data[array_search("ACTION_DATE_STR", $columns)];
+    $act_date_year =    to_afisha_date($data[array_search("ACTION_DATE", $columns)], 'year', 'rus');
     $act_time =     $data[array_search("ACTION_TIME_STR", $columns)];
     $hall =         $data[array_search("HALL_NAME", $columns)];
     $genre =        $data[array_search("SHOW_GENRE", $columns)];
     $venue =        $data[array_search("VENUE_NAME", $columns)];
-    $address =      $data[array_search("VENUE_ADDRESS", $columns)];
+    $address =      $data[array_search("HALL_ADDR", $columns)];
+    $g_address =    $data[array_search("HALL_GOOGLE_ADDRESS", $columns)];
     $free_places =  $data[array_search("FREE_PLACE_COUNT", $columns)];
     $minprice =     $data[array_search("MIN_PRICE", $columns)];
     $maxprice =     $data[array_search("MAX_PRICE", $columns)];
     $day_of_week =  $data[array_search("ACTION_DAY_OF_WEEK", $columns)];
     $duration =     $data[array_search("DURATION_HOUR_MIN", $columns)];
     $is_wo =        $data[array_search("ACTION_TYPE", $columns)] == 'ACTION_WO_PLACES';
-    $sbag =        $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
+    $sbag =         $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
+    $tag_list =     $data[array_search("ACTION_TAG_LIST", $columns)];
+    $actor_list =   $data[array_search("ACTION_ACTOR_LIST", $columns)];
+    $images_list =   $data[array_search("ACTION_IMAGES_LIST", $columns)];
 
     $isInfo = strlen($description) > 0;
     $description = $data[array_search("DESCRIPTION", $columns)];
@@ -60,6 +67,7 @@
     $short_date_with_year = to_afisha_date($act_date_time, "short_date_with_year", "rus");
     $week_and_time = to_afisha_date($act_date_time, "week_and_time", "rus");
     $weekday = to_afisha_date($act_date_time, "weekday", "rus");
+    $weekday_short = to_afisha_date($act_date_time, "weekday_short", "rus");
     $time = to_afisha_date($act_date_time, "time", "rus");
 
 
@@ -95,432 +103,320 @@
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
         <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all'/>
 
+        <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget.js" src=""></script>
+
         <?php wp_head(); ?>
 
+
+
     </head>
+
+
 
     <body <?php body_class(); ?> data-page="inner">
 
     <?php
     get_header();
     include('main_menu.php');
-//    echo $url;
 
     ?>
 
-    <div class="site-content">
 
-        <div class="container">
+    <div class="site-content white-bg action-page">
+        <div class="site-container">
 
+            <div class="site-sidebar">
+                <div class="sidebar-block">
 
-            <div class="mb-block-sh posRel">
+                    <div class="action-sidebar-holder">
 
-                <div class="one-action-title"><?php echo $act_name; ?></div>
-                <div class="one-action-age"><?php echo $ageCat; ?></div>
-                <div class="one-action-venue">
-                    <i class="fa fa-map-marker"></i>&nbsp;&nbsp;
-                    <span class="one-action-hall"><?php echo $hall; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div title="<?php echo $act_name; ?> Купить билеты" class="action-buy-button">Купить билеты</div>
 
-                    <?php if(strlen($address) > 0): ?>
+                        <div class="action-actors-holder">
 
-                        <span class="one-action-address"><i class="fa fa-map-o"></i>&nbsp;&nbsp; <?php echo $address; ?> <span class="show-gmap-hint">Показать карту</span></span>
-
-                    <?php endif; ?>
-
-                    </div>
-
-                    <?php if(strlen($address) > 0): ?>
-
-                        <div class="one-action-gmap">
-
-                            <input id="address" type="hidden" value="<?php echo $address; ?>" />
-
-                            <div style=" width: 100%; height: 280px;" id="map_canvas"></div>
-
-                        </div>
-
-                    <?php endif; ?>
-
-                <?php
-
-                    $durationHtml = (strlen($duration) > 0)? '<span class="one-action-length">Продолжительность: '. $duration .' </span>' : '';
-
-                ?>
-
-                <div class="flLeft one-action-date"><?php echo $act_date;?>, <span class="one-action-time"><?php echo $act_time; ?></span>&nbsp;&nbsp;<span class="one-action-weekday"><?php echo $day_of_week; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $durationHtml; ?></div>
-
-                <?php
-                    if($free_places == 0){
-
-                }else{
-
-                ?>
-
-                <div class="mb-buy mb-buy32 yellow flLeft one-action-buy-link">Купить билет</div>
-
-                <?php
-
-                }
-
-                ?>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="one-action-image-wrapper" style="background-image: url(<?php echo $poster;?>)"></div>
-
-                        <div class="one-action-desc">
-
-                            <div class="tabsParent sc_tabulatorParent">
-                                <div class="tabsTogglersRow sc_tabulatorToggleRow">
-
-                                    <div class="tabToggle sc_tabulatorToggler opened" dataitem="0" title="">
-                                        <span class="">Описание</span>
-                                    </div>
-
-                                    <div class="tabToggle sc_tabulatorToggler " dataitem="1" title="">
-                                        <span class="">Отзывы (6)</span>
-                                    </div>
-
-                                </div>
-
-                                <div class="ddRow notZindexed sc_tabulatorDDRow">
-
-                                    <div class="tabulatorDDItem sc_tabulatorDDItem opened noMaxHeight" dataitem="0">
-
-
-                                        <?php echo $description;?>
-
-                                    </div>
-
-                                    <div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight" dataitem="1">
-
-
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="one-action-actors pr50 flLeft">
-                            <div class="one-action-actors-header">Действующе лица:</div>
-
-                            <ul>
 
                                 <?php
+                                $actorsArray = json_decode($actor_list);
 
-                                // Подгружаем актеров
+                                if(count($actorsArray) > 0): ?>
 
-                                $actor_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actor_for_action</command><url>mirbileta.ru</url><action_id>".$act_id."</action_id>";
+                                <h2 class="ap-title">Участники:</h2>
 
-                                $ch = curl_init();
+                                <?php endif ?>
 
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                                curl_setopt($ch, CURLOPT_URL, $actor_url);
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                                curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-                                $resp2 = curl_exec($ch);
-
-                                if(curl_errno($ch))
-                                print curl_error($ch);
-                                else
-                                curl_close($ch);
-
-                                $actor_columns = json_decode($resp2)->results["0"]->data_columns;
-                                $actor_data = json_decode($resp2)->results["0"]->data;
-
-
-
-                                $actors_html = "";
-
-                                foreach ($actor_data as $key2 => $value2){
-
-                                    $actor_id =     $value2[array_search("ACTOR_ID", $actor_columns)];
-                                    $actor_alias =  $value2[array_search("ACTOR_URL_ALIAS", $actor_columns)];
-                                    $actor_name =   $value2[array_search("ACTOR_NAME", $actor_columns)];
-                                    $actor_image =  $value2[array_search("URL_IMAGE_MEDIUM", $actor_columns)];
-                                    $actor_image_small =  $value2[array_search("URL_IMAGE_SMALL", $actor_columns)];
-
-
-
-
-                                    $actors_html .= '<li data-id="'.$actor_id.'"><a class="one-action-actor-link" href="/'.$actor_alias.'"><div class="one-action-actor-image" style="background-image: url('.$actor_image_small.')"></div>'
-                                                        .'<div class="one-action-actor-name">'.$actor_name.'</div>'
-                                                    .'</a></li>';
-                                }
-
-//                                var_dump($actor_columns);
-                                echo $actors_html;
-
-                                ?>
-
-                            </ul>
-
-                        </div>
-                        <div class="one-action-tags pr50 flLeft">
-
-                            <div class="one-action-actors-header">Теги мероприятия:</div>
-                            <div class="one-action-tags-body">
-                                <?php
-
-                                // Подгружаем актеров
-
-                                $tag_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_action_tag</command><url>mirbileta.ru</url><action_id>".$act_id."</action_id>";
-                                $tag_ids = '';
-                                $ch = curl_init();
-
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                                curl_setopt($ch, CURLOPT_URL, $tag_url);
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                                curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-                                $resp3 = curl_exec($ch);
-
-                                if(curl_errno($ch))
-                                    print curl_error($ch);
-                                else
-                                    curl_close($ch);
-
-                                $tag_columns = json_decode($resp3)->results["0"]->data_columns;
-                                $tag_data = json_decode($resp3)->results["0"]->data;
-
-
-
-                                $tag_html = "";
-                                $indexer = 0;
-                                foreach ($tag_data as $key3 => $value3){
-
-                                    $tag_id =             $value3[array_search("ACTION_TAG_ID", $tag_columns)];
-                                    $tag_name =           $value3[array_search("ACTION_TAG", $tag_columns)];
-
-                                    $tag_html .= '<a class="action-tag-link" href="/extend_search?action_tag_id='.$tag_id.'"><div class="action-tag" data-id="'.$tag_id.'">'.$tag_name.'</div></a>';
-
-                                    if($indexer == 0){
-                                        $tag_ids .= $tag_id;
-                                    }else{
-                                        $tag_ids .= ','.$tag_id;
-                                    }
-
-
-                                    $indexer++;
-                                }
-
-    //                                                            var_dump($tag_columns);
-    //                                                            var_dump($tag_data);
-
-                                echo $tag_html;
-
-                                ?>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12 ">
-
-
-
-
-                        <?php
-
-                        $minmaxString = ($minprice == $maxprice)? 'по '. $minprice . ' рублей' : 'от ' . $minprice . ' до ' . $maxprice . ' рублей';
-
-                        ?>
-
-                        <?php
-                            if($free_places == 0){
-
-                            ?>
-
-                                <div class="net-bilet">Нэт билэт!   Звоните +7 (906) 063-88-66</div>
-
-
-                            <?php
-
-                            }else{
-
-                        ?>
-                                <div class="one-action-widget-header">Купить билет: <span class="one-action-free-places"><?php echo $free_places; ?> мест, <?php echo $minmaxString; ?></div>
-                                <div class="one-action-widget-how-to">
-
+                                <ul>
 
                                     <?php
-                                    $manualHtml = '';
 
-                                    if($is_wo){
-                                        $manualHtml =    '<div class="one-action-widget-how-to-item">1. Выберите места <div class="arrow"></div><div class="hint">Добавьте входные билеты в корзину.</div></div>'
-                                                        .'<div class="one-action-widget-how-to-item">2. Нажмите "Купить" <div class="arrow"></div><div class="hint">Выбрав билеты нажмите кнопку "Купить", примите условия пользовательского соглашения и нажмите "Подтвердить"</div></div>'
-                                                        .'<div class="one-action-widget-how-to-item">3. Оплата <div class="arrow"></div><div class="hint">После подтверждения система направит вас на страницу оплаты. Оплтаите билеты с помощью банковской карты.</div></div>'
-                                                        .'<div class="one-action-widget-how-to-item">4. Билеты <div class="arrow"></div><div class="hint">После успешной оплаты электронные билеты будут отправлены вам на email указанный при оплате. Распечатайте их и предъявите при проходе на мероприятие.</div></div>';
-                                    }else{
+                                    // Подгружаем актеров
 
-                                        if($sbag){
 
-                                            $manualHtml =    '<div class="one-action-widget-how-to-item">1. Выберите сектор <div class="arrow"></div><div class="hint">Кликните по интересующему вас сектору на интеркативной схеме зала.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">2. Выберите места <div class="arrow"></div><div class="hint">Для добавления билета в корзину кликните по интересующему вас месту, чтобы вернуться к выбору сектора нажмите кнопку <br/>"К секторам" в левой нижней части схемы.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">3. Нажмите "Купить" <div class="arrow"></div><div class="hint">Выбрав билеты нажмите кнопку "Купить", примите условия пользовательского соглашения и нажмите "Подтвердить"</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">4. Оплата <div class="arrow"></div><div class="hint">После подтверждения система направит вас на страницу оплаты. Оплтаите билеты с помощью банковской карты.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">5. Билеты <div class="arrow"></div><div class="hint">После успешной оплаты электронные билеты будут отправлены вам на email указанный при оплате. Распечатайте их и предъявите при проходе на мероприятие.</div></div>';
+                                    $actors_html = "";
 
-                                        }else{
-                                            $manualHtml =    '<div class="one-action-widget-how-to-item">1. Выберите места <div class="arrow"></div><div class="hint">Для добавления билета в корзину кликните по интересующему вас месту.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">2. Нажмите "Купить" <div class="arrow"></div><div class="hint">Выбрав билеты нажмите кнопку "Купить", примите условия пользовательского соглашения и нажмите "Подтвердить"</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">3. Оплата <div class="arrow"></div><div class="hint">После подтверждения система направит вас на страницу оплаты. Оплтаите билеты с помощью банковской карты.</div></div>'
-                                                            .'<div class="one-action-widget-how-to-item">4. Билеты <div class="arrow"></div><div class="hint">После успешной оплаты электронные билеты будут отправлены вам на email указанный при оплате. Распечатайте их и предъявите при проходе на мероприятие.</div></div>';
-                                        }
+                                    foreach ($actorsArray as $key2 => $value2){
 
+                                        $actor_id =     $value2->id;
+                                        $actor_alias =  $value2->alias;
+                                        $actor_name =   $value2->name;
+                                        $actor_image_small =  $value2->url_image_small;
+
+
+
+
+                                        $actors_html .= '<li data-id="'.$actor_id.'"><a class="one-action-actor-link" href="/'.$actor_alias.'"><div class="one-action-actor-image" style="background-image: url('.$actor_image_small.')"></div>'
+                                            .'<div class="one-action-actor-name">'.$actor_name.'</div>'
+                                            .'</a></li>';
                                     }
-                                    echo $manualHtml;
+
+                                    //                                var_dump($actor_columns);
+                                    echo $actors_html;
 
                                     ?>
 
+                                </ul>
+
+
+                        </div>
+
+
+                        <div class="action-tags-holder">
+
+                            <h2 class="ap-title">Теги:</h2>
+
+                            <?php
+
+                            $tagsArray = json_decode($tag_list);
+                            $tag_html = "";
+                            $indexer = 0;
+
+                            foreach ($tagsArray as $key3 => $value3){
+
+                                $tag_id =             $value3->id;
+                                $tag_name =           $value3->name;
 
 
 
-                                </div>
-                                <div class="one-action-widget-wrapper">
+                                $tag_html .= '<a class="sidebar-tag-item" href="/extend_search?action_tag_id='.$tag_id.'">'.$tag_name.'</a>';
 
-                                    <div id="multibooker-widget-wrapper"
-                                         data-actions="<?php echo $act_id ?>"
-                                         data-widget_theme="light"
-                                         data-withdelivery="false"
-                                         data-mirbileta="true"
-                                         data-width=""
-                                         data-frame="<?php echo $frame ?>"
-                                         data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                                         data-ip="<?php echo $global_url; ?>">
-
-                                        <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
-
-                                    </div>
-
-
-                                    <div class="one-action-widget-underwrapper zi20 posRel"></div>
-
-                                </div>
-
-                        <?php
-                            }
-                        ?>
-
-
-
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="similar-bg ">
-
-
-                            <div class="one-action-similar-header">Похожие мероприятия:</div>
-                            <div class="one-action-similar-wrapper actions-wrapper marTop40">
-                                <?php
-
-                                $similar_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>4</rows_max_num><action_tag_id>".$tag_ids."</action_tag_id>";
-
-                                $ch = curl_init();
-
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-                                curl_setopt($ch, CURLOPT_URL, $similar_url);
-                                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-                                curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-                                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-                                $resp4 = curl_exec($ch);
-
-                                if(curl_errno($ch))
-                                    print curl_error($ch);
-                                else
-                                    curl_close($ch);
-
-                                $sim_columns = json_decode($resp4)->results["0"]->data_columns;
-                                $sim_data = json_decode($resp4)->results["0"]->data;
-
-
-                                $sim_actionsHtml = "";
-
-                                foreach ($sim_data as $key4 => $value4){
-
-                                    $act_id =       $value4[array_search("ACTION_ID", $sim_columns)];
-                                    $alias =        $value4[array_search("ACTION_URL_ALIAS", $sim_columns)];
-                                    $venue_alias =        $value4[array_search("VENUE_URL_ALIAS", $sim_columns)];
-                                    $frame =        $value4[array_search("FRAME", $sim_columns)];
-                                    $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
-                                    $poster =       (strlen($value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) > 0)? (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)] : $defaultPoster;
-                                    $act_date =     $value4[array_search("ACTION_DATE_STR", $sim_columns)];
-                                    $act_time =     $value4[array_search("ACTION_TIME_STR", $sim_columns)];
-                                    $hall =         $value4[array_search("HALL", $sim_columns)];
-                                    $genre =        $value4[array_search("SHOW_GENRE", $sim_columns)];
-                                    $venue =        $value4[array_search("VENUE_NAME", $sim_columns)];
-                                    $minprice =     $value4[array_search("MIN_PRICE", $sim_columns)];
-                                    $maxprice =     $value4[array_search("MAX_PRICE", $sim_columns)];
-
-                                    $isInfo =       strlen($description) > 0;
-                                    $description =  $value4[array_search("DESCRIPTION", $sim_columns)];
-
-                                    $ageCat =       strlen($value4[array_search("AGE_CATEGORY", $sim_columns)])? $value4[array_search("AGE_CATEGORY", $sim_columns)]: '0+';
-                                    $act_date_time = $value4[array_search("ACTION_DATE_TIME", $sim_columns)];
-
-
-                                    $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                        .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
-                                        .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
-                                        .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-                                        .'<a href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
-                                        .'<div class="mb-a-buy-holder">'
-                                        .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
-                                        .'</div>'
-                                        .'</div>';
-                                }
-
-                                if(strlen($sim_actionsHtml) == 0){
-                                    echo '<div class="somethinggoeswrong">-</div>';
+                                if($indexer == 0){
+                                    $tag_ids .= $tag_id;
                                 }else{
-                                    echo $sim_actionsHtml;
+                                    $tag_ids .= ','.$tag_id;
                                 }
 
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="action-footer-info">
-                            По всем вопросам покупки электронных билетов на мероприятие <?php echo $g_act_name; ?> обращайтесь по тел.: +7 (499) 391-<span>61</span>-97
-                        </div>
-                    </div>
-                </div>
 
+                                $indexer++;
+                            }
+
+                            echo $tag_html;
+
+                            ?>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
             </div>
 
+            <div class="mb-site-content">
+
+                <h1 class="action-title" title="<?php echo $act_name; ?>"><?php echo $act_name; ?></h1>
+                <div class="action-date"><?php echo $act_date .' '. $act_date_year; ?> <span class="weekday">(<?php echo $weekday_short;?>)</span> <?php echo $act_time;?></div>
+                <div class="action-venue"><?php echo $hall; ?></div>
+
+
+                <div class="action-places-info-holder">
+                    <div class="a-places-info-title">
+                        Есть <b>2 отличных места</b> в партере<br/>
+                        по 5500 руб! <span class="a-places-info-link">Смотреть</span>
+                    </div>
+                    <div class="a-places-info-sub">
+                        Всего осталось более 100 билетов<br/>
+                        от 1000 до 5000 руб.
+                    </div>
+                </div>
+
+                <div class="a-image-reviews-holder">
+
+
+                    <div class="image-gallery-holder">
+
+
+                        <div class="ig-main-wrapper">
+                            <img class="ig-main-img" src="<?php echo $poster; ?>" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                        </div>
+
+                        <div class="ig-list-wrapper">
+
+                            <div class="ig-list-train">
+
+                                <?php
+
+                                $images = explode(',', $images_list);
+
+
+
+                                $images_html = '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+
+                                foreach ($images as $key1 => $value1){
+
+                                    if(strpos($value1, 'youtube.com')){
+                                        $images_html .= '<div class="one-action-image-list-item" alt="'.$act_name . ' Купить билет" data-url="'.$value1.'" data-type="video"><div class="video_play"></div></div>';
+                                    }else{
+                                        $images_html .= '<div data-type="img" data-url="'.$value1.'" class="ig-list-item"><img class="ig-main-img" src="'.$value1.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+                                    }
+
+                                }
+
+
+                                echo($images_html);
+
+                                ?>
+
+                            </div>
+                        </div>
+
+
+
+<!--                        <div class="ig-list-wrapper">-->
+<!---->
+<!--                            <div class="ig-list-train">-->
+<!---->
+<!--                                <div class="ig-list-item">-->
+<!--                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_igra_v_djin.jpg" alt="--><?php //echo $act_name; ?><!--" title="--><?php //echo $act_name; ?><!--" />-->
+<!--                                </div>-->
+<!--                                <div class="ig-list-item video">-->
+<!--                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_dvoe_na_kachelah.jpg" alt="--><?php //echo $act_name; ?><!--" title="--><?php //echo $act_name; ?><!--" />-->
+<!--                                    <div class="ig-video-corners"></div>-->
+<!--                                </div>-->
+<!--                                <div class="ig-list-item">-->
+<!--                                    <img class="ig-main-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="--><?php //echo $act_name; ?><!--" title="--><?php //echo $act_name; ?><!--" />-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!---->
+<!--                        </div>-->
+
+                    </div>
+
+                    <div class="a-reviews-holder">
+                        <h2 class="ap-title">Отзывы</h2>
+
+                        <div class="a-reviews-list">
+
+                            <div class="a-review-item good">
+                                <div class="a-review-text">
+                                    Джем дома.) Мы в полном восторге! Спасибо организаторам, спасибо Сэм и всем кто был на мк и концерте.
+                                </div>
+
+                                <div class="a-review-media">
+                                    <div class="a-review-media-item">
+                                        <img class="a-review-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    </div>
+                                    <div class="a-review-media-item">
+                                        <img class="a-review-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    </div>
+                                    <div class="a-review-media-item">
+                                        <img class="a-review-img" src="http://mirbileta.ru/images/sov_jalta.jpg" alt="<?php echo $act_name; ?>" title="<?php echo $act_name; ?>" />
+                                    </div>
+                                    <div class="a-review-media-item">
+                                        Еще 3 фото
+                                    </div>
+
+                                </div>
+
+                                <div class="a-review-footer">
+                                    <div class="a-review-rating">9.7</div>
+                                    <div class="a-review-owner">Alisa</div>
+                                    <div class="a-review-date">Вчера в 22:17</div>
+                                </div>
+
+                            </div>
+
+                            <div class="a-review-item bad">
+                                <div class="a-review-text">
+                                    Ну мы ожидали большего... Спасибо конечно, организаторам. Но за такие деньги.. Говно.
+                                </div>
+
+                                <div class="a-review-media">
+
+
+                                </div>
+
+                                <div class="a-review-footer">
+                                    <div class="a-review-rating">5.4</div>
+                                    <div class="a-review-owner">Nikolay</div>
+                                    <div class="a-review-date">Вчера в 21:58</div>
+                                </div>
+
+                            </div>
+
+<!--                            <div class="a-review-toggler">Смотреть еще 7 отзывов</div>-->
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div class="action-description">
+
+                    <h2 class="ap-title">Описание</h2>
+
+                        <?php echo $description; ?>
+
+                    </div>
+
+<!--                <div id="multibooker-afisha-wrapper"-->
+<!--                     data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
+<!--                     data-ip="--><?php //echo $global_url; ?><!--"-->
+<!--                    ></div>-->
+
+
+            </div>
 
         </div>
     </div>
 
+
+
+            <?php
+
+            get_footer();
+
+
+            ?>
+
+    <div class="modal-widget-holder">
+        <div class="modal-widget-inner">
+
+
+            <div id="multibooker-widget-wrapper"
+                 data-actions="<?php echo $act_id; ?>"
+                 data-mirbileta="true"
+                 data-frame="<?php echo $frame; ?>"
+                 data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
+                 data-ip="<?php echo $global_url; ?>">
+
+                <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>
+
+            </div>
+
+        </div>
+    </div>
+
+
     <?php
 
-    get_footer();
-
-    ?>
 
 
-    <?php
+
     if($free_places > 0){
 
 
@@ -529,11 +425,15 @@
         //7564 отменим
 
     ?>
-        <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
+
+<!--        <script type="text/javascript" src="--><?php //echo $global_prot .'://'. $global_url?><!--/assets/widget/afisha.js"></script>-->
+
     <?php
 
     }
     ?>
+
+
 
 
 
