@@ -2,7 +2,7 @@
 
 $(document).on("ready", function() {
 
-    var gurl = 'mirbileta.ru';
+    var gurl = 'dev.mirbileta.ru';
 
 
 	$(".fake_input_file").on('click', function(e){
@@ -30,7 +30,7 @@ $(document).on("ready", function() {
     var rat = $('slider').val();
 
 
-    $('.btn').off('click').on('click', function(){
+//    $('.btn').off('click').on('click', function(){
 
         var o = {
             command: 'new',
@@ -43,6 +43,18 @@ $(document).on("ready", function() {
             }
         };
 
+
+//        a.review_id,
+//        a.creation_date,
+//        a.sale_site_customer_id,
+//        a.sale_site_id,
+//        a.action_id,
+//        a.show_id,
+//        a.actor_id,
+//        a.hall_scheme_item_id,
+//        a.rating,
+//        a.review,
+//        a.media_url
 
         socketQuery_b2c(o, function(r){
 
@@ -59,7 +71,7 @@ $(document).on("ready", function() {
         });
 
 
-    });
+//    });
 
 
 });
