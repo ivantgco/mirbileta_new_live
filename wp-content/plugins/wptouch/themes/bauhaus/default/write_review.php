@@ -2,6 +2,12 @@
 /*
     Template Name: write review
 */
+
+    $login_key = $_GET['k'] || 'unlogged';
+
+//    if($login_key == '')
+
+
 ?>
 
 
