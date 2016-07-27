@@ -9,6 +9,12 @@
     $action_alias = preg_replace('/(^\w+)\/.*/','$1',$action_alias);
 
 
+    $global_prot = 'http';
+    $global_url = '192.168.1.190';
+    $global_salesite = 'dev.mirbileta.ru';
+
+
+
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><action_url_alias>".$action_alias."</action_url_alias>";
 
     $ch = curl_init();

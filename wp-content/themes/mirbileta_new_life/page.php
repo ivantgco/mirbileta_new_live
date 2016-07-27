@@ -69,9 +69,9 @@
             <div class="sidebar-popular-holder sidebar-block">
                 <?php include('sidebar-popular.php'); ?>
             </div>
-            <div class="sidebar-search-holder sidebar-block">
-                <?php include('sidebar-search.php'); ?>
-            </div>
+<!--            <div class="sidebar-search-holder sidebar-block">-->
+<!--                --><?php //include('sidebar-search.php'); ?>
+<!--            </div>-->
             <div class="sidebar-calendar-holder sidebar-block">
                 <?php include('sidebar-calendar.php'); ?>
             </div>

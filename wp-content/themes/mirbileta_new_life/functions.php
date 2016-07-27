@@ -11,14 +11,14 @@
 
 define( 'WP_DEBUG', true );
 
-$global_prot = 'http';
-$global_url = '192.168.1.190';
+//$global_prot = 'http';
+//$global_url = '192.168.1.190';
 
-//$global_prot = 'https';
-//$global_url = 'shop.mirbileta.ru';
+$global_prot = 'https';
+$global_url = 'shop.mirbileta.ru';
 
-$global_salesite = 'dev.mirbileta.ru';
-//$global_salesite = 'mirbileta.ru';
+//$global_salesite = 'dev.mirbileta.ru';
+$global_salesite = 'mirbileta.ru';
 
 $defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 $defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';

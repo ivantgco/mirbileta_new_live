@@ -1533,7 +1533,7 @@ input.mb-tf-fil-to-date {
 
 .logo-wrapper{
     width: 202px;
-    padding-left: 21px;
+    padding-left: 0px;
     padding-right: 43px;
     cursor: pointer;
     /* padding-top: 43px; */
@@ -1545,18 +1545,18 @@ input.mb-tf-fil-to-date {
 }
 
 .mb-logo-title{
-    font-family: Rambla-Regular, PTSans-Regular, arail, sans-serif;
-    font-size: 22px;
+    font-family: Rambla-Bold, PTSans-Regular, arail, sans-serif;
+    font-size: 26px;
     color: #fff;
     line-height: 17px;
     letter-spacing: 1.1px;
     margin-bottom: 3px;
 }
 .mb-logo-subtitle{
-    font-family: PTSans-Regular, openSans, arial, sans-serif;
-    font-size: 14px;
+    font-family: PTSans-bold, openSans, arial, sans-serif;
+    font-size: 16px;
     color: #f7e128;
-    letter-spacing: 0.7px;
+    letter-spacing: 1px;
 }
 
 .site-footer .logo-wrapper .mb-logo-title{
@@ -1565,9 +1565,9 @@ input.mb-tf-fil-to-date {
 
 [data-page="inner"] .logo-wrapper .mb-logo-title{
     color: #000;
-    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
-    font-size: 21.3px;
-    letter-spacing: 0.9px;
+    font-family: 'Rambla-Bold', 'OpenSans-Regular', arial, sans-serif;
+    font-size: 27px;
+    letter-spacing: 0.8px;
 }
 
 [data-page="inner"] .logo-wrapper .mb-logo-subtitle{
