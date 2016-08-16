@@ -13,6 +13,11 @@
     $global_url = '192.168.1.190';
     $global_salesite = 'dev.mirbileta.ru';
 
+    $global_prot = 'https';
+    $global_url = 'shop.mirbileta.ru';
+
+    $global_salesite = 'mirbileta.ru';
+
 
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><action_url_alias>".$action_alias."</action_url_alias>";

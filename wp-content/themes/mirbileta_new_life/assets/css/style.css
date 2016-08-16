@@ -5560,3 +5560,6 @@ span.pa-order-date {
 .pa-ticket-print {
     right: 143px;
 }
+.pa-social-reg-holder{
+    display: none;
+}
