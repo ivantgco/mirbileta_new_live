@@ -5563,3 +5563,28 @@ span.pa-order-date {
 .pa-social-reg-holder{
     display: none;
 }
+
+.mbw-loader-holder {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1010;
+    background-color: #FFF;
+    display: none;
+}
+.mbw-loader-text {
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 300px;
+    text-align: center;
+    font-size: 16px;
+}
+.mbw-loader-gif{
+    background-image: url("../img/loader_big.gif");
+    width: 67px;
+    height: 67px;
+    background-position: -61px -37px;
+    margin: 0 auto;
+    margin-top: 20%;
+
+}

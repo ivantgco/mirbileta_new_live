@@ -973,10 +973,44 @@
                     }
                 };
 
-                socketQuery_b2c(o, function(res){
-                    var jRes = jsonToObj(JSON.parse(res)['results'][0]);
+                fs.loader(true, 'Секундочку, cоздаём Ваш личный кабинет...');
 
-                    console.log(res);
+                socketQuery_b2c(o, function(res){
+
+                    var jRes = JSON.parse(res)['results'][0];
+
+                    if(!jRes.code){
+
+                        var o2 = {
+                            command: 'login',
+                            params: {
+                                url: gurl,
+                                email: email,
+                                password: pass
+                            }
+                        };
+
+                        socketQuery_b2c(o2, function(res){
+                            var jRes = JSON.parse(res)['results'][0];
+                            var sid = jRes.sid;
+
+                            setCookie('site_sid', sid);
+
+                            document.location.href = '/account/';
+
+                        });
+
+                    }else{
+
+                        toastr['error'](jRes.toastr.message);
+                        fs.loader(false, 'Секундочку, cоздаём Ваш личный кабинет...');
+
+                    }
+
+
+
+
+                    console.log(jRes);
 
                 });
 
@@ -986,6 +1020,9 @@
 
                 var email = $('#pa-log-email').val();
                 var pass = $('#pa-log-pass').val();
+
+//                asdas555@mail.ru
+//                123
 
                 var o = {
                     command: 'login',
@@ -1007,7 +1044,7 @@
 
             });
 
-            $('.pa-holder').off('click').on('click', function(){
+            $('.pa-enter').off('click').on('click', function(){
                 $('.pa-modal-holder').show(0);
             });
 
@@ -1926,6 +1963,19 @@
                     }
                 }
             });
+        },
+        loader: function(state, text){
+
+            var fader = $('.mbw-loader-holder');
+            var textHolder = $('.mbw-loader-text');
+
+            if(state){
+                textHolder.html(text);
+                fader.show(0);
+            }else{
+                fader.hide(0);
+            }
+
         }
 
     };

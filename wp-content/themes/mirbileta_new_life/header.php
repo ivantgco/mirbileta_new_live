@@ -18,6 +18,12 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
 
 ?>
 
+<div class="mbw-loader-holder">
+    <div class="mbw-loader-gif"></div>
+    <div class="mbw-loader-text">Секундочку, сейчас все загрузим...</div>
+</div>
+
+
 <div style="display: none"><?php echo $query_h; ?></div>
 
 <script type="text/javascript">
@@ -218,9 +224,24 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
             <div class="contacts-email">info@mirbileta.ru</div>
         </div>
 
-        <div class="pa-holder">
-            <div class="pa-title">Вход / Регистрация</div>
-        </div>
+
+
+
+            <?php
+
+            if(strlen($sid) > 0){
+
+                echo '<div class="pa-holder pa-exit"><div class="pa-title">Выход</div></div>';
+
+            }else{
+
+                echo '<div class="pa-holder pa-enter"><div class="pa-title">Вход / Регистрация</div></div>';
+
+            }
+
+            ?>
+
+
 
         <div class="pa-modal-holder">
             <div class="pa-modal-fader"></div>

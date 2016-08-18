@@ -13,10 +13,16 @@
     $global_url = '192.168.1.190';
     $global_salesite = 'dev.mirbileta.ru';
 
-    $global_prot = 'https';
-    $global_url = 'shop.mirbileta.ru';
+    $global_prot = 'http';
+    $global_url = '95.165.147.252';
+    $global_salesite = 'dev.mirbileta.ru';
 
-    $global_salesite = 'mirbileta.ru';
+
+
+//    $global_prot = 'https';
+//    $global_url = 'shop.mirbileta.ru';
+//
+//    $global_salesite = 'mirbileta.ru';
 
 
 

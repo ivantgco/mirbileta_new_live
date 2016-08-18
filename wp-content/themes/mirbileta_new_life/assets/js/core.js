@@ -191,7 +191,7 @@ var socketQuery_b2c = function (obj, callback) {
 
     config = {
         protocol: 'http',//'http',//'https',
-        ip: 'mb-dev.mirbileta.ru'//'192.168.1.190'//'shop.mirbileta.ru'
+        ip: '95.165.147.252'//'192.168.1.190'//'shop.mirbileta.ru'
     };
 
 
@@ -208,6 +208,9 @@ var socketQuery_b2c = function (obj, callback) {
             callback('NOT_AVALIBLE');
         },
         success: function (result) {
+
+            console.log('RESS', result);
+
             result = JSON.stringify(applyDictionary(result));
             callback(result);
         }
