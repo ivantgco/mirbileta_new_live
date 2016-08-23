@@ -18,6 +18,20 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
 
 ?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="mbw-loader-holder">
     <div class="mbw-loader-gif"></div>
     <div class="mbw-loader-text">Секундочку, сейчас все загрузим...</div>
@@ -73,55 +87,6 @@ require_once 'wp-content/plugins/SocialAuther-master/lib/SocialAuther/autoload.p
 </script>
 
 
-<!--<div class="container posRel">-->
-<!--    <div class="contest-fast-timer"></div>-->
-<!--</div>-->
-<!---->
-<!---->
-<!--<div class="contest-holder">-->
-<!--    <div class="contest-fast-fader"></div>-->
-<!---->
-<!--    <div class="contest-fast-close fa fa-times"></div>-->
-<!---->
-<!--    <div class="contest-fast-wrapper">-->
-<!--        <h1>Кто быстрее?!</h1>-->
-<!---->
-<!--        <h3>-->
-<!--            Вы за билетами? Поучаствуйте в конкурсе!<br/><br/>-->
-<!--            Оформите заказ на ЛЮБОЕ мероприятие быстрее всех и получите 2 билета на концерт<br/> <span class="ptbold">"Баста с симфоническим оркестром" в подарок!</span>-->
-<!--        </h3>-->
-<!---->
-<!--        <div class="contest-fast-open-rules">Простые правила</div>-->
-<!--        <div class="contest-fast-go">Go!</div>-->
-<!--        <div class="contest-fast-reject">Нет, спасибо</div>-->
-<!--    </div>-->
-<!---->
-<!--    <div class="contest-fast-rules">-->
-<!--        <div class="container posRel">-->
-<!--            <h1>Простые правила</h1>-->
-<!---->
-<!--            <b>Задача:</b>-->
-<!--            Максимально быстро оформить заказ на ЛЮБОЕ мероприятие и оплатить Электронные билеты на сайте www.mirbileta.ru в течение-->
-<!--            периода проведения Акции.<br/>-->
-<!--            Участник, потративший минимум времени, признается победителем.<br/><br/>-->
-<!--            <b>Сроки проведения:</b> с 10.03.2016 12:00 по 14.04.2016 15:59<br/><br/>-->
-<!--            <b>Приз победителю:</b> 2 билета на концерт "Баста с симфоническим оркестром" 18.04.2016<br/><br/>-->
-<!---->
-<!--            Полная информация об организаторе Акции, количестве призов, сроках, месте и порядке их получения доступна в-->
-<!--            <a href="/contest-fast-rules.pdf" target="_blank">Правилах проведения Акции.</a>-->
-<!---->
-<!---->
-<!---->
-<!--            <div class="contest-fast-reject">Нет, спасибо</div>-->
-<!---->
-<!--            <div class="contest-fast-go">Go!</div>-->
-<!---->
-<!--            <!--            <div class="contest-fast-runner"></div>-->
-<!---->
-<!--        </div>-->
-<!---->
-<!--    </div>-->
-<!--</div>-->
 
 <div class="header site-header">
     <div id="filters_data"></div>
