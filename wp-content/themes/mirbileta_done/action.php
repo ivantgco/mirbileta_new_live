@@ -141,12 +141,18 @@
     <div class="site-content white-bg action-page">
         <div class="site-container">
 
-            <div class="site-sidebar">
+            <div class="site-sidebar" style="border-right: 0;">
                 <div class="sidebar-block">
 
                     <div class="action-sidebar-holder">
 
-                        <div title="<?php echo $act_name; ?> Купить билеты" class="action-buy-button">Купить билеты</div>
+
+                        <div title="<?php echo $act_name; ?> Купить билеты" class="action-buy-button ">Купить билеты</div>
+
+
+                        <div class="action-prices">
+                            от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
+                        </div>
 
                         <div class="action-actors-holder">
 
@@ -156,7 +162,7 @@
 
                                 if(count($actorsArray) > 0): ?>
 
-                                <h2 class="ap-title">Участники:</h2>
+                                <h2 class="ap-title">Исполнители:</h2>
 
                                 <?php endif ?>
 
@@ -239,6 +245,11 @@
             <div class="mb-site-content">
 
                 <h1 class="action-title" title="<?php echo $act_name; ?>"><?php echo $act_name; ?></h1>
+
+                <div class="mirbileta-get-discount-holder">
+                    <a target="_blank" href="/get_discount"><div class="mirbileta-get-discount"></div></a>
+                </div>
+
                 <div class="action-date"><?php echo $act_date .' '. $act_date_year; ?> <span class="weekday">(<?php echo $weekday_short;?>)</span> <?php echo $act_time;?></div>
                 <div class="action-venue"><?php echo $hall; ?></div>
 
@@ -253,6 +264,8 @@
                         от 1000 до 5000 руб.
                     </div>
                 </div>
+
+
 
                 <div class="a-image-reviews-holder">
 
@@ -313,6 +326,25 @@
 <!--                            </div>-->
 <!---->
 <!--                        </div>-->
+
+                    </div>
+
+                    <div class="action-description">
+
+                        <h2 class="ap-title">Описание</h2>
+
+                        <?php echo $description; ?>
+
+
+                        <div class="buy-button-holder">
+
+                            <div title="<?php echo $act_name; ?> Купить билеты" class="action-buy-button ">Купить билеты</div>
+
+                            <div class="action-prices">
+                                от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -380,14 +412,89 @@
 
 
 
+                <div class="a-similar-holder">
 
-                <div class="action-description">
+                    <?php
 
-                    <h2 class="ap-title">Описание</h2>
+                    $similar_url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_similar_action</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>4</rows_max_num><action_url_alias>".$alias."</action_url_alias>";
 
-                        <?php echo $description; ?>
+                    $ch = curl_init();
 
-                    </div>
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+                    curl_setopt($ch, CURLOPT_URL, $similar_url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+
+                    $resp4 = curl_exec($ch);
+
+                    if(curl_errno($ch))
+                        print curl_error($ch);
+                    else
+                        curl_close($ch);
+
+                    if(json_decode($resp4)->results["0"]->code && json_decode($resp4)->results["0"]->code != 0){
+
+                        echo '<div class="somethinggoeswrong">Нет похожих мероприятий</div>';
+
+
+
+                    }else{
+                        $sim_columns = json_decode($resp4)->results["0"]->data_columns;
+                        $sim_data = json_decode($resp4)->results["0"]->data;
+
+
+                        $sim_actionsHtml = "";
+
+                        foreach ($sim_data as $key4 => $value4){
+
+                            $act_id =       $value4[array_search("ACTION_ID", $sim_columns)];
+                            $alias =        $value4[array_search("ACTION_URL_ALIAS", $sim_columns)];
+                            $venue_alias =        $value4[array_search("VENUE_URL_ALIAS", $sim_columns)];
+                            $frame =        $value4[array_search("FRAME", $sim_columns)];
+                            $act_name =     $value4[array_search("ACTION_NAME", $sim_columns)];
+                            $poster =       (strlen($value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) > 0)? (strpos("http" , $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]) == -1)? $global_prot.'://'.$global_url.'/upload/' . $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)]: $value4[array_search("ACTION_POSTER_IMAGE", $sim_columns)] : $defaultPoster;
+                            $act_date =     $value4[array_search("ACTION_DATE_STR", $sim_columns)];
+                            $act_time =     $value4[array_search("ACTION_TIME_STR", $sim_columns)];
+                            $hall =         $value4[array_search("HALL", $sim_columns)];
+                            $genre =        $value4[array_search("SHOW_GENRE", $sim_columns)];
+                            $venue =        $value4[array_search("VENUE_NAME", $sim_columns)];
+                            $minprice =     $value4[array_search("MIN_PRICE", $sim_columns)];
+                            $maxprice =     $value4[array_search("MAX_PRICE", $sim_columns)];
+
+                            $isInfo =       strlen($description) > 0;
+                            $description =  $value4[array_search("DESCRIPTION", $sim_columns)];
+
+                            $ageCat =       strlen($value4[array_search("AGE_CATEGORY", $sim_columns)])? $value4[array_search("AGE_CATEGORY", $sim_columns)]: '0+';
+                            $act_date_time = $value4[array_search("ACTION_DATE_TIME", $sim_columns)];
+
+
+                            $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
+                                .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
+                                .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
+                                .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
+                                .'<a href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
+                                .'<div class="mb-a-buy-holder">'
+                                .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
+                                .'</div>'
+                                .'</div>';
+                        }
+
+                        if(strlen($sim_actionsHtml) == 0){
+                            echo '<div class="somethinggoeswrong">Мероприятие настолько уникально, что нет ничего похожего...</div>';
+                        }else{
+                            echo $sim_actionsHtml;
+                        }
+                    }
+
+
+
+                    ?>
+
+                </div>
+
+
+
 
 <!--                <div id="multibooker-afisha-wrapper"-->
 <!--                     data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>

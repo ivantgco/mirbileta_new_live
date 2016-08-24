@@ -744,6 +744,10 @@ html{
 }
 .ig-list-item{
     width: 134px;
+    cursor: pointer;
+}
+.ig-list-item:hover{
+    box-shadow: 0 0 12px rgb(204, 255, 0);
 }
 
 
@@ -752,4 +756,90 @@ html{
 }
 .a-reviews-holder{
     display: none;
+}
+
+.action-sidebar-holder {
+    margin-top: 40px;
+}
+
+.action-buy-button{
+    font-family: "Rambla-Bold",OpenSans-semibold , arail, sans-serif;
+    background-color: #ef2b2b;
+    color: #fff;
+    font-size: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    width: 170px;
+    display: inline-block;
+}
+
+.action-buy-button:hover{
+    background-color: #d82727;
+}
+
+.action-description {
+    width: auto;
+    float: left;
+    margin-top: -80px;
+    max-width: 500px;
+}
+.image-gallery-holder {
+    width: 575px;
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 80px;
+}
+
+.action-prices{
+    margin-top: 20px;
+    width: 170px;
+    text-align: left;
+}
+.mb-border-btn:hover {
+    color: #fff;
+    background-color: #d82727;
+    border: 1px solid rgba(0,0,0,0.25);
+}
+.action-title{
+    font-family: "Helvetica-Regular", OpenSans-Regular, arail, sans-serif;
+    font-size: 30px;
+    color: #000;
+    padding-top: 22px;
+    padding-bottom: 24px;
+    padding-left: 0;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+.buy-button-holder{
+    margin-top: 35px;
+}
+
+.a-similar-holder {
+    float: left;
+    width: 100%;
+}
+.a-similar-holder .somethinggoeswrong{
+    padding-left: 0;
+    text-align: left;
+}
+.action-page .mirbileta-get-discount-holder {
+    top: 64px;
+    right: 220px;
+}
+
+@media (max-width: 1294px) and (min-width: 1025px){
+    .action-page .mirbileta-get-discount-holder {
+        right: 0;
+    }
+}
+@media (max-width: 1742px) and (min-width: 1519px){
+    .action-page .mirbileta-get-discount-holder {
+        right: 0;
+    }
 }
