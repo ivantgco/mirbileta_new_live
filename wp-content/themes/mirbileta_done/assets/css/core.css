@@ -12,6 +12,11 @@
 }
 
 @font-face {
+    font-family: 'Helvetica-Ultralight';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-UltraLight.otf);
+}
+
+@font-face {
     font-family: 'Helvetica-light';
     src: url(../fonts/Helvetica/HelveticaNeueCyr-Light.otf);
 }
@@ -19,6 +24,9 @@
     font-family: 'Helvetica-Regular';
     src: url(../fonts/Helvetica/HelveticaNeueCyr-Roman.otf);
 }
+
+
+
 @font-face {
     font-family: 'Helvetica-Semibold';
     src: url(../fonts/Helvetica/HelveticaNeueCyr-Medium.otf);

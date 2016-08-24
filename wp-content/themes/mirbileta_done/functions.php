@@ -184,6 +184,7 @@ function my_theme_load_resources() {
     wp_enqueue_script('rangeslider',    get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/js/ion-rangeSlider/ion.rangeSlider.min.js');
     wp_enqueue_script('datepicker',     get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js');
     wp_enqueue_script('datepicker_loc', get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js');
+    wp_enqueue_script('bootbox',        get_stylesheet_directory_uri() . '/assets/plugins/bootbox/bootbox.min.js');
     wp_enqueue_script('core',           get_stylesheet_directory_uri() . '/assets/js/core.js');
     wp_enqueue_script('script',         get_stylesheet_directory_uri() . '/assets/js/script.js');
     wp_enqueue_script('adv',            get_stylesheet_directory_uri() . '/assets/js/adv_generator.js');

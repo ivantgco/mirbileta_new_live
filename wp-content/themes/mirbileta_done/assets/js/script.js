@@ -1257,6 +1257,43 @@
 
             });
 
+            $('.gd-header-go-down').off('click').on('click', function(){
+
+                var scTop = $('.gd-body-holder').offset().top;
+
+                $('body').animate({
+                    scrollTop: scTop-40 + 'px'
+                }, 220, function(){
+
+                });
+
+            });
+
+            $('.gd-fast-code').off('click').on('click', function(){
+
+                bootbox.dialog({
+                    title: ' ',
+                    className: 'gd-fast-modal',
+                    message:    '<div class="gd-phone-holder">' +
+                                '<input type="text" class="gd-phone" placeholder="Ваш Телефон"/>' +
+                                '<input type="text" disabled class="gd-phone-code" placeholder="Код из СМС"/>' +
+                                '<div class="gd-recieve-code">Отправить</div>' +
+                                '</div>',
+                    buttons: {
+                        success: {
+                            label: 'Отправить',
+                            className: 'hidden',
+                            callback: function(){
+
+                            }
+                        }
+                    }
+                });
+
+                $('.gd-phone').mask
+
+            });
+
 
             $(document).off('mbw_close').on('mbw_close', function(){
                 $('#multibooker-widget-wrapper').html('');
