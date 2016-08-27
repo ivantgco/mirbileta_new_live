@@ -117,9 +117,8 @@ html{
     background-color: #191749;
     vertical-align: top;
     padding-top: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
     width: 89px;
+    text-align: center;
 }
 
 .pa-holder-inline:hover{
@@ -1153,7 +1152,7 @@ h1.gd-header-title-holder {
 }
 
 .gd-phone-code.unblocked{
-
+    background-color: #fff;
 }
 
 
@@ -1174,15 +1173,388 @@ h1.gd-header-title-holder {
     background-color: #fff;
     padding: 0;
 }
-.gd-fast-modal .modal-header,
+/*.gd-fast-modal .modal-header,*/
 .gd-fast-modal .modal-footer{
     display: none;
 }
 .gd-recieve-code {
     display: inline-block;
+    background-color: #195ddb;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    height: 60px;
+    padding-top: 19px;
+    font-family: "PTSans-Bold", OpenSans-Regular, arail, sans-serif;
+    font-size: 15px;
+    margin-top: 0;
+    cursor: pointer;
+    border: 1px solid #195ddb;
+    margin-bottom: 30px;
+    letter-spacing: 0.4px;
 }
+
+
+.gd-recieve-code:hover{
+    background-color: #154db6;
+    color: #fff;
+}
+
 .gd-phone-holder {
-    padding-top: 60px;
-    padding-bottom: 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
     padding-left: 20px;
+    border-bottom: 7px solid #195ddb;
+}
+
+.gd-fast-modal.code-sent .gd-recieve-code{
+    background-color: #3e3a92;
+    border: 1px solid #383484;
+}
+.gd-fast-modal.code-sent .gd-recieve-code:hover{
+    background-color: #4a45ae;
+}
+
+.gd-fast-modal.code-sent .gd-phone-holder{
+    border-bottom: 7px solid #3e3a92;
+}
+
+.mbw-loader-holder {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10100;
+    top: 0;
+    background-color: #FFF;
+    display: none;
+}
+.modal-header {
+    border: 0;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-family: "Helvetica-Regular", OpenSans-Regular, arail, sans-serif;
+}
+.modal-content{
+    border-radius: 0;
+}
+button.bootbox-close-button.close {
+    margin-top: -28px;
+}
+
+.form-group label{
+    font-family: "Helvetica-Regular", OpenSans-Regular, arail, sans-serif;
+    font-weight: normal;
+}
+.form-group textarea{
+    resize: vertical;
+}
+#menu-account_sidebar_menu{
+    margin-top: 0;
+}
+.account-page .mb-site-content{
+    background-color: rgba(0,0,0,0);
+    margin-top: 0px;
+
+}
+
+.account-header{
+    width: 100%;
+    position: relative;
+    margin-top: -7px;
+}
+
+.ac-title{
+    color: #838383;
+    font-family: "Helvetica-Ultralight", OpenSans-light, arail, sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+    text-align: left;
+    width: 49%;
+    display: inline-block;
+}
+.ac-user{
+    text-align: right;
+    width: 50%;
+    color: #838383;
+    font-family: "Helvetica-Ultralight", OpenSans-light, arail, sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+.ac-exit {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.ac-exit:hover{
+    color: #ef2b2b;
+}
+.account-body{
+    width: 100%;
+    border-top: 2px solid #000;
+    margin-top: 75px;
+    position: relative;
+    background-color: #fff;
+}
+.mirbileta-get-discount-inner{
+    background-image: url("../img/mirbileta_get_discount_inner.png");
+    height: 101px;
+    width: 100px;
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    top: -63px;
+    left: 5px;
+}
+.ac-1-title{
+
+    color: #838383;
+    font-family: "Helvetica-Ultralight", OpenSans-light, arail, sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.5px;
+    padding-left: 125px;
+    padding-top: 40px;
+}
+
+.ac-blue{
+    color: #4f8dff;
+}
+
+.ac-blue-bold{
+    color: #4f8dff;
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+}
+
+
+.ac-gd-data td:first-child{
+    font-family: "OpenSans-Regular", arail, sans-serif;
+    font-size: 14px;
+    color: #363636;
+    width: 240px;
+    padding-right: 30px;
+    text-align: right;
+}
+
+.mb-code{
+    border: 1px solid #4f8dff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    height: 36px;
+    padding-left: 14px;
+    padding-right: 14px;
+    color: #195ddb;
+    font-family: "OpenSans-semibold", arail, sans-serif;
+    text-align: center;
+    padding-top: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.mb-code:hover{
+    border: 1px solid #ef2b2b;
+    color: #ef2b2b;
+}
+
+.ibl{
+    display: inline-block;
+}
+.ac-gd-distribute {
+    margin-left: 30px;
+    font-size: 13px;
+    font-family: "OpenSans-Regular", arail, sans-serif;
+    color: #5f5f5f;
+    margin-right: 30px;
+    cursor: pointer;
+    border-bottom: 1px dashed #999;
+}
+.ac-gd-copy-code{
+    font-size: 13px;
+    font-family: "OpenSans-Regular", arail, sans-serif;
+    color: #999;
+    border-bottom: 1px dashed #eee;
+    cursor: pointer;
+}
+.ac-gd-copy-code:hover,
+.ac-gd-distribute:hover{
+    color: #195ddb;
+}
+.ac-gd-data td {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    vertical-align: top;
+}
+.ac-gd-phone{
+    color: #363636;
+    font-size: 15px;
+    font-family: "OpenSans-Bold", arail, sans-serif;
+}
+.ac-gd-info{
+    font-size: 13px;
+    font-family: "OpenSans-Regular", arail, sans-serif;
+    color: #999;
+    margin-left: 20px;
+}
+.ac-gd-data-holder {
+    margin-top: 40px;
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 43px;
+    /*border-bottom: 1px solid #dcdcdc;*/
+
+}
+.ac-gd-data-holder-inner {
+    padding-right: 120px;
+}
+
+
+.ac-gd-discount{
+    color: #363636;
+    font-size: 15px;
+    font-family: "OpenSans-Bold", arail, sans-serif;
+}
+
+.osbold{
+    font-family: "OpenSans-Bold", arail, sans-serif;
+}
+
+.ac-gd-how-to-increase{
+    margin-left: 30px;
+    font-size: 13px;
+    font-family: "OpenSans-Regular", arail, sans-serif;
+    color: #5f5f5f;
+    margin-right: 30px;
+    cursor: pointer;
+    border-bottom: 1px dashed #999;
+}
+.ac-gd-limit {
+    font-size: 12px;
+    color: #909090;
+    margin-top: 22px;
+}
+.ac-gd-limit-bold{
+    font-family: "OpenSans-Bold", arail, sans-serif;
+    color: #555;
+}
+
+.ac-gd-rules-holder {
+    display: inline-block;
+    vertical-align: top;
+    border-left: 1px solid #dcdcdc;
+    padding-left: 60px;
+    margin-top: -80px;
+    padding-bottom: 100px;
+    margin-left: -4px;
+}
+
+.ac-gd-rules-holder h3{
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+    font-size: 18px;
+    color: #000;
+    margin-top: 56px;
+
+}
+.ac-gd-rules-holder p{
+    padding-bottom: 42px;
+    font-family: "OpenSans-Regular", arail, sans-serif;
+    font-size: 13px;
+}
+
+
+.ac-gd-rules-holder td {
+    width: auto;
+    min-width:140px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 18px!important;
+}
+
+
+.ac-gd-rules-holder .gd-table{
+    margin-left: 0;
+}
+
+.ac-gd-rules-holder .gd-table th{
+    font-family: "OpenSans-Bold", arail, sans-serif;
+    font-size: 13px!important;
+    font-weight: normal;
+}
+.ac-gd-btn-distribute{
+    font-family: "Rambla-Bold",OpenSans-semibold , arail, sans-serif;
+    background-color: #4f8dff;
+    color: #fff;
+    font-size: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    width: 220px;
+    margin-left: 250px;
+}
+.ac-gd-btn-distribute:hover{
+    background-color: #457bde;
+}
+
+.ac-gd-distribute-icons{
+    float: left;
+    height: 36px;
+    padding-right: 14px;
+    border-right: 1px solid rgba(255,255,255,0.4);
+    margin-right: 16px;
+    width: 56px;
+    margin-left: -11px;
+    position: relative;
+}
+.ac-gd-icon{
+    background-color: rgba(76, 116, 189, 0.5);
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 5px;
+    top: -4px;
+}
+.ac-gd-icon.fa-facebook{
+    margin-left: 20px;
+    margin-top: 8px;
+}
+.ac-gd-icon.fa-odnoklassniki{
+    margin-left: 4px;
+    margin-top: 21px;
+
+}
+.ac-gd-buttons-holder {
+    width: 100%;
+    border-top: 1px solid #dcdcdc;
+    padding-top: 40px;
+}
+
+.ac-gd-ask-question{
+    font-family: "Rambla-Bold",OpenSans-semibold , arail, sans-serif;
+    background-color: #f7f7f7;
+    color: #61490c;
+    font-size: 13px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    width: 170px;
+    height: 58px;
+    vertical-align: top;
+    margin-left: 10px;
+    text-align: center;
+    padding-top: 21px;
+}
+.ac-gd-ask-question:hover{
+    background-color: #ffea00;
 }

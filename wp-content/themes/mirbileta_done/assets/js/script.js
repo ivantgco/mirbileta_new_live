@@ -1054,6 +1054,12 @@
                 $('.pa-modal-holder').show(0);
             });
 
+            $('.pa-account').off('click').on('click', function(){
+
+                document.location.href = '/account/';
+
+            });
+
             $('.pa-modal-close').off('click').on('click', function(){
                 $('.pa-modal-holder').hide(0);
             });
@@ -1269,15 +1275,15 @@
 
             });
 
-            $('.gd-fast-code').off('click').on('click', function(){
+            $('.sc-gd-fast-code').off('click').on('click', function(){
 
                 bootbox.dialog({
-                    title: ' ',
+                    title: 'Получить "Код MIRBILETA"',
                     className: 'gd-fast-modal',
                     message:    '<div class="gd-phone-holder">' +
                                 '<input type="text" class="gd-phone" placeholder="Ваш Телефон"/>' +
                                 '<input type="text" disabled class="gd-phone-code" placeholder="Код из СМС"/>' +
-                                '<div class="gd-recieve-code">Отправить</div>' +
+                                '<div class="gd-recieve-code">Выслать код</div>' +
                                 '</div>',
                     buttons: {
                         success: {
@@ -1290,6 +1296,88 @@
                     }
                 });
 
+
+                $('.gd-recieve-code').off('click').on('click', function(){
+
+                    var phone =         $('.gd-phone').eq(0);
+                    var phone_code =    $('.gd-phone-code').eq(0);
+
+                    var o = {
+                        command: 'confirm_phone',
+                        params: {
+                            url: gurl,
+                            phone: phone.val()
+                        }
+                    };
+
+                    if(phone.val().length > 0){
+                        socketQuery_b2c(o, function(res){
+
+                            var correct_code = 123456;
+                            console.log(res);
+
+
+                            $('.gd-fast-modal').addClass('code-sent');
+
+                            $('.gd-recieve-code').html('Подтвердить');
+
+                            phone.attr('disabled' , 'disabled');
+
+                            phone_code.removeAttr('disabled');
+                            phone_code.addClass('unblocked');
+
+                            phone_code.off('input').on('input', function(){
+
+                                if(phone_code.val() == correct_code){
+
+
+                                    fs.loader(true, 'Секундочку, переносим Вас в личный кабинет!');
+
+                                    document.location.href = '/account/?utm_source=gd_page_by_phone';
+
+                                }else{
+
+                                    if(phone_code.val().length == 6){
+
+                                        toastr['error']('Неверный код, проверьте еще раз.');
+
+                                    }
+
+                                }
+
+                            });
+
+                        });
+
+                    }else{
+
+                        toastr['error']('Введите Ваш номер телефона');
+
+                    }
+
+
+                });
+
+
+            });
+
+            $('.sc-gd-ask-question').off('click').on('click', function(){
+
+                bootbox.dialog({
+                    title: 'Задать вопрос',
+                    message:   '<div class="form-group"><label>Представьтесь, пожалуйста</label><input type="text" class="form-control fb-name"/></div>' +
+                            '<div class="form-group"><label>Ваш Email</label><input type="text" class="form-control fb-email"/></div>'+
+                            '<div class="form-group"><label>Вопрос</label><textarea class="form-control fb-ask" ></textarea></div>',
+                    buttons: {
+                        success: {
+                            label: 'Отправить',
+                            callback: function(){
+
+                            }
+                        }
+
+                    }
+                });
 
             });
 

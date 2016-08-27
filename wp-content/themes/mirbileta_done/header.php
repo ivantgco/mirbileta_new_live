@@ -169,7 +169,7 @@ $sid = $_COOKIE["site_sid"];
 
             if(strlen($sid) > 0){
 
-                echo '<div class="pa-holder-inline pa-exit"><div class="">Выйти</div></div>';
+                echo '<div class="pa-holder-inline pa-account"><div class="">Кабинет</div></div>';
 
             }else{
 
@@ -195,6 +195,12 @@ $sid = $_COOKIE["site_sid"];
         </div>
 
     </div>
+
+</div>
+
+<div class="ext-search-holder">
+
+    <?php echo 'extend_search.php'; ?>
 
 </div>
 

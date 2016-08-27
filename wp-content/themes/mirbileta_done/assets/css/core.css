@@ -10,6 +10,11 @@
     font-family: 'OpenSans-semibold';
     src: url(../fonts/Open_sans/OpenSans-Semibold.ttf);
 }
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url(../fonts/Open_sans/OpenSans-Bold.ttf);
+}
+
 
 @font-face {
     font-family: 'Helvetica-Ultralight';

@@ -101,7 +101,7 @@ $page_id = get_the_ID();
 
                         <div class="gd-ins-step-title">1. Получить «Код MIRBILETA»</div>
 
-                        <div class="gd-ins-step-text">Получить персональный «Код MIRBILETA» можно в <a href="/account/?utm_source=gd_page_desktop" target="_blank">личном кабинете</a> или <span class="gd-fast-code">тут</span>.</div>
+                        <div class="gd-ins-step-text">Получить персональный «Код MIRBILETA» можно в <a href="/account/?utm_source=gd_page_desktop" target="_blank">личном кабинете</a> или <span class="sc-gd-fast-code gd-fast-code">здесь</span>.</div>
 
                         <!----------------->
 
@@ -180,8 +180,8 @@ $page_id = get_the_ID();
 
                                 <div class="gd-buttons-title">Мне всё понятно, хочу скидку!</div>
 
-                                <div class="gd-get-code">Получить <span class="ptbold">«Код MIRBILETA»</span></div>
-                                <div class="gd-ask-question">Задать вопрос</div>
+                                <div class="gd-get-code sc-gd-fast-code">Получить <span class="ptbold">«Код MIRBILETA»</span></div>
+                                <div class="gd-ask-question sc-gd-ask-question">Задать вопрос</div>
 
                             </div>
 
