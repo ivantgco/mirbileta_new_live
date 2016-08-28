@@ -1,8 +1,8 @@
 <?php
 /*
-    Template Name: blank
+    Template Name: multibooker
 */
-$page_id = get_the_ID();
+
 
 ?>
 
@@ -51,10 +51,9 @@ include('main_menu.php');
 <div class="site-content">
 
     <div class="container">
+        <div class="single-big-image-holder" style="background-image: url('/wp-content/themes/mirbileta_new_life/assets/img/multibooker-bg.png')"></div>
 
-        <div class="mb-block-sh posRel flLeft wid100pr padLeft25 padRight70 withbottom">
-
-
+        <div class="single-contacts-title-holder wid100pr flLeft">
 
             <h2><?php echo get_the_title($page_id);?></h2>
 
@@ -64,12 +63,14 @@ include('main_menu.php');
 
             ?>
 
-
         </div>
 
 
+
+
+        </div>
+
     </div>
-</div>
 
 <?php
 

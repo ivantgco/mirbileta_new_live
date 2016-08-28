@@ -435,7 +435,8 @@
 
                     if(json_decode($resp4)->results["0"]->code && json_decode($resp4)->results["0"]->code != 0){
 
-                        echo '<div class="somethinggoeswrong">Нет похожих мероприятий</div>';
+                        echo '';
+//                        echo '<div class="somethinggoeswrong">Нет похожих мероприятий</div>';
 
 
 

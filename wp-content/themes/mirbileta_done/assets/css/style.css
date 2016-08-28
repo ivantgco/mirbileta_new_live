@@ -531,12 +531,12 @@ body{
 }
 .actions-wrapper .mb-action {
     display: inline-block;
-    margin-right: 12px;
+    /*margin-right: 12px;*/
     position: relative;
     margin-bottom: 20px;
 }
 .actions-wrapper .mb-action:nth-child(5n) {
-    margin-right: 0;
+    /*margin-right: 0;*/
 }
 
 /*.actions-wrapper .mb-action:nth-child(3){*/

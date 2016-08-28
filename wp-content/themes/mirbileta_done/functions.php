@@ -157,6 +157,24 @@ function to_afisha_date($str, $format, $lang)
     return $res;
 };
 
+function getNoun($number, $one, $two, $five) {
+    $number = abs($number);
+
+    $number %= 100;
+
+    if ($number >= 5 && $number <= 20) {
+        return $five;
+    }
+    $number %= 10;
+    if ($number == 1) {
+        return $one;
+    }
+    if ($number >= 2 && $number <= 4) {
+        return $two;
+    }
+    return $five;
+}
+
 function my_theme_load_resources() {
 
 
@@ -185,6 +203,7 @@ function my_theme_load_resources() {
     wp_enqueue_script('datepicker',     get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js');
     wp_enqueue_script('datepicker_loc', get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.ru.min.js');
     wp_enqueue_script('bootbox',        get_stylesheet_directory_uri() . '/assets/plugins/bootbox/bootbox.min.js');
+    wp_enqueue_script('pulsate',        get_stylesheet_directory_uri() . '/assets/plugins/pulsate/pulsate.min.js');
     wp_enqueue_script('core',           get_stylesheet_directory_uri() . '/assets/js/core.js');
     wp_enqueue_script('script',         get_stylesheet_directory_uri() . '/assets/js/script.js');
     wp_enqueue_script('adv',            get_stylesheet_directory_uri() . '/assets/js/adv_generator.js');

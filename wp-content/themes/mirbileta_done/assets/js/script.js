@@ -155,7 +155,7 @@
             venue_id: {
                 type: 'lov',
                 getData: 'get_venue',
-                name_ru: 'Театры:',
+                name_ru: 'Площадки:',
                 ret_id: 'VENUE_ID',
                 ret_name: 'VENUE_NAME'
             },
@@ -169,7 +169,7 @@
             actor_id: {
                 type: 'lov',
                 getData: 'get_actor',
-                name_ru: 'Актеры:',
+                name_ru: 'Исполнители:',
                 ret_id: 'ACTOR_ID',
                 ret_name: 'ACTOR_NAME'
             },
@@ -183,7 +183,7 @@
             action_tag_id: {
                 type: 'lov',
                 getData: 'get_action_tag',
-                name_ru: 'Теги мероприятий:',
+                name_ru: 'Теги:',
                 ret_id: 'ACTION_TAG_ID',
                 ret_name: 'ACTION_TAG'
             },
@@ -1381,10 +1381,57 @@
 
             });
 
+            $('.advanced-search-holder').off('click').on('click', function(){
+
+                var ext_holder = $('.ext-search-holder');
+                var self = this;
+
+                if(ext_holder.hasClass('opened')){
+
+                    $(self).removeClass('opened');
+                    $(self).html('Расширенный поиск');
+                    ext_holder.removeClass('opened');
+
+                }else{
+                    $(self).addClass('opened');
+                    $(self).html('Свернуть');
+                    ext_holder.addClass('opened');
+
+                }
+
+            });
+
+            $('.mb-show-map').off('click').on('click', function(){
+
+                var map_holder = $('.one-action-gmap');
+                var self = this;
+
+
+                if($(self).hasClass('opened')){
+                    $(self).html('Как добраться?');
+                }else{
+                    $(self).html('Скрыть карту');
+                }
+
+                $(self).toggleClass('opened');
+                map_holder.toggleClass('opened');
+
+
+            });
 
             $(document).off('mbw_close').on('mbw_close', function(){
                 $('#multibooker-widget-wrapper').html('');
                 $('.modal-widget-holder').hide(0);
+            });
+
+            $('.mirbileta-get-discount').pulsate({
+                color: '#ccff00', // set the color of the pulse
+                reach: 20,                              // how far the pulse goes in px
+                speed: 1000,                            // how long one pulse takes in ms
+                pause: 1000,                               // how long the pause between pulses is in ms
+                glow: true,                             // if the glow should be shown too
+                repeat: true,                           // will repeat forever if true, if given a number will repeat for that many times
+                onHover: false                          // if true only pulsate if user hovers over the element
             });
 
             uiTabs();

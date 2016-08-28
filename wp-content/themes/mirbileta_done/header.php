@@ -144,7 +144,7 @@ $sid = $_COOKIE["site_sid"];
 
         <div class="search-holder">
             <div class="site-search-holder">
-                <input type="text" id="site-search" class="main-search" placeholder="ПОИСК ПО МЕРОПРИЯТИЯМ, ПЛОЩАДКАМ И АКТЕРАМ"/>
+                <input type="text" id="site-search" class="main-search" placeholder="Поиск, универсальный"/>
                 <div class="main-search-input-clear"></div>
             </div>
         </div>
@@ -200,7 +200,7 @@ $sid = $_COOKIE["site_sid"];
 
 <div class="ext-search-holder">
 
-    <?php echo 'extend_search.php'; ?>
+    <?php include 'extend_search.php'; ?>
 
 </div>
 
