@@ -110,28 +110,40 @@ $week_and_time2 = to_afisha_date($act_date_time, "week_and_time", "rus");
 $weekday2 = to_afisha_date($act_date_time, "weekday", "rus");
 $time2 = to_afisha_date($act_date_time, "time", "rus");
 
+$prices_str = ($minprice || $minprice)? ( $minprice == $maxprice)? 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
+$prices_str2 = ($minprice2 || $minprice2)? ( $minprice2 == $maxprice2)? 'от&nbsp;'.$minprice2 . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice2 . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
 
 
-$actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-    .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
-    .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
+$actionsHtml .=  ''
+    .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
+    .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
+    .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
     .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
     .'<div class="mb-a-venue">'.$venue.'</div>'
-    .'<div class="mb-a-buy-holder">'
-    .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
-    .'</div>'
-    .'</div>';
+    .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+    .'</a></div>'
+    .'';
 
 
-$actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id2.'">'
-    .'<a href="/'.$alias2.'"><div class="mb-a-image" style="background-image: url(\''.$poster2.'\');"></div></a>'
-    .'<a href="/'.$alias2.'"><div class="mb-a-title">'.$act_name2.'<span class="mb-a-age">'.$ageCat2.'</span></div></a>'
+$actionsHtml .=  ''
+    .'<div class="mb-block mb-action" data-id="'.$act_id2.'"><a href="/'.$alias2.'">'
+    .'<div class="mb-action-image-holder"><img src="'.$poster2.'"></div>'
+    .'<div class="mb-a-title">'.$act_name2.'<span class="mb-a-age">'.$ageCat2.'</span></div>'
     .'<div class="mb-a-date">'.$act_date2.', <span class="mb-a-time">'.$act_time2.'</span></div>'
     .'<div class="mb-a-venue">'.$venue2.'</div>'
-    .'<div class="mb-a-buy-holder">'
-    .'<a href="/'.$alias2.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
-    .'</div>'
-    .'</div>';
+    .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str2.'</div><div class="ma-a-buy">Купить билет</div></div>'
+    .'</a></div>'
+    .'';
+
+//$actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id2.'">'
+//    .'<a href="/'.$alias2.'"><div class="mb-a-image" style="background-image: url(\''.$poster2.'\');"></div></a>'
+//    .'<a href="/'.$alias2.'"><div class="mb-a-title">'.$act_name2.'<span class="mb-a-age">'.$ageCat2.'</span></div></a>'
+//    .'<div class="mb-a-date">'.$act_date2.', <span class="mb-a-time">'.$act_time2.'</span></div>'
+//    .'<div class="mb-a-venue">'.$venue2.'</div>'
+//    .'<div class="mb-a-buy-holder">'
+//    .'<a href="/'.$alias2.'"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>' //'.$minprice.' руб.
+//    .'</div>'
+//    .'</div>';
 
 ?>
 
@@ -181,8 +193,8 @@ include('main_menu.php');
 
     <div class="container">
 
-        <h1 class="cl404">404 <span class="notfound">Страница не найдена</span></h1>
-        <h1 style="margin-bottom: 50px;">Зато мы нашли Вам пару случайных мероприятий =)</h1>
+        <h1 class="cl404">404 <span class="notfound">Страница не найдена, выберите что-нибудь себе по вкусу в <a href="/">Афише</a></span></h1>
+        <h1 style="margin-bottom: 50px;">А вот Вам пара случайных мероприятий =)</h1>
         <div class="actions-wrapper">
             <?php
 

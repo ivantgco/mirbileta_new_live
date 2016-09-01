@@ -8,9 +8,9 @@
 ?>
 
 
-<div class="mb-special-holder">
+<a class="nounderline" href="/koncert_gruppi_samocveti_5953/?utm_source=from_special"><div class="mb-special-holder">
 
-    <div class="mb-special-name">Любовь и Голуби</div>
-    <div class="mb-special-sub"><i class="fa fa-paper-plane-o"></i></div>
+    <div class="mb-special-name samocvety">Всё, что в жизни есть у меня..</div>
+    <div class="mb-special-sub"><i class="fa fa-diamond"></i></div>
 
-</div>
+</div></a>

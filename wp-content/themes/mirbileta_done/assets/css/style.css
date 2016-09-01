@@ -4884,7 +4884,7 @@ input.mb-subscr-subscr-input {
     color: #030303;
     margin-bottom: 50px;
     margin-top: 140px;
-    width: 550px;
+    /*width: 550px;*/
 }
 .action-date{
     font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;

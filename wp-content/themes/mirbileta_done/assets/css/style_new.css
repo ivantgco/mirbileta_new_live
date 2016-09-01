@@ -209,7 +209,7 @@ html{
     width: 100%;
 
     background-size: cover;
-    background-position: 50%;
+    background-position: 50% 50%;
 }
 .slider-overflower {
     height: 100%;
@@ -343,6 +343,9 @@ html{
     position: relative;
     width: 23%;
     margin-left: 1%;
+
+    vertical-align: top;
+    margin-bottom: 30px;
 }
 
 @media (max-width: 1300px) {
@@ -487,7 +490,15 @@ html{
     padding-top: 27px;
     font-size: 16px;
     padding-right: 52px;
+
+
 }
+.mb-special-name.samocvety{
+    padding-right: 72px;
+    padding-left: 20px;
+    padding-top: 19px;
+}
+
 .mb-special-sub{
     height: 75px;
     width: 52px;
@@ -709,6 +720,8 @@ html{
 .site-sidebar input.mb-tf-rs-input.mb-tf-fil-to-date,
 .site-sidebar input.mb-tf-rs-input.mb-tf-fil-from-date{
     font-size: 16px;
+    font-family: "PTSans-Bold", 'OpenSans-Regular', arial, sans-serif;
+    letter-spacing: -0.4px;
 }
 
 .irs-bar-edge{
@@ -828,6 +841,7 @@ html{
 .a-similar-holder {
     float: left;
     width: 100%;
+    margin-top: 100px;
 }
 .a-similar-holder .somethinggoeswrong{
     padding-left: 0;
@@ -1682,4 +1696,155 @@ th.prev {
 }
 .mb-tile-image {
     background-position: 50% 50%;
+}
+.mb-tile-subtitle {
+    padding-top: 6px;
+    color: aquamarine;
+}
+.mb-tile-info{
+    height: 105px;
+}
+.mb-actor-image{
+    display: inline-block;
+    vertical-align: top;
+}
+.mb-actor-desc{
+    display: inline-block;
+    vertical-align: top;
+}
+.mh130{
+    min-height: 130px;
+}
+
+.mb-venue-image-and-desc{
+    height: 450px;
+    display: inline-block;
+    padding-top: 20px;
+    width: 100%;
+}
+
+
+.mb-actor-image-and-desc{
+    display: inline-block;
+    padding-top: 20px;
+}
+
+.mb-actor-image-and-desc img{
+    width: 100%;
+}
+.actions-wrapper .mb-action {
+    margin-bottom: 40px;
+    vertical-align: top;
+}
+.action-venue a {
+    color: #3e3a92;
+}
+.action-venue a:hover {
+    color: #ef2b2b;
+}.logo-item-text {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #3e3a92;
+    border-radius: 50%;
+    padding-top: 73px;
+    font-size: 18px;
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    color: #3e3a92;
+     float: left;
+
+ }
+.logo-item-text:hover{
+    border: 2px solid #ef2b2b;
+    color: #ef2b2b;
+    text-decoration: none!important;
+
+}
+#menu-item-6029,
+#menu-item-2086{
+    display: none!important;
+}
+.mirbileta-get-discount{
+    display: none;
+}
+.pa-holder-inline{
+    display: none;
+}
+a.nounderline{
+    text-decoration: none!important;
+}
+a.nounderline:hover{
+    text-decoration: none!important;
+}
+.load_next_style_1 {
+    padding: 40px 0 38px 0;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'PTSans-Regular', 'OpenSans-Regular', arial, sans-serif;
+    width: 100%;
+    background-color: #f7f7f7;
+    color: #000;
+    font-size: 20px;
+    background-image: url("../img/stripe_5.png");
+    border-radius: 0;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.mb-nrs-body {
+    background-color: #fff;
+    border-top: 3px solid #3e3a92;
+}
+
+.mb-sm-a-title {
+    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
+}
+.mb-nrs-header {
+    font-family: PTSans-Bold, 'OpenSans-regular', arial, sans-serif;
+    font-size: 16px;
+    color: #3e3a92;
+    text-align: left;
+    padding-top: 27px;
+    padding-bottom: 17px;
+    padding-left: 20px;
+}
+
+.date-item-date {
+    background-color: #3e3a92;
+    padding: 8px 10px;
+    color: #fff;
+    border-radius: 6px 6px 0 0;
+    width: 100%;
+}
+
+.date-item-venue {
+    width: 100%;
+    background-color: #f7f7f7;
+    color: #000;
+    padding: 8px 10px;
+}
+
+.date-item-holder{
+    width: 170px;
+    margin-bottom: 20px;
+}
+
+.date-item-tickets{
+    width: 100%;
+    color: #000;
+    padding: 5px 10px;
+    background-color: #eaeaea;
+    border-top: 1px solid #d8d8d8;
+}
+
+.date-item-price {
+    color: #000;
+    padding: 5px 10px;
+    background-color: #f7f7f7;
+    border-radius: 0 0 6px 6px;
+}
+.cd-title{
+    font-family: PTSans-Bold, OpenSans-semibold, arial, sans-serif;
+    font-size: 20px;
+    margin-bottom: 25px;
+    margin-top: -76px;
+    color: #ef2b2b;
+
 }

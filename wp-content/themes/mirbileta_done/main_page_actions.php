@@ -26,12 +26,14 @@
     $columns = json_decode($resp)->results["0"]->data_columns;
     $data = json_decode($resp)->results["0"]->data;
 
+    $actions_count = count($data);
+    $show_next_button = $actions_count == 24;
 
 
 ?>
 
 
-<div class="">
+<div class="actions-wrapper">
 
     <?php
 
@@ -70,13 +72,23 @@
         $weekday =                  to_afisha_date($act_date_time, "weekday", "rus");
         $time =                     to_afisha_date($act_date_time, "time", "rus");
 
-        $actionsHtml .=        '<a href="/'.$alias.'"><div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                                    .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
-                                                    .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
-                                                    .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div></a>'
-                                                    .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
-                                                    .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
-                                                    .'</div></a>';
+        $actionsHtml .=  ''
+            .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
+            .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
+            .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
+            .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
+            .'<div class="mb-a-venue">'.$venue.'</div>'
+            .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+            .'</a></div>'
+            .'';
+
+//        $actionsHtml .=        '<a href="/'.$alias.'"><div class="mb-block mb-action" data-id="'.$act_id.'">'
+//                                                    .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
+//                                                    .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
+//                                                    .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div></a>'
+//                                                    .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
+//                                                    .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+//                                                    .'</div></a>';
     }
 
     if(strlen($actionsHtml) == 0){
@@ -85,4 +97,15 @@
         echo $actionsHtml;
     }
     ?>
+
+
+
+
+
 </div>
+
+<?php if($show_next_button): ?>
+
+    <div id="load_next" class="load_next_style_1">Загрузить еще</div>
+
+<?php endif ?>

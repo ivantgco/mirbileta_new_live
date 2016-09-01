@@ -87,7 +87,7 @@
 
             $id =               $value[array_search("ACTOR_ID", $columns)];
             $name =             $value[array_search("ACTOR_NAME", $columns)];
-            $alias =             $value[array_search("ACTOR_URL_ALIAS", $columns)];
+            $alias =            $value[array_search("ACTOR_URL_ALIAS", $columns)];
             $image =            $value[array_search("URL_IMAGE_MEDIUM", $columns)];
             $actions_count =    $value[array_search("ACTION_COUNT", $columns)];
 
@@ -95,7 +95,7 @@
                             .'<div class="mb-tile-image" style="background-image: url('.$image.')"></div>'
                             .'<div class="mb-tile-info">'
                                 .'<div class="mb-tile-title mb-inpage-search-entry-keyword">'.$name.'</div>'
-                                .'<div class="mb-tile-subtitle"> В ' . $actions_count . getNoun($actions_count, "мероприятии", "мероприятиях", "мероприятиях") . '</div>'
+                                .'<div class="mb-tile-subtitle"> В ' . $actions_count . ' ' .getNoun($actions_count, "мероприятии", "мероприятиях", "мероприятиях") . '</div>'
                             .'</div>'
                             .'</div></a>';
 

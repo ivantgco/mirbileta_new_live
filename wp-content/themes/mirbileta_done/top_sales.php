@@ -6,7 +6,7 @@
  * Time: 19:24
  */
 
-$url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><ACTION_IS_IMPORTANT>TRUE</ACTION_IS_IMPORTANT><page_no>1</page_no><rows_max_num>7</rows_max_num>";
+$url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><ACTION_IS_IMPORTANT>TRUE</ACTION_IS_IMPORTANT><page_no>1</page_no><rows_max_num>4</rows_max_num>";
 
 $ch = curl_init();
 
@@ -70,13 +70,23 @@ $data = json_decode($resp)->results["0"]->data;
         $weekday =                  to_afisha_date($act_date_time, "weekday", "rus");
         $time =                     to_afisha_date($act_date_time, "time", "rus");
 
-        $actionsHtml .=        '<a href="/'.$alias.'"><div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
-                                .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
-                                .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div></a>'
-                                .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
-                                .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
-                                .'</div></a>';
+        $actionsHtml .=  ''
+            .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
+            .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
+            .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
+            .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
+            .'<div class="mb-a-venue">'.$venue.'</div>'
+            .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+            .'</a></div>'
+            .'';
+
+//        $actionsHtml .=        '<a href="/'.$alias.'"><div class="mb-block mb-action" data-id="'.$act_id.'">'
+//                                .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
+//                                .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
+//                                .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div></a>'
+//                                .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
+//                                .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+//                                .'</div></a>';
     }
 
     if(strlen($actionsHtml) == 0){

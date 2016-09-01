@@ -6,22 +6,28 @@
  * Time: 17:24
  */
 
+
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+
+
+
 //update_option('siteurl', 'http://mirbileta.ru');
 //update_option('home', 'http://mirbileta.ru');
 
 define( 'WP_DEBUG', true );
 
-$global_prot = 'http';
-$global_url = '95.165.147.252';
-$global_salesite = 'dev.mirbileta.ru';
+//$global_prot = 'http';
+//$global_url = '95.165.147.252';
+//$global_salesite = 'dev.mirbileta.ru';
 
-//$global_prot = 'https';
-//$global_url = 'shop.mirbileta.ru';
-//$global_salesite = 'mirbileta.ru';
+$global_prot = 'https';
+$global_url = 'shop.mirbileta.ru';
+$global_salesite = 'mirbileta.ru';
 
 $defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 $defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';
-
 
 
 

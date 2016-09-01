@@ -770,15 +770,25 @@
 
                             var actions = jsonToObj(JSON.parse(res)['results'][0]);
 
-                            var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
-                                '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
-                                '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
-                                '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
-                                '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
-                                '<div class="mb-a-buy-holder">'+
-                                '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
-                                '</div>'+
-                                '</div>{{/actions}}';
+//                            var act_m_tpl ='{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}">'+
+//                                '<a href="/{{alias_link}}"><div class="mb-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div></a>'+
+//                                '<a href="/{{alias_link}}"><div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div></a>'+
+//                                '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+//                                '<a class="venue-link" href="/{{VENUE_URL_ALIAS}}"><div class="mb-a-venue">{{VENUE_NAME}}</div></a>'+
+//                                '<div class="mb-a-buy-holder">'+
+//                                '<a href="/{{alias_link}}"><div class="mb-buy mb-buy32 soft">Купить билет</div></a>'+
+//                                '</div>'+
+//                                '</div>{{/actions}}';
+
+                            var act_m_tpl = '{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}"><a href="/{{alias_link}}/">'+
+                                            '<div class="mb-action-image-holder"><img src="{{ACTION_POSTER_IMAGE}}"></div>'+
+                                            '<div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div>'+
+                                            '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                                            '<div class="mb-a-venue">{{VENUE_NAME}}</div>'+
+                                            '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'+
+                                            '</a></div>{{/actions}}';
+
+
 
                             var a_data = {actions: []};
 
@@ -796,7 +806,9 @@
                                 btn.remove();
 
                             }else{
+
                                 acts_wrapper.append(Mustache.to_html(act_m_tpl, a_data));
+
                                 if(a_data.actions.length < 15){
                                     btn.remove();
                                 }

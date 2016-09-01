@@ -9,19 +9,19 @@
     $action_alias = preg_replace('/(^\w+)\/.*/','$1',$action_alias);
 
 
-    $global_prot = 'http';
-    $global_url = '192.168.1.190';
-    $global_salesite = 'dev.mirbileta.ru';
+//    $global_prot = 'http';
+//    $global_url = '192.168.1.190';
+//    $global_salesite = 'dev.mirbileta.ru';
+//
+//    $global_prot = 'http';
+//    $global_url = '95.165.147.252';
+//    $global_salesite = 'dev.mirbileta.ru';
 
-    $global_prot = 'http';
-    $global_url = '95.165.147.252';
-    $global_salesite = 'dev.mirbileta.ru';
 
 
-
-//    $global_prot = 'https';
-//    $global_url = 'shop.mirbileta.ru';
-//    $global_salesite = 'mirbileta.ru';
+    $global_prot = 'https';
+    $global_url = 'shop.mirbileta.ru';
+    $global_salesite = 'mirbileta.ru';
 
 
 
@@ -46,9 +46,11 @@
     $data = json_decode($resp)->results["0"]->data[0];
 
     $act_id =       $data[array_search("ACTION_ID", $columns)];
+    $widget_act_id =$data[array_search("ACTION_ID", $columns)];
     $alias =        $data[array_search("ACTION_URL_ALIAS", $columns)];
     $show_alias =   $data[array_search("SHOW_URL_ALIAS", $columns)];
     $frame =        $data[array_search("FRAME", $columns)];
+    $widget_frame = $data[array_search("FRAME", $columns)];
     $act_name =     $data[array_search("ACTION_NAME", $columns)];
     $g_act_name =     $data[array_search("ACTION_NAME", $columns)];
     $thumb =        (strlen($data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
@@ -60,6 +62,7 @@
     $hall =         $data[array_search("HALL_NAME", $columns)];
     $genre =        $data[array_search("SHOW_GENRE", $columns)];
     $venue =        $data[array_search("VENUE_NAME", $columns)];
+    $venue_alias =  $data[array_search("VENUE_URL_ALIAS", $columns)];
     $address =      $data[array_search("HALL_ADDR", $columns)];
     $g_address =    $data[array_search("HALL_GOOGLE_ADDRESS", $columns)];
     $free_places =  $data[array_search("FREE_PLACE_COUNT", $columns)];
@@ -247,11 +250,12 @@
                 <h1 class="action-title" title="<?php echo $act_name; ?>"><?php echo $act_name; ?></h1>
 
                 <div class="mirbileta-get-discount-holder">
-                    <a target="_blank" href="/get_discount"><div class="mirbileta-get-discount"></div></a>
+                    <a target="_blank" href="/get_discount/"><div class="mirbileta-get-discount"></div></a>
                 </div>
 
                 <div class="action-date"><?php echo $act_date .' '. $act_date_year; ?> <span class="weekday">(<?php echo $weekday_short;?>)</span> <?php echo $act_time;?></div>
-                <div class="action-venue"><?php echo $hall; ?></div>
+
+                <div class="action-venue"><a href="/<?php echo $venue_alias; ?>/" target="_blank"><?php echo $venue; ?></a></div>
 
 
                 <div class="action-places-info-holder">
@@ -289,14 +293,18 @@
 
                                 $images_html = '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
 
-                                foreach ($images as $key1 => $value1){
 
-                                    if(strpos($value1, 'youtube.com')){
-                                        $images_html .= '<div class="one-action-image-list-item" alt="'.$act_name . ' Купить билет" data-url="'.$value1.'" data-type="video"><div class="video_play"></div></div>';
-                                    }else{
-                                        $images_html .= '<div data-type="img" data-url="'.$value1.'" class="ig-list-item"><img class="ig-main-img" src="'.$value1.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+
+                                if(count($images_list) > 5){
+                                    foreach ($images as $key1 => $value1){
+
+                                        if(strpos($value1, 'youtube.com')){
+                                            $images_html .= '<div class="one-action-image-list-item" alt="'.$act_name . ' Купить билет" data-url="'.$value1.'" data-type="video"><div class="video_play"></div></div>';
+                                        }else{
+                                            $images_html .= '<div data-type="img" data-url="'.$value1.'" class="ig-list-item"><img class="ig-main-img" src="'.$value1.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+                                        }
+
                                     }
-
                                 }
 
 
@@ -410,9 +418,9 @@
                 </div>
 
 
-
-
                 <div class="a-similar-holder">
+
+
 
                     <?php
 
@@ -441,6 +449,9 @@
 
 
                     }else{
+
+                        echo '<h1 class="mb_h1">Посмотрите еще эти мероприятия:</h1>';
+
                         $sim_columns = json_decode($resp4)->results["0"]->data_columns;
                         $sim_data = json_decode($resp4)->results["0"]->data;
 
@@ -469,16 +480,27 @@
                             $ageCat =       strlen($value4[array_search("AGE_CATEGORY", $sim_columns)])? $value4[array_search("AGE_CATEGORY", $sim_columns)]: '0+';
                             $act_date_time = $value4[array_search("ACTION_DATE_TIME", $sim_columns)];
 
+                            $prices_str = ($minprice || $minprice)? ( $minprice == $maxprice)? 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
 
-                            $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
-                                .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
-                                .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
+//                            $sim_actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id.'">'
+//                                .'<a href="/'.$alias.'"><div class="mb-a-image" style="background-image: url(\''.$poster.'\');"></div></a>'
+//                                .'<a href="/'.$alias.'"><div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div></a>'
+//                                .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
+//                                .'<a href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
+//                                .'<div class="mb-a-buy-holder">'
+//                                .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
+//                                .'</div>'
+//                                .'</div>';
+
+                            $sim_actionsHtml .=  ''
+                                .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
+                                .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
+                                .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
                                 .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-                                .'<a href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
-                                .'<div class="mb-a-buy-holder">'
-                                .'<a href="/'.$alias.'"><div class="mb-buy mb-buy32 yellow">Купить билет</div></a>' //'.$minprice.' руб.
-                                .'</div>'
-                                .'</div>';
+                                .'<div class="mb-a-venue">'.$venue.'</div>'
+                                .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+                                .'</a></div>'
+                                .'';
                         }
 
                         if(strlen($sim_actionsHtml) == 0){
@@ -522,9 +544,9 @@
 
 
             <div id="multibooker-widget-wrapper"
-                 data-actions="<?php echo $act_id; ?>"
+                 data-actions="<?php echo $widget_act_id; ?>"
                  data-mirbileta="true"
-                 data-frame="<?php echo $frame; ?>"
+                 data-frame="<?php echo $widget_frame; ?>"
                  data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
                  data-ip="<?php echo $global_url; ?>">
 

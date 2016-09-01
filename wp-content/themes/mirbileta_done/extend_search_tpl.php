@@ -1,51 +1,57 @@
 <?php
 /*
-    Template Name: filter
+    Template Name: extend_search
 */
 
-        //$page_filter =       $_GET['page_filter'];//"concert"
+    $page_id = get_the_ID();
 
-        $page_id = get_the_ID();
+    $from_date =         $_GET['from_date'];
+    $to_date =           $_GET['to_date'];
+    $search_keyword =    $_GET['search_keyword'];
+    $min_price =         $_GET['min_price'];
+    $max_price =         $_GET['max_price'];
 
-        $parseUrl = $_GET['action'];
+    $venue_id =          $_GET['venue_id'];
+    $actor_id =          $_GET['actor_id'];
+    $author_id =         $_GET['author_id'];
+    $action_tag_id =     $_GET['action_tag_id'];
 
-        $from_date =         $_GET['from_date'];
-        $to_date =           $_GET['to_date'];
-        $search_keyword =    $_GET['search_keyword'];
-        $min_price =         $_GET['min_price'];
-        $max_price =         $_GET['max_price'];
-        $show_type_alias =   get_field('show_type_filter');
+    $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_afisha</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num>";
 
-        $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_afisha</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>15</rows_max_num>";
+    if(strlen($from_date) > 0) { $url .= '<from_date>'.$from_date.'</from_date>'; }
+    if(strlen($to_date) > 0) { $url .= '<to_date>'.$to_date.'</to_date>'; }
+    if(strlen($search_keyword) > 0) { $url .= '<search_keyword>'.$search_keyword.'</search_keyword>'; }
+    if(strlen($min_price) > 0) { $url .= '<min_price>'.$min_price.'</min_price>'; }
+    if(strlen($max_price) > 0) { $url .= '<max_price>'.$max_price.'</max_price>'; }
 
-        if(strlen($from_date) > 0) { $url .= '<from_date>'.$from_date.'</from_date>'; }
-        if(strlen($to_date) > 0) { $url .= '<to_date>'.$to_date.'</to_date>'; }
-        if(strlen($search_keyword) > 0) { $url .= '<search_keyword>'.$search_keyword.'</search_keyword>'; }
-        if(strlen($min_price) > 0) { $url .= '<min_price>'.$min_price.'</min_price>'; }
-        if(strlen($max_price) > 0) { $url .= '<max_price>'.$max_price.'</max_price>'; }
-        if(strlen($show_type_alias) > 0) { $url .= '<show_type_alias>'.$show_type_alias.'</show_type_alias>'; }
+    if(strlen($venue_id) > 0) { $url .= '<venue_id>'.$venue_id.'</venue_id>'; }
+    if(strlen($actor_id) > 0) { $url .= '<actor_id>'.$actor_id.'</actor_id>'; }
+    if(strlen($author_id) > 0) { $url .= '<author_id>'.$author_id.'</author_id>'; }
+    if(strlen($action_tag_id) > 0) { $url .= '<action_tag_id>'.$action_tag_id.'</action_tag_id>'; }
 
-        $ch = curl_init();
+    $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
-        $resp = curl_exec($ch);
+    $resp = curl_exec($ch);
 
-        if(curl_errno($ch))
-            print curl_error($ch);
-        else
-            curl_close($ch);
+    if(curl_errno($ch))
+        print curl_error($ch);
+    else
+        curl_close($ch);
 
-            $jData = json_decode($data);
+    $jData = json_decode($data);
 
-        $columns = json_decode($resp)->results["0"]->data_columns;
-        $data = json_decode($resp)->results["0"]->data;
-        $actions_count = count($data);
-        $show_next_button = $actions_count == 15;
+    $columns = json_decode($resp)->results["0"]->data_columns;
+    $data = json_decode($resp)->results["0"]->data;
+    $actions_count = count($data);
+    $show_next_button = $actions_count == 15;
+
+
 
 ?>
 
@@ -69,7 +75,7 @@
     <script>
         console.log("<?php echo $url; ?>");
     </script>
-    
+
     <title><?php wp_title( '-', true, 'right' ); ?></title>
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
@@ -90,8 +96,9 @@
 <body <?php body_class(); ?> data-page="inner"  data-filter="<?php echo $show_type_alias; ?>">
 
 <?php
-    get_header();
-    include('main_menu.php');
+get_header();
+include('main_menu.php');
+//echo $url;
 
 ?>
 
@@ -106,25 +113,25 @@
 
             <div class="filter-page-content">
                 <div class="filter-page-filters-wrapper">
-                        <div class="">
-                            <div class=""><div class="mb-tf-block" data-filter="search"></div></div>
-                            <div class=""><div class="mb-tf-block" data-filter="daterange"></div></div>
-                            <div class=""><div class="mb-tf-block" data-filter="price" data-inputs="false"></div></div>
-                        </div>
+                    <div class="">
+                        <div class=""><div class="mb-tf-block" data-filter="search"></div></div>
+                        <div class=""><div class="mb-tf-block" data-filter="daterange"></div></div>
+                        <div class=""><div class="mb-tf-block" data-filter="price" data-inputs="false"></div></div>
+                    </div>
 
 
 
 
-                        <div class="filter-page-filters-buttons">
+                    <div class="filter-page-filters-buttons">
 
-                            <div class="mb-special-holder">
+                        <div class="mb-special-holder">
 
-                                <div class="mb-special-name submit-filters">Показать <span class="filter-count-actions"></span></div>
-                                <div class="mb-special-sub clear-filters"><i class="fa fa-refresh"></i></div>
-
-                            </div>
+                            <div class="mb-special-name submit-filters">Показать <span class="filter-count-actions"></span></div>
+                            <div class="mb-special-sub clear-filters"><i class="fa fa-refresh"></i></div>
 
                         </div>
+
+                    </div>
 
 
                 </div>
@@ -187,15 +194,13 @@
 
                     $prices_str = ($minprice || $minprice)? ( $minprice == $maxprice)? 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
 
-                    $actionsHtml .=  ''
-                        .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
+                    $actionsHtml .=        '<a href="/'.$alias.'"><div class="mb-block mb-action" data-id="'.$act_id.'">'
                         .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
                         .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
-                        .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-                        .'<div class="mb-a-venue">'.$venue.'</div>'
-                        .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
-                        .'</a></div>'
-                        .'';
+                        .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div></a>'
+                        .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
+                        .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+                        .'</div></a>';
                 }
 
                 if(strlen($actionsHtml) == 0){
@@ -220,14 +225,11 @@
 </div>
 
 
-
-
 <?php
 
-    get_footer();
+get_footer();
 
 ?>
 
 
 </body>
-</html>

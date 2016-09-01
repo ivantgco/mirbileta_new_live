@@ -91,6 +91,10 @@
 
             <?php include 'main_page_actions.php'; ?>
 
+            <h1 class="mb_h1">Спланируйте культурную программу заранее:</h1>
+
+            <?php include 'nearrest_actions.php'; ?>
+
         </div>
 
     </div>
