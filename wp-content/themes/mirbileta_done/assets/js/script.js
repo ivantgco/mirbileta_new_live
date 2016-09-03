@@ -27,11 +27,28 @@
     var clearHtml =         '<div class="ms-loading">Введите поисковый запрос.</div>';
     var errorHtml =         '<div class="ms-loading">Простите, но кажется с поиском что-то не так&hellip;<br/>Звоните:&nbsp;&nbsp;&nbsp;+7 (906) 063-88-66</div>';
 
+    var gip = 'shop.mirbileta.ru';
+    var gprot = 'https';
     var gurl = 'mirbileta.ru';
 
     var inQuery = false;
     var lastInputTime = undefined;
 
+    var getNoun = function(number, one, two, five) {
+        number = Math.abs(number);
+        number %= 100;
+        if (number >= 5 && number <= 20) {
+            return five;
+        }
+        number %= 10;
+        if (number == 1) {
+            return one;
+        }
+        if (number >= 2 && number <= 4) {
+            return two;
+        }
+        return five;
+    };
 
     var filters = {};
 
@@ -969,11 +986,61 @@
             });
 
             $('.action-buy-button').off('click').on('click', function(){
+
+                if($(this).hasClass('sc-run-widget')){return false;}
+
                 $('.modal-widget-holder').show(0);
 
                 $.getScript($('#mbw-script-loader').attr('data-src'), function(){
 
                 });
+
+            });
+
+            $('.sc-run-widget').off('click').on('click', function(e){
+
+                $('.modal-widget-holder').remove();
+                $('#mbw-script-loader').attr('src', '');
+
+
+                var a_id = $(this).data('id');
+                var frame = $(this).data('frame');
+
+                var tpl =   '<div class="modal-widget-holder">' +
+                                '<div class="modal-widget-inner">' +
+                                '<div id="multibooker-widget-wrapper"' +
+                                'data-actions="{{action_id}}"' +
+                                'data-mirbileta="true"' +
+                                'data-frame="{{frame}}"' +
+                                'data-host="{{global_prot}}://{{global_ip}}/"' +
+                                'data-ip="{{ip}}">' +
+                                '<div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>' +
+                                '</div>' +
+                                '</div>' +
+                            '</div>' ;
+
+//                tpl += '<script type="text/javascript" id="mbw-script-loader" data-src="{{global_prot}}://{{global_ip}}/assets/widget/mb_widget.js" src=""></script>';
+
+                var mO = {
+                    action_id: a_id,
+                    frame: frame,
+                    global_prot: gprot,
+                    global_ip: gip,
+                    ip:gip
+                };
+
+                $('body').append(Mustache.to_html(tpl, mO));
+
+                $('.modal-widget-holder').show(0);
+
+                $.getScript($('#mbw-script-loader').attr('data-src'), function(){
+
+                });
+
+                if($(this).hasClass('a-date-item-buy')){
+                    e.stopPropagation();
+                    return false;
+                }
 
             });
 
@@ -1445,6 +1512,160 @@
                 repeat: true,                           // will repeat forever if true, if given a number will repeat for that many times
                 onHover: false                          // if true only pulsate if user hovers over the element
             });
+
+            $('.mb-center-search').off('input').on('input', function(){
+
+                var v = $(this).val();
+                var l = v.length;
+                var more = 3 - l;
+                var venue_id = $(this).data('venue');
+                var acts_wrapper = $('.actions-wrapper');
+
+
+                if(l > 2){
+
+                    $('.mb-center-search-hint').html('<i class="fa fa-search"></i>&nbsp;&nbsp;Ищем...');
+
+                    var o = {
+                        command: 'get_afisha',
+                        params: {
+                            url: gurl,
+                            venue_id: venue_id,
+                            search_keyword: v
+                        }
+                    };
+
+                    socketQuery_site(o, function(res){
+
+                        if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
+
+                            $('.mb-center-search-hint').html('Нашли =)');
+
+                            var actions = jsonToObj(JSON.parse(res)['results'][0]);
+
+                            var act_m_tpl = '{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}"><a href="/{{alias_link}}/">'+
+                                '<div class="mb-action-image-holder"><img src="{{ACTION_POSTER_IMAGE}}"></div>'+
+                                '<div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div>'+
+                                '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                                '<div class="mb-a-venue">{{VENUE_NAME}}</div>'+
+                                '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'+
+                                '</a></div>{{/actions}}';
+
+
+
+                            var a_data = {actions: []};
+
+                            for(var i in actions){
+                                actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                                actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                                actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                                actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
+                                a_data.actions.push(actions[i]);
+                            }
+
+                            if(a_data.actions.length == 0){
+
+                                $('.mb-center-search-hint').html('Не нашли =(');
+
+                                acts_wrapper.html('<div class="nothing-to-show">Ничего не нашлось, попробуйте дргой запрос или посмотрите в <a href="/afisha/">афише.</a></div>');
+
+                            }else{
+
+                                acts_wrapper.html(Mustache.to_html(act_m_tpl, a_data));
+
+                                if(a_data.actions.length <= 15){
+
+                                }
+
+                            }
+
+
+                        }else{
+
+                            $('.mb-center-search-hint').html('Простите, кажется поиск сломался. +7 (906) 063-88-66');
+
+                        }
+
+                    });
+
+
+
+                }else{
+
+                    $('.mb-center-search-hint').html('Введите еще '+ more +' '+ getNoun(more, "симовол", "симовола", "симоволов") + ' и начнем поиск.');
+
+
+
+                }
+
+                if(l == 0){
+                    $('.mb-center-search-hint').html('Введите 3 символа и начнем поиск');
+
+
+
+                        var o = {
+                            command: 'get_afisha',
+                            params: {
+                                url: gurl,
+                                venue_id: venue_id,
+                                page_no: 1,
+                                rows_max_num:15
+                            }
+                        };
+
+                        socketQuery_site(o, function(res){
+
+                            if(!JSON.parse(res)['results'][0].code || JSON.parse(res)['results'][0].code == 0){
+
+                                var actions = jsonToObj(JSON.parse(res)['results'][0]);
+
+                                var act_m_tpl = '{{#actions}}<div class="mb-block mb-action" data-id="{{ACTION_ID}}"><a href="/{{alias_link}}/">'+
+                                    '<div class="mb-action-image-holder"><img src="{{ACTION_POSTER_IMAGE}}"></div>'+
+                                    '<div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div>'+
+                                    '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
+                                    '<div class="mb-a-venue">{{VENUE_NAME}}</div>'+
+                                    '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'+
+                                    '</a></div>{{/actions}}';
+
+
+
+                                var a_data = {actions: []};
+
+                                for(var i in actions){
+                                    actions[i]['ACTION_POSTER_IMAGE'] = (actions[i]['ACTION_POSTER_IMAGE'] == '')? defaultPoster : actions[i]['ACTION_POSTER_IMAGE'];
+                                    actions[i]['is_show'] = actions[i]['SHOW_ID'] != '';
+                                    actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
+                                    actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
+
+                                    a_data.actions.push(actions[i]);
+                                }
+
+                                if(a_data.actions.length == 0){
+
+                                    acts_wrapper.html('<div class="nothing-to-show">Ничего не нашлось, попробуйте дргой запрос или посмотрите в <a href="/afisha/">афише.</a></div>');
+
+                                }else{
+
+                                    acts_wrapper.html(Mustache.to_html(act_m_tpl, a_data));
+
+                                }
+
+
+                            }else{
+
+                                $('.mb-center-search-hint').html('Простите, кажется поиск сломался. +7 (906) 063-88-66');
+
+                            }
+
+                        });
+
+
+                }
+
+            });
+
+
 
             uiTabs();
 

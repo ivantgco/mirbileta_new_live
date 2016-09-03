@@ -34,15 +34,18 @@
 
     $act_id =       $data[0][array_search("ACTION_ID", $columns)];
     $alias =        $data[0][array_search("ACTION_URL_ALIAS", $columns)];
+    $act_frame =        $data[0][array_search("FRAME", $columns)];
 
     $act_name =     $data[0][array_search("ACTION_NAME", $columns)];
     $act_date_str_first =     $data[0][array_search("ACTION_DATE_STR", $columns)];
+    $act_time_str_first =     $data[0][array_search("ACTION_TIME_STR", $columns)];
     $g_act_name =     $data[0][array_search("ACTION_NAME", $columns)];
     $thumb =        (strlen($data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] )> 0) ? (strpos("http", $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
     $poster =       (strlen($data[0][array_search("ACTION_POSTER_IMAGE", $columns)] )> 0) ? (strpos("http", $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]: '';
     $hall =         $data[0][array_search("HALL_NAME", $columns)];
     $genre =        $data[0][array_search("SHOW_GENRE", $columns)];
     $venue =        $data[0][array_search("VENUE_NAME", $columns)];
+    $venue_top_alias =        $data[0][array_search("VENUE_URL_ALIAS", $columns)];
     $address =      $data[0][array_search("HALL_ADDR", $columns)];
     $minprice =      $data[0][array_search("MIN_PRICE", $columns)];
 
@@ -110,51 +113,13 @@
 
             <div class="action-sidebar-holder">
 
-                <h2 class="cd-title">Выберите дату:</h2>
+
+                <div title="<?php echo $act_name; ?> Купить билеты" class="action-buy-button sc-run-widget" data-id="<?php echo $act_id;?>" data-frame="<?php echo $act_frame;?>">Купить билеты</div>
 
 
-                <div class="show-choose-date-holder">
-
-                    <?php
-
-                    $dates_html_new = '';
-
-                    foreach($data as $key2 => $value2){
-
-                        $itemDate = $value2[array_search("ACTION_DATE_STR", $columns)];
-                        $itemTime = $value2[array_search("ACTION_TIME_STR", $columns)];
-                        $itemVenue = $value2[array_search("VENUE_NAME", $columns)];
-                        $itemDay = to_afisha_date($value2[array_search("ACTION_DATE", $columns)], 'weekday_short', 'rus');
-                        $itemTickets = $value2[array_search("FREE_PLACE_COUNT", $columns)];
-                        $itemMin = $value2[array_search("MIN_PRICE", $columns)];
-                        $a_alias =  $value2[array_search("ACTION_URL_ALIAS", $columns)];
-                        $itemMth = substr($itemDate, 3,2);
-
-
-                        $mths[$itemMth] = ($mths[$itemMth]) ? $mths[$itemMth] : array();
-                        $mths[$itemMth] = ($mths[$itemMth]) ? $mths[$itemMth] : array();
-
-
-                        $dates_html_new .=  '<a class="nounderline" href="/'.$a_alias.'/">'.
-                                                '<div class="date-item-holder">'.
-                                                    '<div class="date-item-date">'.$itemDate. ' '. $itemTime .' ('. $itemDay .')</div>'.
-                                                    '<div class="date-item-venue"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;'.$itemVenue.'</div>'.
-                                                    '<div class="date-item-tickets"><i class="fa fa-ticket"></i>&nbsp;&nbsp;'.$itemTickets. ' ' . getNoun($itemTickets,'билет', 'билета','билетов').'</div>'.
-                                                    '<div class="date-item-price">от '.$itemMin. ' <i class="fa fa-ruble"></i></div>'.
-                                                '</div>'.
-                                            '</a>';
-
-
-                    }
-
-                    echo $dates_html_new;
-
-                    ?>
-
+                <div class="action-prices">
+                    от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
                 </div>
-
-
-
 
                 <div class="action-actors-holder">
 
@@ -246,32 +211,36 @@
 
     <div class="mb-site-content">
 
-    <h1 class="action-title" title="<?php echo $act_name; ?>"><?php echo $act_name; ?>, <span style="color: #777777">выбор даты</span></h1>
+    <h1 class="action-title" title="<?php echo $act_name; ?>"><?php echo $act_name; ?></h1>
 
     <div class="mirbileta-get-discount-holder">
         <a target="_blank" href="/get_discount/"><div class="mirbileta-get-discount"></div></a>
     </div>
 
 
-    <div class="action-venue"><a href="/<?php echo $venue_alias; ?>/" target="_blank"><?php echo $venue; ?></a></div>
+    <?php
+
+    $show_hall = ($venue == $hall)? '' : ' - '.$hall;
+
+    ?>
+
+    <div class="action-venue"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<a href="/<?php echo $venue_top_alias; ?>/" target="_blank"><?php echo $venue; ?></a> <?php echo $show_hall; ?></div>
 
 
-    <div class="action-places-info-holder">
-        <div class="a-places-info-title">
-            Есть <b>2 отличных места</b> в партере<br/>
-            по 5500 руб! <span class="a-places-info-link">Смотреть</span>
-        </div>
-        <div class="a-places-info-sub">
-            Всего осталось более 100 билетов<br/>
-            от 1000 до 5000 руб.
-        </div>
+    <div class="show-action-nearrest-date-holder">
+
+        Ближайшая дата:   <span class="show-action-nearrest-date"><?php echo $act_date_str_first . ' ' . $act_time_str_first ; ?></span>   <span class="inline-buy-ticket sc-run-widget" data-id="<?php echo $act_id;?>"  data-frame="<?php echo $act_frame;?>">Купить билеты</span>
+
     </div>
+
+
 
 
 
     <div class="a-image-reviews-holder">
 
 
+        <div class="image-gallery-and-desc-holder">
         <div class="image-gallery-holder">
 
 
@@ -288,12 +257,14 @@
                     $images = explode(',', $images_list);
 
 
+                    if(strlen($images_list) > 5){
 
-                    $images_html = '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+                        $images_html = '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+
+                    }
 
 
-
-                    if(count($images_list) > 5){
+                    if(strlen($images_list) > 5){
                         foreach ($images as $key1 => $value1){
 
                             if(strpos($value1, 'youtube.com')){
@@ -336,23 +307,160 @@
 
         </div>
 
-        <div class="action-description">
+        <?php if(strlen($description) > 5) :?>
 
-            <h2 class="ap-title">Описание</h2>
+            <div class="action-description">
 
-            <?php echo $description; ?>
+                <h2 class="ap-title">Описание</h2>
+
+                <?php echo $description; ?>
 
 
-            <div class="buy-button-holder">
+                <div class="buy-button-holder">
 
 
-                <div class="action-prices">
-                    от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
+                    <div class="action-prices">
+                        от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
+                    </div>
+
                 </div>
 
             </div>
 
+        <?php endif;?>
         </div>
+
+
+<!--        777777777777777777777777777777777777777777-->
+
+
+        <div class="show-dates-wrapper">
+
+        <div class="tabsParent sc_tabulatorParent">
+            <div class="tabsTogglersRow sc_tabulatorToggleRow">
+
+                <?php
+
+
+                $dates_html = '';
+                $mths = array();
+
+                foreach($data as $key2 => $value2){
+
+                    $itemDate = $value2[array_search("ACTION_DATE", $columns)];
+                    $itemMth = substr($itemDate, 3,2);
+
+
+                    $mths[$itemMth] = ($mths[$itemMth]) ? $mths[$itemMth] : array();
+
+                }
+
+                foreach($data as $k => $v){
+                    $itemDate2 = $v[array_search("ACTION_DATE", $columns)];
+                    $itemMth2 = substr($itemDate2, 3,2);
+
+                    array_push($mths[$itemMth2],$v);
+
+                }
+
+                $mth_indexer = 0;
+
+                foreach($mths as $key_m => $value_m){
+                    $opened = ($mth_indexer == 0) ? 'opened' : '';
+                    $mth_title = to_afisha_date($key_m,'mounth_only', 'rus');
+                    $dates_html .= '<div class="tabToggle chromeScroll sc_tabulatorToggler '.$opened.'" dataitem="'.$mth_indexer.'" title="">'
+                        .'<span class="">'.$mth_title.'</span>'
+                        .'</div>';
+                    $mth_indexer ++;
+                }
+
+                $dates_html .= '</div><div class="ddRow notZindexed sc_tabulatorDDRow">';
+
+                $mth_indexer2 = 0;
+
+                foreach($mths as $key_m => $value_m){
+                    $opened2 = ($mth_indexer2 == 0) ? 'opened' : '';
+
+                    $dates_html .= '<div class="tabulatorDDItem sc_tabulatorDDItem noMaxHeight '.$opened2.'" dataitem="'.$mth_indexer2.'">';
+
+
+                    foreach($value_m as $in_key => $in_value){
+
+                        $i_id =      $in_value[array_search("ACTION_ID", $columns)];
+                        $i_frame =      $in_value[array_search("FRAME", $columns)];
+                        $a_alias =      $in_value[array_search("ACTION_URL_ALIAS", $columns)];
+                        $a_date =       $in_value[array_search("ACTION_DATE_STR", $columns)];
+                        $a_time =       $in_value[array_search("ACTION_TIME_STR", $columns)];
+                        $a_hall =       $in_value[array_search("HALL_NAME", $columns)];
+
+                        $a_free_places =  ($in_value[array_search("FREE_PLACE_COUNT", $columns)] == 0)? 'Билетов нет' :  'мест: ' . $in_value[array_search("FREE_PLACE_COUNT", $columns)];
+                        $a_minprice =     $in_value[array_search("MIN_PRICE", $columns)];
+                        $a_maxprice =     $in_value[array_search("MAX_PRICE", $columns)];
+                        $a_day_of_week =  $in_value[array_search("ACTION_DAY_OF_WEEK", $columns)];
+
+
+                        $i_date_full = $in_value[array_search("ACTION_DATE_STR", $columns)];
+                        $i_date_arr = explode(' ', $i_date_full);
+
+                        $i_date_day = $i_date_arr[0];
+                        $i_date_mth = $i_date_arr[1];
+
+
+                        $a_date_1 =       substr($in_value[array_search("ACTION_DATE", $columns)],0,2);
+                        $a_date_2 =       (substr($a_date_1,0,1) == '0')? substr($a_date_1,1,1) : $a_date_1;
+
+                        $a_mth_1 =          substr($in_value[array_search("ACTION_DATE", $columns)],3,2);
+                        $a_mth_22 =          to_afisha_date($a_mth_1, 'mounth_only', 'rus');
+
+                        $is_holi =          to_afisha_date($in_value[array_search("ACTION_DATE", $columns)], 'is_holiday', 'rus');
+                        $is_holi =          ($is_holi == 6 || $is_holi == 7)? 'holiday' : '';
+
+
+                        $i_prices_str = (strlen($a_minprice) > 2)? 'от '.$a_minprice.'<i class="fa fa-ruble"></i>': '&nbsp;';
+                        $i_total_tickets = $in_value[array_search("FREE_PLACE_COUNT", $columns)];
+                        $i_tickets_count = ($i_total_tickets > 0) ? ($i_total_tickets >= 70)? 'Более 70 билетов': getNoun($i_total_tickets, 'билет', 'билета', 'билетов') : 'билетов нет, <span class="no-tickets-notify">уведомить Вас когда появятся?</span>';
+                        $t_show_buy_btn = ($i_total_tickets > 0)? '<div class="a-date-item-buy sc-run-widget" data-id="'.$i_id.'" data-frame="'.$i_frame.'">Купить билеты</div>': '';
+
+
+                        $dates_html .=   '<a class="nounderline" href="/'.$a_alias.'/"><div class="a-date-item-holder">'
+                                            .'<div class="a-date-item-date-holder"><span class="a-date-item-day">'.$i_date_day.'</span> '.$i_date_mth.' '.$a_time.'</div>'
+                                            .'<div class="a-date-item-info-holder">'.$i_tickets_count.' '.$i_prices_str .' '. $t_show_buy_btn. '</div>'
+                                        .'</div></a>';
+
+//                        $dates_html .=   '<a class="show-action-date-link" href="/'.$a_alias.'">'
+//                            .'<div class="show-action-date">'
+//                            .'<div class="s-a-train">'
+//                            .'<div class="s-a-vagon"><div class="s-a-date '.$is_holi.'">'.$a_date_2.'<span class="s-a-dow">'.$a_day_of_week.'</span></div><div class="s-a-time">'.$a_time.'</div></div>'
+//                            .'<div class="s-a-vagon"><div class="s-a-places">'.$a_free_places.'</div><div class="s-a-prices">'.$a_minmaxString.'</div><div class="s-a-hall"><i class="fa fa-bank"></i>&nbsp;&nbsp;'.$a_hall.'</div></div>'
+//
+//                            .'</div>'
+//
+//
+//                            .'<div class="s-a-buy">Выбрать</div></div></a>';
+
+                    }
+
+                    $dates_html .= '</div>';
+
+                    $mth_indexer2 ++;
+                }
+
+                $dates_html .= '</div></div>';
+
+                echo $dates_html;
+
+                ?>
+
+
+            </div>
+
+
+<!--        888888888888888888888888888888888888888888-->
+
+
+
+
+
 
         <div class="a-reviews-holder">
             <h2 class="ap-title">Отзывы</h2>
@@ -527,6 +635,8 @@
 
     ?>
 
+
+    <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget.js" src=""></script>
 
     </body>
 

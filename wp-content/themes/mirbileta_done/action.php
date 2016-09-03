@@ -253,9 +253,22 @@
                     <a target="_blank" href="/get_discount/"><div class="mirbileta-get-discount"></div></a>
                 </div>
 
-                <div class="action-date"><?php echo $act_date .' '. $act_date_year; ?> <span class="weekday">(<?php echo $weekday_short;?>)</span> <?php echo $act_time;?></div>
 
-                <div class="action-venue"><a href="/<?php echo $venue_alias; ?>/" target="_blank"><?php echo $venue; ?></a></div>
+                <?php
+
+                    $another_date_link = (strlen($show_alias) > 1)? '<a class="another-date-link" href="/'.$show_alias.'/"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Выбрать другую дату</a>' : '';
+
+                ?>
+
+                <div class="action-date"><?php echo $act_date .' '. $act_date_year; ?> <span class="weekday">(<?php echo $weekday_short;?>)</span> <?php echo $act_time;?> <?php echo $another_date_link; ?></div>
+
+                <?php
+
+                $show_hall = ($venue == $hall)? '' : ' - '.$hall;
+
+                ?>
+
+                <div class="action-venue"><a href="/<?php echo $venue_alias; ?>/" target="_blank"><?php echo $venue; ?></a><?php echo $show_hall; ?></div>
 
 
                 <div class="action-places-info-holder">
@@ -295,7 +308,7 @@
 
 
 
-                                if(count($images_list) > 5){
+                                if(strlen($images_list) > 5){
                                     foreach ($images as $key1 => $value1){
 
                                         if(strpos($value1, 'youtube.com')){
@@ -337,6 +350,8 @@
 
                     </div>
 
+                    <?php if(strlen($description) > 5) :?>
+
                     <div class="action-description">
 
                         <h2 class="ap-title">Описание</h2>
@@ -355,6 +370,8 @@
                         </div>
 
                     </div>
+
+                    <?php endif;?>
 
                     <div class="a-reviews-holder">
                         <h2 class="ap-title">Отзывы</h2>

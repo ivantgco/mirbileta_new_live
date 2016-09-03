@@ -209,7 +209,7 @@ html{
     width: 100%;
 
     background-size: cover;
-    background-position: 50% 50%;
+    background-position: 50% -40px!important;
 }
 .slider-overflower {
     height: 100%;
@@ -220,7 +220,8 @@ html{
     margin-top: 0;
 }
 .slider-overflower-height{
-    height: 530px;
+    /*height: 530px;*/
+    height: 585px;
     overflow: hidden;
     width: 100%;
 }
@@ -1847,4 +1848,190 @@ a.nounderline:hover{
     margin-top: -76px;
     color: #ef2b2b;
 
+}
+
+.mirbileta-get-discount-holder{
+    display: none;
+}
+.show-dates-wrapper {
+    float: left;
+    width: 575px;
+    background-color: #fff;
+    border: 0;
+    margin-top: -51px;
+    margin-bottom: 0;
+}
+.show-dates-wrapper .tabsTogglersRow {
+    padding: 0;
+}
+.show-dates-wrapper .tabToggle {
+    text-align: center;
+    font-size: 16px;
+    color: #3e3a92;
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+    border-bottom: 4px solid #cbcbcb;
+    vertical-align: bottom;
+    margin: 0;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 5px;
+}
+.tabToggle.opened {
+    border-bottom: 4px solid #ef2b2b;
+    font-size: 24px;
+    color: #000;
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+}
+.a-date-item-day{
+    font-size: 26px;
+    color: #000;
+    font-family: "Helvetica-Semibold", OpenSans-light, arail, sans-serif;
+}
+.a-date-item-date-holder{
+    font-size: 16px;
+    color: #000;
+    padding-top: 7px;
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+}
+
+.tabulatorDDItem {
+    padding: 0;
+    padding-top: 30px;
+}
+.a-date-item-info-holder {
+    font-size: 13px;
+    color: #777777;
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 15px;
+    padding-top: 3px;
+}
+.a-date-item-info-holder i{
+    font-size: 12px;
+    padding-left: 2px;
+}
+.a-date-item-buy{
+    font-family: "Rambla-Bold",OpenSans-semibold , arail, sans-serif;
+    background-color: #ef2b2b;
+    color: #fff;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 7px;
+    padding-bottom: 6px;
+    border: 1px solid rgba(0,0,0,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+    width: 130px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 134px;
+    position: absolute;
+    margin-top: -24px;
+
+}
+.a-date-item-buy:hover{
+    background-color: #dd2828;
+}
+
+.a-date-item-holder {
+    max-width: 440px;
+    padding-left: 5px;
+    cursor: pointer;
+}
+.a-date-item-holder:hover {
+    background-color: #f7f7f7;
+}
+
+.show-action-nearrest-date-holder{
+    font-size: 14px;
+    color: #444444;
+    padding-top: 7px;
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+    margin-bottom: 20px;
+    margin-top: 23px;
+}
+
+.show-action-nearrest-date{
+    font-size: 18px;
+    color: #000;
+    font-family: "Helvetica-Semibold", OpenSans-light, arail, sans-serif;
+    padding-left: 20px;
+}
+.inline-buy-ticket{
+    font-size: 16px;
+    color: #ef2b2b;
+    font-family: "Helvetica-Bold", OpenSans-light, arail, sans-serif;
+    cursor: pointer;
+    padding-left: 20px;
+}
+.inline-buy-ticket:hover{
+    color: #d92727;
+    text-decoration: underline;
+}
+.ddRow.notZindexed.sc_tabulatorDDRow {
+    height: 430px;
+    overflow: auto;
+    position: relative;
+    width: 470px;
+}
+
+.image-gallery-and-desc-holder {
+    width: 575px;
+    float: left;
+    margin-right: 30px;
+}
+
+.another-date-link{
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+    font-weight: normal;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #ef2b2b;
+    /*text-decoration: underline;*/
+
+}
+.no-tickets-notify{
+    display: none;
+}
+.ig-main-wrapper {
+    height: auto;
+    max-height: 400px;
+}
+.action-venue{
+    max-width: 575px;
+}
+
+.mb-center-search-holder{
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+
+.mb-center-search{
+    font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
+    color: #000;
+    font-size: 18px;
+    border: 1px solid #6700a5;
+    border-radius: 5px;
+    height: 61px;
+    width: 390px;
+    text-align: center;
+    outline: 0;
+    background-color: #fff;
+    box-shadow: 0 0 20px #f1f1f1;
+}
+.mb-center-search:focus{
+    box-shadow: 0 0 40px #f1f1f1;
+}
+.mb-center-search-hint{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 5px;
+    color: #777777;
+}
+.nothing-to-show{
+    padding-top: 30px;
+    padding-bottom: 40px;
+    text-align: center;
 }

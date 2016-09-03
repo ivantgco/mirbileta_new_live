@@ -166,6 +166,8 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
             <div class="mb-center-headline"><span class="venue-name">АФИША</span></div>
             <div class="mb-center-subheadline">В наличии билеты в <span class="venue-name"><?php echo $data[array_search("VENUE_NAME", $columns)]; ?></span> на мероприятия:</div>
 
+            <div class="mb-center-search-holder"><input type="text" data-venue="<?php echo $data[array_search("VENUE_ID", $columns)]; ?>" class="mb-center-search" placeholder="Поиск мероприятий"/><div class="mb-center-search-hint">Введите 3 символа и начнем поиск</div></div>
+
             <div class="actions-wrapper marTop40">
                 <?php
 
