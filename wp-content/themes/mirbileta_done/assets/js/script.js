@@ -976,8 +976,8 @@
                     $('.ig-main-wrapper').html(tpl);
 
                 }else{
-                    $('.ig-main-wrapper').html('');
-                    $('.ig-main-wrapper').attr('style', 'background-image: url('+url+')' );
+//                    $('.ig-main-wrapper').html('');
+                    $('.ig-main-wrapper img').attr('src', url);
                 }
 
 

@@ -211,53 +211,7 @@
 
                 <div class="tabulatorDDItem sc_tabulatorDDItem sc_widget_tab noPaddingSides noMaxHeight" dataitem="2">
 
-                    <div class="one-action-widget-wrapper mmb-widget-holder">
 
-
-                        <div id="multibooker-widget-wrapper"
-                             data-action_id="<?php echo $act_id ?>"
-                             data-frame="<?php echo $frame ?>"
-                             data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                             data-ip="<?php echo $global_url; ?>">
-                        </div>
-
-
-
-
-
-<!--                        <div id="multibooker-widget-wrapper"-->
-<!--                             data-actions="--><?php //echo $act_id ?><!--"-->
-<!--                             data-widget_theme="light"-->
-<!--                             data-withdelivery="false"-->
-<!--                             data-mirbileta="true"-->
-<!--                             data-mobile="true"-->
-<!--                             data-width=""-->
-<!--                             data-frame="--><?php //echo $frame ?><!--"-->
-<!--                             data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
-<!--                             data-ip="--><?php //echo $global_url; ?><!--">-->
-<!---->
-<!--                            <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>-->
-<!---->
-<!--                        </div>-->
-
-<!--                        <div id="multibooker-widget-wrapper"-->
-<!--                             data-actions="3120"-->
-<!--                             data-widget_theme="light"-->
-<!--                             data-withdelivery="false"-->
-<!--                             data-mirbileta="true"-->
-<!--                             data-mobile="true"-->
-<!--                             data-width=""-->
-<!--                             data-frame="sdfsd9f8uorj83421o901hndhfs78df5t61yu4g1dck3h1239186yhoi"-->
-<!--                             data-host="http://mb-dev.mirbileta.ru/"-->
-<!--                             data-ip="mb-dev.mirbileta.ru">-->
-<!---->
-<!--                            <div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>-->
-<!---->
-<!--                        </div>-->
-
-                        <div class="one-action-widget-underwrapper zi20 posRel"></div>
-
-                    </div>
 
                 </div>
 
@@ -265,6 +219,23 @@
 
         </div>
 
+    </div>
+
+    <div class="one-action-widget-wrapper mmb-widget-holder">
+        <div class="one-action-widget-wrapper-inner">
+
+
+
+            <div id="multibooker-widget-wrapper"
+                 data-action_id="<?php echo $act_id ?>"
+                 data-frame="<?php echo $frame ?>"
+                 data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
+                 data-ip="<?php echo $global_url; ?>">
+            </div>
+
+            <div class="one-action-widget-underwrapper zi20 posRel"></div>
+
+        </div>
     </div>
 
 

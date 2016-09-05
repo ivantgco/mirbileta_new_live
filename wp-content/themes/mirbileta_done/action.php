@@ -303,9 +303,13 @@
                                 $images = explode(',', $images_list);
 
 
+                                $images_html = '';
 
-                                $images_html = '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+                                if(strlen($images_list) > 5){
 
+                                    $images_html .= '<div data-type="img" data-url="'.$poster.'" class="ig-list-item"><img class="ig-main-img" src="'.$poster.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
+
+                                }
 
 
                                 if(strlen($images_list) > 5){
