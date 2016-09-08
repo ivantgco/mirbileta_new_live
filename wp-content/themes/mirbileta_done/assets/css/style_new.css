@@ -755,7 +755,7 @@ html{
 }
 
 .mb-action-image-holder {
-    min-height: 217px;
+    /*min-height: 217px;*/
     background-color: #f7f7f7;
     background-image: url("../img/mb_icons_bg.png");
     background-size: 60%;

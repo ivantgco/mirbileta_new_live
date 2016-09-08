@@ -29,7 +29,7 @@
 
     <link href="/wp-content/themes/mirbileta_new_life/assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
 
-    <meta name="viewport" content="width=device-width">
+    <?php include 'viewport.php'; ?>
 
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
