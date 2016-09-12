@@ -26,6 +26,9 @@ else
 $columns = json_decode($resp)->results["0"]->data_columns;
 $data = json_decode($resp)->results["0"]->data;
 
+//echo '<div class="hidden">';
+//var_export($url);
+//echo '</div>';
 
 
 ?>

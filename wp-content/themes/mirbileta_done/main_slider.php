@@ -36,8 +36,11 @@
     $full_width = $action_count * 100;
     $single_width = ($action_count > 0) ? 100 / $action_count : 0;
 
-
-
+echo '<div class="hidden">';
+    var_export($url);
+echo '---';
+    var_export($resp);
+echo '</div>';
 
 ?>
 
