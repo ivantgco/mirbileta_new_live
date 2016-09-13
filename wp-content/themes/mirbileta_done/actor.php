@@ -1,64 +1,66 @@
 
 <?php
-// Получаем свойства текущего MODX-шаблона
-$properties = $modx->resource->getOne('Template')->getProperties();
-
-
-
-if(!empty($properties['tpl'])){
-    $tpl = $properties['tpl'];
-}
-else{
-    $tpl = 'index.tpl';
-}
-
-// Если документ не кешируемый, то отключаем кеширование Smarty
-// (кеширование Smarty включается/выключается в настройках modxSmarty. По умолчанию отключено).
-if ($modx->resource->cacheable != '1') {
-    $modx->smarty->caching = false;
-}
-// Отрабатываем Smarty-шаблон и возвращаем результат
-
-$user_agent = $_SERVER['HTTP_USER_AGENT'];
-
-$ipod = strpos($user_agent,"iPod");
-$iphone = strpos($user_agent,"iPhone");
-$android = strpos($user_agent,"Android");
-$symb = strpos($user_agent,"Symbian");
-$winphone = strpos($user_agent,"WindowsPhone");
-$wp7 = strpos($user_agent,"WP7");
-$wp8 = strpos($user_agent,"WP8");
-$operam = strpos($user_agent,"Opera M");
-$palm = strpos($user_agent,"webOS");
-$berry = strpos($user_agent,"BlackBerry");
-$mobile = strpos($user_agent,"Mobile");
-$htc = strpos($user_agent,"HTC_");
-$fennec = strpos($user_agent,"Fennec/");
-$nokia = strpos($user_agent,"Nokia");
-
-if ($ipod || $iphone || $android || $symb || $winphone || $wp7 || $wp8 || $operam || $palm || $berry || $mobile || $htc || $fennec || $nokia) {
-    $modx->smarty->assign('mobileDevice', true);
-} else {
-    $modx->smarty->assign('mobileDevice', false);
-}
-
-
-return $modx->smarty->fetch("core/tpl/{$tpl}");
-
-?>
+//// Получаем свойства текущего MODX-шаблона
+//$properties = $modx->resource->getOne('Template')->getProperties();
+//
+//
+//
+//if(!empty($properties['tpl'])){
+//    $tpl = $properties['tpl'];
+//}
+//else{
+//    $tpl = 'index.tpl';
+//}
+//
+//// Если документ не кешируемый, то отключаем кеширование Smarty
+//// (кеширование Smarty включается/выключается в настройках modxSmarty. По умолчанию отключено).
+//if ($modx->resource->cacheable != '1') {
+//    $modx->smarty->caching = false;
+//}
+//// Отрабатываем Smarty-шаблон и возвращаем результат
+//
+//$user_agent = $_SERVER['HTTP_USER_AGENT'];
+//
+//$ipod = strpos($user_agent,"iPod");
+//$iphone = strpos($user_agent,"iPhone");
+//$android = strpos($user_agent,"Android");
+//$symb = strpos($user_agent,"Symbian");
+//$winphone = strpos($user_agent,"WindowsPhone");
+//$wp7 = strpos($user_agent,"WP7");
+//$wp8 = strpos($user_agent,"WP8");
+//$operam = strpos($user_agent,"Opera M");
+//$palm = strpos($user_agent,"webOS");
+//$berry = strpos($user_agent,"BlackBerry");
+//$mobile = strpos($user_agent,"Mobile");
+//$htc = strpos($user_agent,"HTC_");
+//$fennec = strpos($user_agent,"Fennec/");
+//$nokia = strpos($user_agent,"Nokia");
+//
+//if ($ipod || $iphone || $android || $symb || $winphone || $wp7 || $wp8 || $operam || $palm || $berry || $mobile || $htc || $fennec || $nokia) {
+//    $modx->smarty->assign('mobileDevice', true);
+//} else {
+//    $modx->smarty->assign('mobileDevice', false);
+//}
+//
+//
+//return $modx->smarty->fetch("core/tpl/{$tpl}");
+//
+//?>
 
 <?php
 
 //ini_set('error_reporting', E_ALL);
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
-/*
-    Template Name: single_actor
-*/
+
 //    $cur_url = $_SERVER["REQUEST_URI"];
 //
 //    $actor_alias = substr($cur_url, 1, (strlen($cur_url) - 2));
 //    $actor_alias = (strpos($actor_alias, '-') > -1)? substr($actor_alias,0, strpos($actor_alias, '-')) : substr($cur_url, 1, (strlen($cur_url) - 2));
+
+/*
+    Template Name: single_actor
+*/
 
     $href = request_url();
     $arr = parse_url($href);
@@ -191,18 +193,18 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
                 echo $data[array_search("ACTOR_NAME", $columns)];
 
 
-                $petrovich->detectGender("Петрович");
-                $firstname = $petrovich->firstname($ar_name, Petrovich::CASE_INSTRUMENTAL); //   Александра;//CASE_INSTRUMENTAL
-                $lastname =  $petrovich->lastname($ar_surname, Petrovich::CASE_INSTRUMENTAL); //   Александра;//CASE_INSTRUMENTAL
-
-
-
+//                $petrovich->detectGender("Петрович");
+//                $firstname = $petrovich->firstname($ar_name, Petrovich::CASE_INSTRUMENTAL); //   Александра;//CASE_INSTRUMENTAL
+//                $lastname =  $petrovich->lastname($ar_surname, Petrovich::CASE_INSTRUMENTAL); //   Александра;//CASE_INSTRUMENTAL
 //
-//                echo $petrovich->detectGender("Петровна");  // Petrovich::GENDER_FEMALE (см. пункт Пол)
-//                echo '<br /><strong>Родительный падеж:</strong><br />';
-//                echo $petrovich->firstname($firstname, Petrovich::CASE_GENITIVE).'<br />'; //   Александра
-//                echo $petrovich->middlename($middlename, Petrovich::CASE_GENITIVE).'<br />'; // Сергеевича
-//                echo $petrovich->lastname($lastname, Petrovich::CASE_GENITIVE).'<br />'; //     Пушкина
+//
+//
+////
+////                echo $petrovich->detectGender("Петровна");  // Petrovich::GENDER_FEMALE (см. пункт Пол)
+////                echo '<br /><strong>Родительный падеж:</strong><br />';
+////                echo $petrovich->firstname($firstname, Petrovich::CASE_GENITIVE).'<br />'; //   Александра
+////                echo $petrovich->middlename($middlename, Petrovich::CASE_GENITIVE).'<br />'; // Сергеевича
+////                echo $petrovich->lastname($lastname, Petrovich::CASE_GENITIVE).'<br />'; //     Пушкина
 
 
                 ?>
@@ -226,7 +228,10 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
 
 
             <div class="mb-center-headline"><span class="venue-name">АФИША</span></div>
-            <div class="mb-center-subheadline">В наличии билеты на мероприятия с <span class="venue-name"><?php echo $firstname . ' ' . $lastname; ?></span>:</div>
+            <div class="mb-center-subheadline">В наличии билеты на мероприятия с <span class="venue-name">
+<!--                    --><?php //echo $firstname . ' ' . $lastname; ?>
+                    <?php echo $data[array_search("ACTOR_NAME", $columns)]; ?>
+                </span>:</div>
 
             <div class="actions-wrapper marTop40">
                 <?php
