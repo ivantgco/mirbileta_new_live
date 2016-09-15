@@ -33,8 +33,12 @@
     $data = json_decode($resp)->results["0"]->data[0];
 
     $act_id =       $data[array_search("ACTION_ID", $columns)];
-    $alias =        $data[array_search("ACTION_URL_ALIAS", $columns)];
     $frame =        $data[array_search("FRAME", $columns)];
+
+    $widget_act_id = $act_id;
+    $widget_frame = $frame;
+
+    $alias =        $data[array_search("ACTION_URL_ALIAS", $columns)];
     $act_name =     $data[array_search("ACTION_NAME", $columns)];
     $g_act_name =     $data[array_search("ACTION_NAME", $columns)];
     $thumb =        (strlen($data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
@@ -166,10 +170,10 @@
                 </div>
 
                 <div class="tabToggle sc_tabulatorToggler " dataitem="1" title="">
-                    <span class="">Площадка</span>
+                    <span class="">Место</span>
                 </div>
 
-                <div class="tabToggle sc_tabulatorToggler mmb-buy-ticket-tab" dataitem="2" title="">
+                <div class="tabToggle sc_tabulatorToggler mmb-buy-ticket-tab" dataitem="2" title="" data-id="<?php echo $widget_act_id;?>" data-frame="<?php echo $widget_frame;?>">
                     <span class="">Купить билет</span>
                 </div>
 
@@ -221,22 +225,22 @@
 
     </div>
 
-    <div class="one-action-widget-wrapper mmb-widget-holder">
-        <div class="one-action-widget-wrapper-inner">
-
-
-
-            <div id="multibooker-widget-wrapper"
-                 data-action_id="<?php echo $act_id ?>"
-                 data-frame="<?php echo $frame ?>"
-                 data-host=<?php echo $global_prot ."://". $global_url.'/'; ?>
-                 data-ip="<?php echo $global_url; ?>">
-            </div>
-
-            <div class="one-action-widget-underwrapper zi20 posRel"></div>
-
-        </div>
-    </div>
+<!--    <div class="one-action-widget-wrapper mmb-widget-holder">-->
+<!--        <div class="one-action-widget-wrapper-inner">-->
+<!---->
+<!---->
+<!---->
+<!--            <div id="multibooker-widget-wrapper"-->
+<!--                 data-action_id="--><?php //echo $act_id ?><!--"-->
+<!--                 data-frame="--><?php //echo $frame ?><!--"-->
+<!--                 data-host=--><?php //echo $global_prot ."://". $global_url.'/'; ?>
+<!--                 data-ip="--><?php //echo $global_url; ?><!--">-->
+<!--            </div>-->
+<!---->
+<!--            <div class="one-action-widget-underwrapper zi20 posRel"></div>-->
+<!---->
+<!--        </div>-->
+<!--    </div>-->
 
 
 </div>
@@ -248,7 +252,7 @@
 </div>
 
 <?php if($free_places > 0):?>
-    <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget-mobile.js"></script>
+    <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget-mobile.js" src=""></script>
 <!--    <script type="text/javascript" src="http://mb-dev.mirbileta.ru/assets/widget/widget.js"></script>-->
 <?php endif; ?>
 

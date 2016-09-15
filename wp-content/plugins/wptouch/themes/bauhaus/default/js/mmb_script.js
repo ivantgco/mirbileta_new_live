@@ -13,8 +13,14 @@
     var today = new Date().toLocaleDateString();
 
 
+
+
     var defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
+
+    var gip = 'shop.mirbileta.ru';
+    var gprot = 'https';
     var gurl = 'mirbileta.ru';
+
     var loadingHtml =       '<div class="ms-loading"><i class="fa fa-search"></i>&nbsp;&nbsp;Идет поиск&hellip;</div>';
     var emptyHtml =         '<div class="ms-loading">Поискали &ndash; не нашли, попробуйте другой запрос.</div>';
     var clearHtml =         '<div class="ms-loading">Введите поисковый запрос.</div>';
@@ -594,6 +600,52 @@
 
 
     var mmb = {
+        initWidget: function(a_id, frame){
+
+            $('.mmb-widget-holder').remove();
+            $('#mbw-script-loader').attr('src', '');
+
+
+
+
+            var tpl =   '<div class="one-action-widget-wrapper mmb-widget-holder">' +
+                '<div class="one-action-widget-wrapper-inner">' +
+                '<div id="multibooker-widget-wrapper"' +
+                'data-action_id="{{action_id}}"' +
+//                'data-mirbileta="true"' +
+                'data-frame="{{frame}}"' +
+                'data-host="{{global_prot}}://{{global_ip}}/"' +
+                'data-ip="{{ip}}">' +
+                '<div class="mirbileta-widget-wrapper-wait-text"><i class="fa fa-cog fa-spin"></i>&nbsp;&nbsp;Подождите, загружается модуль продажи билетов...</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' ;
+
+
+            var mO = {
+                action_id: a_id,
+                frame: frame,
+                global_prot: gprot,
+                global_ip: gip,
+                ip:gip
+            };
+
+            console.log('------>', mO);
+
+            $('body').append(Mustache.to_html(tpl, mO));
+            $('body').addClass('mbw-widget-opened');
+
+
+
+            $('.mmb-widget-holder').show(0);
+
+
+            $.getScript($('#mbw-script-loader').attr('data-src'), function(){
+
+            });
+
+
+        },
         initSearch: function(){
             var pageHolder =    $('#mmb-page-container');
             var toggler =       $('.mmb-search');
@@ -987,12 +1039,23 @@
 
             });
 
-            $('.mmb-buy-ticket-tab').on('click', function(){
-                $('html, body').animate({
-                    scrollTop: $('.mmb-buy-ticket-tab').offset().top + 47
-                }, 250, function(){
+            $('.mmb-buy-ticket-tab').on('click', function(e){
 
-                });
+
+                var aid = $(this).data('id');
+                var frame = $(this).data('frame');
+
+                mmb.initWidget(aid, frame);
+
+                e.stopPropagation();
+
+                return false;
+
+//                $('html, body').animate({
+//                    scrollTop: $('.mmb-buy-ticket-tab').offset().top + 47
+//                }, 250, function(){
+//
+//                });
             });
 
 

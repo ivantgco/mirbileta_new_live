@@ -166,11 +166,11 @@
                 </div>
 
                 <div class="tabToggle sc_tabulatorToggler " dataitem="1" title="">
-                    <span class="">Площадка</span>
+                    <span class="">Место</span>
                 </div>
 
                 <div class="tabToggle sc_tabulatorToggler " dataitem="2" title="">
-                    <span class="">Лица</span>
+                    <span class="">Исполнители</span>
                 </div>
 
             </div>
