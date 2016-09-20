@@ -189,9 +189,12 @@ html{
 }
 .mb-site-content {
     background-color: #fff;
-
+    margin-top: 0;
 }
 
+.site-container{
+    margin-top: 0;
+}
 
 
 
@@ -200,7 +203,7 @@ html{
     width: 235px;
     float: left;
     background-color: #fff;
-    margin-top: 160px;
+    /*margin-top: 160px;*/
     border-right: 1px solid #dcdcdc;
 }
 
@@ -233,7 +236,7 @@ html{
     font-family: "Helvetica-Regular", OpenSans-Regular, arail, sans-serif;
     font-size: 30px;
     color: #000;
-    padding-top: 22px;
+    padding-top: 42px;
     padding-bottom: 24px;
     padding-left: 20px;
 }
