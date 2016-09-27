@@ -828,7 +828,7 @@ html{
     border: 1px solid rgba(0,0,0,0.25);
 }
 .action-title{
-    font-family: "Helvetica-Regular", OpenSans-Regular, arail, sans-serif;
+    font-family: "Helvetica-bold", OpenSans-Regular, arail, sans-serif;
     font-size: 30px;
     color: #000;
     padding-top: 22px;
@@ -2049,3 +2049,23 @@ a.nounderline:hover{
     background-color: #fff;
 }
 
+
+.page-template-show .site-sidebar ,
+.page-template-action .site-sidebar {
+    margin-top: 114px;
+}
+.action-actors-holder ul li {
+    margin-bottom: 7px;
+}
+
+.mb-medium-actions .mb-me-a-title {
+    font-family: 'PTSans-Bold', 'OpenSans-Regular', arial, sans-serif;
+    height: auto;
+    min-height: 34px;
+    color: #000;
+    white-space: normal;
+    overflow: inherit;
+    text-overflow: ellipsis;
+    line-height: 18px;
+    padding-right: 30px;
+}
