@@ -2070,3 +2070,496 @@ a.nounderline:hover{
     line-height: 18px;
     padding-right: 30px;
 }
+
+
+/*  LANDING TPL  */
+
+.l-bg {
+    height: 637px;
+    width: 100%;
+    background-size: cover;
+    position: absolute;
+    background-color: #4f2d22;
+}
+.l-fader{
+    width: 100%;
+    height: 147px;
+    background-color: rgba(0,0,0,0.8);
+    position: absolute;
+    z-index: 1000000;
+    margin-top: -147px;
+}
+.l-content{
+    z-index: 2;
+    position: relative;
+
+}
+.l-page-data{
+
+}
+
+.l-page-1-data{
+    padding-left: 50px;
+    color: #fff;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    padding-top: 22px;
+}
+.l-date-date{
+    color: #fff;
+    font-size: 90px;
+    display: inline-block;
+}
+.l-date-mth{
+    margin-top: -21px;
+    font-size: 26px;
+}
+.l-date-year{
+    margin-top: -1px;
+    font-size: 15px;
+    width: 102px;
+    text-align: center;
+}
+.l-venue{
+    font-family: times new roman, serif;
+    position: absolute;
+    top: 71px;
+    left: 230px;
+    font-size: 18px;
+}
+.l-show-image {
+    position: absolute;
+    top: 158px;
+    left: 180px;
+}
+.l-action-name {
+    font-size: 94px;
+    letter-spacing: -4.9px;
+    margin-top: 19px;
+}
+.l-actors{
+    width: 670px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.l-buy {
+    display: inline-block;
+    margin-top: 3px;
+    background-color: #ef2b2b;
+    color: #fff;
+    font-size: 18px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-shadow: 0 2px rgba(0,0,0,0.2);
+}
+.l-buy:hover{
+    background-color: #d02525;
+}
+.mirbileta-discount-holder{
+    display: inline-block;
+    line-height: 15px;
+    margin-top: 11px;
+    text-align: center;
+    font-size: 16px;
+    vertical-align: top;
+    margin-right: 20px;
+}
+
+.mirbileta-discount-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+}
+.l-next-slide {
+    display: inline-block;
+    margin-left: 22px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: underline;
+    cursor: pointer;
+}
+.l-next-slide:hover{
+    color: #fff;
+}
+.l-buy-holder {
+    margin-top: 43px;
+    margin-left: 138px;
+}
+.l-no-fee {
+    margin-left: 123px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+}
+.l-page-2-top-bg {
+    margin-top: -98px;
+    position: absolute;
+    background-position-x: 50%;
+    z-index: 1;
+}
+
+.l-page-2-bg{
+    background-color: #0d2e6b;
+    width: 100%;
+    margin-top: 77px;
+    background-image: url("../img/duzhev/row_bg.png");
+    background-position-y: 1px;
+    position: relative;
+}
+.l-row h2{
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;;
+    font-size: 40px;
+}
+.l-row h3{
+    font-family: "Roboto-bold", OpenSans-Regular, arial, sans-serif;;
+    font-size: 30px;
+    margin-bottom: 15px;
+    margin-top: 28px;
+}
+.l-row h4{
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;;
+    font-size: 20px;
+    color: rgba(255,255,255,0.5);
+}
+
+
+.l-row h2,
+.l-row h3{
+    color: #fff;
+}
+.l-a-item {
+    margin-bottom: 30px;
+}
+
+.l-a-item img {
+    border-radius: 4px;
+}
+
+.l-page-2-stars{
+
+    position: absolute;
+    height: 100%;
+    width: 344px;
+    opacity: 0.6;
+
+}
+.stars-left{
+    background-image: url("../img/duzhev/stars.png");
+
+    left: 0;
+    top: -22px;
+    z-index: 10;
+}
+.stars-right{
+    background-image: url("../img/duzhev/stars_r.png");
+
+    right: 0;
+    top: -8px;
+    z-index: 10;
+}
+.l-purple-bg{
+    background-image: url(../img/duzhev/purple.png);
+    width: 100%;
+    position: absolute;
+    height: 365px;
+    background-size: cover;
+    top: 591px;
+}
+.l-purple-bg-2{
+
+    width: 100%;
+    position: absolute;
+    top: 956px;
+    height: 1090px;
+    background-color: #2a0b54;
+}
+
+.l-purple-btn{
+    background-color: #200742;
+    border: 2px solid #ffea00;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.l-purple-btn:hover{
+    border: 2px solid #ffb200;
+}
+.l-purple-text{
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    font-size: 22px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+}
+.l-prices{
+    display: inline-block;
+    vertical-align: middle;
+}
+.l-old-price{
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: line-through;
+    text-align: center;
+}
+.l-new-price{
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    font-size: 22px;
+    color: #ffea00;
+    margin-top: -6px;
+    text-align: center;
+}
+.l-old-price i{
+    font-size: 14px;
+}
+.l-new-price i{
+    font-size: 18px;
+}
+.l-purple-btns-holder{
+    margin: 0 auto;
+    width: 790px;
+    margin-top: 70px;
+}
+
+.mirbileta-discount-notifier{
+    width: 600px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding-bottom: 58px;
+}
+.l-page-3-bg {
+    position: absolute;
+    background-color: #fff;
+}
+.l-text{
+    font-size: 52px;
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    color: #000;
+    text-align: center;
+    margin-top: 140px;
+}
+.roboto-bold{
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+}
+
+.l-green-next {
+    font-size: 40px;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    color: #148b04;
+    text-align: center;
+    margin-top: 130px;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 110px;
+}
+.l-green-next:hover{
+    color: #00a800;
+}
+.l-page-4-bg{
+    background-color: rgba(255,255,255,0.8);
+    width: 100%;
+    height: 804px;
+    position: relative;
+}
+.l-page-4-container{
+    background-color: rgba(255,255,255,0.8);
+}
+
+.l-text-32{
+    font-size: 32px;
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    color: #000;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.l-text-52{
+    font-size: 52px;
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    color: #000;
+    margin-top: 60px;
+    text-align: center;
+    padding-bottom: 100px;
+}
+
+
+.l-buy-dark .mirbileta-discount-sub{
+    color: rgba(0,0,0,0.6);
+}
+.l-buy-dark .l-no-fee{
+    color: rgba(0,0,0,0.6);
+}
+.l-buy-lists{
+    margin: 0 auto;
+    width: 370px;
+    margin-bottom: 120px;
+    margin-top: 24px;
+}
+.l-row {
+    width: 100%;
+    float: left;
+    position: relative;
+}
+.l-page-5-bg {
+    position: absolute;
+}
+.l-page-5-circle {
+    background-color: rgba(0,0,0,0.9);
+    border-radius: 50%;
+    height: 796px;
+    width: 796px;
+    margin: 0 auto;
+    margin-top: 40px;
+    padding-left: 196px;
+    padding-top: 150px;
+}
+.l-page-5-hl{
+    font-size: 40px;
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    color: #fff;
+}
+.l-page-5-prices-holder{
+    font-size: 52px;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    color: #fff;
+    margin-top: 40px;
+}
+
+.l-page-5-price-text{
+    display: inline-block;
+}
+.l-page-5-prices{
+    display: inline-block;
+}
+.l-page-5-price-old{
+    font-size: 32px;
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    color: #9b9b9b;
+    text-decoration: line-through;
+    text-align: right;
+}
+
+.l-page-5-price-new{
+    margin-top: -10px;
+    text-align: right;
+}
+.l-page-5-price-old i{
+    font-size: 26px;
+}
+.l-page-5-price-new i{
+    font-size: 46px;
+}
+.l-circle-buy-holder{
+    margin-left: 20px;
+    margin-top: 80px;
+}
+
+.l-circle-buy-holder .mirbileta-discount-holder{
+    color: #fff;
+}
+.l-help{
+    width: 100%;
+    text-align: center;
+}
+.l-help-1{
+    font-size: 52px;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    color: #000;
+}
+.l-help-2{
+    font-size: 52px;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    color: #ed3838;
+}
+.l-help-3{
+    font-size: 52px;
+    font-family: "Roboto-bold", OpenSans-Regular, arial, sans-serif;
+    color: #000;
+}
+
+.l-page-6-content{
+    margin-top: 100px;
+    background-color: #fff;
+}
+.l-page-6-content {
+    margin-top: 0;
+    background-color: #fff;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.multibooker-buy-button.l-buy {
+    width: 180px;
+    padding-bottom: 28px;
+}
+.multibooker-buy-button.l-purple-btn {
+    background-color: #200742;
+    border: 2px solid #ffea00;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+    width: 360px;
+    height: auto;
+    font-weight: normal;
+}
+.l-another-places{
+    border: 2px solid #ffea00;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    cursor: pointer;
+    width: 400px;
+    height: auto;
+    color: #000;
+    font-weight: normal;
+    font-size: 30px;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 70px;
+}
+.l-another-places:hover{
+    background-color: #ffea00;
+
+}
+
+.l-another-places-phone{
+    width: 395px;
+    margin: 0 auto;
+}
+
+.l-another-places-phone input{
+    height: 70px;
+    font-size: 30px;
+    font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
+    width: 100%;
+    text-align: center;
+}
+.l-another-places-phone label {
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 16px;
+    color: #777;
+}
