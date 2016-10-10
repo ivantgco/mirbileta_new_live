@@ -3358,42 +3358,45 @@ body.mbw-widget-opened{
 }
 
 .l-page-1-data{
-    padding-left: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
     color: #fff;
     font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
     padding-top: 22px;
 }
 .l-date-date{
     color: #fff;
-    font-size: 90px;
+    font-size: 60px;
     display: inline-block;
 }
 .l-date-mth{
-    margin-top: -21px;
-    font-size: 26px;
+    margin-top: -1px;
+    font-size: 18px;
 }
 .l-date-year{
-    margin-top: -1px;
-    font-size: 15px;
-    width: 102px;
+    margin-top: 2px;
+    font-size: 14px;
+    width: 71px;
     text-align: center;
 }
 .l-venue{
     font-family: times new roman, serif;
     position: absolute;
-    top: 71px;
-    left: 230px;
+    top: 46px;
+    left: 120px;
     font-size: 18px;
 }
 .l-show-image {
     position: absolute;
-    top: 158px;
-    left: 180px;
+    top: 168px;
+    left: 22px;
+    background-size: 80%;
+    background-repeat: no-repeat;
 }
 .l-action-name {
-    font-size: 94px;
-    letter-spacing: -4.9px;
-    margin-top: 19px;
+    font-size: 64px;
+    letter-spacing: -0.9px;
+    margin-top: 109px;
 }
 .l-actors{
     width: 670px;
@@ -3435,23 +3438,26 @@ body.mbw-widget-opened{
 }
 .l-next-slide {
     display: inline-block;
-    margin-left: 22px;
-    font-size: 16px;
+    margin-left: 0;
+    font-size: 32px;
     color: rgba(255,255,255,0.6);
     text-decoration: underline;
     cursor: pointer;
+    margin-top: 40px;
+    margin-bottom: 50px;
 }
 .l-next-slide:hover{
     color: #fff;
 }
 .l-buy-holder {
     margin-top: 43px;
-    margin-left: 138px;
+    margin-left: 0;
+    text-align: center;
 }
 .l-no-fee {
-    margin-left: 123px;
+    margin-left: 0px;
     margin-top: 10px;
-    font-size: 13px;
+    font-size: 16px;
     color: rgba(255,255,255,0.7);
 }
 .l-page-2-top-bg {
@@ -3464,38 +3470,51 @@ body.mbw-widget-opened{
 .l-page-2-bg{
     background-color: #0d2e6b;
     width: 100%;
-    margin-top: 77px;
+    margin-top: 0;
     background-image: url("../img/duzhev/row_bg.png");
     background-position-y: 1px;
     position: relative;
 }
 .l-row h2{
-    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;;
-    font-size: 40px;
+    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    margin-bottom: 40px;
+    margin-top: 0;
+    font-weight: normal;
+    padding-top: 40px;
 }
 .l-row h3{
     font-family: "Roboto-bold", OpenSans-Regular, arial, sans-serif;;
     font-size: 30px;
     margin-bottom: 15px;
+    font-weight: normal;
     margin-top: 28px;
 }
 .l-row h4{
     font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;;
     font-size: 20px;
     color: rgba(255,255,255,0.5);
+    font-weight: normal;
 }
 
 
 .l-row h2,
 .l-row h3{
     color: #fff;
+    font-weight: normal;
 }
 .l-a-item {
     margin-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .l-a-item img {
     border-radius: 4px;
+
+    width: 100%;
 }
 
 .l-page-2-stars{
@@ -3585,14 +3604,17 @@ body.mbw-widget-opened{
 }
 .l-purple-btns-holder{
     margin: 0 auto;
-    width: 790px;
+    width: 100%;
     margin-top: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
 }
 
 .mirbileta-discount-notifier{
-    width: 600px;
+    width: 100%;
     text-align: center;
-    font-size: 13px;
+    font-size: 14px;
     color: rgba(255,255,255,0.6);
     font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
     margin: 0 auto;
@@ -3604,11 +3626,13 @@ body.mbw-widget-opened{
     background-color: #fff;
 }
 .l-text{
-    font-size: 52px;
+    font-size: 24px;
     font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
     color: #000;
     text-align: center;
-    margin-top: 140px;
+    margin-top: 70px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .roboto-bold{
     font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
@@ -3630,7 +3654,7 @@ body.mbw-widget-opened{
 .l-page-4-bg{
     background-color: rgba(255,255,255,0.8);
     width: 100%;
-    height: 804px;
+    height: auto;
     position: relative;
 }
 .l-page-4-container{
@@ -3638,16 +3662,18 @@ body.mbw-widget-opened{
 }
 
 .l-text-32{
-    font-size: 32px;
+    font-size: 25px;
     font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
     color: #000;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 60px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .l-text-52{
-    font-size: 52px;
-    font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
+    font-size: 36px;
+    font-family: "Roboto-Bold", OpenSans-Regular, arial, sans-serif;
     color: #000;
     margin-top: 60px;
     text-align: center;
@@ -3663,9 +3689,9 @@ body.mbw-widget-opened{
 }
 .l-buy-lists{
     margin: 0 auto;
-    width: 370px;
-    margin-bottom: 120px;
-    margin-top: 24px;
+    width: 100%;
+    margin-bottom: 0;
+    padding-bottom: 57px;
 }
 .l-row {
     width: 100%;
@@ -3677,21 +3703,19 @@ body.mbw-widget-opened{
 }
 .l-page-5-circle {
     background-color: rgba(0,0,0,0.9);
-    border-radius: 50%;
-    height: 796px;
-    width: 796px;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 20px;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 40px;
-    padding-left: 196px;
-    padding-top: 150px;
 }
 .l-page-5-hl{
-    font-size: 40px;
+    font-size: 30px;
     font-family: "Roboto-Light", OpenSans-Regular, arial, sans-serif;
     color: #fff;
 }
 .l-page-5-prices-holder{
-    font-size: 52px;
+    font-size: 30px;
     font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
     color: #fff;
     margin-top: 40px;
@@ -3716,10 +3740,10 @@ body.mbw-widget-opened{
     text-align: right;
 }
 .l-page-5-price-old i{
-    font-size: 26px;
+    font-size: 16px;
 }
 .l-page-5-price-new i{
-    font-size: 46px;
+    font-size: 26px;
 }
 .l-circle-buy-holder{
     margin-left: 20px;
@@ -3734,17 +3758,17 @@ body.mbw-widget-opened{
     text-align: center;
 }
 .l-help-1{
-    font-size: 52px;
+    font-size: 32px;
     font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
     color: #000;
 }
 .l-help-2{
-    font-size: 52px;
+    font-size: 32px;
     font-family: "Roboto-Regular", OpenSans-Regular, arial, sans-serif;
     color: #ed3838;
 }
 .l-help-3{
-    font-size: 52px;
+    font-size: 32px;
     font-family: "Roboto-bold", OpenSans-Regular, arial, sans-serif;
     color: #000;
 }
@@ -3761,23 +3785,28 @@ body.mbw-widget-opened{
 }
 
 .multibooker-buy-button.l-buy {
-    width: 180px;
+    width: 240px;
     padding-bottom: 28px;
+    height: 60px;
+    padding-top: 18px;
+    font-size: 22px;
 }
 .multibooker-buy-button.l-purple-btn {
     background-color: #200742;
     border: 2px solid #ffea00;
     border-radius: 5px;
-    padding-left: 30px;
-    padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
     display: inline-block;
-    margin-right: 20px;
     cursor: pointer;
-    width: 360px;
-    height: auto;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
     font-weight: normal;
+    height: auto;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 30px;
 }
 .l-another-places{
     border: 2px solid #ffea00;
@@ -3786,9 +3815,9 @@ body.mbw-widget-opened{
     padding-right: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
-
     cursor: pointer;
-    width: 400px;
+    width: 100%;
+    box-sizing: border-box;
     height: auto;
     color: #000;
     font-weight: normal;
@@ -3801,4 +3830,13 @@ body.mbw-widget-opened{
 .l-another-places:hover{
     background-color: #ffea00;
 
+}
+.l-actors {
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    line-height: 22px;
+}
+.black_bg{
+    background-color: #000;
 }

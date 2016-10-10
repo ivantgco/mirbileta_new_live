@@ -18,72 +18,8 @@
 
 
 
-//    $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><action_url_alias>".$action_alias."</action_url_alias>";
-//
-//    $ch = curl_init();
-//
-//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-//    curl_setopt($ch, CURLOPT_URL, $url);
-//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-//    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-//    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-//
-//    $resp = curl_exec($ch);
-//
-//    if (curl_errno($ch))
-//        print curl_error($ch);
-//    else
-//        curl_close($ch);
-
-//    $columns = json_decode($resp)->results["0"]->data_columns;
-//    $data = json_decode($resp)->results["0"]->data[0];
-//
-//    $act_id =       $data[array_search("ACTION_ID", $columns)];
-//    $widget_act_id =$data[array_search("ACTION_ID", $columns)];
-//    $alias =        $data[array_search("ACTION_URL_ALIAS", $columns)];
-//    $show_alias =   $data[array_search("SHOW_URL_ALIAS", $columns)];
-//    $frame =        $data[array_search("FRAME", $columns)];
-//    $widget_frame = $data[array_search("FRAME", $columns)];
-//    $act_name =     $data[array_search("ACTION_NAME", $columns)];
-//    $g_act_name =     $data[array_search("ACTION_NAME", $columns)];
-//    $thumb =        (strlen($data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
-//    $poster =       (strlen($data[array_search("ACTION_POSTER_IMAGE", $columns)])> 0) ? (strpos("http", $data[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?                          $global_prot . '://'. $global_url . '/upload/' . $data[array_search("ACTION_POSTER_IMAGE", $columns)] : $data[array_search("ACTION_POSTER_IMAGE", $columns)]: $defaultPoster;
-//    $act_date_full =     $data[array_search("ACTION_DATE", $columns)];
-//    $act_date =     $data[array_search("ACTION_DATE_STR", $columns)];
-//    $act_date_year =    to_afisha_date($data[array_search("ACTION_DATE", $columns)], 'year', 'rus');
-//    $act_time =     $data[array_search("ACTION_TIME_STR", $columns)];
-//    $hall =         $data[array_search("HALL_NAME", $columns)];
-//    $genre =        $data[array_search("SHOW_GENRE", $columns)];
-//    $venue =        $data[array_search("VENUE_NAME", $columns)];
-//    $venue_alias =  $data[array_search("VENUE_URL_ALIAS", $columns)];
-//    $address =      $data[array_search("HALL_ADDR", $columns)];
-//    $g_address =    $data[array_search("HALL_GOOGLE_ADDRESS", $columns)];
-//    $free_places =  $data[array_search("FREE_PLACE_COUNT", $columns)];
-//    $minprice =     $data[array_search("MIN_PRICE", $columns)];
-//    $maxprice =     $data[array_search("MAX_PRICE", $columns)];
-//    $day_of_week =  $data[array_search("ACTION_DAY_OF_WEEK", $columns)];
-//    $duration =     $data[array_search("DURATION_HOUR_MIN", $columns)];
-//    $is_wo =        $data[array_search("ACTION_TYPE", $columns)] == 'ACTION_WO_PLACES';
-//    $sbag =         $data[array_search("SPLIT_BY_AREA_GROUP", $columns)] == 'TRUE';
-//    $tag_list =     $data[array_search("ACTION_TAG_LIST", $columns)];
-//    $actor_list =   $data[array_search("ACTION_ACTOR_LIST", $columns)];
-//    $images_list =   $data[array_search("ACTION_IMAGES_LIST", $columns)];
-//
-//    $isInfo = strlen($description) > 0;
-//    $description = $data[array_search("DESCRIPTION", $columns)];
-//
-//    $ageCat = strlen($data[array_search("AGE_CATEGORY", $columns)]) ? $data[array_search("AGE_CATEGORY", $columns)] : '0+';
-//    $act_date_time = $data[array_search("ACTION_DATE_TIME", $columns)];
-//
-//    $short_date = to_afisha_date($act_date_time, "short_date", "rus");
-//    $short_date_with_year = to_afisha_date($act_date_time, "short_date_with_year", "rus");
-//    $week_and_time = to_afisha_date($act_date_time, "week_and_time", "rus");
-//    $weekday = to_afisha_date($act_date_time, "weekday", "rus");
-//    $weekday_short = to_afisha_date($act_date_time, "weekday_short", "rus");
-//    $time = to_afisha_date($act_date_time, "time", "rus");
-
-
     ?>
+
 
 
     <!DOCTYPE html>
@@ -104,38 +40,38 @@
 
         <title><?php wp_title('-', true, 'right'); ?></title>
 
+        <meta name="viewport" content="width=1170, initial-scale=0.1">
+
         <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 
         <link href="/wp-content/themes/mirbileta_new_life/assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
 
-        <?php include 'viewport.php'; ?>
+
 
 
         <link rel="profile" href="http://gmpg.org/xfn/11">
-        <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-        <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all'/>
 
-        <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget.js" src=""></script>
+        <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+
+        <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all'/>
 
         <?php wp_head(); ?>
 
-
+        <?php include 'viewport.php';?>
 
     </head>
 
-
-
     <body <?php body_class(); ?> data-page="inner">
-
+    <div class="page-holder action-page">
     <?php
+
     get_header();
-    include('main_menu.php');
 
     ?>
 
 
     <div class="l-fader"></div>
-    <div class="l-row">
+    <div class="l-row black_bg">
 
         <div class="l-bg" style="background-size: cover; background-image: url(<?php echo $theme_path;?>/assets/img/duzhev/1.jpg)"></div>
 
@@ -156,7 +92,7 @@
                     </div>
 
                     <div class="l-show-name">
-                        <div class="l-show-image" alt="Я люблю тебя, жизнь" style="width: 348px; height:57px;background-image: url(<?php echo $theme_path;?>/assets/img/duzhev/2.png)"></div>
+                        <div class="l-show-image" alt="Я люблю тебя, жизнь" style="left: 0; background-position-x:50%;  width: 100%; height:57px;background-image: url(<?php echo $theme_path;?>/assets/img/duzhev/2.png)"></div>
                     </div>
 
                     <div class="l-action">
@@ -183,8 +119,8 @@
                              data-host="https://shop.mirbileta.ru"
                              data-ip="shop.mirbileta.ru"
                             >КУПИТЬ БИЛЕТЫ</div>
-                        <div class="l-next-slide">Подробнее о концерте</div>
                         <div class="l-no-fee">А так же, без сервисного сбора!</div>
+                        <div class="l-next-slide">Подробнее о концерте</div>
 
                     </div>
                 </div>
@@ -198,7 +134,7 @@
 
         </div>
 
-        <div class="l-page-2-top-bg" style="width: 100%; height:229px;background-image: url(<?php echo $theme_path;?>/assets/img/duzhev/3.png)"></div>
+<!--        <div class="l-page-2-top-bg" style="width: 100%; height:229px;background-image: url(--><?php //echo $theme_path;?><!--/assets/img/duzhev/3.png)"></div>-->
 
     </div>
 
@@ -210,11 +146,11 @@
 
             <div class="l-page-2-bg">
 
-                <div class="l-page-2-stars stars-left"></div>
-                <div class="l-page-2-stars stars-right"></div>
+<!--                <div class="l-page-2-stars stars-left"></div>-->
+<!--                <div class="l-page-2-stars stars-right"></div>-->
 
-                <div class="l-purple-bg"></div>
-                <div class="l-purple-bg-2"></div>
+<!--                <div class="l-purple-bg"></div>-->
+<!--                <div class="l-purple-bg-2"></div>-->
 
                 <div class="container posRel" style="z-index: 10;">
 
@@ -314,7 +250,7 @@
                              data-ip="shop.mirbileta.ru"
                             >
 
-                            <div class="l-purple-text">Места в амфитеатре от </div>
+                            <div class="l-purple-text">Места в амфитеатре от </div><br/>
                             <div class="l-prices">
                                 <div class="l-old-price">1500 <i class="fa fa-ruble"></i></div>
                                 <div class="l-new-price">1350 <i class="fa fa-ruble"></i></div>
@@ -327,7 +263,7 @@
                              data-host="https://shop.mirbileta.ru"
                              data-ip="shop.mirbileta.ru"
                             >
-                            <div class="l-purple-text">Места в партере от </div>
+                            <div class="l-purple-text">Места в партере от </div><br/>
                             <div class="l-prices">
                                 <div class="l-old-price">2500 <i class="fa fa-ruble"></i></div>
                                 <div class="l-new-price">2250 <i class="fa fa-ruble"></i></div>
@@ -353,8 +289,8 @@
         <div class="container posRel">
 
             <div class="l-text">
-                <span class="roboto-bold">18</span> октября на главной сцене страны состоится<br/>
-                концерт, посвященный 20-летию творчества<br/>
+                <span class="roboto-bold">18</span> октября на главной сцене страны состоится
+                концерт, посвященный 20-летию творчества
                 <span class="roboto-bold">Дмитрия Дюжева!</span>
             </div>
 
@@ -368,9 +304,9 @@
             <div class="container l-page-4-container posRel">
 
                 <div class="l-text-32">
-                    Этой осенью москвичи увидят и услышат самые любимые<br/>
-                    песни и отрывки из фильмов и спектаклей! Этому<br/>
-                    поспособствуют огромные экраны и грандиозное оформление<br/>
+                    Этой осенью москвичи увидят и услышат самые любимые
+                    песни и отрывки из фильмов и спектаклей! Этому
+                    поспособствуют огромные экраны и грандиозное оформление
                     главной сцены страны.
                 </div>
 

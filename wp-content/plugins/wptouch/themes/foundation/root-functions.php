@@ -359,7 +359,19 @@ function foundation_setup_viewport(){
 	if ( $settings->allow_zoom == true ) {
 		$zoomState = 'yes';
 	}
-	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=' . $zoomState .', width=device-width" />';
+
+    $is_landing_scale = (strpos($_SERVER['REQUEST_URI'], 'tvorcheskij_vecher_dmitriya_dyuzheva_6501') == false)? true : false;
+
+//    if($is_landing_scale){
+        echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=' . $zoomState .', width=device-width" />';
+//    }else{
+
+//        echo '<meta name="viewport" content="width=1170">';
+//    }
+
+//	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=' . $zoomState .', width=device-width" />';
+
+    //
 }
 
 function foundation_render_theme_settings( $page_options ) {
