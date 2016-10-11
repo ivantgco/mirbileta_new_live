@@ -295,13 +295,32 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
 
                     $prices_str = ($minprice || $minprice)? ( $minprice == $maxprice)? 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
 
+                    $fee =              $value[array_search("SERVICE_FEE", $columns)];
+                    $min =              $value[array_search("MIN_PRICE", $columns)];
+                    $max =              $value[array_search("MAX_PRICE", $columns)];
+
+                    if((int)$fee < 0){
+
+                        $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                        $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                        $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                        $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+                    }else{
+
+                        $min_html = $min;
+                        $max_html = $max;
+
+                    }
+
                     $actionsHtml .=  ''
                         .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
                         .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
                         .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
                         .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
                         .'<div class="mb-a-venue">'.$venue.'</div>'
-                        .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
+                        .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'
                         .'</a></div>'
                         .'';
 

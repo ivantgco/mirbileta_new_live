@@ -2080,6 +2080,7 @@ a.nounderline:hover{
     background-size: cover;
     position: absolute;
     background-color: #4f2d22;
+    background-position-x: 50%;
 }
 .l-fader{
     width: 100%;
@@ -2562,4 +2563,15 @@ a.nounderline:hover{
     width: 100%;
     font-size: 16px;
     color: #777;
+}
+.mb-old-price{
+    text-decoration: line-through;
+    position: absolute;
+    margin-top: -11px;
+    font-size: 11px;
+    color: red;
+}
+
+.mb-old-price i{
+    font-size: 11px;
 }

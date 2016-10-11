@@ -150,12 +150,33 @@
 
                         $minmaxString = ($minprice)? ($minprice == $maxprice)? 'по '. $minprice . ' руб.' :  $minprice . ' - ' . $maxprice . ' руб.' : '';
 
+
+                        $fee =              $tdValue[array_search("SERVICE_FEE", $columns)];
+                        $min =              $tdValue[array_search("MIN_PRICE", $columns)];
+                        $max =              $tdValue[array_search("MAX_PRICE", $columns)];
+
+                        if((int)$fee < 0){
+
+                            $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                            $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                            $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                            $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+                        }else{
+
+                            $min_html = $min;
+                            $max_html = $max;
+
+                        }
+
+
                         $today_html .= '<a href="/'.$alias.'">'
                                         .'<div class="mb-sm-action" data-id="'.$act_id.'">'
                                             .'<div class="mb-sm-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                                             .'<div class="mb-sm-a-title">'.$act_name.'</div>'
                                             .'<div class="mb-sm-a-venue">'.$venue.'</div>'
-                                            .'<div class="mb-sm-a-price">'.$minmaxString.'</div>'
+                                            .'<div class="mb-sm-a-price">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div>'
                                             .'<div class="mb-sm-a-age">'.$age_cat.'</div>'
                                             .'<div class="mb-sm-a-date">'.$datestr.', <span class="mb-a-time">'.$timestr.'</span></div>'
                                         .'</div>'
@@ -205,13 +226,32 @@
 
                         $minmaxString = ($minprice)? ($minprice == $maxprice)? 'по '. $minprice . ' руб.' :  $minprice . ' - ' . $maxprice . ' руб.' : '';
 
+                        $fee =              $tdValue[array_search("SERVICE_FEE", $columns)];
+                        $min =              $tdValue[array_search("MIN_PRICE", $columns)];
+                        $max =              $tdValue[array_search("MAX_PRICE", $columns)];
+
+                        if((int)$fee < 0){
+
+                            $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                            $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                            $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                            $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+                        }else{
+
+                            $min_html = $min;
+                            $max_html = $max;
+
+                        }
+
 
                         $tomorrow_html .= '<a href="/'.$alias.'">'
                             .'<div class="mb-sm-action" data-id="'.$act_id.'">'
                             .'<div class="mb-sm-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                             .'<div class="mb-sm-a-title">'.$act_name.'</div>'
                             .'<div class="mb-sm-a-venue">'.$venue.'</div>'
-                            .'<div class="mb-sm-a-price">'.$minmaxString.'</div>'
+                            .'<div class="mb-sm-a-price">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div>'
                             .'<div class="mb-sm-a-age">'.$age_cat.'</div>'
                             .'<div class="mb-sm-a-date">'.$datestr.', <span class="mb-a-time">'.$timestr.'</span></div>'
                             .'</div>'
@@ -263,13 +303,31 @@
 
                         $minmaxString = ($minprice)? ($minprice == $maxprice)? 'по '. $minprice . ' руб.' :  $minprice . ' - ' . $maxprice . ' руб.' : '';
 
+                        $fee =              $tdValue[array_search("SERVICE_FEE", $columns)];
+                        $min =              $tdValue[array_search("MIN_PRICE", $columns)];
+                        $max =              $tdValue[array_search("MAX_PRICE", $columns)];
+
+                        if((int)$fee < 0){
+
+                            $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                            $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                            $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                            $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+                        }else{
+
+                            $min_html = $min;
+                            $max_html = $max;
+
+                        }
 
                         $weekend_html .= '<a href="/'.$alias.'">'
                             .'<div class="mb-sm-action" data-id="'.$act_id.'">'
                             .'<div class="mb-sm-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                             .'<div class="mb-sm-a-title">'.$act_name.'</div>'
                             .'<div class="mb-sm-a-venue">'.$venue.'</div>'
-                            .'<div class="mb-sm-a-price">'.$minmaxString.'</div>'
+                            .'<div class="mb-sm-a-price">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div>'
                             .'<div class="mb-sm-a-age">'.$age_cat.'</div>'
                             .'<div class="mb-sm-a-date">'.$datestr.', <span class="mb-a-time">'.$timestr.'</span></div>'
                             .'</div>'
@@ -320,12 +378,31 @@
                         $minmaxString = ($minprice)? ($minprice == $maxprice)? 'по '. $minprice . ' руб.' :  $minprice . ' - ' . $maxprice . ' руб.' : '';
 
 
+                        $fee =              $tdValue[array_search("SERVICE_FEE", $columns)];
+                        $min =              $tdValue[array_search("MIN_PRICE", $columns)];
+                        $max =              $tdValue[array_search("MAX_PRICE", $columns)];
+
+                        if((int)$fee < 0){
+
+                            $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                            $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                            $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                            $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+                        }else{
+
+                            $min_html = $min;
+                            $max_html = $max;
+
+                        }
+
                         $nextweek_html .= '<a href="/'.$alias.'">'
                             .'<div class="mb-sm-action" data-id="'.$act_id.'">'
                             .'<div class="mb-sm-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                             .'<div class="mb-sm-a-title">'.$act_name.'</div>'
                             .'<div class="mb-sm-a-venue">'.$venue.'</div>'
-                            .'<div class="mb-sm-a-price">'.$minmaxString.'</div>'
+                            .'<div class="mb-sm-a-price">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div>'
                             .'<div class="mb-sm-a-age">'.$age_cat.'</div>'
                             .'<div class="mb-sm-a-date">'.$datestr.', <span class="mb-a-time">'.$timestr.'</span></div>'
                             .'</div>'

@@ -59,14 +59,34 @@ echo '</div>';
         foreach ($data as $key => $value){
 
             $act_id =                   $value[array_search("ACTION_ID", $columns)];
+            $fee =                      $value[array_search("SERVICE_FEE", $columns)];
             $alias =                    $value[array_search("ACTION_URL_ALIAS", $columns)];
             $action_slider_image =      $value[array_search("ACTION_SLIDER_IMAGE", $columns)];
             $action_name =              $value[array_search("ACTION_NAME", $columns)];
             $venue =                    $value[array_search("VENUE_NAME", $columns)];
             $act_date =                 $value[array_search("ACTION_DATE_STR", $columns)];
             $description =              $value[array_search("DESCRIPTION", $columns)];
+
             $min =              $value[array_search("MIN_PRICE", $columns)];
             $max =              $value[array_search("MAX_PRICE", $columns)];
+
+            if((int)$fee < 0){
+
+                $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+            }else{
+
+                $min_html = $min;
+                $max_html = $max;
+
+            }
+
+
+
             $cutted_desc =              mb_substr($description,0,200,'utf-8');
 
 
@@ -75,7 +95,7 @@ echo '</div>';
                                     .'<div class="slider-headline-name">'.$action_name.'</div>'
                                     .'<div class="slider-headline-date">'.$act_date.'</div>'
                                     .'<div class="slider-headline-venue">'.$venue.'</div>'
-                                    .'<div class="slider-item-right"><div class="slider-prices">Билеты от '.$min.' до '.$max.'&nbsp;&nbsp;<i class="fa fa-ruble"></i></div>'
+                                    .'<div class="slider-item-right"><div class="slider-prices">Билеты от '.$min_html.' до '.$max_html.'&nbsp;&nbsp;<i class="fa fa-ruble"></i></div>'
                                 .'</div>'
                                 .'<div class="slider-buy-ticket">Купить билет</div></div>'
                                 .'<div class="slider-item slider-item-'.$indexer.'" style="background-image: url('.$action_slider_image.')"></div>'
