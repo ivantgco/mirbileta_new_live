@@ -3852,3 +3852,15 @@ body.mbw-widget-opened{
 .mb-old-price i{
     font-size: 11px;
 }
+
+.l-text-block{
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px 30px;
+}
+.l-text-block h1{
+    color: #fff;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
