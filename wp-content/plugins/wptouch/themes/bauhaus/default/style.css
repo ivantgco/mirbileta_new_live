@@ -1465,7 +1465,7 @@ body{
     color: #555;
     font-weight: normal;
     font-size: 12px;
-    margin-top: 5px;
+    margin-top: 12px;
 }
 .mmb-search-actions {
     padding-left: 10px;
@@ -3839,4 +3839,16 @@ body.mbw-widget-opened{
 }
 .black_bg{
     background-color: #000;
+}
+
+.mb-old-price{
+    text-decoration: line-through;
+    position: absolute;
+    margin-top: -11px;
+    font-size: 11px;
+    color: red;
+}
+
+.mb-old-price i{
+    font-size: 11px;
 }

@@ -181,11 +181,30 @@ get_header();
             $price_range = ($minprice && $maxprice)? ($minprice == $maxprice)? 'по ' . $minprice . ' руб.' : $minprice . ' - ' . $maxprice . ' руб.' : '';
             $isShow = (strlen($value[array_search("SHOW_URL_ALIAS", $columns)]) > 0) ? 'c': '';
 
+            $fee =              $value[array_search("SERVICE_FEE", $columns)];
+            $min =              $value[array_search("MIN_PRICE", $columns)];
+            $max =              $value[array_search("MAX_PRICE", $columns)];
+
+            if((int)$fee < 0){
+
+                $min_discounted = (int)$min - ((int)$min / 100 * abs((int)$fee));
+                $max_discounted = (int)$max - ((int)$max / 100 * abs((int)$fee));
+
+                $min_html = '<span class="mb-old-price">'.$min.'&nbsp;<i class="fa fa-ruble"></i></span>' . $min_discounted;
+                $max_html = '<span class="mb-old-price">'.$max.'&nbsp;<i class="fa fa-ruble"></i></span>' . $max_discounted;
+
+            }else{
+
+                $min_html = $min;
+                $max_html = $max;
+
+            }
+
             $actionsHtml .= '<a href="/'.$alias.'"><div class="mb-me-action" data-id="'.$act_id.'">'
                 .'<div class="mb-me-a-image" style="background-image: url(\''.$poster.'\');"></div>'
                 .'<div class="mb-me-a-title">'.$act_name.'<span class="mb-me-a-age">'.$ageCat.'</span></div>'
                 .'<div class="mb-me-a-venue">'.$venue.'</div>'
-                .'<div class="mb-me-a-price">'.$price_range.'</div>'
+                .'<div class="mb-me-a-price">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></span></div>'
                 .'<div class="mb-me-a-date">'.$isShow.' '.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
                 .'</div></a>';
         }

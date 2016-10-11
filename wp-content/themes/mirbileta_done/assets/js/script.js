@@ -815,6 +815,32 @@
                                 actions[i]['alias_link'] = (actions[i]['SHOW_URL_ALIAS'] != '')? actions[i]['SHOW_URL_ALIAS'] : actions[i]['ACTION_URL_ALIAS'];
                                 actions[i]['price_range'] = (actions[i]['MIN_PRICE'] && actions[i]['MAX_PRICE'])? (actions[i]['MIN_PRICE'] == actions[i]['MAX_PRICE'])? 'по ' + actions[i]['MIN_PRICE'] + ' руб.' : actions[i]['MIN_PRICE'] + ' - ' + actions[i]['MAX_PRICE'] + ' руб.' : '';
 
+
+                                var fee =              actions[i]['SERVICE_FEE'];
+                                var min =              actions[i]['MIN_PRICE'];
+                                var max =              actions[i]['MAX_PRICE'];
+
+                                var min_html;
+                                var max_html;
+
+                                if(+fee < 0){
+
+                                    var min_discounted = +min - (+min / 100 * Math.abs(fee));
+                                    var max_discounted = +max - (+max / 100 * Math.abs(fee));
+
+                                    min_html = '<span class="mb-old-price">'+min+'&nbsp;<i class="fa fa-ruble"></i></span>' + min_discounted;
+                                    max_html = '<span class="mb-old-price">'+max+'&nbsp;<i class="fa fa-ruble"></i></span>' + max_discounted;
+
+                                }else{
+
+                                    min_html = min;
+                                    max_html = max;
+
+                                }
+
+
+                                actions[i]['price_range'] = (min && max)? (min == max)? min_html + ' руб.' : min_html + ' - ' + max_html + ' руб.' : '';
+
                                 a_data.actions.push(actions[i]);
                             }
 
@@ -1768,7 +1794,7 @@
                             '<div class="mb-me-a-image" style="background-image: url(\'{{ACTION_POSTER_IMAGE}}\');"></div>'+
                             '<div class="mb-me-a-title">{{ACTION_NAME}}</div>'+
                             '<div class="mb-me-a-venue">{{VENUE_NAME}}</div>'+
-                            '<div class="mb-me-a-price">{{price_range}}</div>'+
+                            '<div class="mb-me-a-price">{{{price_range}}}</div>'+
                             '<div class="mb-me-a-age">{{AGE_CATEGORY}}</div>'+
                             '<div class="mb-me-a-date">{{#is_show}}с {{/is_show}}{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
                             '</div></a>{{/actions}}';
