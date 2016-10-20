@@ -997,12 +997,13 @@
                 var url = $(this).data('url');
                 var tpl;
 
+
                 if(type == 'video'){
                     tpl = '<iframe width="575" height="400" src="'+url+'" frameborder="0" allowfullscreen></iframe>';
                     $('.ig-main-wrapper').html(tpl);
 
                 }else{
-//                    $('.ig-main-wrapper').html('');
+                    $('.ig-main-wrapper').html('<img />');
                     $('.ig-main-wrapper img').attr('src', url);
                 }
 

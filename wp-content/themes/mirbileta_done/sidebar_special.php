@@ -8,9 +8,9 @@
 ?>
 
 
-<a class="nounderline" href="/koncert_gruppi_samocveti_5953/?utm_source=from_special"><div class="mb-special-holder">
+<a class="nounderline" href="http://mirbileta.ru/tvorcheskij_vecher_dmitriya_dyuzheva_6501/?utm_source=from_special"><div class="mb-special-holder">
 
-    <div class="mb-special-name samocvety">Всё, что в жизни есть у меня..</div>
-    <div class="mb-special-sub"><i class="fa fa-diamond"></i></div>
+    <div class="mb-special-name samocvety">Дмитрий Дюжев. В Кремле!</div>
+    <div class="mb-special-sub"><i class="fa fa-microphone"></i></div>
 
 </div></a>

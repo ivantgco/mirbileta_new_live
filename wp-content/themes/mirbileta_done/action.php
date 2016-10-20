@@ -126,8 +126,6 @@
 
         <?php wp_head(); ?>
 
-
-
     </head>
 
 
@@ -316,7 +314,7 @@
                                     foreach ($images as $key1 => $value1){
 
                                         if(strpos($value1, 'youtube.com')){
-                                            $images_html .= '<div class="one-action-image-list-item" alt="'.$act_name . ' Купить билет" data-url="'.$value1.'" data-type="video"><div class="video_play"></div></div>';
+                                            $images_html .= '<div class="one-action-image-list-item ig-list-item" alt="'.$act_name . ' Купить билет" data-url="'.$value1.'" data-type="video"><div class="video_play" alt="Смотерть видео"></div></div>';
                                         }else{
                                             $images_html .= '<div data-type="img" data-url="'.$value1.'" class="ig-list-item"><img class="ig-main-img" src="'.$value1.'" alt="'. $act_name .' Купить билеты" title="'. $act_name .' Купить билеты" /></div>';
                                         }

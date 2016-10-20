@@ -75,6 +75,14 @@ $sid = $_COOKIE["site_sid"];
     <div class="mbw-loader-text">Секундочку, сейчас все загрузим...</div>
 </div>
 
+<!---->
+<?php
+//
+//    if(!strpos($_SERVER['REQUEST_URI'],'tvorcheskij_vecher_dmitriya_dyuzheva_6501')){
+//        echo '<a href="http://mirbileta.ru/tvorcheskij_vecher_dmitriya_dyuzheva_6501/?utm_source=top_banner"><div class="mb-duzhev-header"></div></a>';
+//    }
+//
+//?>
 
 
 
