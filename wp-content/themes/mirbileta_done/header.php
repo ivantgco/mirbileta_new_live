@@ -77,12 +77,12 @@ $sid = $_COOKIE["site_sid"];
 
 <!---->
 <?php
-//
-//    if(!strpos($_SERVER['REQUEST_URI'],'tvorcheskij_vecher_dmitriya_dyuzheva_6501')){
-//        echo '<a href="http://mirbileta.ru/tvorcheskij_vecher_dmitriya_dyuzheva_6501/?utm_source=top_banner"><div class="mb-duzhev-header"></div></a>';
-//    }
-//
-//?>
+
+    if(!strpos($_SERVER['REQUEST_URI'],'parad_trubachej_koncert_posvyashhennij_letiyu_so_dnya_rozhdeniya_timofeya_dokshicera_6750')){
+        echo '<a href="http://mirbileta.ru/parad_trubachej_koncert_posvyashhennij_letiyu_so_dnya_rozhdeniya_timofeya_dokshicera_6750/?utm_source=top_milstein"><div class="mb-top-adv"></div></a>';
+    }
+
+?>
 
 
 

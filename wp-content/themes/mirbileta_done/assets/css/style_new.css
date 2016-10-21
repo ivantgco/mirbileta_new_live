@@ -150,6 +150,7 @@ html{
 .main-search-dd {
     margin-top: 0;
     top: 85px;
+    top: 220px;
 }
 .main-search-input-clear {
     margin-left: 225px;
@@ -668,7 +669,8 @@ html{
     height: 100%;
     width: 100%;
     position: fixed;
-    top: 85px;
+    /*top: 85px;*/
+    top: 225px
 }
 .sdd-holder{
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -2599,6 +2601,13 @@ a.nounderline:hover{
     height: 100px;
     background-position-x: 50%;
 }
+.mb-top-adv{
+    background-image: url(../img/top_adv/milstein_top_gif.gif);
+    width: 100%;
+    height: 134px;
+    background-position-x: 50%;
+}
+
 .video_play{
     background-image: url(../img/play_video.png);
     height: 67px;
