@@ -16,6 +16,7 @@
 
             <div class="contacts-wrapper">
                 <div class="contacts-phone">+7 (499) 391<span>-61</span>-97</div>
+<!--                <div class="contacts-phone">+7 (903) 269<span>-99</span>-12</div>-->
                 <div class="contacts-email">support@mirbileta.ru</div>
             </div>
 

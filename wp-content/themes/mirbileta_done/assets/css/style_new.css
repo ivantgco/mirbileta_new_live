@@ -149,7 +149,7 @@ html{
 }
 .main-search-dd {
     margin-top: 0;
-    top: 85px;
+    /*top: 85px;*/
     top: 220px;
 }
 .main-search-input-clear {
@@ -2617,4 +2617,7 @@ a.nounderline:hover{
 }
 .ig-list-item:nth-child(5n) {
     margin-left: 0;
+}
+.contacts-wrapper {
+    width: 240px;
 }
