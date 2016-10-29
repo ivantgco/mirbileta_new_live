@@ -8,9 +8,9 @@
 ?>
 
 
-<a class="nounderline" href="http://mirbileta.ru/tvorcheskij_vecher_dmitriya_dyuzheva_6501/?utm_source=from_special"><div class="mb-special-holder">
+<a class="nounderline" href="http://mirbileta.ru/show_shhelkunchik_balet/?utm_source=from_special"><div class="mb-special-holder">
 
-    <div class="mb-special-name samocvety">Дмитрий Дюжев. В Кремле!</div>
-    <div class="mb-special-sub"><i class="fa fa-microphone"></i></div>
+    <div class="mb-special-name samocvety">Щелкунчик в РАМТе<br/>на Новый Год!</div>
+    <div class="mb-special-sub"><i class="fa fa-binoculars"></i></div>
 
 </div></a>

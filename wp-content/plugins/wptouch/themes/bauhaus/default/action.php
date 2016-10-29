@@ -100,8 +100,9 @@
 <head>
 
     <meta charset="UTF-8"/>
+    <?php include 'seo.php'; ?>
 
-    <title><?php wp_title('-', true, 'right'); ?></title>
+<!--    <title>--><?php //wp_title('-', true, 'right'); ?><!--</title>-->
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 

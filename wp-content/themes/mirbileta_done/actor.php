@@ -124,8 +124,8 @@
 <head>
 
     <meta charset="UTF-8"/>
-
-    <title><?php wp_title('-', true, 'right'); ?></title>
+    <?php include 'seo.php'; ?>
+<!--    <title>--><?php //wp_title('-', true, 'right'); ?><!--</title>-->
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 

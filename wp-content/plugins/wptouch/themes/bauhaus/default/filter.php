@@ -68,7 +68,8 @@ $show_next_button = $actions_count == 15;
         console.log("<?php echo $url; ?>");
     </script>
 
-    <title><?php wp_title( '-', true, 'right' ); ?></title>
+    <?php include 'seo.php'; ?>
+<!--    <title>--><?php //wp_title( '-', true, 'right' ); ?><!--</title>-->
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 

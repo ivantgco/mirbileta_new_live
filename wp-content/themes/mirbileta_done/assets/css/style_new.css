@@ -500,9 +500,11 @@ html{
 
 }
 .mb-special-name.samocvety{
-    padding-right: 72px;
-    padding-left: 20px;
+    padding-right: 62px;
+    padding-left: 10px;
     padding-top: 19px;
+    font-size: 15px;
+
 }
 
 .mb-special-sub{

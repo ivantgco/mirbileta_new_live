@@ -23,8 +23,8 @@
 
     <meta charset="UTF-8"/>
 
-    <title><?php wp_title('-', true, 'right'); ?></title>
-
+<!--    <title>--><?php //wp_title('-', true, 'right'); ?><!--</title>-->
+    <?php include 'seo.php'; ?>
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 
     <link href="/wp-content/themes/mirbileta_new_life/assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
