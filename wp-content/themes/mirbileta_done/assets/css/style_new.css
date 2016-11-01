@@ -2623,3 +2623,68 @@ a.nounderline:hover{
 .contacts-wrapper {
     width: 240px;
 }
+
+.circus20 .l-page-1-data{
+    min-height: 700px;
+}
+.circus20 .l-bg{
+    background-position-x: 50%!important;
+    background-position-y: 50%!important;
+}
+.circus20-logo{
+    text-align: center;
+    margin-top: 70px;
+}
+.c-date{
+
+    font-family: Raleway-bold, arial, sans-serif;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+.c-venue{
+
+    font-family: Raleway-bold, arial, sans-serif;
+    color: #fffc00;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 40px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+
+}
+.circus-buy-btn{
+    background-image: url(../img/circus/circus_buy_btn.png);
+    height: 116px;
+    width: 315px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-top: 70px;
+    cursor: pointer;
+    background-position: 0 0;
+}
+.circus-buy-btn:hover{
+    background-position: 0 -116px;
+}
+.mb-logo {
+    font-family: Rambla-Bold, PTSans-Bold, arial,sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(255,255,255,1);
+}
+.mb-logo:hover {
+    color: #ffea00;
+}
+.phone {
+    font-size: 19px;
+    margin-left: -1px;
+}
+.circus-circle{
+    background-image: url(../img/circus/circus_circle.png);
+    width: 1040px;
+    height: 1040px;
+    margin: 0 auto;
+    transform: rotate(0deg);
+}
