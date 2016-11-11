@@ -25,13 +25,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
+
     <style type="text/css">
         html,body{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: arial, sans-serif;
-
         }
         .mbw-close{
             display: none!important;
@@ -61,6 +61,6 @@
 </div>
 
 <script type="text/javascript" src="https://shop.mirbileta.ru/assets/widget/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="https://shop.mirbileta.ru/assets/widget/mb_widget.js"></script>
+<script type="text/javascript" src="https://shop.mirbileta.ru/assets/widget/widget-mobile.js"></script>
 
 </body>

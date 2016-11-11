@@ -602,10 +602,9 @@
     var mmb = {
         initWidget: function(a_id, frame){
 
+
             $('.mmb-widget-holder').remove();
             $('#mbw-script-loader').attr('src', '');
-
-
 
 
             var tpl =   '<div class="one-action-widget-wrapper mmb-widget-holder">' +
@@ -638,6 +637,8 @@
 
 
             $('.mmb-widget-holder').show(0);
+
+
 
 
             $.getScript($('#mbw-script-loader').attr('data-src'), function(){
