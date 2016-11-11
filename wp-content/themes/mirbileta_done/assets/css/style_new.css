@@ -149,8 +149,8 @@ html{
 }
 .main-search-dd {
     margin-top: 0;
-    /*top: 85px;*/
-    top: 220px;
+    top: 85px;
+    /*top: 220px;*/
 }
 .main-search-input-clear {
     margin-left: 225px;
@@ -671,8 +671,8 @@ html{
     height: 100%;
     width: 100%;
     position: fixed;
-    /*top: 85px;*/
-    top: 225px
+    top: 85px;
+    /*top: 225px*/
 }
 .sdd-holder{
     box-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -2688,3 +2688,5 @@ a.nounderline:hover{
     margin: 0 auto;
     transform: rotate(0deg);
 }
+
+/*http://mirbileta.ru/images/zat_mir_1.jpg,http://mirbileta.ru/images/zat_mir_2.jpg,http://mirbileta.ru/images/zat_mir_3.jpg,http://mirbileta.ru/images/zat_mir_4.jpg,http://mirbileta.ru/images/zat_mir_5.jpg,http://mirbileta.ru/images/zat_mir_6.jpg*/

@@ -18,7 +18,8 @@ include 'contest-fast-header.php';
     <div class="mmb-search-holder">
         <input type="text" id="mmb-search-input" placeholder="Поиск"/>
         <div class="mmb-search-icon fa fa-search"></div>
-        <div class="mmb-search-confirm fa fa-check"></div>
+        <div class="mmb-search-confirm ">Найти</div>
+<!--        fa fa-check-->
         <div class="mmb-search-info">Поиск по мероприятиям, площадкам и актерам.</div>
     </div>
 

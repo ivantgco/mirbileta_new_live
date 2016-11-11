@@ -1344,10 +1344,11 @@ input#mmb-search-input:-ms-input-placeholder      {font-family: "PTSans-Regular"
 
 .mmb-search-confirm{
     position: absolute;
-    top: 76px;
+    top: 72px;
     left: 100%;
-    margin-left: -32px;
+    margin-left: -65px;
     color: rgba(0,0,0,0.25);
+    font-family: PTSans-Regular, arial, sans-serif;
 }
 
 
