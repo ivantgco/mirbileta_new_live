@@ -24,6 +24,10 @@
     $global_salesite = 'mirbileta.ru';
 
 
+    if(strpos($href, 'cirkus')){
+        header("Location: http://mirbileta.ru/circus20/?utm_source=site_page");
+    }
+
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><action_url_alias>".$action_alias."</action_url_alias>";
 

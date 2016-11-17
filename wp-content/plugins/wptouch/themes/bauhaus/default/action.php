@@ -10,7 +10,13 @@
     $action_alias = preg_replace('/^\//','',$arr['path']);
     $action_alias = preg_replace('/(^\w+)\/.*/','$1',$action_alias);
 
+    if(strpos($href, 'cirkus')){
+        header("Location: http://mirbileta.ru/circus20/?utm_source=site_page");
+    }
+
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><action_url_alias>".$action_alias."</action_url_alias>";
+
+
 
     $ch = curl_init();
 

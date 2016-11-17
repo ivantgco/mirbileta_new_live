@@ -9,6 +9,10 @@
     $show_alias = preg_replace('/^\//','',$arr['path']);
     $show_alias = preg_replace('/(^\w+)\/.*/','$1',$show_alias);
 
+    if(strpos($href, 'cirkus')){
+        header("Location: http://mirbileta.ru/circus20/?utm_source=site_page");
+    }
+
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><show_url_alias>".$show_alias."</show_url_alias>";
 
     $ch = curl_init();

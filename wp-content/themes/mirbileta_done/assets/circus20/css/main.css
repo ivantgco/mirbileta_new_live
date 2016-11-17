@@ -3046,4 +3046,22 @@ input, textarea {
         -ms-transform: translate(0px, -130px);
             transform: translate(0px, -130px);
   }
+    .second-section img{
+        width: 100%!important;
+    }
+    .circ-hl{
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 50px;
+        font-family: times new roman, serif;
+
+    }
 }
+.circ-hl{
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 50px;
+    font-family: times new roman, serif;
+
+}
+
