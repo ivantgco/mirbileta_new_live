@@ -6,6 +6,10 @@
     $type =  $_GET['type']; // ACTION | ACTOR | VENUE | SHOW
     $alias = $_GET['alias'];
     $title = $_GET['name'];
+
+    $title_seo = $_GET['title'];
+    $desc_seo = $_GET['description'];
+
     $code =  $_GET['code'];
 
     function the_slug_exists($post_name) {
@@ -41,12 +45,12 @@
 
 
                 $my_post = array(
-                    'post_title' => $title,
+                    'post_title' => $title_seo . '/'.$desc_seo,
                     'post_name' => $alias,
                     'post_type' => 'page',
                     'post_content' => '',
                     'post_status' => 'publish',
-                    'post_author' => 1,
+                    'post_author' => '',
                     'post_category' => array(8,39)
                 );
 
@@ -58,7 +62,18 @@
                 echo '<STATUS>SUCCESS</STATUS>';
             }else{
 
-                echo '<STATUS>ALREADY_EXSISTS</STATUS>';
+                $pbp = get_page_by_path($alias);
+                $p_id = $pbp->ID;
+
+                $my_post = array();
+                $my_post['ID'] = $p_id;
+                $my_post['post_title'] = $title_seo . '/'.$desc_seo;
+
+                wp_update_post( $my_post );
+
+
+
+                echo '<STATUS>UPDATED</STATUS>';
 
             }
 
@@ -67,3 +82,4 @@
     }
 
 ?>
+<!--mirbileta.ru/create_wp_page.php?type=ACTION&alias=koncert_posvyashhennij_poetu_robertu_rozhdestvenskomu_6844&title=test_title&code=zYjs0987djJJshy&description=test_desc-->

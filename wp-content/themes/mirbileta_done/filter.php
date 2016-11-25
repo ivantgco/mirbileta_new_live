@@ -25,6 +25,8 @@
         if(strlen($max_price) > 0) { $url .= '<max_price>'.$max_price.'</max_price>'; }
         if(strlen($show_type_alias) > 0) { $url .= '<show_type_alias>'.$show_type_alias.'</show_type_alias>'; }
 
+//    var_export($url);
+
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
