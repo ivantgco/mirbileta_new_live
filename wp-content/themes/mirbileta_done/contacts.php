@@ -76,15 +76,28 @@ include('main_menu.php');
                     <br/>
                     alextgco@gmail.com
                     <br/>
-                    Гоптарев Александр Иванович
-                    <br/>
+                   <!-- Гоптарев Александр Иванович
+                    <br/>-->
                     <br/><br/>
                 </div>
 
                 <div class="pr50">
-                    <b class="black">Адрес:</b><br/><br/>
-                    Москва, Крутицкий вал 16
+                    <b class="black">Москва:</b><br/><br/>
+                    Адрес: Москва, Крутицкий вал 16
+                    <br/><br/>
                 </div>
+
+
+                <div class="pr50">
+                    <b class="black">Вильнюс:</b><br/><br/>
+                    UAB "Anitera"<br/>
+                    Laisvės pr. 60, LT-05120, Vilnius<br/>
+                    Company Number: 303436963
+                </div>
+
+
+
+
 
             </div>
 

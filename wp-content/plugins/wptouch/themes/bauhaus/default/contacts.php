@@ -67,14 +67,22 @@ $page_id = get_the_ID();
             <b class="black">Сотрудничество:</b><br/>
             +7 (906) 063-88-66
             <br/>
-            aig@mirbileta.ru
+            alextgco@gmail.com
             <br/>
-            Гоптарев Александр Иванович
-            <br/>
+           <!-- Гоптарев Александр Иванович
+            <br/>-->
             <br/>
 
-            <b class="black">Адрес:</b><br/>
-            Москва, Крутицкий вал 16
+
+            <b class="black">Москва:</b><br/><br/>
+            Адрес: Москва, Крутицкий вал 16
+
+            <br/><br/>
+
+            <b class="black">Вильнюс:</b><br/><br/>
+            UAB "Anitera"<br/>
+            Laisvės pr. 60, LT-05120, Vilnius<br/>
+            Company Number: 303436963
 
         </div>
 
