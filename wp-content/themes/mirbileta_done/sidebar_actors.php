@@ -71,3 +71,21 @@
 ?>
 
     <a class="mb-sb-link-all" href="/actors/">Все актеры и музыканты</a>
+
+<script type="text/javascript" charset="utf-8" src="http://animate.adobe.com/runtime/6.0.0/edge.6.0.0.min.js"></script>
+<style>
+    .edgeLoad-EDGE-106327254 { visibility:hidden; }
+</style>
+<script>
+    AdobeEdge.loadComposition('240x400', 'EDGE-106327254', {
+        scaleToFit: "none",
+        centerStage: "none",
+        minW: "0px",
+        maxW: "undefined",
+        width: "240px",
+        height: "400px"
+    }, {"dom":{}}, {"dom":{}});
+</script>
+
+<div id="Stage" class="EDGE-106327254">
+</div>
