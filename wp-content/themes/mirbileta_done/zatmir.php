@@ -19,7 +19,11 @@
 <!DOCTYPE html>
 <html>
 
+<title>Затерянный мир спектакль Юрия Грымова, купить билет на Mirbileta.ru </title>
+<meta name="description" content="Затерянный мир спектакль Юрия Грымова, купить билет на Mirbileta.ru">
 
+
+<link href="/wp-content/themes/mirbileta_new_life/assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
 
 <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/teatr-delo.css">
 
