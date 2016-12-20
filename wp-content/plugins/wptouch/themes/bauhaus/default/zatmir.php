@@ -29,7 +29,7 @@
 
 
 <?php //include 'viewport.php'; ?>
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <?php wp_head(); ?>
 <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/teatr-delo.js"></script>
 
@@ -933,6 +933,10 @@ include 'header_block.php';
 //?>
 
 
+
+
+<!--</div>-->
+
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58250d15c96668b1"></script>
 <script type="text/javascript" src="https://shop.mirbileta.ru/assets/widget/mb_widget_button.js"></script>
@@ -943,14 +947,9 @@ include 'header_block.php';
         location.href = '#tickets';
     }
 
-    map.behaviors.disable('multiTouch');
-    map.behaviors.disable('drag');
+
 
 </script>
-
-</div>
-
-
 
 </body>
 </html>
