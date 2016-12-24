@@ -130,6 +130,16 @@
 
     </div>
 
+    <!-- VK Widget -->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?136"></script>
+
+    <!-- VK Widget -->
+    <div id="vk_community_messages"></div>
+    <script type="text/javascript">
+        VK.Widgets.CommunityMessages("vk_community_messages", 119020792, {expanded: "1",tooltipButtonText: "Здравствуйте!
+            Я тут всё знаю, Вам подсказать?=)"});
+    </script>
+
 </div>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -161,6 +171,10 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/32940504" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+
+
+
 
 <!-- begin of Top100 code -->
 <div style="display: none">
