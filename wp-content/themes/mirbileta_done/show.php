@@ -208,6 +208,20 @@
                     ?>
                 </div>
 
+                <?php
+
+                if($show_alias == 'show_zateryannij_mir'){
+                    echo '<a class="exscursion-link" href="http://mirbileta.ru/show_zat_mir_ekskursiya/?utm_source=from_zatmir" target="_blank">ЭКСКУРСИЯ ЗА КУЛИСЫ</a>';
+                }
+
+                if($show_alias == 'show_zat_mir_ekskursiya'){
+                    echo '<a class="exscursion-link" href="http://mirbileta.ru/show_zateryannij_mir/?utm_source=from_zatmir" target="_blank">БИЛЕТЫ НА СПЕКТАКЛЬ</a>';
+                }
+
+                ?>
+
+
+
             </div>
 
 

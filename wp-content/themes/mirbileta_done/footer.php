@@ -136,8 +136,7 @@
     <!-- VK Widget -->
     <div id="vk_community_messages"></div>
     <script type="text/javascript">
-        VK.Widgets.CommunityMessages("vk_community_messages", 119020792, {expanded: "1",tooltipButtonText: "Здравствуйте!
-            Я тут всё знаю, Вам подсказать?=)"});
+        VK.Widgets.CommunityMessages("vk_community_messages", 119020792, {expanded: "1",tooltipButtonText: "Здравствуйте! Я тут всё знаю, Вам подсказать?=)"});
     </script>
 
 </div>
