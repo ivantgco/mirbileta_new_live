@@ -1692,6 +1692,26 @@
 
             });
 
+            $('.scroll-to-dates').off('click').on('click', function(){
+
+                $('html,body').animate({
+                    scrollTop: $('.show-dates-wrapper').offset().top + 'px'
+                }, 320, function(){
+
+                    $('.show-dates-wrapper h3').fadeOut(100, function(){
+                        $('.show-dates-wrapper h3').fadeIn(120, function(){
+                            $('.show-dates-wrapper h3').fadeOut(100, function(){
+                                $('.show-dates-wrapper h3').fadeIn(220, function(){
+
+                                });
+                            });
+                        });
+                    });
+
+                });
+
+
+            });
 
 
             uiTabs();

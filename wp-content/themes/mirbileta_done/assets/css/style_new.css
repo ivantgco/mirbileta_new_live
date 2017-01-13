@@ -137,7 +137,7 @@ html{
     color: #ccff00;
     font-family: "Rambla-Bold", OpenSans-Bold, arail, sans-serif;
     font-size: 24px;
-    margin-top: 15px;
+    margin-top: 11px;
     text-align: right;
 }
 .phone-email{
@@ -819,6 +819,8 @@ html{
     float: left;
     margin-top: -80px;
     max-width: 500px;
+    font-size: 16px;
+    line-height: 24px;
 }
 .image-gallery-holder {
     width: 575px;
@@ -1871,7 +1873,8 @@ a.nounderline:hover{
     width: 575px;
     background-color: #fff;
     border: 0;
-    margin-top: -51px;
+    /*margin-top: -51px;*/
+    margin-top: -147px;
     margin-bottom: 0;
 }
 .show-dates-wrapper .tabsTogglersRow {
@@ -1963,6 +1966,7 @@ a.nounderline:hover{
     font-family: "Helvetica-Regular", OpenSans-light, arail, sans-serif;
     margin-bottom: 20px;
     margin-top: 23px;
+    position: relative;
 }
 
 .show-action-nearrest-date{
@@ -2708,3 +2712,36 @@ a.nounderline:hover{
 }
 
 /*http://mirbileta.ru/images/zat_mir_1.jpg,http://mirbileta.ru/images/zat_mir_2.jpg,http://mirbileta.ru/images/zat_mir_3.jpg,http://mirbileta.ru/images/zat_mir_4.jpg,http://mirbileta.ru/images/zat_mir_5.jpg,http://mirbileta.ru/images/zat_mir_6.jpg*/
+
+.scroll-to-dates{
+    position: absolute;
+    margin-top: 26px;
+    font-size: 13px;
+    background-color: #ccffee;
+    padding: 1px 4px;
+    font-family: arial, sans-serif;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.scroll-to-dates:hover{
+    background-color: #a1ffc5;
+}
+@media (max-width: 1742px) {
+    .show-dates-wrapper{
+        margin-top: 0;
+    }
+}
+.action-prices .scroll-to-dates{
+    position: relative;
+    margin-top: 0;
+    background-color: rgba(0,0,0,0);
+    color: #179A85;
+}
+.a-date-item-holder.active_in_show {
+    background-color: #ccffee;
+}
+.phone-time {
+    text-align: right;
+    color: #fff;
+    margin-top: -6px;
+}

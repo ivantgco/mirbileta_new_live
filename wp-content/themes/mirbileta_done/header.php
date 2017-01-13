@@ -194,6 +194,11 @@ $sid = $_COOKIE["site_sid"];
                 +7 <span>(499</span>) 391-61-97
 <!--                +7 <span>(903</span>) 269-99-12-->
             </div>
+
+            <div class="phone-time">
+                c 9:00 до 21:00
+            </div>
+
             <div class="phone-email">
                 support@mirbileta.ru
             </div>

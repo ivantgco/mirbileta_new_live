@@ -36,32 +36,51 @@
     $columns = json_decode($resp)->results["0"]->data_columns;
     $data = json_decode($resp)->results["0"]->data;
 
-    $act_id =       $data[0][array_search("ACTION_ID", $columns)];
-    $alias =        $data[0][array_search("ACTION_URL_ALIAS", $columns)];
-    $act_frame =        $data[0][array_search("FRAME", $columns)];
 
-    $act_name =     $data[0][array_search("ACTION_NAME", $columns)];
-    $act_date_str_first =     $data[0][array_search("ACTION_DATE_STR", $columns)];
-    $act_time_str_first =     $data[0][array_search("ACTION_TIME_STR", $columns)];
-    $g_act_name =     $data[0][array_search("ACTION_NAME", $columns)];
-    $thumb =        (strlen($data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] )> 0) ? (strpos("http", $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
-    $poster =       (strlen($data[0][array_search("ACTION_POSTER_IMAGE", $columns)] )> 0) ? (strpos("http", $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[0][array_search("ACTION_POSTER_IMAGE", $columns)] : $data[0][array_search("ACTION_POSTER_IMAGE", $columns)]: '';
-    $hall =         $data[0][array_search("HALL_NAME", $columns)];
-    $genre =        $data[0][array_search("SHOW_GENRE", $columns)];
-    $venue =        $data[0][array_search("VENUE_NAME", $columns)];
-    $venue_top_alias =        $data[0][array_search("VENUE_URL_ALIAS", $columns)];
-    $address =      $data[0][array_search("HALL_ADDR", $columns)];
-    $minprice =      $data[0][array_search("MIN_PRICE", $columns)];
+    $first_action_idx = 0;
 
-    $g_address =      $data[0][array_search("HALL_GOOGLE_ADDRESS", $columns)];
-    $tag_list =     $data[0][array_search("ACTION_TAG_LIST", $columns)];
-    $actor_list =     $data[0][array_search("ACTION_ACTOR_LIST", $columns)];
+    foreach ($data as $kskip => $vskip){
 
-    $images_list =   $data[0][array_search("ACTION_IMAGES_LIST", $columns)];
+        $free_places_skip = $vskip[array_search("FREE_PLACE_COUNT", $columns)];
+
+
+        if($free_places_skip == 0){
+            $first_action_idx++;
+
+            break;
+        }
+
+    }
+
+
+
+    $act_id =       $data[$first_action_idx][array_search("ACTION_ID", $columns)];
+    $free_places_skip_id = $act_id;
+    $alias =        $data[$first_action_idx][array_search("ACTION_URL_ALIAS", $columns)];
+    $act_frame =        $data[$first_action_idx][array_search("FRAME", $columns)];
+
+    $act_name =     $data[$first_action_idx][array_search("ACTION_NAME", $columns)];
+    $act_date_str_first =     $data[$first_action_idx][array_search("ACTION_DATE_STR", $columns)];
+    $act_time_str_first =     $data[$first_action_idx][array_search("ACTION_TIME_STR", $columns)];
+    $g_act_name =     $data[$first_action_idx][array_search("ACTION_NAME", $columns)];
+    $thumb =        (strlen($data[$first_action_idx][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] )> 0) ? (strpos("http", $data[$first_action_idx][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $data[$first_action_idx][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $data[$first_action_idx][array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : '';
+    $poster =       (strlen($data[$first_action_idx][array_search("ACTION_POSTER_IMAGE", $columns)] )> 0) ? (strpos("http", $data[$first_action_idx][array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?               $global_prot . '://'. $global_url . '/upload/' . $data[$first_action_idx][array_search("ACTION_POSTER_IMAGE", $columns)] : $data[$first_action_idx][array_search("ACTION_POSTER_IMAGE", $columns)]: '';
+    $hall =         $data[$first_action_idx][array_search("HALL_NAME", $columns)];
+    $genre =        $data[$first_action_idx][array_search("SHOW_GENRE", $columns)];
+    $venue =        $data[$first_action_idx][array_search("VENUE_NAME", $columns)];
+    $venue_top_alias =        $data[$first_action_idx][array_search("VENUE_URL_ALIAS", $columns)];
+    $address =      $data[$first_action_idx][array_search("HALL_ADDR", $columns)];
+    $minprice =      $data[$first_action_idx][array_search("MIN_PRICE", $columns)];
+
+    $g_address =      $data[$first_action_idx][array_search("HALL_GOOGLE_ADDRESS", $columns)];
+    $tag_list =     $data[$first_action_idx][array_search("ACTION_TAG_LIST", $columns)];
+    $actor_list =     $data[$first_action_idx][array_search("ACTION_ACTOR_LIST", $columns)];
+
+    $images_list =   $data[$first_action_idx][array_search("ACTION_IMAGES_LIST", $columns)];
 
     $isInfo = strlen($description) > 0;
-    $description = $data[0][array_search("DESCRIPTION", $columns)];
-    $ageCat = strlen($data[0][array_search("AGE_CATEGORY", $columns)]) ? $data[0][array_search("AGE_CATEGORY", $columns)] : '0+';
+    $description = $data[$first_action_idx][array_search("DESCRIPTION", $columns)];
+    $ageCat = strlen($data[$first_action_idx][array_search("AGE_CATEGORY", $columns)]) ? $data[$first_action_idx][array_search("AGE_CATEGORY", $columns)] : '0+';
 
 
     ?>
@@ -124,7 +143,25 @@
 
 
                 <div class="action-prices">
-                    от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
+
+                    <?php
+
+                    if(strlen($minprice) > 0){
+
+                    ?>
+
+                        от <?php echo $minprice; ?>&nbsp;<i class="fa fa-ruble"></i>
+
+                    <?php
+                    }else{
+
+                        echo 'Билетов нет, <span class="scroll-to-dates">выбрать другую дату</span>';
+
+                    }
+
+                    ?>
+
+
                 </div>
 
                 <div class="action-actors-holder">
@@ -249,7 +286,7 @@
 
     <div class="show-action-nearrest-date-holder">
 
-        Ближайшая дата:   <span class="show-action-nearrest-date"><?php echo $act_date_str_first . ' ' . $act_time_str_first ; ?></span>   <span class="inline-buy-ticket sc-run-widget" data-id="<?php echo $act_id;?>"  data-frame="<?php echo $act_frame;?>">Купить билеты</span>
+        Ближайшая дата:   <span class="show-action-nearrest-date"><span class="scroll-to-dates">Выбрать другую дату</span><?php echo $act_date_str_first . ' ' . $act_time_str_first ; ?></span>   <span class="inline-buy-ticket sc-run-widget" data-id="<?php echo $act_id;?>"  data-frame="<?php echo $act_frame;?>">Купить билеты</span>
 
     </div>
 
@@ -358,6 +395,8 @@
 
         <div class="show-dates-wrapper">
 
+        <h3>Выберите дату и время:</h3>
+
         <div class="tabsParent sc_tabulatorParent">
             <div class="tabsTogglersRow sc_tabulatorToggleRow">
 
@@ -408,7 +447,8 @@
 
                     foreach($value_m as $in_key => $in_value){
 
-                        $i_id =      $in_value[array_search("ACTION_ID", $columns)];
+                        $i_id =         $in_value[array_search("ACTION_ID", $columns)];
+                        $i_is_choosen_class = ($i_id == $free_places_skip_id)? 'active_in_show' : '';
                         $i_frame =      $in_value[array_search("FRAME", $columns)];
                         $a_alias =      $in_value[array_search("ACTION_URL_ALIAS", $columns)];
                         $a_date =       $in_value[array_search("ACTION_DATE_STR", $columns)];
@@ -440,11 +480,11 @@
 
                         $i_prices_str = (strlen($a_minprice) > 2)? 'от '.$a_minprice.'<i class="fa fa-ruble"></i>': '&nbsp;';
                         $i_total_tickets = $in_value[array_search("FREE_PLACE_COUNT", $columns)];
-                        $i_tickets_count = ($i_total_tickets > 0) ? ($i_total_tickets >= 70)? 'Более 70 билетов': getNoun($i_total_tickets, 'билет', 'билета', 'билетов') : 'билетов нет, <span class="no-tickets-notify">уведомить Вас когда появятся?</span>';
+                        $i_tickets_count = ($i_total_tickets > 0) ? ($i_total_tickets >= 70)? 'Более 70 билетов': $i_total_tickets . ' ' . getNoun($i_total_tickets, 'билет', 'билета', 'билетов') : 'билетов нет <span class="no-tickets-notify">уведомить Вас когда появятся?</span>';
                         $t_show_buy_btn = ($i_total_tickets > 0)? '<div class="a-date-item-buy sc-run-widget" data-id="'.$i_id.'" data-frame="'.$i_frame.'">Купить билеты</div>': '';
 
 
-                        $dates_html .=   '<a class="nounderline" href="/'.$a_alias.'/"><div class="a-date-item-holder">'
+                        $dates_html .=   '<a class="nounderline" href="/'.$a_alias.'/"><div class="a-date-item-holder '.$i_is_choosen_class.'">'
                                             .'<div class="a-date-item-date-holder"><span class="a-date-item-day">'.$i_date_day.'</span> '.$i_date_mth.' '.$a_time.'</div>'
                                             .'<div class="a-date-item-info-holder">'.$i_tickets_count.' '.$i_prices_str .' '. $t_show_buy_btn. '</div>'
                                         .'</div></a>';
