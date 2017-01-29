@@ -479,6 +479,7 @@ html{
     width: 100%;
     cursor: pointer;
     margin-top: 48px;
+    display: none;
 }
 .mb-special-holder:hover{
     background-color: #ed5120;
