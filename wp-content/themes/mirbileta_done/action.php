@@ -207,6 +207,7 @@
 
                         </div>
 
+                        <?php if(count(json_decode($tag_list)) > 0):?>
 
                         <div class="action-tags-holder">
 
@@ -241,6 +242,8 @@
 
                             ?>
                         </div>
+
+                        <?php endif; ?>
 
                     </div>
 
