@@ -259,7 +259,7 @@
 </div>
 
 <?php //if($free_places > 0):?>
-    <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget-mobile.js" src=""></script>
+    <script type="text/javascript" id="mbw-script-loader" data-src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/mb_widget_mobile.js" src=""></script>
 <!--    <script type="text/javascript" src="http://mb-dev.mirbileta.ru/assets/widget/widget.js"></script>-->
 <?php //endif; ?>
 
