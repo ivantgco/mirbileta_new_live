@@ -55,7 +55,8 @@ include('main_menu.php');
 
     </div>
     <div class="container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.6603270761066!2d37.66113331606984!3d55.72965500124428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54ad90555ccc1%3A0x90af535bc9433c75!2z0YPQuy4g0JrRgNGD0YLQuNGG0LrQuNC5INCS0LDQuywgMTYsINCc0L7RgdC60LLQsCwgMTA5MDQ0!5e0!3m2!1sru!2sru!4v1454514161029" width="100%" height="370" frameborder="0" style="border:0" allowfullscreen></iframe>
+<!--        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.6603270761066!2d37.66113331606984!3d55.72965500124428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54ad90555ccc1%3A0x90af535bc9433c75!2z0YPQuy4g0JrRgNGD0YLQuNGG0LrQuNC5INCS0LDQuywgMTYsINCc0L7RgdC60LLQsCwgMTA5MDQ0!5e0!3m2!1sru!2sru!4v1454514161029" width="100%" height="370" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2242.109937072993!2d37.637150116266106!3d55.808691780568275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b535e6fb8b6e33%3A0xc2b08ad0b73bb354!2z0L_RgC3RgiDQnNC40YDQsCwgMTE00JAsINCc0L7RgdC60LLQsCwgMTI5NjI2!5e0!3m2!1sru!2sru!4v1490187011528" width="100%" height="370" frameborder="0" style="border:0" allowfullscreen></iframe>
 
         <div class="single-contacts-title-holder wid100pr flLeft">
             <h2>Контакты:</h2>
@@ -83,7 +84,7 @@ include('main_menu.php');
 
                 <div class="pr50">
                     <b class="black">Москва:</b><br/><br/>
-                    Адрес: Москва, Крутицкий вал 16
+                    Адрес: Москва, Проспект мира, 114А
                     <br/><br/>
                 </div>
 
