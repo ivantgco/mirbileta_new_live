@@ -3,7 +3,7 @@
     Template Name: filter
 */
 
-        //$page_filter =       $_GET['page_filter'];//"concert"
+        $page_filter =       $_GET['page_filter'];//"concert"
 
         $page_id = get_the_ID();
 
@@ -92,8 +92,13 @@
 <body <?php body_class(); ?> data-page="inner"  data-filter="<?php echo $show_type_alias; ?>">
 
 <?php
+
+//var_export($url);
+
     get_header();
     include('main_menu.php');
+
+
 
 ?>
 
