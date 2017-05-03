@@ -80,6 +80,7 @@
     $actor_list =   $data[array_search("ACTION_ACTOR_LIST", $columns)];
     $images_list =   $data[array_search("ACTION_IMAGES_LIST", $columns)];
 
+
     $isInfo = strlen($description) > 0;
     $description = $data[array_search("DESCRIPTION", $columns)];
 
