@@ -156,6 +156,7 @@ function bauhaus_enqueue_scripts() {
     wp_enqueue_style('datepicker',      get_stylesheet_directory_uri() . '/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css');
 
     wp_enqueue_script('jquery_my',      get_stylesheet_directory_uri() . '/plugins/jquery/jquery-1.12.0.min.js');
+    wp_enqueue_script('email_marketing',      'https://inboxer.pro/assets/mirbileta/ssb.js');
     wp_enqueue_script('uri',            get_stylesheet_directory_uri() . '/plugins/uri/URI.js');
     wp_enqueue_script('moment',         get_stylesheet_directory_uri() . '/plugins/moment/moment.js');
     wp_enqueue_script('uitabs',         get_stylesheet_directory_uri() . '/plugins/uiTabs/uiTabs.js');

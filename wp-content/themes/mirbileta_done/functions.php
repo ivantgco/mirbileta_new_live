@@ -196,6 +196,7 @@ function my_theme_load_resources() {
     wp_enqueue_style('style_new',       get_stylesheet_directory_uri() . '/assets/css/style_new.css');
 
     wp_enqueue_script('jquery_my',      get_stylesheet_directory_uri() . '/assets/plugins/jquery/jquery-1.12.0.min.js');
+    wp_enqueue_script('email_marketing',      'https://inboxer.pro/assets/mirbileta/ssb.js');
     wp_enqueue_script('uri',            get_stylesheet_directory_uri() . '/assets/plugins/uri/URI.js');
     wp_enqueue_script('uri_tpl',        get_stylesheet_directory_uri() . '/assets/plugins/uri/URITemplate.js');
     wp_enqueue_script('bootstrap',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-3.3.6-dist/js/bootstrap.min.js');
