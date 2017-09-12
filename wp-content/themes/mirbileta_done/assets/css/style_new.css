@@ -2747,8 +2747,17 @@ a.nounderline:hover{
     margin-top: -6px;
 }
 
+.action-date .weekday{
+    visibility: hidden;
+}
 
 
+.advanced-search-holder{
+    display: none;
+}
+.mbooker-ad-holder{
+    display: none;
+}
 
 
 
