@@ -57,7 +57,7 @@ $page_id = get_the_ID();
 
 
             <b class="black">Поддержка:</b><br/>
-            +7 (499) 391-61-97
+            +7 (495) 005-30-23
             <br/>
             support@mirbileta.ru
             <br/>

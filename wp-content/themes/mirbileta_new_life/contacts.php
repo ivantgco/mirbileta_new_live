@@ -65,7 +65,7 @@ include('main_menu.php');
 
                 <div class="pr50">
                     <b class="black">Поддержка:</b><br/><br/>
-                    +7 (499) 391-61-97
+                    +7 (495) 005-30-23
                     <br/>
                     support@mirbileta.ru
                     <br/>

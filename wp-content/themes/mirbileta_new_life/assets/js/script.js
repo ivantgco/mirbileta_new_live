@@ -1506,7 +1506,7 @@
         parseUrl();
 
         fs.initComponents();
-        //fs.initExtendFilters();
+        fs.initExtendFilters();
         fs.initSearch();
         fs.initSlider();
         fs.initScroll();

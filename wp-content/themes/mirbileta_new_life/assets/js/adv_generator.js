@@ -189,7 +189,7 @@ var directGenerator = {
                 '<div class="ad-site">mirbileta.ru</div>' +
             '</div>' +
             '<div class="ad-text">{{text}}</div>' +
-            '<div class="ad-contacts">Контактная информация: +7 (499) 391-61-97 пн-пт 10:00-20:00<br> м. Пролетарская Москва 18+</div>' +
+            '<div class="ad-contacts">Контактная информация: +7 (495) 005-30-23 пн-пт 10:00-20:00<br> м. Пролетарская Москва 18+</div>' +
             '</div>{{/ads}}';
         if(document.location.href.indexOf('adv') > -1){
             $('body').html(Mustache.to_html(tpl, {ads: directGenerator.fullData}));
