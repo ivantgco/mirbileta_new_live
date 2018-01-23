@@ -1,0 +1,211 @@
+@font-face {
+    font-family: 'OpenSans-light';
+    src: url(../fonts/Open_sans/OpenSans-Light.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-regular';
+    src: url(../fonts/Open_sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-semibold';
+    src: url(../fonts/Open_sans/OpenSans-Semibold.ttf);
+}
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url(../fonts/Open_sans/OpenSans-Bold.ttf);
+}
+
+
+@font-face {
+    font-family: 'Helvetica-Ultralight';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-UltraLight.otf);
+}
+
+@font-face {
+    font-family: 'Helvetica-light';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Light.otf);
+}
+@font-face {
+    font-family: 'Helvetica-Regular';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Roman.otf);
+}
+
+
+
+@font-face {
+    font-family: 'Helvetica-Semibold';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Medium.otf);
+}
+
+@font-face {
+    font-family: 'Helvetica-Bold';
+    src: url(../fonts/Helvetica/HelveticaNeueCyr-Bold.otf);
+}
+
+@font-face {
+    font-family: 'Rambla-Regular';
+    src: url(../fonts/Rambla/Rambla-Regular.ttf);
+}
+@font-face {
+    font-family: 'Rambla-Bold';
+    src: url(../fonts/Rambla/Rambla-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'PTSans-Regular';
+    src: url(../fonts/PT_sans/PT_Sans-Web-Regular.ttf);
+}
+@font-face {
+    font-family: 'PTSans-Bold';
+    src: url(../fonts/PT_sans/PT_Sans-Web-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Arvo-Regular';
+    src: url(../fonts/arvo/Arvo-Regular.ttf);
+}
+@font-face {
+    font-family: 'Arvo-Italic';
+    src: url(../fonts/arvo/Arvo-Italic.ttf);
+}
+@font-face {
+    font-family: 'Arvo-Bold';
+    src: url(../fonts/arvo/Arvo-Bold.ttf);
+}
+@font-face {
+    font-family: 'Arvo-BoldItalic';
+    src: url(../fonts/arvo/Arvo-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url(../fonts/Roboto_Condensed/RobotoCondensed-Light.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url(../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url(../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf);
+}
+
+
+.posRel{
+    position: relative;
+}
+
+
+.site-container{
+    max-width: 1145px;
+    margin: auto;
+    margin-top: 40px;
+    padding-right: 0;
+    position: relative;
+    /*width: 990px;*/
+}
+
+@media (min-width: 1743px){
+    .site-container {
+        max-width: 1593px;
+    }
+}
+
+@media (max-width: 1742px) and (min-width: 1519px){
+    .site-container{
+        max-width: 1369px;
+    }
+}
+@media (max-width: 1294px) and (min-width: 1025px){
+    .site-container {
+        max-width: 911px;
+    }
+}
+@media (max-width: 1024px) and (min-width: 922px){
+    .site-container {
+        max-width: 1024px;
+    }
+}
+
+
+.mb-site-content{
+    float: left;
+    min-height: 1px;
+    padding-bottom: 115px;
+    position: relative;
+    width: 910px;
+}
+
+@media (min-width: 1743px){
+    .mb-site-content {
+        width: 1358px;
+    }
+}
+@media (max-width: 1742px) and (min-width: 1519px){
+    .mb-site-content{
+        width: 1134px;
+    }
+}
+@media (max-width: 1294px) and (min-width: 1025px){
+    .mb-site-content {
+        width: 686px;
+    }
+}
+@media (max-width: 1024px) and (min-width: 930px){
+    .mb-site-content {
+        width: 874px;
+    }
+}
+
+
+.site-sidebar {
+    padding-right: 35px;
+    padding-left: 0;
+    width: 235px;
+    float: left;
+}
+
+@media (max-width: 1294px) and (min-width: 1025px){
+    .site-sidebar {
+        padding-left: 25px !important;
+        width: 225px !important;
+    }
+}
+@media (max-width: 1024px){
+    .site-sidebar {
+        display: none;
+    }
+}
+
+
+.pr30{
+    width: 30%;
+    float: left;
+}
+.pr50{
+    width: 50%;
+    float: left;
+}
+.pr70{
+    width: 70%;
+    float: left;
+}
+
+.taCenter{
+    text-align: center;
+}
+.marTop40{
+    margin-top: 40px;
+}
+.marBot40{
+   margin-bottom: 40px;
+}
+
+.flLeft{
+    float: left;
+}
+.wid100pr{
+    width: 100%;
+}

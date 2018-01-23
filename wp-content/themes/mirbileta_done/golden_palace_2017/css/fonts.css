@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "Rambla";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Rambla-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Rambla-Regular.woff2") format("woff2"), url("../fonts/Rambla-Regular.woff") format("woff"), url("../fonts/Rambla-Regular.ttf") format("truetype"), url("../fonts/Rambla-Regular.svg#Rambla") format("svg");
+}
+@font-face {
+  font-family: "Rambla";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Rambla-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Rambla-Bold.woff2") format("woff2"), url("../fonts/Rambla-Bold.woff") format("woff"), url("../fonts/Rambla-Bold.ttf") format("truetype"), url("../fonts/Rambla-Bold.svg#Rambla") format("svg");
+}
+@font-face {
+  font-family: "Proximanovacond";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Proximanovacond-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Proximanovacond-Regular.woff2") format("woff2"), url("../fonts/Proximanovacond-Regular.woff") format("woff"), url("../fonts/Proximanovacond-Regular.ttf") format("truetype"), url("../fonts/Proximanovacond-Regular.svg#Proximanovacond") format("svg");
+}
+@font-face {
+  font-family: "ProximanovacondItalic";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/proximanova-regularitalic.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanova-regularitalic.woff2") format("woff2"), url("../fonts/proximanova-regularitalic.woff") format("woff"), url("../fonts/proximanova-regularitalic.ttf") format("truetype"), url("../fonts/proximanova-regularitalic.svg#ProximanovacondItalic") format("svg");
+}
+@font-face {
+  font-family: "Proximanovacond";
+  font-style: normal;
+  font-weight: 550;
+  src: url("../fonts/proximanovacond-semibold.eot?#iefix") format("embedded-opentype"), url("../fonts/proximanovacond-semibold.woff2") format("woff2"), url("../fonts/proximanovacond-semibold.woff") format("woff"), url("../fonts/proximanovacond-semibold.ttf") format("truetype"), url("../fonts/proximanovacond-semibold.svg#Proximanovacond") format("svg");
+}
+@font-face {
+  font-family: "Proximanovacond";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/Proximanova-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Proximanova-Bold.woff2") format("woff2"), url("../fonts/Proximanova-Bold.woff") format("woff"), url("../fonts/Proximanova-Bold.ttf") format("truetype"), url("../fonts/Proximanova-Bold.svg#Proximanovacond") format("svg");
+}
+@font-face {
+  font-family: "YotaInterFace";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/YotaInterFace-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/YotaInterFace-Light.woff2") format("woff2"), url("../fonts/YotaInterFace-Light.woff") format("woff"), url("../fonts/YotaInterFace-Light.ttf") format("truetype"), url("../fonts/YotaInterFace-Light.svg#YotaInterFace") format("svg");
+}
+@font-face {
+  font-family: "YotaInterFace";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/YotaInterFace-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/YotaInterFace-Regular.woff2") format("woff2"), url("../fonts/YotaInterFace-Regular.woff") format("woff"), url("../fonts/YotaInterFace-Regular.ttf") format("truetype"), url("../fonts/YotaInterFace-Regular.svg#YotaInterFace") format("svg");
+}
+@font-face {
+  font-family: "YotaInterFace";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/YotaInterFace-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/YotaInterFace-Bold.woff2") format("woff2"), url("../fonts/YotaInterFace-Bold.woff") format("woff"), url("../fonts/YotaInterFace-Bold.ttf") format("truetype"), url("../fonts/YotaInterFace-Bold.svg#YotaInterFace") format("svg");
+}

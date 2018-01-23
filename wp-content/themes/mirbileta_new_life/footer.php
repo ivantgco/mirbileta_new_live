@@ -17,7 +17,7 @@
                 </div></a>
 
             <div class="contacts-wrapper">
-                <div class="contacts-phone">+7 (499) 391<span>-61</span>-97</div>
+                <div class="contacts-phone">+7 (495) 005-<span>30</span>-23</div>
                 <div class="contacts-email">info@mirbileta.ru</div>
             </div>
 
