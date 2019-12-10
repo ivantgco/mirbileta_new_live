@@ -114,7 +114,7 @@
 //        '.$actions_count.'
 
         if(strlen($actionsHtml) == 0){
-            echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+            echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (495) 005-30-23 </div>';
         }else{
             echo $actionsHtml;
         }

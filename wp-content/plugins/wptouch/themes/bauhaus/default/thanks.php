@@ -29,14 +29,14 @@
 <head>
 
     <meta charset="UTF-8"/>
-    <?php include 'seo.php'; ?>
-<!--    <title>--><?php //wp_title('-', true, 'right'); ?><!--</title>-->
+
+    <title><?php wp_title('-', true, 'right'); ?></title>
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 
     <link href="/wp-content/themes/mirbileta_new_life/assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
 
-    <?php include 'viewport.php';?>
+    <meta name="viewport" content="width=device-width">
 
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
@@ -65,33 +65,33 @@
                 Ваш заказ № <span class="order_id"><?php echo $order_id; ?></span> успешно оплачен, билеты<br>
                 отправлены вам на почту. <span class="thx-email">(<?php echo $email;?>)</span>
             </div>
-<!--        </div>-->
+        </div>
 
-<!--        <div class="contest-fast-result-holder">-->
-<!--            <div class="contest-fast-congrats">-->
-<!--                Поздравляем!-->
-<!--            </div>-->
-<!--            <div class="contest-fast-result-wrapper">-->
-<!--                <div class="contest-fast-result-text">Ваш результат:</div>-->
-<!--                <div class="contest-fast-result"></div>-->
-<!--            </div>-->
-<!---->
-<!--            <div class="contest-fast-timer-rate"><div class="contest-fast-go">Улучшить результат!</div></div>-->
-<!--            <div class="contest-fast-timer-img"></div>-->
-<!--            <a target="_blank" href="/contest-fast"><div class="contest-fast-watch-results">-->
-<!--                    Смотреть все результаты-->
-<!--                </div></a>-->
-<!---->
-<!--        </div>-->
+        <div class="contest-fast-result-holder">
+            <div class="contest-fast-congrats">
+                Поздравляем!
+            </div>
+            <div class="contest-fast-result-wrapper">
+                <div class="contest-fast-result-text">Ваш результат:</div>
+                <div class="contest-fast-result"></div>
+            </div>
 
-<!--        <div class="thx-content">-->
+            <div class="contest-fast-timer-rate"><div class="contest-fast-go">Улучшить результат!</div></div>
+            <div class="contest-fast-timer-img"></div>
+            <a target="_blank" href="/contest-fast"><div class="contest-fast-watch-results">
+                    Смотреть все результаты
+                </div></a>
+
+        </div>
+
+        <div class="thx-content">
 
 
             <div class="thx-contacts">
                 По всем вопросам обращайтесь:<br>
                 <br>
-                +7 (499) 391-61-97<br>
-                info@mirbileta.ru
+                +7 (495) 005-30-23<br>
+                support@mirbileta.ru
             </div>
 
 
@@ -113,7 +113,7 @@
 
         <script type="text/javascript">
             $(document).ready(function(){
-                return false;
+
                 if(!!localStorage){
 
                     var isFinished = localStorage.getItem('mb-fast-contest-finished');

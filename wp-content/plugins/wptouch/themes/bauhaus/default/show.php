@@ -16,7 +16,6 @@
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><show_url_alias>".$show_alias."</show_url_alias>";
 
     $ch = curl_init();
-//
 
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_URL, $url);

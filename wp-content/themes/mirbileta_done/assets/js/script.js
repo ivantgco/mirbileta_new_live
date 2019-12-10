@@ -753,6 +753,7 @@
             });
 
             $('#load_next').off('click').on('click', function(){
+                
                 var btn = $(this);
                 var page = btn.attr('data-page');
                 var acts_wrapper = $('.actions-wrapper');
@@ -802,7 +803,7 @@
                                             '<div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div>'+
                                             '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
                                             '<div class="mb-a-venue">{{VENUE_NAME}}</div>'+
-                                            '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'+
+                                            '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn"><div class="circle"><span class="icon arrow"></span></div><p class="button-text">Купить билет</p></button></div></div>'+
                                             '</a></div>{{/actions}}';
 
 
@@ -1575,7 +1576,7 @@
                                 '<div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div>'+
                                 '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
                                 '<div class="mb-a-venue">{{VENUE_NAME}}</div>'+
-                                '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'+
+                                '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn"><div class="circle"><span class="icon arrow"></span></div><p class="button-text">Купить билет</p></button></div></div>'+
                                 '</a></div>{{/actions}}';
 
 
@@ -1652,7 +1653,7 @@
                                     '<div class="mb-a-title">{{ACTION_NAME}}<span class="mb-a-age">{{AGE_CATEGORY}}</span></div>'+
                                     '<div class="mb-a-date">{{ACTION_DATE_STR}}, <span class="mb-a-time">{{ACTION_TIME_STR}}</span></div>'+
                                     '<div class="mb-a-venue">{{VENUE_NAME}}</div>'+
-                                    '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'+
+                                    '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от&nbsp;{{MIN_PRICE}}&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn"><div class="circle"><span class="icon arrow"></span></div><p class="button-text">Купить билет</p></button></div></div>'+
                                     '</a></div>{{/actions}}';
 
 
@@ -1971,7 +1972,7 @@
             });
 
             search.off('focus').on('focus', function(){
-                if($(this).val().length > 1  &&  search_dd.css('display') == 'none'){
+                if($(this).val().length >= 0  &&  search_dd.css('display') == 'none'){
                     search_dd.show(0);
                 }
             });
@@ -2062,7 +2063,7 @@
 
 //            });
         },
-        initSlider: function(){
+        initSlider2: function(){
             var vagons = $('.slider-item-vagon');
             var train = $('.slider-train');
             var interval = 6500;
@@ -2447,6 +2448,45 @@
                 }
             });
         },
+        initSlider: function(){
+
+            // $('.o-c-slider-holder').slick({
+            //     dots: true,
+            //     infinite: true,
+            //     speed: 300,
+            //     slidesToShow: 1,
+            //     centerMode: true,
+            //     variableWidth: true
+            // });
+
+
+            var swiper = new Swiper('.swiper-container', {
+                effect: 'coverflow',
+                grabCursor: true,
+                centeredSlides: true,
+                loop: true,
+                loopAdditionalSlides: 100,
+                slidesPerView: '2',
+                coverflowEffect: {
+                  rotate: 0,
+                  stretch: -200,
+                  depth: 1000,
+                  modifier: 1,
+                  slideShadows : true,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                  },
+                  autoplay: {
+                    delay: 7000,
+                  },
+            
+              });
+            
+
+
+
+        },
         loader: function(state, text){
 
             var fader = $('.mbw-loader-holder');
@@ -2467,14 +2507,17 @@
 
         parseUrl();
 
+        fs.initSlider();
         fs.initComponents();
         fs.initExtendFilters();
         fs.initSearch();
-        fs.initSlider();
         fs.initScroll();
         fs.initInPageSearch();
         fs.initContest();
         fs.initReviews();
+
+
+        $('.mmb-footer-email').html('support@mirbileta.ru');
 
     });
 
@@ -2516,4 +2559,16 @@
 
 
 
+
 }());
+
+
+$(document).ready(function () {
+    $('.show-cal').on('click', function() {
+        $('.popup-cal').css('display', 'flex');
+    });
+    
+    $('.popup-cal-content-close').on('click', function() {
+        $('.popup-cal').hide();
+    });
+});

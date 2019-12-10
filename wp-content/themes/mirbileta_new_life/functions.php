@@ -6,24 +6,14 @@
  * Time: 17:24
  */
 
-//update_option('siteurl', 'http://mirbileta.ru');
-//update_option('home', 'http://mirbileta.ru');
-
 define( 'WP_DEBUG', true );
 
-$global_prot = 'http';
-$global_url = '95.165.147.252';
-
-//$global_prot = 'https';
-//$global_url = 'shop.mirbileta.ru';
-
-$global_salesite = 'dev.mirbileta.ru';
-//$global_salesite = 'mirbileta.ru';
-
+//$global_prot = 'http';
+//$global_url = '192.168.1.190';
 $defaultPoster = 'https://shop.mirbileta.ru/assets/img/medium_default_poster.png';
 $defaultSmall = 'https://shop.mirbileta.ru/assets/img/small_default_poster.png';
-
-
+$global_prot = 'https';
+$global_url = 'shop.mirbileta.ru';
 
 
 function request_url()
@@ -56,7 +46,7 @@ function request_url()
 }
 
 function addRoutes() {
-    $urlKey = $_SERVER[REQUEST_URI];
+    $urlKey = $_SERVER['REQUEST_URI'];
     add_rewrite_rule('(kupit_bilet)?$', 'kupit_bilet/'.$urlKey.'zopa', 'top');
 }
 //index.php?pagename=$matches[1]
@@ -108,17 +98,6 @@ function to_afisha_date($str, $format, $lang)
         )
     );
 
-    $weekDays_short = array(
-        "rus"=>array(
-            "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"
-        ),
-        "eng"=>array(
-            "mo", "tu", "we", "th", "fr", "sa", "su"
-        )
-    );
-
-
-
     $res = '';
 
     switch ($format){
@@ -136,9 +115,6 @@ function to_afisha_date($str, $format, $lang)
             break;
         case 'weekday':
             $res = $weekDays[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
-            break;
-        case 'weekday_short':
-            $res = $weekDays_short[$lang][date('N', strtotime($yy.'-'.$mm.'-'.$dd.' '.$hh.":".$mi.":00")) -1];
             break;
         case 'time':
             $res = $hh . ':' . $mi;
@@ -160,7 +136,7 @@ function to_afisha_date($str, $format, $lang)
 
 function my_theme_load_resources() {
 
-
+	/*echo 555555;exit;*/
     wp_enqueue_style('bootstrap',       get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-3.3.6-dist/css/bootstrap.min.css');
     wp_enqueue_style('fontawesome',     get_stylesheet_directory_uri() . '/assets/plugins/font-awesome-4.5.0/css/font-awesome.min.css');
     wp_enqueue_style('normalize',       get_stylesheet_directory_uri() . '/assets/css/normalize.css');
@@ -170,6 +146,7 @@ function my_theme_load_resources() {
     wp_enqueue_style('toastr',          get_stylesheet_directory_uri() . '/assets/plugins/toastr/toastr.min.css');
     wp_enqueue_style('core',            get_stylesheet_directory_uri() . '/assets/css/core.css');
     wp_enqueue_style('style',           get_stylesheet_directory_uri() . '/assets/css/style.css');
+    wp_enqueue_style('child-main-style',           get_stylesheet_directory_uri() . '/style.css');
 
     wp_enqueue_script('jquery_my',      get_stylesheet_directory_uri() . '/assets/plugins/jquery/jquery-1.12.0.min.js');
     wp_enqueue_script('uri',            get_stylesheet_directory_uri() . '/assets/plugins/uri/URI.js');

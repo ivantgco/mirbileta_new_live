@@ -35,8 +35,8 @@ $alias =        $ran1[array_search("ACTION_URL_ALIAS", $columns)];
 $frame =        $ran1[array_search("FRAME", $columns)];
 $act_name =     $ran1[array_search("ACTION_NAME", $columns)];
 $g_act_name =     $ran1[array_search("ACTION_NAME", $columns)];
-$thumb =        (strlen($ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
-$poster =       (strlen($ran1[array_search("ACTION_POSTER_IMAGE", $columns)])> 0) ? (strpos("http", $ran1[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?                          $global_prot . '://'. $global_url . '/upload/' . $ran1[array_search("ACTION_POSTER_IMAGE", $columns)] : $ran1[array_search("ACTION_POSTER_IMAGE", $columns)]: $defaultPoster;
+$thumb = (strlen($ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://' . $global_url . '/upload/' . $ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $ran1[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
+$poster = (strlen($ran1[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0) ? (strpos("http", $ran1[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?                          $global_prot . '://' . $global_url . '/upload/' . $ran1[array_search("ACTION_POSTER_IMAGE", $columns)] : $ran1[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
 $act_date =     $ran1[array_search("ACTION_DATE_STR", $columns)];
 $act_time =     $ran1[array_search("ACTION_TIME_STR", $columns)];
 $hall =         $ran1[array_search("HALL_NAME", $columns)];
@@ -79,8 +79,8 @@ $alias2 =        $ran2[array_search("ACTION_URL_ALIAS", $columns)];
 $frame2 =        $ran2[array_search("FRAME", $columns)];
 $act_name2 =     $ran2[array_search("ACTION_NAME", $columns)];
 $g_act_name2 =     $ran2[array_search("ACTION_NAME", $columns)];
-$thumb2 =        (strlen($ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://'. $global_url . '/upload/' . $ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
-$poster2 =       (strlen($ran2[array_search("ACTION_POSTER_IMAGE", $columns)])> 0) ? (strpos("http", $ran2[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?                          $global_prot . '://'. $global_url . '/upload/' . $ran2[array_search("ACTION_POSTER_IMAGE", $columns)] : $ran2[array_search("ACTION_POSTER_IMAGE", $columns)]: $defaultPoster;
+$thumb2 = (strlen($ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) > 0) ? (strpos("http", $ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)]) == -1) ?      $global_prot . '://' . $global_url . '/upload/' . $ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $ran2[array_search("ACTION_POSTER_THUMBNAIL_IMAGE", $columns)] : $defaultPoster;
+$poster2 = (strlen($ran2[array_search("ACTION_POSTER_IMAGE", $columns)]) > 0) ? (strpos("http", $ran2[array_search("ACTION_POSTER_IMAGE", $columns)]) == -1) ?                          $global_prot . '://' . $global_url . '/upload/' . $ran2[array_search("ACTION_POSTER_IMAGE", $columns)] : $ran2[array_search("ACTION_POSTER_IMAGE", $columns)] : $defaultPoster;
 $act_date2 =     $ran2[array_search("ACTION_DATE_STR", $columns)];
 $act_time2 =     $ran2[array_search("ACTION_TIME_STR", $columns)];
 $hall2 =         $ran2[array_search("HALL_NAME", $columns)];
@@ -110,30 +110,40 @@ $week_and_time2 = to_afisha_date($act_date_time, "week_and_time", "rus");
 $weekday2 = to_afisha_date($act_date_time, "weekday", "rus");
 $time2 = to_afisha_date($act_date_time, "time", "rus");
 
-$prices_str = ($minprice || $minprice)? ( $minprice == $maxprice)? 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
-$prices_str2 = ($minprice2 || $minprice2)? ( $minprice2 == $maxprice2)? 'от&nbsp;'.$minprice2 . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;'.$minprice2 . '&nbsp;<i class="fa fa-ruble"></i>': '&nbsp;';
+$prices_str = ($minprice || $minprice) ? ($minprice == $maxprice) ? 'от&nbsp;' . $minprice . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;' . $minprice . '&nbsp;<i class="fa fa-ruble"></i>' : '&nbsp;';
+$prices_str2 = ($minprice2 || $minprice2) ? ($minprice2 == $maxprice2) ? 'от&nbsp;' . $minprice2 . '&nbsp;<i class="fa fa-ruble"></i>' : 'от&nbsp;' . $minprice2 . '&nbsp;<i class="fa fa-ruble"></i>' : '&nbsp;';
 
 
 $actionsHtml .=  ''
-    .'<div class="mb-block mb-action" data-id="'.$act_id.'"><a href="/'.$alias.'">'
-    .'<div class="mb-action-image-holder"><img src="'.$poster.'"></div>'
-    .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
-    .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
-    .'<div class="mb-a-venue">'.$venue.'</div>'
-    .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str.'</div><div class="ma-a-buy">Купить билет</div></div>'
-    .'</a></div>'
-    .'';
+    . '<div class="mb-block mb-action" data-id="' . $act_id . '"><a href="/' . $alias . '">'
+    . '<div class="mb-action-image-holder"><img src="' . $poster . '"></div>'
+    . '<div class="mb-a-title">' . $act_name . '<span class="mb-a-age">' . $ageCat . '</span></div>'
+    . '<div class="mb-a-date">' . $act_date . ', <span class="mb-a-time">' . $act_time . '</span></div>'
+    . '<div class="mb-a-venue">' . $venue . '</div>'
+    . '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">' . $prices_str . '</div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn">
+    <div class="circle">
+      <span class="icon arrow"></span>
+    </div>
+    <p class="button-text">Купить билет</p>
+  </button></div></div>'
+    . '</a></div>'
+    . '';
 
 
 $actionsHtml .=  ''
-    .'<div class="mb-block mb-action" data-id="'.$act_id2.'"><a href="/'.$alias2.'">'
-    .'<div class="mb-action-image-holder"><img src="'.$poster2.'"></div>'
-    .'<div class="mb-a-title">'.$act_name2.'<span class="mb-a-age">'.$ageCat2.'</span></div>'
-    .'<div class="mb-a-date">'.$act_date2.', <span class="mb-a-time">'.$act_time2.'</span></div>'
-    .'<div class="mb-a-venue">'.$venue2.'</div>'
-    .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">'.$prices_str2.'</div><div class="ma-a-buy">Купить билет</div></div>'
-    .'</a></div>'
-    .'';
+    . '<div class="mb-block mb-action" data-id="' . $act_id2 . '"><a href="/' . $alias2 . '">'
+    . '<div class="mb-action-image-holder"><img src="' . $poster2 . '"></div>'
+    . '<div class="mb-a-title">' . $act_name2 . '<span class="mb-a-age">' . $ageCat2 . '</span></div>'
+    . '<div class="mb-a-date">' . $act_date2 . ', <span class="mb-a-time">' . $act_time2 . '</span></div>'
+    . '<div class="mb-a-venue">' . $venue2 . '</div>'
+    . '<div class="mb-a-prices-and-buy"><div class="ma-a-prices">' . $prices_str2 . '</div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn">
+    <div class="circle">
+      <span class="icon arrow"></span>
+    </div>
+    <p class="button-text">Купить билет</p>
+  </button></div></div>'
+    . '</a></div>'
+    . '';
 
 //$actionsHtml .=      '<div class="mb-block mb-action" data-id="'.$act_id2.'">'
 //    .'<a href="/'.$alias2.'"><div class="mb-a-image" style="background-image: url(\''.$poster2.'\');"></div></a>'
@@ -162,9 +172,11 @@ $actionsHtml .=  ''
 
 <head>
 
-    <meta charset="UTF-8"/>
+    <meta charset="UTF-8" />
     <?php include 'seo.php'; ?>
-<!--    <title>--><?php //wp_title('-', true, 'right'); ?><!--</title>-->
+    <!--    <title>--><?php //wp_title('-', true, 'right'); 
+                        ?>
+    <!--</title>-->
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 
@@ -175,42 +187,42 @@ $actionsHtml .=  ''
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
-    <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all'/>
+    <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all' />
 
     <?php wp_head(); ?>
 
 </head>
 
-<body <?php body_class(); ?> data-page="inner" >
+<body <?php body_class(); ?> data-page="inner">
 
-<?php
-get_header();
-include('main_menu.php');
+    <?php
+    get_header();
+    include('main_menu.php');
 
-?>
+    ?>
 
-<div class="site-content">
+    <div class="site-content">
 
-    <div class="container">
+        <div class="container">
 
-        <h1 class="cl404">404 <span class="notfound">Страница не найдена, выберите что-нибудь себе по вкусу в <a href="/">Афише</a></span></h1>
-        <h1 style="margin-bottom: 50px;">А вот Вам пара случайных мероприятий =)</h1>
-        <div class="actions-wrapper">
-            <?php
+            <h1 class="cl404">404 <span class="notfound">Страница не найдена, выберите что-нибудь себе по вкусу в <a href="/">Афише</a></span></h1>
+            <h1 style="margin-bottom: 50px;">А вот Вам пара случайных мероприятий =)</h1>
+            <div class="actions-wrapper">
+                <?php
 
-            echo $actionsHtml;
+                echo $actionsHtml;
 
-            ?>
+                ?>
+            </div>
+
         </div>
-
     </div>
-</div>
 
-<?php
+    <?php
 
-get_footer();
+    get_footer();
 
-?>
+    ?>
 
 
 </body>

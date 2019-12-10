@@ -191,9 +191,13 @@ function my_theme_load_resources() {
     wp_enqueue_style('rangeslider_cus', get_stylesheet_directory_uri() . '/assets/plugins/ion.rangeSlider-2.1.2/css/ion.rangeSlider.custom.css');
     wp_enqueue_style('datepicker',      get_stylesheet_directory_uri() . '/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css');
     wp_enqueue_style('toastr',          get_stylesheet_directory_uri() . '/assets/plugins/toastr/toastr.min.css');
+    wp_enqueue_style('carousel',          get_stylesheet_directory_uri() . '/assets/plugins/slick-1.8.0/slick/slick.css');
+    wp_enqueue_style('carousel-theme',          get_stylesheet_directory_uri() . '/assets/plugins/slick-1.8.0/slick/slick-theme.css');
+    wp_enqueue_style('swiper_styles',       get_stylesheet_directory_uri() . '/assets/plugins/swiper/swiper.min.css');
     wp_enqueue_style('core',            get_stylesheet_directory_uri() . '/assets/css/core.css');
     wp_enqueue_style('style',           get_stylesheet_directory_uri() . '/assets/css/style.css');
     wp_enqueue_style('style_new',       get_stylesheet_directory_uri() . '/assets/css/style_new.css');
+    
 
     wp_enqueue_script('jquery_my',      get_stylesheet_directory_uri() . '/assets/plugins/jquery/jquery-1.12.0.min.js');
     wp_enqueue_script('email_marketing',      'https://inboxer.pro/assets/mirbileta/ssb.js');
@@ -215,6 +219,8 @@ function my_theme_load_resources() {
     wp_enqueue_script('script',         get_stylesheet_directory_uri() . '/assets/js/script.js');
     wp_enqueue_script('adv',            get_stylesheet_directory_uri() . '/assets/js/adv_generator.js');
     wp_enqueue_script('cookie',         get_stylesheet_directory_uri() . '/assets/plugins/jquery.cookie/jquery.cookie.js');
+    wp_enqueue_script('carousel',         get_stylesheet_directory_uri() . '/assets/plugins/slick-1.8.0/slick/slick.js');
+    wp_enqueue_script('swiper',         get_stylesheet_directory_uri() . '/assets/plugins/swiper/swiper.min.js');
 
     wp_enqueue_script('gmaps',         'http://maps.googleapis.com/maps/api/js?sensor=false');
 

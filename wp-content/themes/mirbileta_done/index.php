@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Файл Index.php
  *
@@ -30,9 +31,11 @@
 
 
     <?php include 'seo.php'; ?>
-<!--    <title>--><?php //wp_title( '-', true, 'right' ); ?><!--</title>-->
+    <!--    <title>--><?php //wp_title( '-', true, 'right' ); 
+                        ?>
+    <!--</title>-->
 
-<!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
+    <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 
     <link href="assets/img/favicon.png" rel="shortcut icon" type="image/i-icon">
 
@@ -40,8 +43,8 @@
 
 
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-    <link rel='stylesheet' id='main-style'  href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all' />
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+    <link rel='stylesheet' id='main-style' href='<?php echo get_stylesheet_uri(); ?>' type='text/css' media='all' />
 
     <?php wp_head(); ?>
 
@@ -49,6 +52,7 @@
 
 <body class="<?php body_class(); ?>">
 
-go!
+    <?php include 'page.php'; ?>
+
 
 </body>

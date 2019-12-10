@@ -140,13 +140,13 @@ include('main_menu.php');
 
             <?php include 'sidebar_venues.php'; ?>
 
-            <?php include 'sidebar_actors.php'; ?>
+            <?php /*include 'sidebar_actors.php';*/ ?>
 
 
 
         </div>
 
-        <div class="mb-site-content">
+        <div class="mb-site-content afisha-content">
 
             <h1 class="mb_h1"><?php echo get_the_title($page_id);?></h1>
 
@@ -218,12 +218,17 @@ include('main_menu.php');
                         .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
                         .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div></a>'
                         .'<a class="venue-link" href="/'.$venue_alias.'"><div class="mb-a-venue">'.$venue.'</div></a>'
-                        .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'
+                        .'<a href="/'.$alias.'"><div class="mb-a-prices-and-buy"><div class="ma-a-prices">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn">
+                        <div class="circle">
+                          <span class="icon arrow"></span>
+                        </div>
+                        <p class="button-text">Купить билет</p>
+                      </button></div></div>'
                         .'</div></a>';
                 }
 
                 if(strlen($actionsHtml) == 0){
-                    echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+                    echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (495) 005-30-23</div>';
                 }else{
                     echo $actionsHtml;
                 }

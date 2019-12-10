@@ -17,7 +17,7 @@
                 </div></a>
 
             <div class="contacts-wrapper">
-                <div class="contacts-phone">+7 (499) 391<span>-61</span>-97</div>
+                <div class="contacts-phone">+7 (495) 005-<span>30</span>-23</div>
                 <div class="contacts-email">info@mirbileta.ru</div>
             </div>
 
@@ -83,10 +83,6 @@
                 wp_nav_menu($args)
                 ?>
 
-                <div class="run-mobile-version">Мобильная версия</div>
-
-
-
             </div>
             <div class="footer-menu-wrapper">
                 <div class="footer-menu-header">ПАРТНЕРЫ</div>
@@ -110,11 +106,7 @@
 
             <div class="mb-copyright">
                 mirbileta.ru все права защищены&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by Multibooker
-
             </div>
-
-
-
         </div>
     </div>
 
@@ -162,5 +154,7 @@
 
     </noscript>
 </div>
+
+<?php wp_footer(); ?>
 
 <!-- end of Top100 code -->

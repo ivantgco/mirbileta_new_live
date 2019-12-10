@@ -11,7 +11,11 @@
 <div class="main-menu-holder">
 
 
-<div class="container">
+<div class="container main-menu-holder-wrap">
+
+    <a href="/" class="main-menu-holder-wrap-title">
+    <img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/header-logo.png">
+    </a>
 
     <?php
     $args = array(
@@ -35,6 +39,10 @@
 
     wp_nav_menu($args)
     ?>
+
+    <a href="tel:84950053023" class="main-menu-holder-wrap-phone">
+        +7 (495) 005-30-23
+    </a>
 
 </div>
 

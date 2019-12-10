@@ -65,7 +65,7 @@ include('main_menu.php');
 
                 <div class="pr50">
                     <b class="black">Поддержка:</b><br/><br/>
-                    +7 (499) 391-61-97
+                    +7 (495) 005-30-23
                     <br/>
                     support@mirbileta.ru
                     <br/>
@@ -73,8 +73,6 @@ include('main_menu.php');
 
                     <b class="black">Сотрудничество:</b><br/><br/>
                     +7 (906) 063-88-66
-                    <br/>
-                    aig@mirbileta.ru
                     <br/>
                     Гоптарев Александр Иванович
                     <br/>

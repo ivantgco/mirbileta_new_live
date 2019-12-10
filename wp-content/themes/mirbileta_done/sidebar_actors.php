@@ -30,9 +30,11 @@
 
 ?>
 
-    <div class="mb-sb-headline">Актеры и музыканты:</div>
+    <!--<div class="mb-sb-headline">Актеры и музыканты:</div>-->
 
 <?php
+
+//var_export($sb_actors_url);
 
 
     $sb_actors_actionsHtml = "";
@@ -64,13 +66,14 @@
     }
 
     if(strlen($sb_actors_actionsHtml) == 0){
-        echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+        echo '<div class="somethinggoeswrong"></div>';
+//        Что-то пошло не так, звоните +7 (495) 005-30-23 
     }else{
         echo $sb_actors_actionsHtml;
     }
 ?>
 
-    <a class="mb-sb-link-all" href="/actors/">Все актеры и музыканты</a>
+    <!--<a class="mb-sb-link-all" href="/actors/">Все актеры и музыканты</a>-->
 
 <script type="text/javascript" charset="utf-8" src="http://animate.adobe.com/runtime/6.0.0/edge.6.0.0.min.js"></script>
 <style>

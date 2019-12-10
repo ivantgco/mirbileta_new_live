@@ -57,145 +57,27 @@
 
 
 
+<div class="site-content">
+    <div class="container">
+        <div class="content-block most-important">
 
-
-<div class="site-content white-bg">
-    <div class="site-container">
-
-        <div class="site-sidebar">
-
-<!--            <div style="background-color: red; height: 40px; width: 100%;"></div>-->
-
-            <div class="sidebar-popular-holder sidebar-block">
-                <?php include('sidebar-popular.php'); ?>
-            </div>
-<!--            <div class="sidebar-search-holder sidebar-block">-->
-<!--                --><?php //include('sidebar-search.php'); ?>
-<!--            </div>-->
-            <div class="sidebar-calendar-holder sidebar-block">
-                <?php include('sidebar-calendar.php'); ?>
-            </div>
-            <div class="sidebar-tags-holder sidebar-block">
-                <?php include('sidebar-tags.php'); ?>
-            </div>
-            <div class="sidebar-filters-holder sidebar-block">
-                <?php include('sidebar-filters.php'); ?>
-            </div>
-            <div class="sidebar-price-holder sidebar-block">
-                <?php include('sidebar-price.php'); ?>
-            </div>
-            <div class="sidebar-groups-holder sidebar-block">
-                <?php include('sidebar-groups.php'); ?>
-            </div>
-
-        </div>
-        <div class="mb-site-content">
-
-            <div class="mb-set-holder">
-
-                <?php include('main-set.php'); ?>
-
-            </div>
-
-            <div class="mb-main-actions-holder">
-
-                <div class="mb-title">
-                    <div class="mb-title-inner">
-                        Главные события <span class="fa fa-long-arrow-down"></span>
-                    </div>
-                </div>
-
-                <?php include('main-actions.php'); ?>
-            </div>
-
-            <div class="mb-main-nearrest-holder">
-
-                <?php include('nearrest_actions.php'); ?>
-
-            </div>
-
-
-
+            <?php include('top_sales.php'); ?>
 
         </div>
 
-    </div>
+        <div class="content-block extend-search">
 
-    <div class="mb-wide-devide">
-
-
-        <div class="site-container">
-
-            <div class="site-sidebar">
-                <div class="sidebar-block"></div>
-            </div>
-
-
-            <div class="mb-site-content">
-
-                <div class="mb-coming-soon-holder">
-
-                    <div class="mb-title">
-                        <div class="mb-title-inner">
-                            Скоро появится в продаже <span class="fa fa-long-arrow-down"></span>
-                        </div>
-                    </div>
-
-                    <?php include('coming-soon.php'); ?>
-                </div>
-            </div>
+            <?php include('extend_search.php'); ?>
 
         </div>
 
-    </div>
+        <div class="content-block nearrest-aсtions">
 
-    <div class="site-container">
-
-        <div class="site-sidebar">
-            <div class="sidebar-block"></div>
-        </div>
-
-        <div class="mb-site-content">
-
-            <div class="mb-title">
-                <div class="mb-title-inner">
-                    Все мероприятия <span class="fa fa-long-arrow-down"></span>
-                </div>
-            </div>
-
-            <div class="mb-actions-list-holder">
-                <?php include('actions-list.php'); ?>
-            </div>
+            <?php include('nearrest_actions.php'); ?>
 
         </div>
     </div>
-
-    <div class="mb-wide-devide">
-
-
-        <div class="site-container">
-
-            <div class="site-sidebar">
-                <div class="sidebar-block"></div>
-            </div>
-
-
-            <div class="mb-site-content">
-
-                <div class="mb-subscriptions-holder">
-
-                    <?php include('subscriptions.php'); ?>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
+</div>
 
 <?php
 
@@ -205,20 +87,3 @@
 
 
 </body>
-<!--        <div class="content-block most-important">-->
-<!---->
-<!--            --><?php //include('top_sales.php'); ?>
-<!---->
-<!--        </div>-->
-<!---->
-<!--        <div class="content-block extend-search">-->
-<!---->
-<!--            --><?php //include('extend_search.php'); ?>
-<!---->
-<!--        </div>-->
-<!---->
-<!--        <div class="content-block nearrest-aсtions">-->
-<!---->
-<!--            --><?php //include('nearrest_actions.php'); ?>
-<!---->
-<!--        </div>-->

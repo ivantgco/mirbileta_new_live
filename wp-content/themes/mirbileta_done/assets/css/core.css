@@ -60,22 +60,22 @@
     src: url(../fonts/PT_sans/PT_Sans-Web-Bold.ttf);
 }
 
-/*@font-face {*/
-    /*font-family: 'Arvo-Regular';*/
-    /*src: url(../fonts/arvo/Arvo-Regular.ttf);*/
-/*}*/
-/*@font-face {*/
-    /*font-family: 'Arvo-Italic';*/
-    /*src: url(../fonts/arvo/Arvo-Italic.ttf);*/
-/*}*/
-/*@font-face {*/
-    /*font-family: 'Arvo-Bold';*/
-    /*src: url(../fonts/arvo/Arvo-Bold.ttf);*/
-/*}*/
-/*@font-face {*/
-    /*font-family: 'Arvo-BoldItalic';*/
-    /*src: url(../fonts/arvo/Arvo-BoldItalic.ttf);*/
-/*}*/
+@font-face {
+    font-family: 'Arvo-Regular';
+    src: url(../fonts/arvo/Arvo-Regular.ttf);
+}
+@font-face {
+    font-family: 'Arvo-Italic';
+    src: url(../fonts/arvo/Arvo-Italic.ttf);
+}
+@font-face {
+    font-family: 'Arvo-Bold';
+    src: url(../fonts/arvo/Arvo-Bold.ttf);
+}
+@font-face {
+    font-family: 'Arvo-BoldItalic';
+    src: url(../fonts/arvo/Arvo-BoldItalic.ttf);
+}
 
 @font-face {
     font-family: 'Roboto-Light';

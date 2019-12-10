@@ -102,7 +102,7 @@
                                 .$readmore
                             .'</div>'
                             .'<a href="/'.$alias.'"><div class="mb-btpl-button mb-buy mb-buy32 soft">Мероприятия '.$actions_count.'</div></a>'
-                            .$site_url_html
+//                            .$site_url_html
                             .'</div>';
         }
 

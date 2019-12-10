@@ -6,7 +6,7 @@
  * Time: 19:18
  */
 
-    $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>".$global_salesite."</url><ACTION_IN_SLIDER>TRUE</ACTION_IN_SLIDER><page_no>1</page_no><rows_max_num>7</rows_max_num>";
+    $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><ACTION_IN_SLIDER>TRUE</ACTION_IN_SLIDER><page_no>1</page_no><rows_max_num>7</rows_max_num>";
 
     $ch = curl_init();
 
@@ -28,7 +28,7 @@
 
     $action_count = count($data);
     $full_width = $action_count * 100;
-    $single_width = ($action_count > 0) ? 100 / $action_count : 0;
+    $single_width = 100 / $action_count;
 
 
 ?>
@@ -185,6 +185,6 @@
 
 </div>
 
-<!--<div class="container posRel">-->
-<!--    <a href="/contest-fast"><div class="contest-fast-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>-->
-<!--</div>-->
+<div class="container posRel">
+    <a href="/contest-fast"><div class="contest-fast-launcher"><span class="contest-fast-launcher-sub">Конкурс</span><br/>"Кто быстрее?!"</div></a>
+</div>

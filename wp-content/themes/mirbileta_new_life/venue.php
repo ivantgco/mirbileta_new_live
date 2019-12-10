@@ -100,13 +100,13 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
                 <i class="fa fa-map-marker"></i>&nbsp;&nbsp;<?php echo $data[array_search("VENUE_ADDRESS", $columns)]; ?>
 
 
-                <?php
-
-                if($data[array_search("VENUE_SITE_URL", $columns)]){
-                    echo '<a class="single-ext-link" href="'. $data[array_search("VENUE_SITE_URL", $columns)] .'" target="_blank">Сайт площадки</a>';
-                }
-
-                ?>
+<!--                --><?php
+//
+//                if($data[array_search("VENUE_SITE_URL", $columns)]){
+//                    echo '<a class="single-ext-link" href="'. $data[array_search("VENUE_SITE_URL", $columns)] .'" target="_blank">Сайт площадки</a>';
+//                }
+//
+//                ?>
 
 
 

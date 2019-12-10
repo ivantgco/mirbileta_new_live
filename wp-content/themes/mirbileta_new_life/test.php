@@ -75,13 +75,6 @@ include('main_menu.php');
     </div>
 </div>
 
-
-
-
-
-
-
-
 <script type="text/javascript" src="<?php echo $global_prot .'://'. $global_url?>/assets/widget/widget.js"></script>
 
 <?php

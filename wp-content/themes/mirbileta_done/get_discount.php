@@ -194,7 +194,7 @@ $page_id = get_the_ID();
                             <div class="gd-thanks">Спасибо за внимание!</div>
                             <div class="gd-team">
                                 С уважением, команда mirbileta.ru<br/>
-                                +7 (499) 391-61-97
+                                +7 (495) 005-30-23
                             </div>
 
                         </div>

@@ -7,8 +7,8 @@
             <div class="mmb-footer-rights">все права защищены</div>
         </div>
         <div class="pr50 flLeft">
-            <div class="mmb-footer-phone">+7 (499) <span>391</span>-61-97</div>
-            <div class="mmb-footer-email">info@mirbileta.ru</div>
+            <div class="mmb-footer-phone">+7 (495) <span>005</span>-30-23</div>
+            <div class="mmb-footer-email">support@mirbileta.ru</div>
         </div>
     </div>
     <div class="mmb-footer-2">

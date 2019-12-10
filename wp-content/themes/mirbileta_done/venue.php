@@ -17,6 +17,7 @@
 
     $url = $global_prot . "://" . $global_url . "/cgi-bin/site?request=<command>get_venue</command><url>mirbileta.ru</url><venue_url_alias>".$venue_alias."</venue_url_alias>";
 
+
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -154,7 +155,23 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
 
                 <div class="mb-venue-desc">
 
-                    <?php echo $data[array_search("VENUE_DESCRIPTION", $columns)]; ?>
+<?php
+/* Выводим содержимое страницы, если оно есть, если его нет выводится curl запрос */
+if (have_posts()) :
+   while (have_posts()) :
+      the_post();
+         $mb_page_cont = get_the_content();
+   endwhile;
+endif;
+
+if ($mb_page_cont !== '') {
+  echo $mb_page_cont;
+}
+else {
+  echo $data[array_search("VENUE_DESCRIPTION", $columns)];
+}
+
+?>
 
                 </div>
 
@@ -169,7 +186,7 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
 
             <div class="mb-center-search-holder"><input type="text" data-venue="<?php echo $data[array_search("VENUE_ID", $columns)]; ?>" class="mb-center-search" placeholder="Поиск мероприятий"/><div class="mb-center-search-hint">Введите 3 символа и начнем поиск</div></div>
 
-            <div class="actions-wrapper marTop40">
+            <div class="actions-wrapper marTop40 venue-content">
                 <?php
 
 
@@ -256,7 +273,12 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
                                             .'<div class="mb-a-title">'.$act_name.'<span class="mb-a-age">'.$ageCat.'</span></div>'
                                             .'<div class="mb-a-date">'.$act_date.', <span class="mb-a-time">'.$act_time.'</span></div>'
                                             .'<div class="mb-a-venue">'.$venue.'</div>'
-                                            .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy">Купить билет</div></div>'
+                                            .'<div class="mb-a-prices-and-buy"><div class="ma-a-prices">от '.$min_html.'&nbsp;<i class="fa fa-ruble"></i></div><div class="ma-a-buy"><button class="learn-more ma-a-buy__btn">
+                                            <div class="circle">
+                                              <span class="icon arrow"></span>
+                                            </div>
+                                            <p class="button-text">Купить билет</p>
+                                          </button></div></div>'
                                         .'</a></div>'
                                     .'';
 
@@ -270,7 +292,7 @@ $g_address = $data[array_search("VENUE_GOGLE_ADDRESS", $columns)];
                 }
 
                 if (strlen($actionsHtml) == 0) {
-                    echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (906) 063-88-66</div>';
+                    echo '<div class="somethinggoeswrong">Что-то пошло не так, звоните +7 (495) 005-30-23 </div>';
                 } else {
                     echo $actionsHtml;
                 }

@@ -639,7 +639,7 @@
             $('.mmb-widget-holder').show(0);
 
 
-
+            console.log($('#mbw-script-loader').attr('data-src'));
 
             $.getScript($('#mbw-script-loader').attr('data-src'), function(){
 

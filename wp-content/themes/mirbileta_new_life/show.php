@@ -103,17 +103,7 @@
 
             <div class="mb-block-sh posRel">
 
-            <?php
-
-            if($act_id == 3382){
-                echo '<div class="one-action-title">ВНИМАНИЕ! Замена: <span style="text-decoration: line-through;">'. $act_name .'</span> Три товарища</div> <a href="http://sovremennik.ru/news/sezon_2015_2016/may_2016/4_maya_2016_goda_viesto_spektaklya_anarkhiya_sostoitsya_spektakl_tri_tovarishcha/" target="_blank" style="color: red;">Подробнее</a>';
-            }else{
-                echo '<div class="one-action-title">'. $act_name .'</div>';
-            }
-
-            ?>
-
-<!--                <div class="one-action-title">--><?php //echo $act_name; ?><!--</div>-->
+                <div class="one-action-title"><?php echo $act_name; ?></div>
                 <div class="one-action-age"><?php echo $ageCat; ?></div>
                 <div class="one-action-venue"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;<span class="one-action-hall"><?php echo $hall; ?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -481,7 +471,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="action-footer-info">
-                            По всем вопросам покупки электронных билетов на мероприятие <?php echo $g_act_name; ?> обращайтесь по тел.: +7 (499) 391-<span>61</span>-97
+                            По всем вопросам покупки электронных билетов на мероприятие <?php echo $g_act_name; ?> обращайтесь по тел.: +7 (495) 005-<span>30</span>-23
                         </div>
                     </div>
                 </div>

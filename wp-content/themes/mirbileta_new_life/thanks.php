@@ -4,8 +4,8 @@
 */
 
 
-    $order_id =         (strlen($_POST['cf']) > 0)?  $_POST['cf'] : $_GET['order_id'];   // номер нашего заказа
-    $ext_order_id =     (strlen($_POST['cf2']) > 0)?  $_POST['cf2'] : $_GET['ext_order_id'];  // внешний номер заказа
+    $order_id =         $_POST['cf'];   // номер нашего заказа
+    $ext_order_id =     $_POST['cf2'];  // внешний номер заказа
     $frame =            $_POST['cf3'];  // Фрейм
     $payment_id =       $_POST['paymentcode'];  // id платежа
     $email = $_POST['email'];
@@ -52,7 +52,54 @@
 
     <?php wp_head(); ?>
 
+    <script type="text/javascript">
 
+        function getCookie(name) {
+            var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+
+        function setCookie(name, value, options) {
+            options = options || {};
+
+            var expires = options.expires;
+
+            if (typeof expires == "number" && expires) {
+                var d = new Date();
+                d.setTime(d.getTime() + expires * 1000);
+                expires = options.expires = d;
+            }
+            if (expires && expires.toUTCString) {
+                options.expires = expires.toUTCString();
+            }
+
+            value = encodeURIComponent(value);
+
+            var updatedCookie = name + "=" + value;
+
+            for (var propName in options) {
+                updatedCookie += "; " + propName;
+                var propValue = options[propName];
+                if (propValue !== true) {
+                    updatedCookie += "=" + propValue;
+                }
+            }
+
+            document.cookie = updatedCookie;
+        }
+
+        var isRealOrder = <?php echo $isRealOrder;?> == 'real';
+
+        if(!getCookie('mb_reach_success')){
+
+            yaCounter32940504.reachGoal('SUCCESS');
+
+            setCookie('mb_reach_success', true);
+        }
+
+    </script>
 
 </head>
 
@@ -73,31 +120,31 @@ include('main_menu.php');
             <div class="thx-thx">Спасибо!</div>
             <div class="thx-order">
                 Ваш заказ № <span class="order_id"><?php echo $order_id; ?></span> успешно оплачен, билеты<br>
-                отправлены вам на почту. <?php if(strlen($email) > 0):?><span class="thx-email">(<?php echo $email;?>)</span><?php endif; ?>
+                отправлены вам на почту. <span class="thx-email">(<?php echo $email;?>)</span>
             </div>
             <div class="thx-contacts">
                 По всем вопросам обращайтесь:<br>
                 <br>
-                +7 (499) 391-61-97<br>
+                +7 (495) 005-30-23<br>
                 info@mirbileta.ru
             </div>
 
-<!--            <div class="contest-fast-result-holder">-->
-<!--                <div class="contest-fast-congrats">-->
-<!--                    Поздравляем!-->
-<!--                </div>-->
-<!--                <div class="contest-fast-result-wrapper">-->
-<!--                    <div class="contest-fast-result-text">Ваш результат:</div>-->
-<!--                    <div class="contest-fast-result"></div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="contest-fast-timer-rate"><div class="contest-fast-go">Улучшить результат!</div></div>-->
-<!--                <div class="contest-fast-timer-img"></div>-->
-<!--                <a target="_blank" href="/contest-fast"><div class="contest-fast-watch-results">-->
-<!--                    Смотреть все результаты-->
-<!--                </div></a>-->
-<!---->
-<!--            </div>-->
+            <div class="contest-fast-result-holder">
+                <div class="contest-fast-congrats">
+                    Поздравляем!
+                </div>
+                <div class="contest-fast-result-wrapper">
+                    <div class="contest-fast-result-text">Ваш результат:</div>
+                    <div class="contest-fast-result"></div>
+                </div>
+
+                <div class="contest-fast-timer-rate"><div class="contest-fast-go">Улучшить результат!</div></div>
+                <div class="contest-fast-timer-img"></div>
+                <a target="_blank" href="/contest-fast"><div class="contest-fast-watch-results">
+                    Смотреть все результаты
+                </div></a>
+
+            </div>
 
         </div>
         <div class="thx-footer">
@@ -302,57 +349,5 @@ get_footer();
 
 ?>
 
-
-<script type="text/javascript">
-    window.onload = function() {
-
-
-        function getCookie(name) {
-            var matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ));
-            return matches ? decodeURIComponent(matches[1]) : undefined;
-        }
-
-        function setCookie(name, value, options) {
-            options = options || {};
-
-            var expires = options.expires;
-
-            if (typeof expires == "number" && expires) {
-                var d = new Date();
-                d.setTime(d.getTime() + expires * 1000);
-                expires = options.expires = d;
-            }
-            if (expires && expires.toUTCString) {
-                options.expires = expires.toUTCString();
-            }
-
-            value = encodeURIComponent(value);
-
-            var updatedCookie = name + "=" + value;
-
-            for (var propName in options) {
-                updatedCookie += "; " + propName;
-                var propValue = options[propName];
-                if (propValue !== true) {
-                    updatedCookie += "=" + propValue;
-                }
-            }
-
-            document.cookie = updatedCookie;
-        }
-
-        var isRealOrder = ('<?php echo $isRealOrder;?>' == 'real');
-
-        if(!getCookie('mb_reach_success') && isRealOrder){
-
-            yaCounter32940504.reachGoal('SUCCESS');
-
-            setCookie('mb_reach_success', true);
-        }
-    }
-
-</script>
 
 </body>

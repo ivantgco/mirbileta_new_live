@@ -79,7 +79,7 @@ include('main_menu.php');
             <div class="thx-contacts">
                 По всем вопросам обращайтесь:<br>
                 <br>
-                +7 (499) 391-61-97<br>
+                +7 (495) 005-30-23<br>
                 support@mirbileta.ru
             </div>
 

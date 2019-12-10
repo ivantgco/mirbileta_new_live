@@ -3,21 +3,6 @@ var doc_root = widgetWrapper.data('host');
 var host = 'https://shop.mirbileta.ru/';//'192.168.1.90';//'https://shop.mirbileta.ru/'
 
 
-function getCookie(c_name){
-    var i,x,y,ARRcookies=document.cookie.split(";");
-
-    for (i=0;i<ARRcookies.length;i++)
-    {
-        x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-        y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-        x=x.replace(/^\s+|\s+$/g,"");
-        if (x==c_name)
-        {
-            return unescape(y);
-        }
-    }
-}
-
 var applyDictionary = function (res) {
     var r = res.results[0];
     if (r.extra_data && r.extra_data.DICTIONARIES) {
@@ -105,6 +90,7 @@ var jsonToObj = function (obj) {
                     obj_true[i][obj['data_columns'][index]] = obj['data'][i][index];
                 }
             }
+
         }
     }
 
@@ -167,39 +153,6 @@ var socketQuery_b2e = function (obj, callback) {
 
     $.ajax({
         url: config.protocol + '://' + config.ip + '/cgi-bin/b2e?request=' + makeQuery(obj),
-        method: 'GET',
-        dataType: 'jsonp',
-        error: function (err) {
-            console.log('Не удалось подключиться к серверу');
-            callback('NOT_AVALIBLE');
-        },
-        success: function (result) {
-            result = JSON.stringify(applyDictionary(result));
-            callback(result);
-        }
-    });
-};
-
-
-var socketQuery_b2c = function (obj, callback) {
-    var config = {
-        protocol: 'https',//'http',//'https',
-        ip: 'shop.mirbileta.ru'//'192.168.1.190'//'shop.mirbileta.ru'
-    };
-
-
-    config = {
-        protocol: 'http',//'http',//'https',
-        ip: 'mb-dev.mirbileta.ru'//'192.168.1.190'//'shop.mirbileta.ru'
-    };
-
-
-    obj.params.sid = getCookie('site_sid');
-
-    console.log('MQ', makeQuery(obj));
-
-    $.ajax({
-        url: config.protocol + '://' + config.ip + '/cgi-bin/b2c?request=' + makeQuery(obj),
         method: 'GET',
         dataType: 'jsonp',
         error: function (err) {

@@ -10,7 +10,7 @@
 
 <div class="mb-cal-holder">
 
-    <div class="mb-cal-headline">Календарь мероприятий</div>
+    
     <div class="sidebar-calendar mb-cal-body"></div>
 
 </div>

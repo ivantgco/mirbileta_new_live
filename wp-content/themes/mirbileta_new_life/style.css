@@ -9,3 +9,12 @@
  Tags:         mirbileta,multibooker
  Text Domain:  mirbileta-new-life
 */
+
+body{
+	display: none;
+background-color: red!important;
+}
+
+.filter-page-filters-buttons .mb-special-holder{
+	display: block;
+}

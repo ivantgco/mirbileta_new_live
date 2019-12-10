@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: goptarev
@@ -8,23 +9,24 @@
 ?>
 
 <div class="site-footer">
-    <div class="footer-line-1">
+    <!-- <div class="footer-line-1">
         <div class="container">
 
-            <a href="/"><div class="logo-wrapper">
-                </div></a>
 
-            <div class="contacts-wrapper">
-                <div class="contacts-phone">+7 (499) 391<span>-61</span>-97</div>
-<!--                <div class="contacts-phone">+7 (903) 269<span>-99</span>-12</div>-->
-                <div class="contacts-email">support@mirbileta.ru</div>
-            </div>
+
+
 
         </div>
-    </div>
+    </div> -->
 
     <div class="footer-line-2">
         <div class="container posRel">
+
+            <a href="/">
+                <div class="logo-wrapper">
+                </div>
+            </a>
+
             <div class="footer-menu-wrapper footer-menu-1">
                 <div class="footer-menu-header">О НАС</div>
 
@@ -48,7 +50,7 @@
                     'theme_location'  => ''               // (string) Расположение меню в шаблоне. (указывается ключ которым было зарегистрировано меню в функции register_nav_menus)
                 );
 
-//                TICKET_SERVICE_FEE
+                //                TICKET_SERVICE_FEE
 
                 wp_nav_menu($args)
                 ?>
@@ -82,7 +84,7 @@
                 wp_nav_menu($args)
                 ?>
 
-                <div class="run-mobile-version">Мобильная версия</div>
+
 
 
 
@@ -90,32 +92,44 @@
 
             <div class="footer-menu-wrapper">
 
-                <a href="/multibooker/"><div class="mbooker-ad-holder"></div></a>
+                <a href="/multibooker/">
+                    <div class="mbooker-ad-holder"></div>
+                </a>
 
             </div>
-<!--            <div class="footer-menu-wrapper">-->
-<!--                <div class="footer-menu-header">ПАРТНЕРЫ</div>-->
-<!---->
-<!--                <div class="f-p-logo-row">-->
-<!--                    <div class="f-p-logo gkd-f"></div>-->
-<!--                    <div class="f-p-logo barvikha-f"></div>-->
-<!--                    <div class="f-p-logo acquiropay-f"></div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="f-p-logo-row">-->
-<!--                    <div class="f-p-logo vernadka-f"></div>-->
-<!--                    <div class="f-p-logo sovremennik-f"></div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="f-p-logo-row">-->
-<!--                    <div class="f-p-logo multibooker-f"></div>-->
-<!--                </div>-->
-<!---->
-<!--            </div>-->
+            <!--            <div class="footer-menu-wrapper">-->
+            <!--                <div class="footer-menu-header">ПАРТНЕРЫ</div>-->
+            <!---->
+            <!--                <div class="f-p-logo-row">-->
+            <!--                    <div class="f-p-logo gkd-f"></div>-->
+            <!--                    <div class="f-p-logo barvikha-f"></div>-->
+            <!--                    <div class="f-p-logo acquiropay-f"></div>-->
+            <!--                </div>-->
+            <!---->
+            <!--                <div class="f-p-logo-row">-->
+            <!--                    <div class="f-p-logo vernadka-f"></div>-->
+            <!--                    <div class="f-p-logo sovremennik-f"></div>-->
+            <!--                </div>-->
+            <!---->
+            <!--                <div class="f-p-logo-row">-->
+            <!--                    <div class="f-p-logo multibooker-f"></div>-->
+            <!--                </div>-->
+            <!---->
+            <!--            </div>-->
 
-            <div class="mb-copyright">
-                mirbileta.ru все права защищены&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="/multibooker/">Multibooker</a>
 
+
+
+            <div class="contacts-wrapper">
+                <div class="contacts-phone"><span>Телефон: </span> +7 (495) 005-30-23</div>
+                <!--                <div class="contacts-phone">+7 (903) 269<span>-99</span>-12</div>-->
+                <div class="contacts-email"><span>Email: </span> <a href="mailto:support@mirbileta.ru"> support@mirbileta.ru</a></div>
+                <div class="footer-ccs">
+                    <a class="powered-by" target="_blank" href="http://ccs.msk.ru"></a>
+                </div>
+                <div class="mb-copyright">
+                    mirbileta.ru все права защищены&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by <a href="/multibooker/">Multibooker</a>
+                </div>
             </div>
 
 
@@ -125,7 +139,7 @@
 
     <div class="mb-go-to-top">
 
-        <i class="fa fa-arrow-up"></i><br/>
+        <i class="fa fa-arrow-up"></i><br />
         Наверх
 
     </div>
@@ -134,41 +148,74 @@
     <script type="text/javascript" src="//vk.com/js/api/openapi.js?136"></script>
 
     <!-- VK Widget -->
-    <div id="vk_community_messages"></div>
+    <!--<div id="vk_community_messages"></div>
     <script type="text/javascript">
         VK.Widgets.CommunityMessages("vk_community_messages", 119020792, {expanded: "1",tooltipButtonText: "Здравствуйте! Я тут всё знаю, Вам подсказать?=)"});
+    </script>-->
+    <!-- BEGIN JIVOSITE CODE {literal} -->
+    <script type='text/javascript'>
+        (function() {
+            var widget_id = 'wbGEfUFTCW';
+            var d = document;
+            var w = window;
+
+            function l() {
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = '//code.jivosite.com/script/widget/' + widget_id;
+                var ss = document.getElementsByTagName('script')[0];
+                ss.parentNode.insertBefore(s, ss);
+            }
+            if (d.readyState == 'complete') {
+                l();
+            } else {
+                if (w.attachEvent) {
+                    w.attachEvent('onload', l);
+                } else {
+                    w.addEventListener('load', l, false);
+                }
+            }
+        })();
     </script>
+    <!-- {/literal} END JIVOSITE CODE -->
 
 </div>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
-    (function (d, w, c) {
+    (function(d, w, c) {
         (w[c] = w[c] || []).push(function() {
             try {
                 w.yaCounter32940504 = new Ya.Metrika({
-                    id:32940504,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true,
-                    webvisor:true,
-                    trackHash:true
+                    id: 32940504,
+                    clickmap: true,
+                    trackLinks: true,
+                    accurateTrackBounce: true,
+                    webvisor: true,
+                    trackHash: true
                 });
-            } catch(e) { }
+            } catch (e) {}
         });
 
         var n = d.getElementsByTagName("script")[0],
             s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
+            f = function() {
+                n.parentNode.insertBefore(s, n);
+            };
         s.type = "text/javascript";
         s.async = true;
         s.src = "https://mc.yandex.ru/metrika/watch.js";
 
         if (w.opera == "[object Opera]") {
             d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
+        } else {
+            f();
+        }
     })(document, window, "yandex_metrika_callbacks");
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/32940504" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/32940504" style="position:absolute; left:-9999px;" alt="" /></div>
+</noscript>
 <!-- /Yandex.Metrika counter -->
 
 

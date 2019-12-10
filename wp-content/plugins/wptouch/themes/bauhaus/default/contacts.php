@@ -23,8 +23,7 @@ $page_id = get_the_ID();
 
     <meta charset="UTF-8"/>
 
-    <?php include 'seo.php'; ?>
-<!--    <title>--><?php //wp_title('-', true, 'right'); ?><!--</title>-->
+    <title><?php wp_title('-', true, 'right'); ?></title>
 
     <!--    <title>&nbsp;&nbsp;Мир Билета - Электронные билеты</title>-->
 
@@ -58,7 +57,7 @@ $page_id = get_the_ID();
 
 
             <b class="black">Поддержка:</b><br/>
-            +7 (499) 391-61-97
+            +7 (495) 005-30-23
             <br/>
             support@mirbileta.ru
             <br/>
@@ -67,22 +66,12 @@ $page_id = get_the_ID();
             <b class="black">Сотрудничество:</b><br/>
             +7 (906) 063-88-66
             <br/>
-            alextgco@gmail.com
+            Гоптарев Александр Иванович
             <br/>
-           <!-- Гоптарев Александр Иванович
-            <br/>-->
             <br/>
 
-
-            <b class="black">Москва:</b><br/><br/>
-            Адрес: Москва, Проспект мира, 114А
-
-            <br/><br/>
-
-            <b class="black">Вильнюс:</b><br/><br/>
-            UAB "Anitera"<br/>
-            Laisvės pr. 60, LT-05120, Vilnius<br/>
-            Company Number: 303436963
+            <b class="black">Адрес:</b><br/>
+            Москва, Крутицкий вал 16
 
         </div>
 

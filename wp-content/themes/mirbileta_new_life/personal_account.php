@@ -48,84 +48,107 @@ include('main_menu.php');
 
 ?>
 
-<div class="site-content white-bg">
-    <div class="site-container">
+<div class="site-content ptsans">
 
-        <div class="site-sidebar">
+    <div class="container h100pr">
 
-            <div class="sidebar-block">
-                <?php include('account_menu.php'); ?>
+        <div class="pa-sidebar">
+            <div class="pa-menu-holder">
+                <ul>
+                    <li>
+                        <div class="pa-menu-title">
+                            <i class="fa fa-comments-o"></i>&nbsp;&nbsp;Отзывы
+                        </div>
+                        <div class="pa-menu-dd">
+                            <ul>
+                                <li>Ваши отзывы</li>
+                                <li>Написать отзыв</li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <li><i class="fa fa-bars"></i>&nbsp;&nbsp;Заказы</li>
+
+                    <li><i class="fa fa-ticket"></i>&nbsp;&nbsp;Билеты</li>
+
+                    <li><i class="fa fa-cogs"></i>&nbsp;&nbsp;Настройки</li>
+                </ul>
             </div>
-
-
         </div>
-        <div class="mb-site-content">
 
-            <div class="mb-personal-account-content">
-
-                <div class="pa-intro-holder">
-
-                    <div class="pa-hello">
-                        <span class="pa-hello-name">Alexandr,</span>
-                        Приветсвуем вас в вашем личном кабинете!
-
-                        <div class="pa-second-bg"></div>
-
-                    </div>
-
-                    <div class="pa-you-can">Здесь вы можете:</div>
-
-                    <div class="pa-third-bg"></div>
-
-                    <ul class="pa-color-list">
-
-                        <li><div class="pa-color-num">1.</div><div class="pa-color-text">Получить <a href="/discount" target="" >постоянную СКИДКУ</a> на ВСЕ билеты, это легко!</div></li>
-                        <li><div class="pa-color-num">2.</div><div class="pa-color-text">Посмотреть свои <a href="/orders" target="" >заказы</a> и <a href="/orders" target="_blank" >скачать билеты</a></div></li>
-                        <li><div class="pa-color-num">3.</div><div class="pa-color-text">Писать <a href="/reviews" target="" >отзывы</a> о мероприятиях и действующих лицах.</div></li>
-                        <li><div class="pa-color-num">4.</div><div class="pa-color-text">Ставить <a href="/reviews" target="" >оценки местам в зале.</a></div></li>
-                        <li><div class="pa-color-num">5.</div><div class="pa-color-text">Управлять <a href="subscriptions" target="" >подписками.</a></div></li>
-                        <li><div class="pa-color-num">6.</div><div class="pa-color-text">Посмотреть или сохранить себе наши <a href="luxurious_sets" target="" >роскошные подборки</a> лучших мероприятий.</div></li>
-                        <li><div class="pa-color-num">7.</div><div class="pa-color-text">Заполнить информацию <a href="#" target="_blank" >о себе.</a></div></li>
-
-                    </ul>
-
-                </div>
-<!--                //http://ch23882.tmweb.ru-->
+        <div class="pa-content">
 
 
-
-
-                Фото
-
-                Пол
-
-                Возраст
-
-                SHOW_TYPE
-
-                Любимые исполнители
-
-                Любимые авторы
-
-                Комфортная цена билета
-
-                Опишите как вы отдыхаете:
-
-                - Все время мониторю кудаб сходить, хожу почти на все популярное
-                - Слежу, хожу только на некоторые
-                - Не слежу, меня зовут близкие
-                - Попадаю куда либо редко и спонтанно
-                - Вообще странно, что я здесь..
-
-            </div>
 
 
         </div>
 
     </div>
+
+
+
+    <div class="contacts-fader">
+
+    </div>
+    <div class="container">
+
+<!--        <div class="wr-header">-->
+<!--            Как вам мероприятие?-->
+<!--            <span class="wr-subtitle">Будьте объективны=)</span>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="pr50">-->
+<!--            <div class="wr-group">-->
+<!--                <label>1.&nbsp;&nbsp;&nbsp;Напишите пару строк:</label>-->
+<!--                <textarea rows="5" class="wr-review-text"></textarea>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="wr-group">-->
+<!--                <label>2.&nbsp;&nbsp;&nbsp;Может у вас есть фото или видео? Поделитесь!</label>-->
+<!---->
+<!--<!--                <div class="wr-review-file-add fa fa-plus">-->
+<!--                <div class="wr-review-file-holder">-->
+<!--                    <input class="wr-review-file" type="file" />-->
+<!--                </div>-->
+<!--<!--                </div>-->
+<!---->
+<!--            </div>-->
+<!---->
+<!--            <div class="wr-group">-->
+<!--                <label>3.&nbsp;&nbsp;&nbsp;Оцените по 10-бальнай шкале.</label>-->
+<!---->
+<!--                <div class="wr-review-rating-bar">-->
+<!--                    <div class="wr-review-rating-holder">-->
+<!--                        <div class="wr-review-rating"></div>-->
+<!--                    </div>-->
+<!--                    <div class="wr-review-rating-value">5.0</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="wr-group">-->
+<!--                <div class="wr-confirm"><i class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;Отправить</div>-->
+<!--                <div class="wr-error-holder"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="pr50">-->
+<!---->
+<!--            <div class="wr-text">-->
+<!--                Отзывы, которые вы видите на нашем сайте-->
+<!--                появляются именно таким путем, доступ сюда имеют только те, кто действительно посетил мероприятие.-->
+<!--                Постарайтесь написать конструктивный отзыв, чтобы люди читающие его имели правильное-->
+<!--                представление о мероприятии!-->
+<!--                <br/><br/>-->
+<!--                Спасибо!-->
+<!--            </div>-->
+<!---->
+<!--        </div>-->
+
+
+    </div>
+
 </div>
-
-
 
 <?php
 
