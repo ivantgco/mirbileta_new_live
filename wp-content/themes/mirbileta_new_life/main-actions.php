@@ -7,7 +7,7 @@
  */
 
     $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><page_no>1</page_no><rows_max_num>10</rows_max_num>";
-
+    error_log('IN main-actions.php '. $url);
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);

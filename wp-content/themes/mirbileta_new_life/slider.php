@@ -7,7 +7,7 @@
  */
 
     $url =  $global_prot ."://". $global_url . "/cgi-bin/site?request=<command>get_actions</command><url>mirbileta.ru</url><ACTION_IN_SLIDER>TRUE</ACTION_IN_SLIDER><page_no>1</page_no><rows_max_num>7</rows_max_num>";
-
+    //https://shop.mirbileta.ru/cgi-bin/site?request=%3Ccommand%3Eget_actions%3C/command%3E%3Curl%3Emirbileta.ru%3C/url%3E%3CACTION_IN_SLIDER%3ETRUE%3C/ACTION_IN_SLIDER%3E%3Cpage_no%3E1%3C/page_no%3E%3Crows_max_num%3E7%3C/rows_max_num%3E
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
@@ -18,6 +18,8 @@
 
     $resp = curl_exec($ch);
 
+//    echo $resp;
+
     if(curl_errno($ch))
         print curl_error($ch);
     else
@@ -27,6 +29,7 @@
     $data = json_decode($resp)->results["0"]->data;
 
     $action_count = count($data);
+    if ($action_count == 0) $action_count = 1;
     $full_width = $action_count * 100;
     $single_width = 100 / $action_count;
 
